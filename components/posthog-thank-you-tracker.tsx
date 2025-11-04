@@ -4,7 +4,7 @@ import { useEffectOnce } from "@/hooks/use-effect-once";
 import posthog from "posthog-js";
 
 export const PostHogThankYouTracker = ({
-  amount = 47,
+  amount = 1,
   currency = "EUR",
 }: {
   amount?: number;
@@ -49,4 +49,3 @@ export const PostHogThankYouTracker = ({
 
   return null;
 };
-

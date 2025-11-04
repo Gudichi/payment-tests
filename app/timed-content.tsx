@@ -20,11 +20,6 @@ export const TimedContent = ({
 }) => {
   const [checkoutExpanded, setCheckoutExpanded] = useState(false);
 
-  // Read variant from URL directly
-  const variantKey = typeof window !== "undefined" 
-    ? new URLSearchParams(window.location.search).get("v") || "a"
-    : "a";
-
   const scrollToSection = useCallback((sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -97,27 +92,24 @@ export const TimedContent = ({
 
   return (
     <React.Fragment>
-      {variantKey !== "b" && (
-        <div className="flex justify-center items-center relative py-8">
-          <Lottie
-            className="absolute w-40 h-40 z-10"
-            loop={true}
-            animationData={scrollDown}
-          />
-        </div>
-      )}
+      <div className="flex justify-center items-center relative py-8">
+        <Lottie
+          className="absolute w-40 h-40 z-10"
+          loop={true}
+          animationData={scrollDown}
+        />
+      </div>
 
-      {variantKey !== "b" && (
-        <div
-          id="pre-testimonial-section"
-          className="max-w-4xl mx-auto px-4 py-8 md:py-16"
-        >
-          <h3 className="text-2xl text-accent text-center mb-6 md:mb-10 font-bold leading-relaxed">
-            Prije nego odustaneš i pomisliš: "ovo nije za mene", pogledaj što su
-            postigle žene koje su bile u ISTOJ situaciji kao ti...
-          </h3>
+      <div
+        id="pre-testimonial-section"
+        className="max-w-4xl mx-auto px-4 py-8 md:py-16"
+      >
+        <h3 className="text-2xl text-accent text-center mb-6 md:mb-10 font-bold leading-relaxed">
+          Prije nego odustaneš i pomisliš: "ovo nije za mene", pogledaj što su
+          postigle žene koje su bile u ISTOJ situaciji kao ti...
+        </h3>
 
-          <div className="grid grid-cols-1 gap-6 md:gap-8 w-full mb-12">
+        <div className="grid grid-cols-1 gap-6 md:gap-8 w-full mb-12">
             {[...Array(3)].map((_, index) => (
               <img
                 key={index}

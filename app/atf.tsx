@@ -14,16 +14,12 @@ export default function AboveTheFold({ version }: { version: Version }) {
   const unlockAfter = 6 * 60; // 6 minutes
 
   useEffectOnce(() => {
-    // Register variant in PostHog
+    // Register default variant in PostHog
     try {
-      const params = new URLSearchParams(window.location.search);
-      const v = (params.get("v") || "a").toLowerCase();
-      if ("abcdef".includes(v)) {
-        posthog.register({ variant: v });
-        try {
-          localStorage.setItem("ph_variant", v);
-        } catch {}
-      }
+      posthog.register({ variant: "default" });
+      try {
+        localStorage.setItem("ph_variant", "default");
+      } catch {}
     } catch {}
 
     // @ts-ignore

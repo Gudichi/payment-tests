@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export const PRICE = 47;
+export const PRICE = 1;
 
 export const ProgressBar = () => {
   const [spotCount, setSpotCount] = useState<number>(44);

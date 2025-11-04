@@ -1,10 +1,20 @@
 "use client";
 
 import PaymentElements from "@/components/payment-elements";
+import { useMemo, useState } from "react";
 
-export const PRICE = 47;
+const BASE_PRICE = 1;
+const ORDER_BUMP_PRICE = 1;
+
+export const PRICE = BASE_PRICE;
 
 export const Checkout = () => {
+  const [includeOrderBump, setIncludeOrderBump] = useState(false);
+  const total = useMemo(
+    () => BASE_PRICE + (includeOrderBump ? ORDER_BUMP_PRICE : 0),
+    [includeOrderBump]
+  );
+
   return (
     <div id="checkout-section" className="max-w-7xl mx-auto py-8">
       <div className="bg-white rounded-2xl shadow-lg border border-gray-100 py-6 p-4 md:p-8">
@@ -83,12 +93,66 @@ export const Checkout = () => {
           ))}
         </ul>
 
+        {/* Order bump */}
+        <div className="max-w-6xl mx-auto mb-6">
+          <div className="border-2 border-emerald-100 rounded-xl bg-emerald-50/60 shadow-sm overflow-hidden">
+            <div className="bg-emerald-100 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-emerald-700">
+              Preporučeno
+            </div>
+            <label className="flex flex-col md:flex-row gap-4 md:gap-6 px-4 sm:px-6 py-5 cursor-pointer">
+              <div className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  className="mt-1 h-5 w-5 rounded border-2 border-emerald-400 text-emerald-600 focus:ring-2 focus:ring-offset-1 focus:ring-emerald-500"
+                  checked={includeOrderBump}
+                  onChange={(event) =>
+                    setIncludeOrderBump(event.target.checked)
+                  }
+                />
+                <div>
+                  <p className="text-base md:text-lg font-semibold text-emerald-900">
+                    Doživotni Pristup VIP WhatsApp Grupi{" "}
+                    <span className="text-emerald-600">+€{ORDER_BUMP_PRICE}</span>
+                  </p>
+                  <p className="text-sm md:text-base text-emerald-800 leading-relaxed mt-2">
+                    Većina žena koje se priključe VIP WhatsApp grupi{" "}
+                    <strong>vide rezultate 3x brže</strong> nego kada pokušavaju
+                    same. Dobivaš direktan feedback, analize i točne korake od
+                    stručnog tima koji te vodi dok ne postigneš rezultat.
+                  </p>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
         {/* Checkout Form */}
         <div className="max-w-6xl mx-auto">
           <div className="space-y-6">
-            {/* Payment Box */}
             <div className="border-2 border-gray-200 rounded-lg p-4 sm:p-6 bg-gray-50 shadow-sm">
-              <PaymentElements price={PRICE} />
+              <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-4">
+                <div>
+                  <p className="text-sm text-gray-500">Ukupno za platiti</p>
+                  <p className="text-2xl font-bold text-accent">
+                    €{total.toFixed(2)}
+                  </p>
+                </div>
+                {includeOrderBump ? (
+                  <span className="text-xs font-semibold text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">
+                    VIP grupa dodana
+                  </span>
+                ) : null}
+              </div>
+              <PaymentElements
+                price={total}
+                metadata={{
+                  base_price_eur: BASE_PRICE.toString(),
+                  order_bump_selected: includeOrderBump ? "yes" : "no",
+                  order_bump_price_eur: includeOrderBump
+                    ? ORDER_BUMP_PRICE.toString()
+                    : "0",
+                }}
+              />
             </div>
           </div>
         </div>

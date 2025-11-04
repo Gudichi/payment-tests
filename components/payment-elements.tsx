@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffectOnce } from "@/hooks/use-effect-once";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import PaymentForm from "./payment-form";
 
 const stripePromise = loadStripe(
@@ -12,22 +11,64 @@ const stripePromise = loadStripe(
 
 export default function PaymentElements({
   price,
+  metadata,
 }: {
-  price?: number | undefined;
+  price: number;
+  metadata?: Record<string, string>;
 }) {
   const [clientSecret, setClientSecret] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useEffectOnce(() => {
-    // Create PaymentIntent as soon as the component loads
+  const metadataKey = useMemo(
+    () => JSON.stringify(metadata ?? {}),
+    [metadata]
+  );
+
+  useEffect(() => {
+    if (!price || price <= 0) {
+      setClientSecret("");
+      setIsLoading(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    setIsLoading(true);
+    setClientSecret("");
+
     fetch("/api/create-payment-intent", {
       method: "POST",
-      body: JSON.stringify({ data: { amount: price } }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: {
+          amount: price,
+          metadata: metadata ?? {},
+        },
+      }),
+      signal: controller.signal,
     })
-      .then((res) => res.text())
-      .then((clientSecret) => setClientSecret(clientSecret));
-  });
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to create payment intent");
+        }
+        return res.text();
+      })
+      .then((secret) => {
+        setClientSecret(secret);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          console.error("Failed to create payment intent", error);
+          setIsLoading(false);
+        }
+      });
 
-  if (!clientSecret) {
+    return () => controller.abort();
+  }, [price, metadataKey]);
+
+  if (isLoading || !clientSecret) {
     return (
       <div className="flex items-center justify-center h-[200px]">
         <div role="status" aria-label="loading">
@@ -58,6 +99,7 @@ export default function PaymentElements({
 
   return (
     <Elements
+      key={clientSecret}
       stripe={stripePromise}
       options={{
         fonts: [
