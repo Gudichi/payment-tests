@@ -1,7 +1,8 @@
 import { ClientEvent } from "@/components/client-event";
 import { PostHogThankYouTracker } from "@/components/posthog-thank-you-tracker";
+import { UpsellOffer } from "@/components/upsell-offer";
 import { clerkClient } from "@clerk/nextjs/server";
-import { AppWindow, CheckCircle, LogIn } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import Stripe from "stripe";
 
 export type SearchParams = {
@@ -11,13 +12,12 @@ export type SearchParams = {
 };
 
 const createUserOnClerk = async (email: string) => {
-  const clerk = await clerkClient();
-  const userList = await clerk.users.getUserList({ emailAddress: [email] });
+  const userList = await clerkClient.users.getUserList({ emailAddress: [email] });
   if (userList.totalCount > 0) {
     console.log("Korisnik već postoji:", email);
     return;
   }
-  const user = await clerk.users.createUser({
+  const user = await clerkClient.users.createUser({
     emailAddress: [email],
   });
   return user;
@@ -87,6 +87,12 @@ export default async function CompletionPage({
             Vaša kupovina programa "Rečenice Strasti" je uspješno završena!
           </p>
 
+          <p className="text-base text-[#5A3147] mt-4 leading-relaxed">
+            U sljedećih nekoliko minuta primit ćete email s pristupnim
+            podacima i detaljima za korištenje glavnog programa. Provjerite i
+            spam/promotions mapu ako poruka ne stigne odmah.
+          </p>
+
           {paymentIntent && (
             <div className="p-4 rounded-md">
               <p className="text-sm text-gray-600">
@@ -96,65 +102,13 @@ export default async function CompletionPage({
             </div>
           )}
 
-          {/* What's Next */}
-          <div className="bg-gray-50 rounded-lg p-6 mt-6 mb-8 text-left">
-            <h2 className="text-xl font-semibold text-[#64113F] mb-4 text-center">
-              Što sada?
-            </h2>
-
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <AppWindow className="w-5 h-5 text-[#EF798A] mr-3 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-medium text-[#64113F]">
-                    Pristupite web aplikaciji
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    Klikom na gumb ispod pristupite našoj web aplikaciji.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <LogIn className="w-5 h-5 text-[#EF798A] mr-3 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-medium text-[#64113F]">
-                    Prijavite se na svoj račun
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    Prijavite se koristeći email adresu koju ste koristili
-                    prilikom kupovine programa.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-[#EF798A] mr-3 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-medium text-[#64113F]">
-                    Počnite koristiti
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    Počnite koristiti vaše nove materijale odmah!
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="mt-10 mb-12">
+            <UpsellOffer />
           </div>
 
-          {/* Support */}
-          <div className="text-center">
-            <p className="text-sm text-gray-500 mb-8">
-              Imate pitanja? Kontaktirajte nas na recenicestrasti@gmail.com
-            </p>
-
-            <a
-              href="/prijava"
-              className="bg-[#EF798A] hover:bg-[#e06b7a] text-white px-6 py-3 rounded-lg font-medium transition-colors"
-            >
-              Prijava u web aplikaciju →
-            </a>
-          </div>
+          <p className="text-sm text-gray-500">
+            Imate pitanja? Kontaktirajte nas na recenicestrasti@gmail.com
+          </p>
         </div>
       </div>
       {successful && paymentIntent && (
