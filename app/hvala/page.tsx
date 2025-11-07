@@ -1,6 +1,6 @@
 import { ClientEvent } from "@/components/client-event";
 import { PostHogThankYouTracker } from "@/components/posthog-thank-you-tracker";
-import { UpsellOffer } from "@/components/upsell-offer";
+import Link from "next/link";
 import { clerkClient } from "@clerk/nextjs/server";
 import { CheckCircle } from "lucide-react";
 import Stripe from "stripe";
@@ -103,7 +103,15 @@ export default async function CompletionPage({
           )}
 
           <div className="mt-10 mb-12">
-            <UpsellOffer />
+            <Link
+              href="/portal"
+              className="inline-flex items-center justify-center rounded-lg bg-[#EF798A] px-8 py-4 text-lg font-semibold text-white shadow-lg transition hover:bg-[#e06b7a]"
+            >
+              Idi u svoj program
+            </Link>
+            <p className="mt-3 text-sm text-[#5A3147]">
+              Klikni kako bi završila registraciju i ulogirala se u aplikaciju.
+            </p>
           </div>
 
           <p className="text-sm text-gray-500">
