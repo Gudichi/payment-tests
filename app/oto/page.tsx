@@ -2,8 +2,6 @@ import { OneClickUpsellButton } from "@/components/one-click-upsell";
 import { redirect } from "next/navigation";
 import Stripe from "stripe";
 
-const OTO_PRICE_ID = process.env.STRIPE_OTO1_PRICE_ID;
-
 type Props = {
   searchParams: Promise<{
     payment_intent?: string;
@@ -11,9 +9,8 @@ type Props = {
 };
 
 export default async function OtoPage({ searchParams }: Props) {
-  if (!OTO_PRICE_ID) {
-    throw new Error("STRIPE_OTO1_PRICE_ID nije postavljen.");
-  }
+  const priceId = process.env.STRIPE_OTO1_PRICE_ID;
+  const stripeSecret = process.env.STRIPE_SECRET_KEY;
 
   const resolvedSearchParams = await searchParams;
   const paymentIntentId = resolvedSearchParams.payment_intent;
@@ -22,8 +19,25 @@ export default async function OtoPage({ searchParams }: Props) {
     redirect("/portal");
   }
 
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-  const price = await stripe.prices.retrieve(OTO_PRICE_ID);
+  if (!priceId || !stripeSecret) {
+    return (
+      <div className="min-h-screen bg-[#FFF7F8] py-16">
+        <div className="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl p-10 text-center border border-[#F8D4E2]">
+          <h1 className="text-3xl font-serif text-[#6B0F3B] mb-6">
+            Upsell trenutno nije aktiviran
+          </h1>
+          <p className="text-base text-[#4D1F2A]">
+            STRIPE_OTO1_PRICE_ID ili STRIPE_SECRET_KEY nije postavljen u
+            okruženju. Dodajte vrijednosti i redeployajte kako bi ponuda bila
+            dostupna.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const stripe = new Stripe(stripeSecret);
+  const price = await stripe.prices.retrieve(priceId);
   const amount = price.unit_amount ? price.unit_amount / 100 : null;
 
   return (
