@@ -29,8 +29,12 @@ export async function POST(req: NextRequest) {
       }
     );
 
-    const paymentMethodId = originalIntent.payment_method;
-    if (typeof paymentMethodId !== "string") {
+    const paymentMethodId =
+      typeof originalIntent.payment_method === "string"
+        ? originalIntent.payment_method
+        : originalIntent.payment_method?.id;
+
+    if (!paymentMethodId) {
       return NextResponse.json(
         { error: "Could not reuse the original payment method." },
         { status: 400 }

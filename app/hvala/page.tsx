@@ -3,6 +3,7 @@ import { PostHogThankYouTracker } from "@/components/posthog-thank-you-tracker";
 import { clerkClient } from "@clerk/nextjs/server";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import Stripe from "stripe";
 
 export type SearchParams = {
@@ -64,6 +65,9 @@ export default async function CompletionPage({
     try {
       paymentIntent = await processPaymentIntent(payment_intent);
       successful = true;
+      if (paymentIntent?.id) {
+        redirect(`/oto?payment_intent=${paymentIntent.id}`);
+      }
     } catch (error) {
       console.error("Greška kod obrade plaćanja:", error);
     }
