@@ -5,14 +5,16 @@ type SectionProps = {
   title?: string;
   subtitle?: string;
   children: React.ReactNode;
-  bg?: "default" | "ivory" | "tint";
+  bg?: "white" | "ivory" | "blush";
   className?: string;
+  contentClassName?: string;
+  align?: "left" | "center";
 };
 
 const bgClasses: Record<NonNullable<SectionProps["bg"]>, string> = {
-  default: "",
+  white: "bg-white",
   ivory: "bg-ivory",
-  tint: "bg-blush/30",
+  blush: "bg-blush/30",
 };
 
 export function Section({
@@ -21,33 +23,33 @@ export function Section({
   title,
   subtitle,
   children,
-  bg = "default",
+  bg = "white",
   className,
+  contentClassName,
+  align = "left",
 }: SectionProps) {
   return (
-    <section
-      id={id}
-      className={cn(
-        "px-5 py-12 sm:py-16",
-        bgClasses[bg],
-        bg === "default" ? "" : "rounded-3xl",
-        className
-      )}
-    >
-      {(eyebrow || title || subtitle) && (
-        <div className="mx-auto mb-8 max-w-3xl text-center">
-          {eyebrow && (
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cherry">
-              {eyebrow}
-            </p>
-          )}
-          {title && (
-            <h2 className="mt-3 font-heading text-3xl text-espresso sm:text-4xl">{title}</h2>
-          )}
-          {subtitle && <p className="mt-3 text-base text-espresso/80">{subtitle}</p>}
-        </div>
-      )}
-      <div className="mx-auto max-w-3xl">{children}</div>
+    <section id={id} className={cn(bgClasses[bg], "px-6 py-16 sm:px-8 sm:py-24", className)}>
+      <div className={cn("mx-auto w-full max-w-[1120px]", contentClassName)}>
+        {(eyebrow || title || subtitle) && (
+          <div className={cn("mb-10", align === "center" ? "text-center" : "text-left")}>
+            {eyebrow && (
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cherry">
+                {eyebrow}
+              </p>
+            )}
+            {title && (
+              <h2 className="mt-4 font-heading text-3xl leading-tight text-espresso sm:text-5xl">
+                {title}
+              </h2>
+            )}
+            {subtitle && (
+              <p className="mt-4 text-lg leading-relaxed text-espresso/80">{subtitle}</p>
+            )}
+          </div>
+        )}
+        {children}
+      </div>
     </section>
   );
 }

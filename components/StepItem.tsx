@@ -17,7 +17,7 @@ export function StepItem({ step, title, description, image, className }: StepIte
   return (
     <div
       className={cn(
-        "flex flex-col gap-4 rounded-2xl border border-blush bg-white p-6 shadow-glow",
+        "flex flex-col gap-4 rounded-2xl border border-blush bg-white/70 p-6 shadow-glow",
         className
       )}
     >
@@ -27,7 +27,9 @@ export function StepItem({ step, title, description, image, className }: StepIte
         </span>
         <div>
           <h3 className="font-heading text-2xl text-espresso">{title}</h3>
-          <p className="mt-2 text-sm text-espresso/80 whitespace-pre-line">{description}</p>
+          <p className="mt-3 whitespace-pre-line text-base leading-relaxed text-espresso/80">
+            {description}
+          </p>
         </div>
       </div>
       {image && (
