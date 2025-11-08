@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { brandColors, brandRadii, brandShadows } from "./lib/brand";
 
 const config = {
   darkMode: ["class"],
@@ -12,8 +13,8 @@ const config = {
   prefix: "",
   theme: {
     fontFamily: {
-      serif: ["Playfair Display", "serif"],
-      body: ["Poppins", "Helvetica", "sans-serif"],
+      heading: ["var(--font-heading)", "serif"],
+      body: ["var(--font-body)", "sans-serif"],
     },
     container: {
       center: true,
@@ -57,11 +58,22 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        espresso: brandColors.espresso,
+        cherry: brandColors.cherry,
+        blush: brandColors.blush,
+        ivory: brandColors.ivory,
+        taupe: brandColors.taupe,
+        gold: brandColors.gold,
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: brandRadii.xl,
+        md: "calc(1.25rem - 4px)",
+        sm: "calc(1.25rem - 6px)",
+      },
+      boxShadow: {
+        glow: brandShadows.sm,
+        card: brandShadows.md,
+        modal: brandShadows.lg,
       },
       keyframes: {
         "accordion-down": {
