@@ -1,8 +1,8 @@
 import { ClientEvent } from "@/components/client-event";
 import { PostHogThankYouTracker } from "@/components/posthog-thank-you-tracker";
-import Link from "next/link";
 import { clerkClient } from "@clerk/nextjs/server";
 import { CheckCircle } from "lucide-react";
+import Link from "next/link";
 import Stripe from "stripe";
 
 export type SearchParams = {
@@ -102,16 +102,39 @@ export default async function CompletionPage({
             </div>
           )}
 
-          <div className="mt-10 mb-12">
-            <Link
-              href="/portal"
-              className="inline-flex items-center justify-center rounded-lg bg-[#EF798A] px-8 py-4 text-lg font-semibold text-white shadow-lg transition hover:bg-[#e06b7a]"
-            >
-              Idi u svoj program
-            </Link>
-            <p className="mt-3 text-sm text-[#5A3147]">
-              Klikni kako bi završila registraciju i ulogirala se u aplikaciju.
-            </p>
+          <div className="mt-10 mb-12 space-y-6">
+            <div>
+              <Link
+                href="/portal"
+                className="inline-flex items-center justify-center rounded-lg bg-[#EF798A] px-8 py-4 text-lg font-semibold text-white shadow-lg transition hover:bg-[#e06b7a]"
+              >
+                Idi u svoj program
+              </Link>
+              <p className="mt-3 text-sm text-[#5A3147]">
+                Klikni kako bi završila registraciju i ulogirala se u aplikaciju.
+              </p>
+            </div>
+
+            {paymentIntent?.id && (
+              <div className="rounded-2xl border border-[#F4C2D7] bg-[#FFF7F9] p-6 text-left">
+                <p className="text-sm uppercase tracking-[0.3em] text-[#D03660] font-semibold">
+                  Još jedna prilika
+                </p>
+                <h2 className="text-2xl font-serif text-[#64113F] mt-2 mb-3">
+                  Premium Ljubavni Ritual
+                </h2>
+                <p className="text-sm text-[#5A3147] mb-4">
+                  Dodaj brzi ritual jednim klikom. Plaćanje ide preko iste kartice,
+                  bez dodatnog formulara.
+                </p>
+                <Link
+                  href={`/oto?payment_intent=${paymentIntent.id}`}
+                  className="inline-flex items-center justify-center rounded-lg bg-[#A81F5F] px-6 py-3 text-base font-semibold text-white shadow transition hover:bg-[#901a51]"
+                >
+                  Pogledaj ponudu
+                </Link>
+              </div>
+            )}
           </div>
 
           <p className="text-sm text-gray-500">

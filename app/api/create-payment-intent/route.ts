@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
       amount: Math.trunc(Number(amount) * 100),
       currency: "eur",
       automatic_payment_methods: { enabled: true },
+      setup_future_usage: "off_session",
       metadata: {
         order_total_eur: Number(amount).toFixed(2),
         ...normalizedMetadata,
