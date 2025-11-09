@@ -1,7 +1,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 import "flag-icons/css/flag-icons.min.css";
@@ -39,14 +39,16 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1340314074457994');
 fbq('track', 'PageView');`;
 
-const inter = Inter({
+const poppinsBody = Poppins({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const poppinsHeading = Poppins({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-heading",
   display: "swap",
 });
@@ -96,7 +98,7 @@ export default function RootLayout({
           `}
         </Script> */}
         </head>
-        <body className={`${inter.variable} ${playfair.variable}`}>
+        <body className={`${poppinsBody.variable} ${poppinsHeading.variable}`}>
           <PostHogProvider>
             <NuqsAdapter>{children}</NuqsAdapter>
           </PostHogProvider>
