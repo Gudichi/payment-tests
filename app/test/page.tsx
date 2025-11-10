@@ -101,38 +101,32 @@ export default function TestPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([productSchema, faqSchema]) }}
       />
       <main>
-        <section className="bg-[#F8F5F0] px-5 py-14 text-[#1B1A1A] sm:px-8 sm:py-20 lg:px-24 lg:py-28">
-          <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-10 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
-            <div className="flex-1 space-y-6">
-              <h1 className="font-heading text-4xl leading-tight sm:text-5xl lg:text-6xl">
-                Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca Bez Filtera, Aplikacija
-                ili Igrica
-              </h1>
-              <p className="text-lg leading-relaxed text-[#1B1A1A]/80">
-                Samo jedan signal koji aktivira njegov instinkt da ti priđe. Program za žene koje
-                žele da ih kvalitetni muškarci napokon primijete — bez igrica i glume.
-              </p>
-              <CTAButton href="#cijena" size="lg" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
-                Počni sada
-              </CTAButton>
-            </div>
-            <div className="flex-1">
-              <div className="relative">
-                <div
-                  className="absolute inset-0 translate-x-4 translate-y-4 rounded-[32px] bg-[#D7C4B7]/50 blur-[70px]"
-                  aria-hidden
-                />
-                <div className="relative overflow-hidden rounded-[32px] border border-[#B86E6E]/50 bg-[#F8F5F0] shadow-xl">
-                  <Image
-                    src="/images/Herophoto.png"
-                    alt="Žena koja privlači poglede"
-                    width={960}
-                    height={960}
-                    priority
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </div>
+        <section className="bg-[#f8f4ee] px-4 py-14 text-[#2f0a17] sm:px-6 sm:py-20">
+          <div className="mx-auto flex max-w-5xl flex-col items-center space-y-6 text-center">
+            <h1 className="font-heading text-3xl leading-tight sm:text-5xl">
+              Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca — Bez Filtera, Aplikacija
+              ili Igrica — uz Jedan Signal o Kojem Nitko Ne Priča
+            </h1>
+            <p className="text-base leading-relaxed text-[#5b2333] sm:text-xl">
+              Ne moraš mijenjati sebe. Samo ponovno aktiviraj ono što muškarci već nesvjesno traže.
+              Program za žene koje žele da ih napokon kvalitetni muškarci primjete.
+            </p>
+            <CTAButton
+              href="#cijena"
+              size="lg"
+              className="bg-[#6A1F29] text-[#F8F5F0] shadow-card hover:bg-[#52161f]"
+            >
+              Počni sada
+            </CTAButton>
+            <div className="w-full max-w-3xl">
+              <Image
+                src="/images/Herophoto.png"
+                alt="Žena koja privlači poglede"
+                width={960}
+                height={720}
+                priority
+                className="w-full rounded-2xl border border-[#f0d7ca] shadow-card"
+              />
             </div>
           </div>
         </section>
