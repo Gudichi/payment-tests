@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
 import { Section } from "@/components/Section";
+import { InlineCheckout } from "@/components/InlineCheckout";
 import { productInfo } from "@/lib/brand";
 
 export const metadata: Metadata = {
@@ -475,7 +476,7 @@ export default function TestPage() {
               <p className="text-xl font-semibold italic text-espresso/80">
                 21 rečenica koje čine muškarca opsjednutim tobom
               </p>
-              <h3 className="font-heading text-3xl font-bold italic text-center text-espresso">
+              <h3 className="font-heading text-3xl font-bold text-center text-espresso">
                 Alat koji svakog dana tiho uključuje tvoju privlačnost — i pokreće njegov prvi korak
               </h3>
             </div>
@@ -517,10 +518,7 @@ export default function TestPage() {
                 </ul>
               </div>
             </div>
-            <div
-              id="cijena"
-              className="space-y-4 rounded-3xl border border-blush bg-white/90 p-10 text-center shadow-modal"
-            >
+            <div id="cijena" className="space-y-3 text-center">
               <h2 className="font-heading text-4xl font-bold italic text-center text-espresso sm:text-5xl">
                 Cijeli paket — dostupan odmah
               </h2>
@@ -528,20 +526,11 @@ export default function TestPage() {
               <p className="text-3xl font-bold text-cherry">Tvoja cijena danas: samo 17€</p>
               <p className="text-lg text-espresso/80">Bez pretplate. Bez čekanja.</p>
               <p className="text-lg text-espresso/80">Samo tvoj prvi signal — već danas.</p>
-              <CTAButton
-                href="/prijava"
-                size="lg"
-                className="bg-[#6A1F29] text-[#F8F5F0] text-base uppercase tracking-wide hover:bg-[#52161f]"
-              >
-                Pridruži se programu Signali Strasti — 17€
-              </CTAButton>
-              <div className="inline-flex items-center justify-center gap-2 rounded-full border border-taupe/60 px-4 py-2 text-sm text-espresso/80">
-                <span role="img" aria-label="lock">
-                  🔒
-                </span>
-                Stripe secure
-              </div>
+              <p className="text-sm text-espresso/60">
+                🔒 Plaćanje je osigurano putem Stripe-a. Podaci kartice ostaju zaštićeni.
+              </p>
             </div>
+            <InlineCheckout />
           </div>
         </Section>
 
