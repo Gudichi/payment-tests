@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Check } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
 import { Section } from "@/components/Section";
-import { StepItem } from "@/components/StepItem";
-import { FeatureCard } from "@/components/FeatureCard";
-import { ValueStack } from "@/components/ValueStack";
 import { FAQItem } from "@/components/FAQItem";
 import { productInfo } from "@/lib/brand";
 
@@ -20,6 +18,45 @@ const features = [
   "Kako prepoznati idealan trenutak za slanje signala",
   "Što točno u tebi čita muški mozak kao „zeleno svjetlo“",
   "Kako ostati svoja i prisutna — bez igrica i glume",
+];
+
+const steps = [
+  {
+    title: "Otvori aplikaciju",
+    description:
+      "Pristup dobivaš odmah. Bez čekanja, bez pretrpavanja sadržajem. Svakog dana dobivaš jedan novi signal spreman za isprobavanje.",
+  },
+  {
+    title: "Aktiviraj signal (1 min)",
+    description:
+      "Na poslu, u kafiću ili u šetnji koristiš jednu mikro-gestu koju muški mozak doživljava kao „pozivnicu“. Diskretno, prirodno i bez glume.",
+    image: {
+      src: "/images/AktivirajSignale.png",
+      alt: "Aktiviraj Signal",
+    },
+  },
+  {
+    title: "Osjeti kako te počinju gledati drugačije",
+    description:
+      "Tvoj govor tijela počinje raditi umjesto tebe. Pogledi, osmijesi i prilasci kreću spontano jer si im dala zeleno svjetlo.",
+    image: {
+      src: "/images/OsjetiPoglede.png",
+      alt: "Osjeti poglede",
+    },
+  },
+  {
+    title: "Podijeli što si primijetila (ako želiš)",
+    description:
+      "Možeš se javiti mentoru, podijeliti svoj rezultat ili samo zabilježiti promjenu za sebe. Sve ostaje diskretno.",
+  },
+];
+
+const offerItems = [
+  "7 mikro-signala koji nesvjesno pozivaju njegovu pažnju (i daju mu dozvolu da ti priđe)",
+  "1-minutni dnevni ritual koji možeš raditi gdje god jesi (diskretno, prirodno)",
+  "Lokacijska navigacija — jer nije isti signal za kafić i za ured",
+  "Objašnjenja zašto svaki signal djeluje (da se ne pitaš: \"Radim li ovo bezveze?\")",
+  "Mentor podrška ako želiš diskretnu provjeru ili samo podijeliti kako je prošlo",
 ];
 
 const faq = [
@@ -103,7 +140,7 @@ export default function TestPage() {
       <main>
         <section className="bg-[#f8f4ee] px-4 py-14 text-[#2f0a17] sm:px-6 sm:py-20">
           <div className="mx-auto flex max-w-5xl flex-col items-center space-y-6 text-center">
-            <h1 className="font-heading text-3xl leading-tight sm:text-5xl">
+            <h1 className="font-heading text-3xl font-bold leading-tight sm:text-5xl">
               Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca — Bez Filtera, Aplikacija
               ili Igrica — uz Jedan Signal o Kojem Nitko Ne Priča
             </h1>
@@ -111,13 +148,6 @@ export default function TestPage() {
               Ne moraš mijenjati sebe. Samo ponovno aktiviraj ono što muškarci već nesvjesno traže.
               Program za žene koje žele da ih napokon kvalitetni muškarci primjete.
             </p>
-            <CTAButton
-              href="#cijena"
-              size="lg"
-              className="bg-[#6A1F29] text-[#F8F5F0] shadow-card hover:bg-[#52161f]"
-            >
-              Počni sada
-            </CTAButton>
             <div className="w-full max-w-3xl">
               <Image
                 src="/images/Herophoto.png"
@@ -172,99 +202,86 @@ export default function TestPage() {
         </Section>
 
         <Section bg="ivory">
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
-            <div className="flex-1 space-y-5 text-lg leading-relaxed">
-              <p> Otkud ideja?</p>
-              <p>Muškarci i dalje žele prići.</p>
-              <p>Ali danas — ako nisu 99% sigurni da ih nećeš odbiti, radije ne naprave ništa.</p>
-              <p>
-                Nisu nesigurni. Samo su naučeni da bez jasnog signala — ispadaju čudaci, napadni ili
-                “nepozvani”.
-              </p>
-              <p>
-                A ako im suptilno pokažeš “u redu je, možeš” — njihov mozak to registrira kao zeleno
-                svjetlo.
-              </p>
-              <p>
-                Zato sam stvorila Signale Strasti — digitalni mikro-program koji ti svaki dan pokaže
-                jednu malu stvar koju možeš napraviti...
-              </p>
-              <p>...i doživjeti promjenu.</p>
-            </div>
-            <div className="flex-1">
-              <div className="overflow-hidden rounded-3xl border border-blush/50 bg-white shadow-card">
-                <Image
-                  src="/images/OtkudIdeja.webp"
-                  alt="Kako je nastala ideja"
-                  width={960}
-                  height={720}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
+          <div className="space-y-6 text-lg leading-relaxed">
+            <h2 className="font-heading text-4xl font-bold text-espresso sm:text-5xl">Otkud ideja?</h2>
+            <p>Muškarci i dalje žele prići.</p>
+            <p>Ali danas — ako nisu 99% sigurni da ih nećeš odbiti, radije ne naprave ništa.</p>
+            <p>
+              Nisu nesigurni. Samo su naučeni da bez jasnog signala — ispadaju čudaci, napadni ili
+              “nepozvani”.
+            </p>
+            <p>
+              A ako im suptilno pokažeš “u redu je, možeš” — njihov mozak to registrira kao zeleno
+              svjetlo.
+            </p>
+            <p>
+              Zato sam stvorila Signale Strasti — digitalni mikro-program koji ti svaki dan pokaže
+              jednu malu stvar koju možeš napraviti... i doživjeti promjenu.
+            </p>
+            <div className="overflow-hidden rounded-3xl border border-blush/50 bg-white shadow-card">
+              <Image
+                src="/images/OtkudIdeja.webp"
+                alt="Kako je nastala ideja"
+                width={960}
+                height={720}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
         </Section>
 
         <Section id="kako-radi" bg="white">
-          <div className="mb-10 text-left">
-            <h2 className="font-heading text-4xl text-espresso sm:text-5xl">
+          <div className="space-y-10">
+            <h2 className="font-heading text-4xl font-bold text-espresso sm:text-5xl">
               Kako izgleda program (korak po korak)
             </h2>
-          </div>
-          <div className="space-y-6">
-            <StepItem
-              step={1}
-              title="Otvori aplikaciju"
-              description="Pristup dobivaš odmah. Bez čekanja, bez pretrpavanja sadržajem. Svakog dana dobivaš jedan novi signal spreman za isprobavanje."
-            />
-            <StepItem
-              step={2}
-              title="Aktiviraj signal (1 min)"
-              description={`<slika podijeljena na 3 dijela 3 razlicite situacije u kojima zena kroisti 3 razlciita signala>
-Na poslu, u kafiću, u šetnji — koristiš jednu mikro-gestu koju muški mozak doživljava kao „pozivnicu“. `}
-              image={{
-                src: "/images/AktivirajSignale.png",
-                alt: "Aktiviraj Signal",
-              }}
-            />
-            <StepItem
-              step={3}
-              title="Osjeti kako te počinju gledati drugačije"
-              description="To je tvoj jezik tijela koji govori umjesto tebe. Pogledi, osmijesi i prilasci počinju spontano."
-              image={{
-                src: "/images/OsjetiPoglede.png",
-                alt: "Osjeti poglede",
-              }}
-            />
-            <StepItem
-              step={4}
-              title="Podijeli što si primijetila (ako želiš)"
-              description="Imaš opciju javiti se mentoru, podijeliti svoj rezultat, ili samo zabilježiti promjenu za sebe."
-            />
-          </div>
-          <div className="mt-10 text-center">
-            <CTAButton href="#cijena" size="lg">
-              Počni sada
-            </CTAButton>
+            <ol className="space-y-10">
+              {steps.map((step, index) => (
+                <li key={step.title} className="space-y-4">
+                  <p className="text-sm font-bold uppercase tracking-[0.25em] text-cherry">
+                    Korak {index + 1}
+                  </p>
+                  <p className="font-heading text-2xl font-bold text-espresso">{step.title}</p>
+                  <p className="text-lg leading-relaxed text-espresso/80">{step.description}</p>
+                  {step.image ? (
+                    <div className="overflow-hidden rounded-3xl border border-blush/50 bg-ivory shadow-card">
+                      <Image
+                        src={step.image.src}
+                        alt={step.image.alt}
+                        width={960}
+                        height={720}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : null}
+                </li>
+              ))}
+            </ol>
           </div>
         </Section>
 
         <Section bg="ivory">
-          <div className="mb-8 text-left">
-            <h2 className="font-heading text-4xl text-espresso sm:text-5xl">
+          <div className="space-y-8">
+            <h2 className="font-heading text-4xl font-bold text-espresso sm:text-5xl">
               Što ćeš naučiti i primijeniti?
             </h2>
-          </div>
-          <div className="grid gap-4">
-            {features.map((feature) => (
-              <FeatureCard key={feature} body={feature} />
-            ))}
+            <ul className="space-y-4">
+              {features.map((feature) => (
+                <li key={feature} className="flex items-start gap-3 text-lg text-espresso/90">
+                  <span className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-cherry/10 text-cherry">
+                    <Check className="h-4 w-4" />
+                  </span>
+                  <span className="font-semibold">{feature}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Section>
 
         <Section bg="white">
-          <h2 className="font-heading text-4xl text-espresso sm:text-5xl">
+          <h2 className="font-heading text-4xl font-bold text-espresso sm:text-5xl">
             Tko stoji iza Signala Strasti?
           </h2>
           <div className="mt-6 space-y-5 text-lg leading-relaxed text-espresso/80">
@@ -293,24 +310,62 @@ Na poslu, u kafiću, u šetnji — koristiš jednu mikro-gestu koju muški mozak
         </Section>
 
         <Section bg="ivory">
-          <ValueStack
-            title="Alat koji svakog dana tiho uključuje tvoju privlačnost — i pokreće njegov prvi korak"
-            description="Program Signali Strasti"
-            items={[
-              "7 mikro-signala koji nesvjesno pozivaju njegovu pažnju (i daju mu dozvolu da ti priđe)",
-              "1-minutni dnevni ritual koji možeš raditi gdje god jesi (diskretno, prirodno)",
-              "Lokacijska navigacija — jer nije isti signal za kafić i za ured",
-              "Objašnjenja zašto svaki signal djeluje (da se ne pitaš: \"Radim li ovo bezveze?\")",
-              "Mentor podrška ako želiš diskretnu provjeru ili samo podijeliti kako je prošlo",
-            ]}
-            bonuses={bonuses}
-            image={{ src: "/images/Product.png", alt: "Program Signali Strasti" }}
-          />
+          <div className="space-y-10">
+            <div className="text-center space-y-4">
+              <div>
+                <p className="text-2xl font-bold uppercase tracking-[0.3em] text-cherry">PROGRAM</p>
+                <p className="font-heading text-3xl font-bold italic text-espresso">
+                  Rečenice Strasti
+                </p>
+              </div>
+              <p className="text-xl font-semibold italic text-espresso/80">
+                21 rečenica koje čine muškarca opsjednutim tobom
+              </p>
+              <h3 className="font-heading text-3xl font-bold text-espresso">
+                Alat koji svakog dana tiho uključuje tvoju privlačnost — i pokreće njegov prvi korak
+              </h3>
+            </div>
+            <div className="mx-auto max-w-md">
+              <div className="overflow-hidden rounded-3xl border border-blush/60 bg-white shadow-card">
+                <Image
+                  src="/images/Product.png"
+                  alt="Program Signali Strasti"
+                  width={960}
+                  height={960}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div className="mx-auto max-w-3xl space-y-8">
+              <ul className="space-y-5 text-left">
+                {offerItems.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-lg text-espresso/90">
+                    <span className="mt-1 text-xl text-cherry">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="space-y-4 rounded-3xl bg-white/80 p-6">
+                <p className="text-lg font-semibold text-espresso">
+                  Uz to dobivaš i poklon pakiranje dodatnih alata:
+                </p>
+                <ul className="space-y-3">
+                  {bonuses.map((bonus) => (
+                    <li key={bonus.title} className="space-y-1 rounded-2xl bg-ivory/60 p-4">
+                      <p className="font-semibold text-espresso">{bonus.title}</p>
+                      <p className="text-sm text-espresso/80">{bonus.body}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </Section>
 
         <Section id="cijena" bg="white">
-          <div className="rounded-3xl border border-blush bg-white/90 p-10 text-center shadow-modal">
-            <h2 className="font-heading text-4xl text-espresso sm:text-5xl">
+          <div className="space-y-4 rounded-3xl border border-blush bg-white/90 p-10 text-center shadow-modal">
+            <h2 className="font-heading text-4xl font-bold text-espresso sm:text-5xl">
               Cijeli paket — dostupan odmah
             </h2>
             <p className="mt-4 text-lg text-espresso/80">
@@ -319,11 +374,6 @@ Na poslu, u kafiću, u šetnji — koristiš jednu mikro-gestu koju muški mozak
             <p className="mt-3 text-3xl font-bold text-cherry"> Tvoja cijena danas: samo 17€</p>
             <p className="mt-3 text-lg text-espresso/80">Bez pretplate. Bez čekanja.</p>
             <p className="text-lg text-espresso/80"> Samo tvoj prvi signal — već danas.</p>
-            <div className="mt-8">
-              <CTAButton href="#cijena" size="lg">
-                Počni sada
-              </CTAButton>
-            </div>
             <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-taupe/60 px-4 py-2 text-sm text-espresso/80">
               <span role="img" aria-label="lock">
                 🔒
@@ -335,7 +385,7 @@ Na poslu, u kafiću, u šetnji — koristiš jednu mikro-gestu koju muški mozak
 
         <Section bg="ivory">
           <div className="space-y-5 text-lg leading-relaxed text-espresso/80">
-            <h2 className="font-heading text-4xl text-espresso sm:text-5xl">
+            <h2 className="font-heading text-4xl font-bold text-espresso sm:text-5xl">
               Ograničeno na 100 mjesta mjesečno
             </h2>
             <p>
@@ -348,7 +398,9 @@ Na poslu, u kafiću, u šetnji — koristiš jednu mikro-gestu koju muški mozak
         </Section>
 
         <Section bg="white">
-          <h2 className="font-heading text-4xl text-espresso sm:text-5xl">Za koga je ovo?</h2>
+          <h2 className="font-heading text-4xl font-bold text-espresso sm:text-5xl">
+            Za koga je ovo?
+          </h2>
           <div className="mt-6 space-y-4 text-lg text-espresso/80">
             <p>✔️ Žene koje se osjećaju nevidljivo u svakodnevnim situacijama</p>
             <p> ✔️ One koje su umorne od ghostinga, aplikacija i "pick me" kulture</p>
@@ -358,7 +410,9 @@ Na poslu, u kafiću, u šetnji — koristiš jednu mikro-gestu koju muški mozak
         </Section>
 
         <Section id="faq" bg="ivory">
-          <h2 className="font-heading text-4xl text-espresso sm:text-5xl">Najčešća pitanja:</h2>
+          <h2 className="font-heading text-4xl font-bold text-espresso sm:text-5xl">
+            Najčešća pitanja:
+          </h2>
           <div className="mt-6 divide-y divide-blush/50">
             {faq.map((item) => (
               <FAQItem key={item.question} question={item.question} answer={item.answer} />
