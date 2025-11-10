@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
 import { Section } from "@/components/Section";
-import { FAQItem } from "@/components/FAQItem";
 import { productInfo } from "@/lib/brand";
 
 export const metadata: Metadata = {
@@ -69,6 +68,10 @@ const steps = [
         dobivaš <u>jedan novi signal</u> spreman za isprobavanje.
       </>
     ),
+    image: {
+      src: "/images/Herophoto.png",
+      alt: "Otvaranje Signala",
+    },
   },
   {
     title: "Aktiviraj signal (1 min)",
@@ -104,6 +107,10 @@ const steps = [
         sebe</em>. Sve ostaje diskretno i samo tvoje.
       </>
     ),
+    image: {
+      src: "/images/Product.png",
+      alt: "Podijeli iskustvo",
+    },
   },
 ];
 
@@ -113,6 +120,45 @@ const offerItems = [
   "Lokacijska navigacija — jer nije isti signal za kafić i za ured",
   "Objašnjenja zašto svaki signal djeluje (da se ne pitaš: \"Radim li ovo bezveze?\")",
   "Mentor podrška ako želiš diskretnu provjeru ili samo podijeliti kako je prošlo",
+];
+
+const audience = [
+  {
+    title: "Nevidljive u gužvi",
+    body: (
+      <>
+        Osjećaš da prolaziš kroz dan, a nitko ne primjećuje tvoju <strong>prisutnost</strong>. Ovdje
+        vraćaš <em>pogled</em> koji tražiš.
+      </>
+    ),
+  },
+  {
+    title: "Alergične na igrice",
+    body: (
+      <>
+        Iscrpile su te aplikacije i „pick me“ kultura — želiš <u>stvarne susrete</u> bez igranja
+        uloga.
+      </>
+    ),
+  },
+  {
+    title: "Prirodno magnetične",
+    body: (
+      <>
+        Ne želiš glumiti. Želiš se <strong>vratiti sebi</strong> i pustiti da tvoj govor tijela
+        govori umjesto scenarija.
+      </>
+    ),
+  },
+  {
+    title: "Žene koje žele kemiju uživo",
+    body: (
+      <>
+        Više ti je dosta digitalnih dopisivanja — želiš <strong>pogled uživo</strong> i prvi korak
+        bez prisile.
+      </>
+    ),
+  },
 ];
 
 const faq = [
@@ -154,6 +200,8 @@ const bonuses = [
   },
 ];
 
+const currentYear = new Date().getFullYear();
+
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -193,10 +241,13 @@ export default function TestPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([productSchema, faqSchema]) }}
       />
+      <div className="bg-[#6A1F29] py-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#F8F5F0] sm:text-sm">
+        🇭🇷700+ žena u Hrvatskoj već koriste Signale Strasti🇭🇷
+      </div>
       <main>
         <section className="bg-[#f8f4ee] px-4 py-14 text-[#2f0a17] sm:px-6 sm:py-20">
           <div className="mx-auto flex max-w-5xl flex-col items-center space-y-6 text-center">
-            <h1 className="font-heading text-3xl font-bold italic leading-tight text-center sm:text-5xl">
+            <h1 className="font-heading text-3xl font-bold leading-tight text-center sm:text-5xl">
               Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca — Bez Filtera, Aplikacija
               ili Igrica — uz Jedan Signal o Kojem Nitko Ne Priča
             </h1>
@@ -324,16 +375,15 @@ export default function TestPage() {
             <h2 className="font-heading text-4xl font-bold italic text-center text-espresso sm:text-5xl">
               Kako izgleda program (korak po korak)
             </h2>
-            <ol className="space-y-10">
+            <ol className="space-y-12">
               {steps.map((step, index) => (
-                <li key={step.title} className="space-y-4">
-                  <p className="text-sm font-bold uppercase tracking-[0.25em] text-cherry">
+                <li key={step.title} className="space-y-4 text-center">
+                  <p className="text-sm font-bold italic uppercase tracking-[0.25em] text-cherry">
                     Korak {index + 1}
                   </p>
                   <p className="font-heading text-2xl font-bold text-espresso">{step.title}</p>
-                  <p className="text-lg leading-relaxed text-espresso/80">{step.description}</p>
                   {step.image ? (
-                    <div className="overflow-hidden rounded-3xl border border-blush/50 bg-ivory shadow-card">
+                    <div className="mx-auto w-full max-w-md overflow-hidden rounded-3xl border border-blush/50 bg-ivory shadow-card">
                       <Image
                         src={step.image.src}
                         alt={step.image.alt}
@@ -344,6 +394,7 @@ export default function TestPage() {
                       />
                     </div>
                   ) : null}
+                  <p className="text-lg leading-relaxed text-espresso/80">{step.description}</p>
                 </li>
               ))}
             </ol>
@@ -374,27 +425,41 @@ export default function TestPage() {
           </h2>
           <div className="mt-6 space-y-5 text-lg leading-relaxed text-espresso/80">
             <p>
-              Ja sam Dunja, <strong>godinama promatram</strong> kako muškarci uistinu reagiraju kad
-              im se neka žena svidi... i što se zapravo događa <em>prije nego priđu.</em>
+              Ja sam <strong>Dunja</strong>, <strong>godinama promatram</strong> kako muškarci uistinu
+              reagiraju kad im se neka žena svidi... i što se zapravo događa{" "}
+              <em>prije nego priđu.</em>
             </p>
             <p>
               Specijalistica sam za neverbalnu komunikaciju, i već 10 godina pomažem ženama da vrate
-              ono što su mislile da su izgubile: <u>svoju prisutnost, magnetizam i sigurnost u
-              vlastito tijelo.</u>
+              ono što su mislile da su izgubile:{" "}
+              <u>
+                svoju prisutnost, <strong>magnetizam</strong> i sigurnost u vlastito tijelo.
+              </u>
             </p>
             <p>
-              Autorica sam knjige „Što muškarci zapravo žele“, i gostovala sam na brojnim
-              televizijama gdje sam govorila o onome što se ne kaže naglas: što privlači, a što gasi
-              mušku inicijativu.
+              Autorica sam knjige <em>„Što muškarci zapravo žele“</em>, i gostovala sam na brojnim
+              televizijama gdje sam govorila o onome što se ne kaže naglas:{" "}
+              <strong>što privlači, a što gasi mušku inicijativu.</strong>
             </p>
             <p>
               "Signali Strasti" nisu proizvod. To je rezultat mog rada sa stvarnim ženama koje nisu
               htjele glumiti, ni igrati igrice, ni biti nečije "rješenje". One su samo htjele da ih
-              se opet vidi.
+              se opet vidi — <u>i da se ponovno osjete kao magnet</u>.
             </p>
             <p>
-              <strong>Pogledaj ovdje:</strong> <em>Dojmovi polaznica s prošlog programa</em>
+              <strong>Pogledaj ovdje:</strong>{" "}
+              <em>„Dojmovi polaznica s prošlog programa“ — njihove priče su najbolji dokaz.</em>
             </p>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-3xl border border-blush/60 bg-white shadow-card">
+            <Image
+              src="/images/Herophoto.png"
+              alt="Dunja Akrapović"
+              width={960}
+              height={720}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
           </div>
         </Section>
 
@@ -500,29 +565,53 @@ export default function TestPage() {
           <h2 className="font-heading text-4xl font-bold italic text-center text-espresso sm:text-5xl">
             Za koga je ovo?
           </h2>
-          <div className="mt-6 space-y-4 text-lg text-espresso/80">
-            <p>
-              ✔️ <strong>Žene koje se osjećaju nevidljivo</strong> u svakodnevnim situacijama
-            </p>
-            <p>
-              ✔️ One koje su <u>umorne od ghostinga</u>, aplikacija i "pick me" kulture
-            </p>
-            <p>
-              ✔️ One koje ne žele glumiti, nego <strong>vratiti svoju prirodnu privlačnost</strong>
-            </p>
-            <p>
-              ✔️ One koje žele kemiju u stvarnom životu, ne na ekranu
-            </p>
+          <div className="mt-8 grid gap-5 text-espresso/90 md:grid-cols-2">
+            {audience.map((item) => (
+              <div
+                key={item.title}
+                className="space-y-2 rounded-3xl border border-blush/60 bg-ivory/60 p-6 shadow-card"
+              >
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cherry">
+                  ✔️ {item.title}
+                </p>
+                <p className="text-lg">{item.body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <CTAButton
+              href="/prijava"
+              size="lg"
+              className="bg-[#6A1F29] text-[#F8F5F0] shadow-card hover:bg-[#52161f]"
+            >
+              Odgovara mi ovo — želim Signale Strasti
+            </CTAButton>
           </div>
         </Section>
 
         <Section id="faq" bg="ivory">
-          <h2 className="font-heading text-4xl font-bold italic text-center text-espresso sm:text-5xl">
-            Najčešća pitanja:
-          </h2>
-          <div className="mt-6 divide-y divide-blush/50">
+          <div className="space-y-3 text-center">
+            <h2 className="font-heading text-4xl font-bold italic text-center text-espresso sm:text-5xl">
+              Najčešća pitanja
+            </h2>
+            <p className="text-base text-espresso/70">
+              Sve što trebaš znati prije nego aktiviraš svoje prve Signale Strasti.
+            </p>
+          </div>
+          <div className="mt-8 space-y-4">
             {faq.map((item) => (
-              <FAQItem key={item.question} question={item.question} answer={item.answer} />
+              <details
+                key={item.question}
+                className="group rounded-3xl border border-blush/50 bg-white/80 p-5 text-left shadow-card"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-espresso">
+                  <span>{item.question}</span>
+                  <span className="text-cherry transition-all duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <div className="mt-4 border-t border-blush/40 pt-4 text-base text-espresso/80">
+                  {item.answer}
+                </div>
+              </details>
             ))}
           </div>
         </Section>
@@ -548,26 +637,30 @@ export default function TestPage() {
         </Section>
       </main>
 
-      <footer className="border-t border-taupe/40 bg-white/80">
-        <div className="mx-auto flex max-w-[1120px] flex-col gap-4 px-6 py-10 text-sm text-espresso/80 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-heading text-xl text-espresso">Rečenice Strasti</p>
-          <div className="flex gap-6">
-            <a href="/privacy" className="hover:text-espresso">
+      <footer className="bg-[#1B1A1A] text-[#F8F5F0]">
+        <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-12">
+          <div className="space-y-2 text-center sm:text-left">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#D7C4B7]">
+              Signali Strasti
+            </p>
+            <p className="text-lg text-[#F8F5F0]/80">
+              Bez aplikacija. Bez igrica. Samo prvi signal koji ga poziva da priđe.
+            </p>
+          </div>
+          <div className="flex flex-col items-center gap-4 text-sm text-[#F8F5F0]/80 sm:flex-row sm:justify-between">
+            <a href="/privacy" className="transition hover:text-white">
               Privatnost
             </a>
-            <a href="/terms" className="hover:text-espresso">
-              Uvjeti
+            <a href="/terms" className="transition hover:text-white">
+              Uvjeti korištenja
             </a>
-            <a href="mailto:recenicestrasti@gmail.com" className="hover:text-espresso">
-              Kontakt
+            <a href="mailto:recenicestrasti@gmail.com" className="transition hover:text-white">
+              recenicestrasti@gmail.com
             </a>
           </div>
-          <button
-            type="button"
-            className="inline-flex items-center gap-1 rounded-full border border-taupe/60 px-4 py-2 text-xs font-semibold text-espresso focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cherry"
-          >
-            HR ▾
-          </button>
+          <p className="text-center text-xs text-[#F8F5F0]/60 sm:text-left">
+            © {currentYear} Signali Strasti. Sva prava pridržana.
+          </p>
         </div>
       </footer>
     </div>
