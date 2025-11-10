@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { CTAButton } from "@/components/CTAButton";
 import { Section } from "@/components/Section";
-import { Stat } from "@/components/Stat";
 import { StepItem } from "@/components/StepItem";
 import { FeatureCard } from "@/components/FeatureCard";
 import { ValueStack } from "@/components/ValueStack";
 import { FAQItem } from "@/components/FAQItem";
-import { StickyBar } from "@/components/StickyBar";
 import { productInfo } from "@/lib/brand";
 
 export const metadata: Metadata = {
@@ -102,39 +100,38 @@ export default function TestPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([productSchema, faqSchema]) }}
       />
-      <StickyBar targetId="cijena" />
-
       <main>
-        <section className="px-6 py-16 sm:px-8 sm:py-24">
-          <div className="mx-auto grid w-full max-w-[1120px] gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
-            <div className="space-y-6">
-              <Stat>
-                Više od 700 žena isprobalo je Signale u kafiću, teretani ili čak na putu do posla. -
-                74% prijavljuje prvu reakciju muškarca unutar 72 sata.
-              </Stat>
-              <h1 className="font-heading text-4xl leading-tight text-espresso sm:text-6xl">
-                Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca — Bez Filtera,
-                Aplikacija ili Igrica — uz Jedan Signal o Kojem Nitko Ne Priča
+        <section className="bg-[#F8F5F0] px-5 py-14 text-[#1B1A1A] sm:px-8 sm:py-20 lg:px-24 lg:py-28">
+          <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-10 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
+            <div className="flex-1 space-y-6">
+              <h1 className="font-heading text-4xl leading-tight sm:text-5xl lg:text-6xl">
+                Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca Bez Filtera, Aplikacija
+                ili Igrica
               </h1>
-              <p className="text-lg leading-relaxed text-espresso/80">
-                Ne moraš mijenjati sebe. Samo ponovno aktiviraj ono što muškarci već nesvjesno
-                traže. Program za žene koje žele da ih napokon kvalitetni muškarci primjete.
+              <p className="text-lg leading-relaxed text-[#1B1A1A]/80">
+                Samo jedan signal koji aktivira njegov instinkt da ti priđe. Program za žene koje
+                žele da ih kvalitetni muškarci napokon primijete — bez igrica i glume.
               </p>
-              <CTAButton href="#cijena" size="lg">
+              <CTAButton href="#cijena" size="lg" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
                 Počni sada
               </CTAButton>
             </div>
-            <div className="relative">
-              <div className="absolute inset-4 rounded-3xl bg-ivory/70 blur-xl" aria-hidden />
-              <div className="relative overflow-hidden rounded-3xl border border-blush/60 shadow-card">
-                <Image
-                  src="/images/Herophoto.png"
-                  alt="Žena koja privlači poglede"
-                  width={960}
-                  height={960}
-                  priority
-                  className="h-full w-full object-cover"
+            <div className="flex-1">
+              <div className="relative">
+                <div
+                  className="absolute inset-0 translate-x-4 translate-y-4 rounded-[32px] bg-[#D7C4B7]/50 blur-[70px]"
+                  aria-hidden
                 />
+                <div className="relative overflow-hidden rounded-[32px] border border-[#B86E6E]/50 bg-[#F8F5F0] shadow-xl">
+                  <Image
+                    src="/images/Herophoto.png"
+                    alt="Žena koja privlači poglede"
+                    width={960}
+                    height={960}
+                    priority
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>
