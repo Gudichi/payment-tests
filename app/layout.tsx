@@ -53,13 +53,26 @@ const poppinsHeading = Poppins({
   display: "swap",
 });
 
+const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
+const AppProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) =>
+  clerkPublishableKey ? (
+    <ClerkProvider publishableKey={clerkPublishableKey}>{children}</ClerkProvider>
+  ) : (
+    <>{children}</>
+  );
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <AppProvider>
       <html lang="en">
         <head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -104,6 +117,6 @@ export default function RootLayout({
           </PostHogProvider>
         </body>
       </html>
-    </ClerkProvider>
+    </AppProvider>
   );
 }
