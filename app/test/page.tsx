@@ -84,10 +84,40 @@ const bonuses = [
 ];
 
 const forWho = [
-  "Žene koje se osjećaju nevidljivo u svakodnevnim situacijama",
-  "One koje su umorne od ghostinga, aplikacija i \"pick me\" kulture",
-  "One koje ne žele glumiti, nego vratiti svoju prirodnu privlačnost",
-  "One koje žele kemiju u stvarnom životu, ne na ekranu",
+  {
+    id: "nevidljive",
+    body: (
+      <>
+        Žene koje se osjećaju <strong>nevidljivo</strong> u svakodnevnim situacijama — i žele ponovno osjetiti da netko{" "}
+        <em>spontano primijeti njihovu prisutnost.</em>
+      </>
+    ),
+  },
+  {
+    id: "ghosting",
+    body: (
+      <>
+        One koje su umorne od ghostinga, aplikacija i \"pick me\" kulture — i žele <u>stvarne razgovore</u> bez igrica i
+        čekanja.
+      </>
+    ),
+  },
+  {
+    id: "autenticnost",
+    body: (
+      <>
+        One koje ne žele glumiti, nego vratiti svoju <strong>prirodnu privlačnost</strong> i toplinu — bez skripti.
+      </>
+    ),
+  },
+  {
+    id: "kemija",
+    body: (
+      <>
+        One koje žele kemiju u stvarnom životu, ne na ekranu — i žele da <em>on</em> napravi prvi korak čim osjeti signal.
+      </>
+    ),
+  },
 ];
 
 const testimonialImages = ["/ts-1.png", "/ts-2.png", "/ts-3.png", "/ts-4.png", "/ts-5.png"];
@@ -95,7 +125,7 @@ const testimonialImages = ["/ts-1.png", "/ts-2.png", "/ts-3.png", "/ts-4.png", "
 const productDetails = [
   { label: "Trajanje", value: "cca 1h 20min čiste primjene u svakodnevnim situacijama" },
   { label: "Format", value: "Digitalni vodič + Signal kartice (PDF & interaktivno)" },
-  { label: "Autorica", value: "Tihana M. (kreatorica “Psihološkog Zavođenja”)" },
+  { label: "Autorica", value: "Dunja Kramarić (autorica knjige “Što muškarci zapravo žele”)" },
   { label: "Dizajniran za", value: "Žene koje žele više pažnje — bez forsiranja" },
   { label: "Emocionalni ton", value: "Inteligentno, senzualno, samopouzdano" },
   { label: "Jezik", value: "Hrvatski 🇭🇷" },
@@ -467,7 +497,7 @@ export default function TestPage() {
             <h3 className="font-heading text-3xl font-bold text-espresso">Dojmovi polaznica s prošlog programa</h3>
             <div className="grid gap-4 sm:grid-cols-2">
               {["/Taf-1.png", "/Taf-2.png", "/Taf-3.png", "/Taf-4.png"].map((src) => (
-                <Image key={src} src={src} alt="Komentar polaznice" width={620} height={420} className="mx-auto w-3/5 rounded-3xl sm:w-1/2" />
+                <Image key={src} src={src} alt="Komentar polaznice" width={620} height={420} className="mx-auto w-full rounded-3xl sm:w-4/5" />
               ))}
             </div>
           </div>
@@ -536,8 +566,8 @@ export default function TestPage() {
             <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Ograničeno na 100 mjesta mjesečno</h2>
             <Image src="/tim-2.png" alt="Dunja s timom" width={620} height={480} className="mx-auto w-full rounded-3xl sm:w-1/2" />
             <p className="max-w-3xl">
-              Zbog mentor podrške i osobnog pristupa, Dunja i tim primaju samo 100 novih korisnica mjesečno. Nakon toga se
-              prijave zatvaraju — kako bi se svakoj ženi moglo posvetiti s punom pažnjom.
+              Zbog mentor podrške i osobnog pristupa, Dunja i tim primaju samo <strong>100 novih korisnica mjesečno</strong>.
+              Nakon toga se prijave zatvaraju — kako bi se svakoj ženi moglo posvetiti s punom pažnjom.
             </p>
             <p className="max-w-3xl">
               <em>Ako osjećaš da je ovo tvoj trenutak, ne čekaj.</em>
@@ -546,9 +576,9 @@ export default function TestPage() {
               <h3 className="font-heading text-2xl font-bold text-espresso">Za koga je ovo?</h3>
               <ul className="space-y-3 text-left">
                 {forWho.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
+                  <li key={item.id} className="flex items-start gap-3">
                     <span className="text-xl text-cherry">✔️</span>
-                    <span>{item}</span>
+                    <span>{item.body}</span>
                   </li>
                 ))}
               </ul>
@@ -579,7 +609,7 @@ export default function TestPage() {
                   alt={`Komentar polaznice ${index + 1}`}
                   width={620}
                   height={420}
-                  className="mx-auto w-3/5 rounded-3xl sm:w-1/2"
+                  className="mx-auto w-full rounded-3xl sm:w-4/5"
                 />
               ))}
             </div>
@@ -720,7 +750,9 @@ export default function TestPage() {
             <p className="text-lg text-espresso/80">
               <strong>Još nešto...</strong>
             </p>
-            <p className="text-lg text-espresso/80">Možda nisi izgubila sebe. Možda si samo izgubila pogled... koji je čekao pravi signal.</p>
+            <p className="text-lg text-espresso/80">
+              Možda nisi izgubila sebe. Možda si <strong>samo izgubila pogled</strong>... koji je čekao pravi signal.
+            </p>
             <p className="text-lg text-espresso/80">
               <u>Pošalji ga danas.</u>
             </p>

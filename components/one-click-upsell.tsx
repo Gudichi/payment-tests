@@ -1,12 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 type Props = {
   paymentIntentId: string;
+  label?: string;
+  className?: string;
 };
 
-export function OneClickUpsellButton({ paymentIntentId }: Props) {
+export function OneClickUpsellButton({
+  paymentIntentId,
+  label = "Da, želim i ovu ponudu",
+  className,
+}: Props) {
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [message, setMessage] = useState<string>("");
 
@@ -42,9 +49,12 @@ export function OneClickUpsellButton({ paymentIntentId }: Props) {
         type="button"
         onClick={handleClick}
         disabled={status === "processing"}
-        className="w-full rounded-2xl bg-[#A81F5F] py-4 text-xl font-semibold text-white shadow-lg transition hover:bg-[#8f1a51] disabled:cursor-not-allowed disabled:opacity-70"
+        className={cn(
+          "w-full rounded-2xl bg-[#A81F5F] py-4 text-xl font-semibold text-white shadow-lg transition hover:bg-[#8f1a51] disabled:cursor-not-allowed disabled:opacity-70",
+          className
+        )}
       >
-        {status === "processing" ? "Dodajem..." : "Da, želim i ovu ponudu"}
+        {status === "processing" ? "Dodajem..." : label}
       </button>
       {message && (
         <p

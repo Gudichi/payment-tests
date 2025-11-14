@@ -160,7 +160,7 @@ export default function PaymentForm({
                     </div>
                   </label>
                   <div className="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4 items-center sm:items-start text-left">
-                    <div className="w-3/5 sm:w-32 mx-auto sm:mx-0">
+                    <div className="w-1/2 sm:w-32 mx-auto sm:mx-0">
                       <div className="overflow-hidden rounded-xl border border-gray-200 bg-ivory">
                         <Image
                           src={bump.image}
