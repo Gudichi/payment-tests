@@ -319,10 +319,10 @@ export default function TestPage() {
       <div className="bg-[#6A1F29] py-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#F8F5F0] sm:text-sm">
         🇭🇷 700+ žena u Hrvatskoj već koriste Signale Strasti 🇭🇷
       </div>
-      <main className="space-y-16 py-10 sm:space-y-24 sm:py-16">
-        <section className="bg-[#f8f4ee] px-4 py-12 text-[#2f0a17] sm:px-6 sm:py-16">
-          <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
-            <h1 className="font-heading text-3xl font-bold leading-tight sm:text-5xl">
+      <main className="space-y-16 py-6 sm:space-y-24 sm:py-12">
+        <section className="bg-[#f8f4ee] px-4 py-10 text-[#2f0a17] sm:px-6 sm:py-14">
+          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+            <h1 className="font-heading text-3xl font-bold leading-tight sm:text-[44px] sm:leading-tight">
               Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca — Bez Filtera, Aplikacija ili Igrica —
               uz Jedan Signal o Kojem Nitko Ne Priča
             </h1>
@@ -364,7 +364,7 @@ export default function TestPage() {
                 Ili još gore — da su te pogledali, ali da to nisu bili muškarci koji ti baš preferiraš… Onaj s TikTok
                 frizurom. Onaj koji priđe s “di si mala”. Onaj koji ti reagira na story s 🔥 i nestane…
               </p>
-              <p>Sigurno si barem jednom dobila ovakav komentar:</p>
+              <p className="font-heading text-2xl font-bold text-espresso">Sigurno si barem jednom dobila ovakav komentar:</p>
             </div>
             <Image src="/komentari.png" alt="Komentari polaznica" width={720} height={640} className="w-full rounded-3xl" />
             <div className="space-y-4">
@@ -414,7 +414,9 @@ export default function TestPage() {
             <div className="flex flex-col gap-6">
               {steps.map((step, index) => (
                 <div key={step.title} className="space-y-4 rounded-3xl bg-ivory/70 p-6">
-                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry/90">Korak 0{index + 1}</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry/90">
+                    <span className="font-heading italic">Korak 0{index + 1}</span>
+                  </p>
                   <h3 className="font-heading text-2xl font-bold">{step.title}</h3>
                   <Image src={step.image} alt={step.alt} width={560} height={360} className="w-full rounded-3xl" />
                   <p className="text-base leading-relaxed text-espresso/80">{step.description}</p>
@@ -465,7 +467,18 @@ export default function TestPage() {
           </div>
         </Section>
 
-        <Section id="program" bg="ivory">
+        <Section bg="ivory">
+          <div className="mx-auto flex max-w-5xl flex-col gap-6 text-center">
+            <h3 className="font-heading text-3xl font-bold text-espresso">Dojmovi polaznica s prošlog programa</h3>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {["/Ta-1.png", "/Ta-2.png", "/Ta-3.png", "/Ta-4.png"].map((src) => (
+                <Image key={src} src={src} alt="Komentar polaznice" width={620} height={420} className="w-full rounded-3xl" />
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        <Section id="program" bg="white">
           <div className="mx-auto flex max-w-5xl flex-col gap-8 text-center text-espresso">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#8a8faf]">Testimoniali</p>
             <h2 className="font-heading text-4xl font-bold">Program Signali Strasti</h2>
@@ -507,11 +520,8 @@ export default function TestPage() {
               <h3 className="font-heading text-3xl font-bold text-espresso">Cijeli paket — dostupan odmah</h3>
               <p className="text-lg text-espresso/80">Ukupna vrijednost svega što dobivaš: 532€</p>
               <p className="text-6xl font-bold text-cherry">17€</p>
-              <CTAButton href="/prijava" size="xl" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
-                {CTA_TEXT}
-              </CTAButton>
               <div className="mx-auto max-w-xl">
-                <InlineCheckout />
+                <InlineCheckout buttonLabel={CTA_TEXT} buttonClassName="w-full rounded-3xl bg-cherry px-8 py-5 text-base font-semibold uppercase tracking-wide text-ivory shadow-card transition hover:bg-cherry/90" />
               </div>
             </div>
           </div>
@@ -540,7 +550,7 @@ export default function TestPage() {
               </ul>
             </div>
             <div className="text-center">
-              <CTAButton href="/prijava" size="lg" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
+              <CTAButton href="/prijava" size="lg" className="bg-cherry text-ivory hover:bg-cherry/90">
                 {CTA_TEXT}
               </CTAButton>
             </div>
@@ -557,7 +567,7 @@ export default function TestPage() {
                 <Image key={src} src={src} alt={`Komentar polaznice ${index + 1}`} width={620} height={420} className="w-full rounded-3xl" />
               ))}
             </div>
-            <CTAButton href="/prijava" size="lg" className="mt-6 bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
+            <CTAButton href="/prijava" size="lg" className="mt-6 bg-cherry text-ivory hover:bg-cherry/90">
               {CTA_TEXT}
             </CTAButton>
           </div>
@@ -611,7 +621,7 @@ export default function TestPage() {
                 ))}
               </ul>
               <div className="mt-8 text-center">
-                <CTAButton href="/prijava" size="lg" className="w-full max-w-md bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
+                <CTAButton href="/prijava" size="lg" className="w-full max-w-md bg-cherry text-ivory hover:bg-cherry/90">
                   {CTA_TEXT}
                 </CTAButton>
               </div>
@@ -688,7 +698,7 @@ export default function TestPage() {
             <p className="text-lg text-espresso/80">
               <u>Pošalji ga danas.</u>
             </p>
-            <CTAButton href="/prijava" size="lg" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
+            <CTAButton href="/prijava" size="lg" className="bg-cherry text-ivory hover:bg-cherry/90">
               {CTA_TEXT}
             </CTAButton>
           </div>

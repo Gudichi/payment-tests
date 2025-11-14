@@ -8,11 +8,13 @@ import { PRICE } from "@/app/checkout";
 
 type InlineCheckoutProps = {
   buttonLabel?: string;
+  buttonClassName?: string;
   checkoutVersion?: number;
 };
 
 export function InlineCheckout({
   buttonLabel = `Pridruži se programu Signali Strasti — ${PRICE}€`,
+  buttonClassName = "w-full rounded-3xl bg-cherry px-8 py-5 text-base font-semibold uppercase tracking-wide text-ivory shadow-card transition hover:bg-cherry/90",
   checkoutVersion = 1,
 }: InlineCheckoutProps) {
   const [open, setOpen] = useState(false);
@@ -30,11 +32,7 @@ export function InlineCheckout({
   return (
     <div className="space-y-6">
       {!open ? (
-        <button
-          type="button"
-          onClick={handleClick}
-          className="w-full rounded-3xl bg-[#6A1F29] px-8 py-5 text-base font-semibold uppercase tracking-wide text-[#F8F5F0] shadow-card transition hover:bg-[#52161f]"
-        >
+        <button type="button" onClick={handleClick} className={buttonClassName}>
           {buttonLabel}
         </button>
       ) : null}
