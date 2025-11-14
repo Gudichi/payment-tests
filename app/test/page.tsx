@@ -320,17 +320,17 @@ export default function TestPage() {
         🇭🇷 700+ žena u Hrvatskoj već koriste Signale Strasti 🇭🇷
       </div>
       <main className="space-y-16 py-6 sm:space-y-24 sm:py-12">
-        <section className="bg-[#f8f4ee] px-4 py-10 text-[#2f0a17] sm:px-6 sm:py-14">
-          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+        <section className="bg-ivory px-4 py-10 text-espresso sm:px-6 sm:py-14">
+          <div className="mx-auto flex w-full max-w-4xl flex-col items-center text-center">
             <h1 className="font-heading text-3xl font-bold leading-tight sm:text-[44px] sm:leading-tight">
               Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca — Bez Filtera, Aplikacija ili Igrica —
               uz Jedan Signal o Kojem Nitko Ne Priča
             </h1>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#4a1928] sm:text-xl">
-              Ne moraš mijenjati sebe. Samo ponovno aktiviraj ono što muškarci već nesvjesno traže. Ovo je program za
-              žene koje žele da ih napokon u masi primijete kvalitetni muškarci.
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-espresso/80 sm:text-xl">
+              <strong>Ne moraš mijenjati sebe.</strong> Samo ponovno aktiviraj ono što muškarci već nesvjesno traže. Ovo je
+              program za žene koje žele da ih napokon u masi primijete <em>kvalitetni muškarci.</em>
             </p>
-            <div className="mt-8 w-full">
+            <div className="mt-8 w-full sm:w-1/2">
               <Image
                 src="/Hero1.png"
                 alt="Žena koja privlači pažnju"
@@ -340,7 +340,7 @@ export default function TestPage() {
                 className="w-full rounded-3xl"
               />
             </div>
-            <div className="mt-6 w-full">
+            <div className="mt-6 w-full sm:w-2/5 sm:self-end">
               <Image
                 src="/SocialProof.png"
                 alt="Social proof Signali Strasti"
@@ -356,9 +356,9 @@ export default function TestPage() {
           <div className="mx-auto flex max-w-5xl flex-col gap-6 text-lg leading-relaxed text-espresso/90">
             <div className="space-y-4">
               <h2 className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">Piše: Dunja Kramarić</h2>
-              <p>
-                <em>Ćao,</em> Ako si se ikad dotjerala, izašla iz kuće, a onda se vratila s osjećajem da te nitko nije ni
-                pogledao...
+              <p className="leading-relaxed">
+                <em>Ćao,</em> Ako si se ikad dotjerala, izašla iz kuće, a onda se vratila s osjećajem da te nitko nije ni{" "}
+                <u>pogledao...</u>
               </p>
               <p>
                 Ili još gore — da su te pogledali, ali da to nisu bili muškarci koji ti baš preferiraš… Onaj s TikTok
@@ -366,12 +366,20 @@ export default function TestPage() {
               </p>
               <p className="font-heading text-2xl font-bold text-espresso">Sigurno si barem jednom dobila ovakav komentar:</p>
             </div>
-            <Image src="/komentari.png" alt="Komentari polaznica" width={720} height={640} className="w-full rounded-3xl" />
+            <Image
+              src="/komentari.png"
+              alt="Komentari polaznica"
+              width={720}
+              height={640}
+              className="w-full rounded-3xl sm:w-1/2"
+            />
             <div className="space-y-4">
-              <p>Znam da ti možeš privući pažnju i znam da možeš pronaći muškarca…</p>
               <p>
-                Ali ti ne tražiš bilo kakvog, ti tražiš muškarca koji zna što vidi — i zna što želi. I znaš što je
-                najljepše? U 90% slučajeva znaš prepoznati takvog kad ga vidiš…
+                <strong>Znam</strong> da ti možeš privući pažnju i znam da možeš pronaći muškarca…
+              </p>
+              <p>
+                Ali ti ne tražiš bilo kakvog, ti tražiš muškarca koji zna što vidi — i zna što želi. <em>I znaš što je
+                najljepše?</em> U 90% slučajeva znaš prepoznati takvog kad ga vidiš…
               </p>
               <p>
                 Sad je vrijeme da on prepozna tebe. Ne riječima. Ne skriptom. Ne glumom. Već s tihim signalom zbog kojeg
@@ -390,7 +398,7 @@ export default function TestPage() {
               alt="Muškarci žele prići"
               width={720}
               height={560}
-              className="w-full rounded-3xl"
+              className="w-full rounded-3xl sm:w-1/2"
             />
             <div className="space-y-4 text-lg leading-relaxed text-espresso/80">
               <p>
@@ -418,7 +426,7 @@ export default function TestPage() {
                     <span className="font-heading italic">Korak 0{index + 1}</span>
                   </p>
                   <h3 className="font-heading text-2xl font-bold">{step.title}</h3>
-                  <Image src={step.image} alt={step.alt} width={560} height={360} className="w-full rounded-3xl" />
+                  <Image src={step.image} alt={step.alt} width={560} height={360} className="w-full rounded-3xl sm:w-1/2" />
                   <p className="text-base leading-relaxed text-espresso/80">{step.description}</p>
                 </div>
               ))}
@@ -431,7 +439,7 @@ export default function TestPage() {
             <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">
               Što ćeš znati o sebi… što većina žena nikada ne otkrije
             </h2>
-            <Image src="/hero-2.png" alt="Samopouzdana žena" width={720} height={640} className="w-full rounded-3xl" />
+            <Image src="/hero-2.png" alt="Samopouzdana žena" width={720} height={640} className="w-full rounded-3xl sm:w-1/2" />
             <ul className="space-y-3 text-lg text-espresso/85">
               {knowledgePoints.map((point) => (
                 <li key={point} className="flex items-start gap-3">
@@ -446,7 +454,7 @@ export default function TestPage() {
         <Section bg="white">
           <div className="mx-auto flex max-w-5xl flex-col gap-6 text-lg leading-relaxed text-espresso/85">
             <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Tko stoji iza Signala Strasti?</h2>
-            <Image src="/Tim.png" alt="Dunja i tim" width={680} height={520} className="w-full rounded-3xl" />
+            <Image src="/Tim.png" alt="Dunja i tim" width={680} height={520} className="w-full rounded-3xl sm:w-1/2" />
             <p>
               Ja sam Dunja, godinama promatram kako muškarci uistinu reagiraju kad im se neka žena svidi... i što se zapravo
               događa prije nego priđu.
@@ -463,7 +471,6 @@ export default function TestPage() {
               “Signali Strasti” nisu proizvod. To je rezultat mog rada sa stvarnim ženama koje nisu htjele glumiti, ni igrati
               igrice, ni biti nečije “rješenje”. One su samo htjele da ih se opet vidi.
             </p>
-            <p className="font-semibold text-espresso">Pogledaj ovdje: Dojmovi polaznica s prošlog programa.</p>
           </div>
         </Section>
 
@@ -471,7 +478,7 @@ export default function TestPage() {
           <div className="mx-auto flex max-w-5xl flex-col gap-6 text-center">
             <h3 className="font-heading text-3xl font-bold text-espresso">Dojmovi polaznica s prošlog programa</h3>
             <div className="grid gap-4 sm:grid-cols-2">
-              {["/Ta-1.png", "/Ta-2.png", "/Ta-3.png", "/Ta-4.png"].map((src) => (
+              {["/Taf-1.png", "/Taf-2.png", "/Taf-3.png", "/Taf-4.png"].map((src) => (
                 <Image key={src} src={src} alt="Komentar polaznice" width={620} height={420} className="w-full rounded-3xl" />
               ))}
             </div>
@@ -480,16 +487,13 @@ export default function TestPage() {
 
         <Section id="program" bg="white">
           <div className="mx-auto flex max-w-5xl flex-col gap-8 text-center text-espresso">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#8a8faf]">Testimoniali</p>
-            <h2 className="font-heading text-4xl font-bold">Program Signali Strasti</h2>
-            <p className="text-lg text-espresso/80">
-              Alat koji svakog dana tiho uključuje tvoju privlačnost — i pokreće njegov prvi korak
+            <h2 className="font-heading text-3xl font-bold sm:text-4xl">
+              Alat koji svakog dana tiho uključuje tvoju privlačnost — <em className="text-cherry">i pokreće njegov prvi korak</em>
+            </h2>
+            <p className="font-heading text-xl uppercase tracking-[0.35em]">
+              PROGRAM <span className="italic text-cherry">Signali Strasti</span>
             </p>
-            <Image src="/FullProduct.png" alt="Program Signali Strasti" width={900} height={620} className="w-full" />
-            <div className="flex flex-col items-center gap-2">
-              <Image src="/Zvijezdice.png" alt="Ocjena korisnica" width={220} height={50} className="h-10 w-auto" />
-              <p className="text-sm text-espresso/70">4.7 / 467 recenzija</p>
-            </div>
+            <Image src="/FullProduct.png" alt="Program Signali Strasti" width={900} height={620} className="w-full sm:w-1/2" />
             <ul className="mx-auto max-w-3xl space-y-3 text-left text-base text-espresso/90">
               {[
                 "17 mikro-signala koji nesvjesno pozivaju njegovu pažnju (i daju mu dozvolu da ti priđe)",
