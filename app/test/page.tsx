@@ -322,13 +322,6 @@ export default function TestPage() {
       <main className="space-y-16 py-10 sm:space-y-24 sm:py-16">
         <section className="bg-[#f8f4ee] px-4 py-12 text-[#2f0a17] sm:px-6 sm:py-16">
           <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
-            <Image
-              src="/Dupla-Recenzije.png"
-              alt="467 recenzija"
-              width={320}
-              height={64}
-              className="mb-6 h-auto w-48 sm:w-60"
-            />
             <h1 className="font-heading text-3xl font-bold leading-tight sm:text-5xl">
               Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca — Bez Filtera, Aplikacija ili Igrica —
               uz Jedan Signal o Kojem Nitko Ne Priča
@@ -337,11 +330,6 @@ export default function TestPage() {
               Ne moraš mijenjati sebe. Samo ponovno aktiviraj ono što muškarci već nesvjesno traže. Ovo je program za
               žene koje žele da ih napokon u masi primijete kvalitetni muškarci.
             </p>
-            <div className="mt-6">
-              <CTAButton href="#cijena" size="lg" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
-                {CTA_TEXT}
-              </CTAButton>
-            </div>
             <div className="mt-8 w-full">
               <Image
                 src="/Hero1.png"
@@ -349,7 +337,7 @@ export default function TestPage() {
                 width={960}
                 height={620}
                 priority
-                className="w-full rounded-3xl border border-[#f0d7ca] shadow-card"
+                className="w-full rounded-3xl"
               />
             </div>
             <div className="mt-6 w-full">
@@ -358,16 +346,16 @@ export default function TestPage() {
                 alt="Social proof Signali Strasti"
                 width={1100}
                 height={220}
-                className="w-full rounded-2xl border border-[#f1dfcf]"
+                className="w-full rounded-2xl"
               />
             </div>
           </div>
         </section>
 
         <Section bg="white">
-          <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2 md:items-center">
-            <div className="space-y-5 text-lg leading-relaxed text-espresso/90">
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">Piše: Dunja Kramarić</p>
+          <div className="mx-auto flex max-w-5xl flex-col gap-6 text-lg leading-relaxed text-espresso/90">
+            <div className="space-y-4">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">Piše: Dunja Kramarić</h2>
               <p>
                 <em>Ćao,</em> Ako si se ikad dotjerala, izašla iz kuće, a onda se vratila s osjećajem da te nitko nije ni
                 pogledao...
@@ -377,6 +365,9 @@ export default function TestPage() {
                 frizurom. Onaj koji priđe s “di si mala”. Onaj koji ti reagira na story s 🔥 i nestane…
               </p>
               <p>Sigurno si barem jednom dobila ovakav komentar:</p>
+            </div>
+            <Image src="/komentari.png" alt="Komentari polaznica" width={720} height={640} className="w-full rounded-3xl" />
+            <div className="space-y-4">
               <p>Znam da ti možeš privući pažnju i znam da možeš pronaći muškarca…</p>
               <p>
                 Ali ti ne tražiš bilo kakvog, ti tražiš muškarca koji zna što vidi — i zna što želi. I znaš što je
@@ -387,41 +378,30 @@ export default function TestPage() {
                 se okrene, zastane... i poželi prići.
               </p>
             </div>
-            <div className="rounded-3xl border border-blush/60 bg-ivory p-4">
-              <Image
-                src="/komentari.png"
-                alt="Komentari polaznica"
-                width={720}
-                height={640}
-                className="w-full rounded-2xl border border-blush/50"
-              />
-            </div>
           </div>
         </Section>
 
         <Section bg="ivory">
-          <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[1.1fr,0.9fr] md:items-center">
-            <div className="space-y-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">PAZI:</p>
-              <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Muškarci i dalje žele prići, ali…</h2>
-              <p className="text-lg leading-relaxed text-espresso/80">
-                Danas — ako on nije 99% siguran da ga nećeš odbiti, radije ne napravi ništa. Nisu nesigurni. Samo su
-                naučeni da bez jasnog signala — ispadaju čudaci, napadni ili “nepozvani”.
+          <div className="mx-auto flex max-w-5xl flex-col gap-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">PAZI:</p>
+            <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Muškarci i dalje žele prići, ali…</h2>
+            <Image
+              src="/muskarci-zele-prici.png"
+              alt="Muškarci žele prići"
+              width={720}
+              height={560}
+              className="w-full rounded-3xl"
+            />
+            <div className="space-y-4 text-lg leading-relaxed text-espresso/80">
+              <p>
+                Danas — ako on nije 99% siguran da ga nećeš odbiti, radije ne napravi ništa. Nisu nesigurni. Samo su naučeni
+                da bez jasnog signala — ispadaju čudaci, napadni ili “nepozvani”.
               </p>
-              <p className="text-lg leading-relaxed text-espresso/80">
+              <p>
                 A ako im suptilno pokažeš “u redu je, možeš” — njihov mozak to registrira kao zeleno svjetlo. Zato sam
                 stvorila Signale Strasti — digitalni mikro-program koji ti svaki dan pokaže jednu malu stvar koju možeš
                 napraviti... i doživjeti promjenu.
               </p>
-            </div>
-            <div className="rounded-3xl border border-blush/60 bg-white p-4">
-              <Image
-                src="/muskarci-zele-prici.png"
-                alt="Muškarci žele prići"
-                width={720}
-                height={560}
-                className="w-full rounded-2xl"
-              />
             </div>
           </div>
         </Section>
@@ -431,18 +411,13 @@ export default function TestPage() {
             <h2 className="text-center font-heading text-3xl font-bold text-espresso sm:text-4xl">
               Evo kako ćeš privući kvalitetnog muškarca u samo 7 dana — kroz 4 koraka koji dolaze gotovo neprimjetno
             </h2>
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="flex flex-col gap-6">
               {steps.map((step, index) => (
-                <div key={step.title} className="rounded-3xl border border-blush/50 bg-ivory/70 p-6 shadow-card">
-                  <div className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.3em] text-cherry/90">
-                    <span className="text-xl font-bold">0{index + 1}</span>
-                    Korak
-                  </div>
-                  <h3 className="mt-3 font-heading text-2xl font-bold">{step.title}</h3>
-                  <p className="mt-3 text-base leading-relaxed text-espresso/80">{step.description}</p>
-                  <div className="mt-4 overflow-hidden rounded-2xl border border-blush/50">
-                    <Image src={step.image} alt={step.alt} width={560} height={360} className="h-full w-full object-cover" />
-                  </div>
+                <div key={step.title} className="space-y-4 rounded-3xl bg-ivory/70 p-6">
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry/90">Korak 0{index + 1}</p>
+                  <h3 className="font-heading text-2xl font-bold">{step.title}</h3>
+                  <Image src={step.image} alt={step.alt} width={560} height={360} className="w-full rounded-3xl" />
+                  <p className="text-base leading-relaxed text-espresso/80">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -450,156 +425,124 @@ export default function TestPage() {
         </Section>
 
         <Section bg="ivory">
-          <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2 md:items-center">
-            <div className="rounded-3xl border border-blush/60 bg-white p-4">
-              <Image src="/hero-2.png" alt="Samopouzdana žena" width={720} height={640} className="w-full rounded-2xl" />
+          <div className="mx-auto flex max-w-5xl flex-col gap-6">
+            <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">
+              Što ćeš znati o sebi… što većina žena nikada ne otkrije
+            </h2>
+            <Image src="/hero-2.png" alt="Samopouzdana žena" width={720} height={640} className="w-full rounded-3xl" />
+            <ul className="space-y-3 text-lg text-espresso/85">
+              {knowledgePoints.map((point) => (
+                <li key={point} className="flex items-start gap-3">
+                  <Check className="mt-1 h-5 w-5 text-cherry" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Section>
+
+        <Section bg="white">
+          <div className="mx-auto flex max-w-5xl flex-col gap-6 text-lg leading-relaxed text-espresso/85">
+            <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Tko stoji iza Signala Strasti?</h2>
+            <Image src="/Tim.png" alt="Dunja i tim" width={680} height={520} className="w-full rounded-3xl" />
+            <p>
+              Ja sam Dunja, godinama promatram kako muškarci uistinu reagiraju kad im se neka žena svidi... i što se zapravo
+              događa prije nego priđu.
+            </p>
+            <p>
+              Specijalistica sam za neverbalnu komunikaciju i već 10 godina pomažem ženama da vrate ono što su mislile da su
+              izgubile: svoju prisutnost, magnetizam i sigurnost u vlastito tijelo.
+            </p>
+            <p>
+              Autorica sam knjige „Što muškarci zapravo žele“, i gostovala sam na brojnim televizijama gdje sam govorila o
+              onome što se ne kaže naglas: što privlači, a što gasi mušku inicijativu.
+            </p>
+            <p>
+              “Signali Strasti” nisu proizvod. To je rezultat mog rada sa stvarnim ženama koje nisu htjele glumiti, ni igrati
+              igrice, ni biti nečije “rješenje”. One su samo htjele da ih se opet vidi.
+            </p>
+            <p className="font-semibold text-espresso">Pogledaj ovdje: Dojmovi polaznica s prošlog programa.</p>
+          </div>
+        </Section>
+
+        <Section id="program" bg="ivory">
+          <div className="mx-auto flex max-w-5xl flex-col gap-8 text-center text-espresso">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#8a8faf]">Testimoniali</p>
+            <h2 className="font-heading text-4xl font-bold">Program Signali Strasti</h2>
+            <p className="text-lg text-espresso/80">
+              Alat koji svakog dana tiho uključuje tvoju privlačnost — i pokreće njegov prvi korak
+            </p>
+            <Image src="/FullProduct.png" alt="Program Signali Strasti" width={900} height={620} className="w-full" />
+            <div className="flex flex-col items-center gap-2">
+              <Image src="/Zvijezdice.png" alt="Ocjena korisnica" width={220} height={50} className="h-10 w-auto" />
+              <p className="text-sm text-espresso/70">4.7 / 467 recenzija</p>
             </div>
-            <div className="space-y-5">
-              <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">
-                Što ćeš znati o sebi… što većina žena nikada ne otkrije
-              </h2>
-              <ul className="space-y-3 text-lg text-espresso/85">
-                {knowledgePoints.map((point) => (
-                  <li key={point} className="flex items-start gap-3">
-                    <Check className="mt-1 h-5 w-5 text-cherry" />
-                    <span>{point}</span>
-                  </li>
+            <ul className="mx-auto max-w-3xl space-y-3 text-left text-base text-espresso/90">
+              {[
+                "17 mikro-signala koji nesvjesno pozivaju njegovu pažnju (i daju mu dozvolu da ti priđe)",
+                "1-minutni dnevni ritual koji možeš raditi gdje god jesi (diskretno, prirodno)",
+                "Lokacijska navigacija — jer nije isti signal za kafić i za ured",
+                "Objašnjenja zašto svaki signal djeluje (da se ne pitaš: \"Radim li ovo bezveze?\")",
+                "Mentor podrška ako želiš diskretnu provjeru ili samo podijeliti kako je prošlo",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <Check className="mt-1 h-5 w-5 text-cherry" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="space-y-4 text-left text-base text-espresso/85">
+              <h3 className="text-center text-2xl font-heading font-bold">Bonusi uključeni odmah</h3>
+              <div className="space-y-6">
+                {bonuses.map((bonus) => (
+                  <div key={bonus.title} className="space-y-3">
+                    <h4 className="font-heading text-xl font-bold">{bonus.title}</h4>
+                    <Image src={bonus.image} alt={bonus.title} width={720} height={420} className="w-full rounded-3xl" />
+                    <p>{bonus.description}</p>
+                  </div>
                 ))}
-              </ul>
-            </div>
-          </div>
-        </Section>
-
-        <Section bg="white">
-          <div className="mx-auto flex max-w-5xl flex-col gap-8">
-            <div className="rounded-3xl border border-blush/60 bg-ivory p-6 md:flex md:items-center md:gap-8">
-              <div className="md:w-1/2">
-                <Image src="/Tim.png" alt="Dunja i tim" width={680} height={520} className="w-full rounded-2xl" />
-              </div>
-              <div className="mt-6 space-y-4 text-lg leading-relaxed text-espresso/85 md:mt-0 md:w-1/2">
-                <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Tko stoji iza Signala Strasti?</h2>
-                <p>
-                  Ja sam Dunja, godinama promatram kako muškarci uistinu reagiraju kad im se neka žena svidi... i što se
-                  zapravo događa prije nego priđu.
-                </p>
-                <p>
-                  Specijalistica sam za neverbalnu komunikaciju i već 10 godina pomažem ženama da vrate ono što su mislile
-                  da su izgubile: svoju prisutnost, magnetizam i sigurnost u vlastito tijelo.
-                </p>
-                <p>
-                  Autorica sam knjige „Što muškarci zapravo žele“, i gostovala sam na brojnim televizijama gdje sam
-                  govorila o onome što se ne kaže naglas: što privlači, a što gasi mušku inicijativu.
-                </p>
-                <p>
-                  “Signali Strasti” nisu proizvod. To je rezultat mog rada sa stvarnim ženama koje nisu htjele glumiti, ni
-                  igrati igrice, ni biti nečije “rješenje”. One su samo htjele da ih se opet vidi.
-                </p>
-                <p className="font-semibold text-espresso">Pogledaj ovdje: Dojmovi polaznica s prošlog programa.</p>
               </div>
             </div>
-          </div>
-        </Section>
-
-        <Section bg="ivory">
-          <div className="mx-auto flex max-w-5xl flex-col gap-8">
-            <div className="text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#8a8faf]">Testimoniali</p>
-              <h2 className="mt-2 font-heading text-4xl font-bold text-espresso">Dojmovi polaznica s prošlog programa</h2>
-              <p className="mt-2 text-lg text-espresso/80">
-                Alat koji svakog dana tiho uključuje tvoju privlačnost — i pokreće njegov prvi korak
-              </p>
-            </div>
-            <div className="rounded-3xl border border-[#e0e2ef] bg-white p-6 shadow-card md:flex md:items-center md:gap-8">
-              <div className="md:w-1/2">
-                <div className="flex items-center gap-3">
-                  <Image src="/Zvijezdice.png" alt="Ocjena 4.7" width={220} height={50} className="h-10 w-auto" />
-                  <span className="text-sm text-espresso/70">4.7 / 467 recenzija</span>
-                </div>
-                <h3 className="mt-4 font-heading text-3xl font-bold text-espresso">Program Signali Strasti</h3>
-                <ul className="mt-6 space-y-3 text-base text-espresso/85">
-                  {[
-                    "17 mikro-signala koji nesvjesno pozivaju njegovu pažnju (i daju mu dozvolu da ti priđe)",
-                    "1-minutni dnevni ritual koji možeš raditi gdje god jesi (diskretno, prirodno)",
-                    "Lokacijska navigacija — jer nije isti signal za kafić i za ured",
-                    "Objašnjenja zašto svaki signal djeluje (da se ne pitaš: \"Radim li ovo bezveze?\")",
-                    "Mentor podrška ako želiš diskretnu provjeru ili samo podijeliti kako je prošlo",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <Check className="mt-1 h-5 w-5 text-cherry" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-6 md:mt-0 md:w-1/2">
-                <Image src="/FullProduct.png" alt="Prikaz Signala Strasti" width={600} height={500} className="w-full" />
+            <div className="space-y-4 text-center">
+              <h3 className="font-heading text-3xl font-bold text-espresso">Cijeli paket — dostupan odmah</h3>
+              <p className="text-lg text-espresso/80">Ukupna vrijednost svega što dobivaš: 532€</p>
+              <p className="text-6xl font-bold text-cherry">17€</p>
+              <CTAButton href="/prijava" size="xl" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
+                {CTA_TEXT}
+              </CTAButton>
+              <div className="mx-auto max-w-xl">
+                <InlineCheckout />
               </div>
             </div>
           </div>
         </Section>
 
         <Section bg="white">
-          <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
-            {bonuses.map((bonus) => (
-              <div key={bonus.title} className="rounded-3xl border border-blush/60 bg-ivory/70 p-5 shadow-card">
-                <div className="overflow-hidden rounded-2xl border border-blush/50">
-                  <Image src={bonus.image} alt={bonus.title} width={560} height={360} className="h-full w-full object-cover" />
-                </div>
-                <h3 className="mt-4 font-heading text-xl font-bold text-espresso">{bonus.title}</h3>
-                <p className="mt-2 text-base text-espresso/80">{bonus.description}</p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section id="cijena" bg="ivory">
-          <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 rounded-3xl border border-blush/60 bg-white p-8 text-center shadow-card">
-            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-cherry/80">Ponuda</p>
-            <h2 className="font-heading text-4xl font-bold text-espresso">Cijeli paket — dostupan odmah</h2>
-            <p className="text-lg text-espresso/80">Ukupna vrijednost svega što dobivaš: 532€</p>
-            <p className="text-6xl font-bold text-cherry">17€</p>
-            <CTAButton href="/prijava" size="xl" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
-              {CTA_TEXT}
-            </CTAButton>
-            <div className="w-full sm:w-2/3">
-              <InlineCheckout />
-            </div>
-            <Image src="/Dupla-Recenzije.png" alt="Ocjene korisnica" width={320} height={64} className="h-auto w-48" />
-          </div>
-        </Section>
-
-        <Section bg="white">
-          <div className="mx-auto max-w-5xl space-y-8">
-            <div className="grid gap-6 md:grid-cols-[1.2fr,0.8fr] md:items-center">
-              <div className="space-y-4 text-lg leading-relaxed text-espresso/80">
-                <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Ograničeno na 100 mjesta mjesečno</h2>
-                <p>
-                  Zbog mentor podrške i osobnog pristupa, Dunja i tim primaju samo 100 novih korisnica mjesečno. Nakon toga
-                  se prijave zatvaraju — kako bi se svakoj ženi moglo posvetiti s punom pažnjom.
-                </p>
-                <p>
-                  <em>Ako osjećaš da je ovo tvoj trenutak, ne čekaj.</em>
-                </p>
-              </div>
-              <div className="rounded-3xl border border-blush/60 bg-ivory p-4">
-                <Image src="/tim-2.png" alt="Dunja s timom" width={620} height={480} className="w-full rounded-2xl" />
-              </div>
-            </div>
-            <div className="rounded-3xl border border-blush/60 bg-ivory p-6">
+          <div className="mx-auto flex max-w-5xl flex-col gap-6 text-lg leading-relaxed text-espresso/80">
+            <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Ograničeno na 100 mjesta mjesečno</h2>
+            <Image src="/tim-2.png" alt="Dunja s timom" width={620} height={480} className="w-full rounded-3xl" />
+            <p>
+              Zbog mentor podrške i osobnog pristupa, Dunja i tim primaju samo 100 novih korisnica mjesečno. Nakon toga se
+              prijave zatvaraju — kako bi se svakoj ženi moglo posvetiti s punom pažnjom.
+            </p>
+            <p>
+              <em>Ako osjećaš da je ovo tvoj trenutak, ne čekaj.</em>
+            </p>
+            <div className="space-y-4 text-lg text-espresso/85">
               <h3 className="font-heading text-2xl font-bold text-espresso">Za koga je ovo?</h3>
-              <ul className="mt-4 grid gap-4 md:grid-cols-2">
+              <ul className="space-y-3">
                 {forWho.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-lg text-espresso/85">
+                  <li key={item} className="flex items-start gap-3">
                     <span className="text-xl text-cherry">✔️</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 text-center">
-                <CTAButton href="/prijava" size="lg" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
-                  {CTA_TEXT}
-                </CTAButton>
-              </div>
+            </div>
+            <div className="text-center">
+              <CTAButton href="/prijava" size="lg" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
+                {CTA_TEXT}
+              </CTAButton>
             </div>
           </div>
         </Section>
@@ -611,9 +554,7 @@ export default function TestPage() {
             </h2>
             <div className="grid gap-4 md:grid-cols-2">
               {testimonialImages.map((src, index) => (
-                <div key={src} className="overflow-hidden rounded-3xl border border-blush/50 bg-white p-4">
-                  <Image src={src} alt={`Komentar polaznice ${index + 1}`} width={620} height={420} className="w-full rounded-2xl" />
-                </div>
+                <Image key={src} src={src} alt={`Komentar polaznice ${index + 1}`} width={620} height={420} className="w-full rounded-3xl" />
               ))}
             </div>
             <CTAButton href="/prijava" size="lg" className="mt-6 bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
@@ -636,11 +577,9 @@ export default function TestPage() {
               </dl>
             </div>
 
-            <div className="rounded-3xl border border-[#efe5d6] bg-ivory p-6 shadow-card sm:flex sm:items-center sm:justify-between">
-              <div>
-                <h3 className="font-heading text-2xl font-bold text-espresso">Najčešće preuziman među:</h3>
-              </div>
-              <ul className="mt-4 space-y-3 text-base text-espresso/85 sm:mt-0 sm:w-1/2">
+            <div className="rounded-3xl border border-[#efe5d6] bg-ivory p-6 shadow-card">
+              <h3 className="font-heading text-2xl font-bold text-espresso">Najčešće preuziman među:</h3>
+              <ul className="mt-4 space-y-3 text-base text-espresso/85">
                 {mostDownloaded.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="text-lg">✔️</span>
