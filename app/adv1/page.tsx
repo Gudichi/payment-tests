@@ -44,6 +44,111 @@ const latestNews = [
   { category: "Odnosi", title: "Tajna uspješnih veza", time: "1 dan" },
 ];
 
+const faqItems = [
+  {
+    question: "„Što ako mi nitko ne priđe?”",
+    answer: "Nije poanta samo u njima. Poanta je da se TI osjećaš primijećeno.",
+  },
+  {
+    question: "„Zvuči super, ali što ako sam introvert?”",
+    answer: "Ne moraš ništa glumiti, ni preuzimati inicijativu. Signali rade ispod površine.",
+  },
+  {
+    question: "„Zar ne izgleda očajno kad žena signalizira?”",
+    answer: "Ne ako znaš kako. Ovo nisu trikovi. Ovo je govor tijela koji čita svaki muškarac, instinktivno.",
+  },
+];
+
+const productDetails = [
+  { label: "Trajanje", value: "cca 1h 20min čiste primjene u svakodnevnim situacijama" },
+  { label: "Format", value: "Digitalni vodič + Signal kartice (PDF & interaktivno)" },
+  { label: "Autorica", value: "Tihana M. (kreatorica “Psihološkog Zavođenja”)" },
+  { label: "Dizajniran za", value: "Žene koje žele više pažnje — bez forsiranja" },
+  { label: "Emocionalni ton", value: "Inteligentno, senzualno, samopouzdano" },
+  { label: "Jezik", value: "Hrvatski 🇭🇷" },
+  { label: "Posebno pogodno za", value: "Kafiće, urede, dnevne situacije u kojima on oklijeva prići" },
+  { label: "Vrijednost paketa", value: "247€ – uključeno bez dodatne naplate 💎" },
+  { label: "Ocjena korisnica", value: "4.7 / 5 ⭐" },
+];
+
+const mostDownloaded = [
+  "Ženama 25–45 koje žele diskretan, ali moćan ljubavni utjecaj",
+  "Klijenticama koje žele psihološku prednost u igri privlačnosti",
+  "Korisnicama koje su umorne od skripti — i žele elegantnu autentičnost",
+];
+
+const highlightedPraise = [
+  "Jasna primjena",
+  "Senzualna elegancija",
+  "Emocionalna snaga",
+  "Autentičnost bez skripti",
+  "Vidiš rezultate bez forsiranja",
+  "Potiče muževnu inicijativu",
+];
+
+const topReviews = [
+  {
+    name: "Maja Šimunović",
+    rating: "★★★★★",
+    body:
+      "Najbolje u svemu je što ne moraš ništa glumit. Samo lagano promijeniš energiju i odjednom te ljudi primijete. Ja sam imala prvi “prilazak” nakon 48 sati.",
+  },
+  {
+    name: "Ivana Leko",
+    rating: "★★★★★",
+    body:
+      "Kupila sam čisto iz znatiželje, nisam očekivala ništa… i evo me sad pričam svim curama. Radim u butiku i dobijam više kontakta očima nego ikad prije.",
+  },
+  {
+    name: "Laura Dropulić",
+    rating: "★★★★★",
+    body:
+      "Ono što stalno ponavljam frendicama — ne radi ovo samo da te muškarci gledaju, nego da ti sebe drugačije osjetiš. Meni je nakon nekoliko dana došla neka nova sigurnost.",
+  },
+  {
+    name: "Ema Kušan",
+    rating: "★★★★★",
+    body:
+      "Odličan vodič! Jednostavno, brzo, i stvarno vidiš rezultate. Meni je najviše pomoglo objašnjenje zašto signali rade. Nekako sve sjedne u glavu.",
+  },
+  {
+    name: "Valentina Rožić",
+    rating: "★★★★★",
+    body:
+      "Meni je ovo promijenilo ritam izlazaka. Ne gledam više tko će prići — jer sad stvarno priđu. 😅 Posebno kad ubacim 8. signal, to je ludilo.",
+  },
+  {
+    name: "Martina Birač",
+    rating: "★★★★★",
+    body:
+      "Najbolji dio je lokacijska primjena. Inače radim na recepciji i bilo mi je teško znat kad šta koristiti. Sad sve imam jasno i mogu lagano primijenit.",
+  },
+  {
+    name: "Paula Gregurić",
+    rating: "★★★★★",
+    body:
+      "Nisam mislila da će ovako brzo raditi. Prvu malu promjenu sam vidjela drugi dan kad sam koristila signal u uredu. Muški me počeli malo više gledat, onako toplo.",
+  },
+  {
+    name: "Jelena Legac",
+    rating: "★★★★★",
+    body:
+      "Osjeti se razlika u energiji, stvarno. Nije ni čudo da rade kad je toliko suptilno da ne može bit neugodno. Meni jako prirodno dođe.",
+  },
+  {
+    name: "Dora Vuković",
+    rating: "★★★★★",
+    body:
+      "Ovo je najbolji digitalni proizvod koji sam kupila ove godine. Čisto jer mi je vratilo neku ženstvenost koju sam godinama potiskivala.",
+  },
+  {
+    name: "Tihana Pavlić",
+    rating: "★★★★★",
+    body:
+      "Odlična stvar! I sve izgleda elegantno, lako i nenametljivo. Ako tražiš nešto što stvarno možeš odmah primijenit — ovo je to.",
+  },
+];
+
 function normalizeAdvertorialHTML(raw: string): string {
   let html = raw;
 
@@ -236,6 +341,99 @@ function AsSeenIn() {
   );
 }
 
+function FAQSection() {
+  return (
+    <section className={styles.faqSection} aria-labelledby="adv1-faq-title">
+      <div className={styles.faqIntro}>
+        <h2 id="adv1-faq-title">Najčešća pitanja</h2>
+        <p>Brzi odgovori prije nego aktiviraš svoje prve Signale Strasti.</p>
+      </div>
+      <div className={styles.faqList}>
+        {faqItems.map((item) => (
+          <details key={item.question} className={styles.faqItem}>
+            <summary>
+              <span>{item.question}</span>
+              <span aria-hidden="true" className={styles.faqIcon}>
+                +
+              </span>
+            </summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PostFaqInsights() {
+  return (
+    <div className={styles.postFaqSections}>
+      <section className={styles.productDetailsSection}>
+        <h3>Detalji proizvoda</h3>
+        <dl className={styles.detailsTable}>
+          {productDetails.map((row) => (
+            <div key={row.label} className={styles.detailsRow}>
+              <dt>{row.label}</dt>
+              <dd>{row.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section className={styles.checklistSection}>
+        <h3>Najčešće preuziman među:</h3>
+        <ul>
+          {mostDownloaded.map((item) => (
+            <li key={item}>✔️ {item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={styles.summaryCard}>
+        <h3>Što korisnice kažu</h3>
+        <p>
+          Korisnice opisuju ovaj vodič kao elegantan, dubok i nevjerojatno primjenjiv u stvarnim
+          situacijama. Najviše ga cijene jer ne koristi “igre” – nego pomaže ženi da zadrži moć, dok
+          mu pokazuje da je otvorena.
+        </p>
+      </section>
+
+      <section className={styles.highlightSection}>
+        <h3>Najviše hvaljeno:</h3>
+        <ul>
+          {highlightedPraise.map((item) => (
+            <li key={item}>✔ {item}</li>
+          ))}
+        </ul>
+        <a href="/test" className={styles.primaryCta}>
+          Da, želim pristupiti Signalima Strasti…
+        </a>
+      </section>
+
+      <section className={styles.reviewSection}>
+        <div className={styles.reviewHeader}>
+          <h3>Top recenzije u Hrvatskoj</h3>
+          <p>Realne povratne informacije potvrđenih korisnica</p>
+        </div>
+        <div className={styles.reviewList}>
+          {topReviews.map((review, index) => (
+            <article key={`${review.name}-${index}`} className={styles.reviewCard}>
+              <div className={styles.reviewMeta}>
+                <p className={styles.reviewName}>{review.name}</p>
+                <span className={styles.reviewBadge}>Potvrđena kupnja</span>
+              </div>
+              <div className={styles.reviewRating} aria-label="5 od 5">
+                {review.rating}
+              </div>
+              <p className={styles.reviewBody}>{review.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
 export default function Adv1Page() {
   const publishDate = new Date();
   const dayNames = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
@@ -277,6 +475,8 @@ export default function Adv1Page() {
           <div className={styles.articleBody}>
             <div className={styles.bodyText} dangerouslySetInnerHTML={{ __html: advertorialHtml }} />
           </div>
+          <FAQSection />
+          <PostFaqInsights />
           <CommentsSection />
         </article>
 

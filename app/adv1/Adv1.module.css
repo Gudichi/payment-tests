@@ -199,6 +199,288 @@
   margin: 2.75rem 0;
 }
 
+.faqSection {
+  margin-top: 2.5rem;
+  padding: 2.25rem;
+  border: 1px solid #ebe9e2;
+  border-radius: 18px;
+  background: #f8f9fb;
+  box-shadow: 0 16px 30px rgba(21, 18, 15, 0.08);
+}
+
+.faqIntro h2 {
+  margin: 0;
+  font-family: var(--font-poppins, "Poppins"), system-ui, sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #1f130a;
+}
+
+.faqIntro p {
+  margin: 0.5rem 0 0;
+  color: #5a4b3f;
+  font-family: var(--font-lora, "Lora"), serif;
+}
+
+.faqList {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItem {
+  border: 1px solid #e6e0d6;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 0 1.25rem;
+  box-shadow: 0 12px 22px rgba(30, 20, 12, 0.06);
+}
+
+.faqItem summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  cursor: pointer;
+  font-family: var(--font-poppins, "Poppins"), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d1f16;
+}
+
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqIcon {
+  font-size: 1.4rem;
+  color: #c24858;
+  transition: transform 0.2s ease;
+}
+
+.faqItem[open] .faqIcon {
+  transform: rotate(45deg);
+}
+
+.faqItem p {
+  margin: 0;
+  padding: 1rem 0 1.25rem;
+  border-top: 1px solid #f2ebe0;
+  font-family: var(--font-lora, "Lora"), serif;
+  font-size: 0.98rem;
+  color: #4b3a2f;
+}
+
+.postFaqSections {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.productDetailsSection,
+.checklistSection,
+.summaryCard,
+.highlightSection,
+.reviewSection {
+  border: 1px solid #e5e8ef;
+  border-radius: 18px;
+  background: #fefefe;
+  box-shadow: 0 14px 28px rgba(22, 16, 10, 0.06);
+  padding: 1.85rem;
+}
+
+.productDetailsSection h3,
+.checklistSection h3,
+.summaryCard h3,
+.highlightSection h3,
+.reviewSection h3 {
+  margin: 0 0 1rem;
+  font-family: var(--font-poppins, "Poppins"), system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1f130a;
+}
+
+.detailsTable {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsRow {
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) 1fr;
+  gap: 1.5rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid #eceef3;
+}
+
+.detailsRow:first-of-type {
+  border-top: none;
+}
+
+.detailsRow dt {
+  font-family: var(--font-poppins, "Poppins"), system-ui, sans-serif;
+  font-weight: 600;
+  color: #4a3a30;
+}
+
+.detailsRow dd {
+  margin: 0;
+  font-family: var(--font-lora, "Lora"), serif;
+  color: #2c1c15;
+}
+
+.checklistSection ul,
+.highlightSection ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-family: var(--font-lora, "Lora"), serif;
+  color: #2f1d15;
+}
+
+.checklistSection li,
+.highlightSection li {
+  background: #f7f8fb;
+  border: 1px solid #e2e6f0;
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.98rem;
+}
+
+.summaryCard {
+  border-left: 4px solid #d1d6e6;
+  background: linear-gradient(180deg, #f8f9fb 0%, #ffffff 100%);
+}
+
+.summaryCard p {
+  margin: 0;
+  font-family: var(--font-lora, "Lora"), serif;
+  color: #3b2b20;
+  line-height: 1.65;
+}
+
+.highlightSection {
+  background: #fff8f2;
+  border-color: #f3e4d9;
+}
+
+.primaryCta {
+  display: inline-flex;
+  margin-top: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.75rem;
+  border-radius: 999px;
+  font-family: var(--font-poppins, "Poppins"), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(120deg, #c24858 0%, #f08a9d 100%);
+  text-decoration: none;
+  box-shadow: 0 12px 20px rgba(194, 72, 88, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primaryCta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 24px rgba(194, 72, 88, 0.35);
+}
+
+.primaryCta:focus-visible {
+  outline: 3px solid rgba(194, 72, 88, 0.4);
+  outline-offset: 3px;
+}
+
+.reviewSection {
+  background: #f8f9fb;
+}
+
+.reviewHeader {
+  border-bottom: 1px solid #e0e4ef;
+  padding-bottom: 1rem;
+}
+
+.reviewHeader p {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-lora, "Lora"), serif;
+  color: #5b4a3d;
+}
+
+.reviewList {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewCard {
+  padding: 1.15rem 0;
+  border-top: 1px solid #e0e4ef;
+}
+
+.reviewCard:first-of-type {
+  border-top: none;
+}
+
+.reviewMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  font-family: var(--font-poppins, "Poppins"), system-ui, sans-serif;
+}
+
+.reviewName {
+  margin: 0;
+  font-weight: 600;
+  color: #2b1b13;
+}
+
+.reviewBadge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: #fff2d7;
+  color: #a6680c;
+}
+
+.reviewRating {
+  margin-top: 0.35rem;
+  font-size: 1.1rem;
+  color: #f0880d;
+  letter-spacing: 0.15rem;
+}
+
+.reviewBody {
+  margin: 0.6rem 0 0;
+  font-family: var(--font-lora, "Lora"), serif;
+  color: #39261b;
+  line-height: 1.6;
+}
+
+@media (max-width: 680px) {
+  .faqSection,
+  .productDetailsSection,
+  .checklistSection,
+  .summaryCard,
+  .highlightSection,
+  .reviewSection {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .detailsRow {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
 .commentsSection {
   margin-top: 3rem;
   padding: 2.25rem;
