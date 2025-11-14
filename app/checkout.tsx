@@ -4,16 +4,76 @@ import PaymentElements from "@/components/payment-elements";
 import { useMemo, useState } from "react";
 
 const BASE_PRICE = 1;
-const ORDER_BUMP_PRICE = 1;
+
+const ORDER_BUMPS = [
+  {
+    id: "signal8",
+    title: "8. Signal – Kada te gleda, ali ne prilazi",
+    price: 9,
+    oldPrice: 37,
+    image: "/Order-1.png",
+    description: (
+      <>
+        Posebni mikro-signal koji koristiš kada osjetiš da te primjećuje — ali ne
+        prilazi. <em>Bez obzira koliko tvoj govor tijela bio jak</em> — ova situacija
+        dogodi se svima:{" "}
+        <u>
+          on te gleda… ali ne napravi ništa.
+        </u>{" "}
+        Zato žene koje aktiviraju 8. signal{" "}
+        <strong>
+          vide rezultate 3x brže — jer znaju što točno napraviti kada on
+          zastane, ali još nije siguran.
+        </strong>
+      </>
+    ),
+  },
+  {
+    id: "textmagic",
+    title: "Kako Pisati Da Te Poželi Vidjeti",
+    price: 17,
+    oldPrice: 61,
+    image: "/Order-2.png",
+    description: (
+      <>
+        Žene koje primijene ovaj vodič{" "}
+        <strong>
+          vide 2x brže rezultate — jer znaju kako porukom zadržati njegov interes
+          i doći do susreta.
+        </strong>{" "}
+        Savršeno za one koje žele da on poželi još — i ne nestane nakon prvog
+        dojma.
+      </>
+    ),
+  },
+];
 
 export const PRICE = BASE_PRICE;
 
 export const Checkout = () => {
-  const [includeOrderBump, setIncludeOrderBump] = useState(false);
-  const total = useMemo(
-    () => BASE_PRICE + (includeOrderBump ? ORDER_BUMP_PRICE : 0),
-    [includeOrderBump]
+  const [selectedBumps, setSelectedBumps] = useState<Record<string, boolean>>(
+    {}
   );
+
+  const bumpsTotal = useMemo(
+    () =>
+      ORDER_BUMPS.reduce(
+        (sum, bump) => sum + (selectedBumps[bump.id] ? bump.price : 0),
+        0
+      ),
+    [selectedBumps]
+  );
+
+  const total = useMemo(() => BASE_PRICE + bumpsTotal, [bumpsTotal]);
+
+  const selectedBumpIds = useMemo(
+    () => ORDER_BUMPS.filter((b) => selectedBumps[b.id]).map((b) => b.id),
+    [selectedBumps]
+  );
+
+  const handleBumpToggle = (id: string, checked: boolean) => {
+    setSelectedBumps((prev) => ({ ...prev, [id]: checked }));
+  };
 
   return (
     <div id="checkout-section" className="max-w-7xl mx-auto py-8">
@@ -93,39 +153,6 @@ export const Checkout = () => {
           ))}
         </ul>
 
-        {/* Order bump */}
-        <div className="max-w-6xl mx-auto mb-6">
-          <div className="border-2 border-emerald-100 rounded-xl bg-emerald-50/60 shadow-sm overflow-hidden">
-            <div className="bg-emerald-100 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-emerald-700">
-              Preporučeno
-            </div>
-            <label className="flex flex-col md:flex-row gap-4 md:gap-6 px-4 sm:px-6 py-5 cursor-pointer">
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  className="mt-1 h-5 w-5 rounded border-2 border-emerald-400 text-emerald-600 focus:ring-2 focus:ring-offset-1 focus:ring-emerald-500"
-                  checked={includeOrderBump}
-                  onChange={(event) =>
-                    setIncludeOrderBump(event.target.checked)
-                  }
-                />
-                <div>
-                  <p className="text-base md:text-lg font-semibold text-emerald-900">
-                    Doživotni Pristup VIP WhatsApp Grupi{" "}
-                    <span className="text-emerald-600">+€{ORDER_BUMP_PRICE}</span>
-                  </p>
-                  <p className="text-sm md:text-base text-emerald-800 leading-relaxed mt-2">
-                    Većina žena koje se priključe VIP WhatsApp grupi{" "}
-                    <strong>vide rezultate 3x brže</strong> nego kada pokušavaju
-                    same. Dobivaš direktan feedback, analize i točne korake od
-                    stručnog tima koji te vodi dok ne postigneš rezultat.
-                  </p>
-                </div>
-              </div>
-            </label>
-          </div>
-        </div>
-
         {/* Checkout Form */}
         <div className="max-w-6xl mx-auto">
           <div className="space-y-6">
@@ -137,21 +164,35 @@ export const Checkout = () => {
                     €{total.toFixed(2)}
                   </p>
                 </div>
-                {includeOrderBump ? (
-                  <span className="text-xs font-semibold text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">
-                    VIP grupa dodana
-                  </span>
-                ) : null}
+                <div className="flex flex-wrap gap-2">
+                  {selectedBumpIds.length
+                    ? selectedBumpIds.map((id) => {
+                        const bump = ORDER_BUMPS.find((b) => b.id === id);
+                        if (!bump) {
+                          return null;
+                        }
+                        return (
+                          <span
+                            key={id}
+                            className="text-xs font-semibold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full"
+                          >
+                            +{bump.title}
+                          </span>
+                        );
+                      })
+                    : null}
+                </div>
               </div>
               <PaymentElements
                 price={total}
                 metadata={{
                   base_price_eur: BASE_PRICE.toString(),
-                  order_bump_selected: includeOrderBump ? "yes" : "no",
-                  order_bump_price_eur: includeOrderBump
-                    ? ORDER_BUMP_PRICE.toString()
-                    : "0",
+                  selected_bumps: selectedBumpIds.join(",") || "none",
+                  bump_total_eur: bumpsTotal.toString(),
                 }}
+                orderBumps={ORDER_BUMPS}
+                selectedBumps={selectedBumps}
+                onToggleBump={handleBumpToggle}
               />
             </div>
           </div>

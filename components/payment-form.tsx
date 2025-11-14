@@ -4,10 +4,30 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
-export default function PaymentForm() {
+type OrderBump = {
+  id: string;
+  title: string;
+  price: number;
+  oldPrice: number;
+  image: string;
+  description: ReactNode;
+};
+
+type PaymentFormProps = {
+  orderBumps?: OrderBump[];
+  selectedBumps?: Record<string, boolean>;
+  onToggleBump?: (id: string, checked: boolean) => void;
+};
+
+export default function PaymentForm({
+  orderBumps,
+  selectedBumps,
+  onToggleBump,
+}: PaymentFormProps) {
   const stripe = useStripe();
   const elements = useElements();
   const [message, setMessage] = useState<string | null | undefined>(null);
@@ -98,6 +118,69 @@ export default function PaymentForm() {
             }}
           />
         </div>
+
+        {orderBumps?.length ? (
+          <div className="space-y-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cherry">
+              Preporučeno
+            </p>
+            {orderBumps.map((bump) => {
+              const checked = !!selectedBumps?.[bump.id];
+              return (
+                <div
+                  key={bump.id}
+                  className="rounded-2xl border-2 border-dashed border-gray-300 bg-white p-5 shadow-sm space-y-4"
+                >
+                  <label
+                    htmlFor={`order-bump-${bump.id}`}
+                    className="flex flex-wrap items-center gap-3 rounded-xl bg-[#FFFDA5] px-4 py-3 cursor-pointer"
+                  >
+                    <span className="text-red-500 font-bold animate-pulse text-lg">
+                      ➜
+                    </span>
+                    <input
+                      id={`order-bump-${bump.id}`}
+                      type="checkbox"
+                      className="h-5 w-5 border-2 border-gray-400 rounded focus:ring-2 focus:ring-offset-1 focus:ring-cherry"
+                      checked={checked}
+                      onChange={(event) =>
+                        onToggleBump?.(bump.id, event.target.checked)
+                      }
+                    />
+                    <div className="flex flex-col text-left">
+                      <span className="font-semibold text-green-700">
+                        {bump.title}
+                      </span>
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <span className="line-through">{bump.oldPrice}€</span>
+                        <span className="font-semibold text-green-700">
+                          {bump.price}€
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                  <div className="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4 items-center sm:items-start text-left">
+                    <div className="w-full sm:w-36">
+                      <div className="overflow-hidden rounded-xl border border-gray-200 bg-ivory">
+                        <Image
+                          src={bump.image}
+                          alt={bump.title}
+                          width={200}
+                          height={200}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-1 text-sm sm:text-base text-gray-700 leading-relaxed">
+                      {bump.description}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
+
         <button
           className="w-full bg-[#1C7C7D] hover:bg-[#165a5c] text-white py-4 px-4 sm:py-8 sm:px-8 rounded-lg font-bold text-lg sm:text-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-lg"
           type="submit"

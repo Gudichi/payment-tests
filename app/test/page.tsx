@@ -62,18 +62,18 @@ const bonuses = [
   },
   {
     title: "Bonus 2 — Neka on napravi prvi korak",
-    image: "/bonus-2.png",
+    image: "/Bonus-2.png",
     description: "Kako signalizirati otvorenost, a da on osjeti da sve dolazi od njega. (67€, uključeno bez dodatne naplate.)",
   },
   {
     title: "Bonus 3 — Kako da on zatraži tvoj broj",
-    image: "/bonus-3.png",
+    image: "/Bonus-3.png",
     description:
       "Čak i kad mu se sviđaš, mnogi muškarci se povuku prije nego zatraže broj. Nauči kako ostaviti točno onu malu pauzu i signal koji ga potiče da napravi prvi korak — s vjerom da neće biti odbijen.",
   },
   {
     title: "Bonus 4 — Poruka koja ga vraća, čak i ako se povukao",
-    image: "/bonus-4.png",
+    image: "/Bonus-4.png",
     description: "Kada znaš što reći (i kako), njegova pažnja se vraća spontano. (Vrijednost 77€, sada dio paketa.)",
   },
   {

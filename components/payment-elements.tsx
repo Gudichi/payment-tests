@@ -2,19 +2,34 @@
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import PaymentForm from "./payment-form";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
+type OrderBump = {
+  id: string;
+  title: string;
+  price: number;
+  oldPrice: number;
+  image: string;
+  description: ReactNode;
+};
+
 export default function PaymentElements({
   price,
   metadata,
+  orderBumps,
+  selectedBumps,
+  onToggleBump,
 }: {
   price: number;
   metadata?: Record<string, string>;
+  orderBumps?: OrderBump[];
+  selectedBumps?: Record<string, boolean>;
+  onToggleBump?: (id: string, checked: boolean) => void;
 }) {
   const [clientSecret, setClientSecret] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -119,7 +134,11 @@ export default function PaymentElements({
         },
       }}
     >
-      <PaymentForm />
+      <PaymentForm
+        orderBumps={orderBumps}
+        selectedBumps={selectedBumps}
+        onToggleBump={onToggleBump}
+      />
     </Elements>
   );
 }
