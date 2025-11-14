@@ -337,7 +337,7 @@ export default function TestPage() {
                 width={960}
                 height={620}
                 priority
-                className="w-full rounded-3xl"
+                className="w-full rounded-3xl mx-auto"
               />
             </div>
             <div className="mt-6 w-full sm:w-2/5 sm:self-end">
@@ -346,17 +346,17 @@ export default function TestPage() {
                 alt="Social proof Signali Strasti"
                 width={1100}
                 height={220}
-                className="w-full rounded-2xl"
+                className="w-full rounded-2xl mx-auto"
               />
             </div>
           </div>
         </section>
 
         <Section bg="white">
-          <div className="mx-auto flex max-w-5xl flex-col gap-6 text-lg leading-relaxed text-espresso/90">
-            <div className="space-y-4">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center text-lg leading-relaxed text-espresso/90">
+            <div className="space-y-4 max-w-3xl">
               <h2 className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">Piše: Dunja Kramarić</h2>
-              <p className="leading-relaxed">
+              <p>
                 <em>Ćao,</em> Ako si se ikad dotjerala, izašla iz kuće, a onda se vratila s osjećajem da te nitko nije ni{" "}
                 <u>pogledao...</u>
               </p>
@@ -366,14 +366,8 @@ export default function TestPage() {
               </p>
               <p className="font-heading text-2xl font-bold text-espresso">Sigurno si barem jednom dobila ovakav komentar:</p>
             </div>
-            <Image
-              src="/komentari.png"
-              alt="Komentari polaznica"
-              width={720}
-              height={640}
-              className="w-full rounded-3xl sm:w-1/2"
-            />
-            <div className="space-y-4">
+            <Image src="/komentari.png" alt="Komentari polaznica" width={720} height={640} className="mx-auto w-3/5 rounded-3xl sm:w-1/2" />
+            <div className="space-y-4 max-w-3xl">
               <p>
                 <strong>Znam</strong> da ti možeš privući pažnju i znam da možeš pronaći muškarca…
               </p>
@@ -390,17 +384,11 @@ export default function TestPage() {
         </Section>
 
         <Section bg="ivory">
-          <div className="mx-auto flex max-w-5xl flex-col gap-6">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">PAZI:</p>
             <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Muškarci i dalje žele prići, ali…</h2>
-            <Image
-              src="/muskarci-zele-prici.png"
-              alt="Muškarci žele prići"
-              width={720}
-              height={560}
-              className="w-full rounded-3xl sm:w-1/2"
-            />
-            <div className="space-y-4 text-lg leading-relaxed text-espresso/80">
+            <Image src="/muskarci-zele-prici.png" alt="Muškarci žele prići" width={720} height={560} className="mx-auto w-full rounded-3xl sm:w-1/2" />
+            <div className="space-y-4 text-lg leading-relaxed text-espresso/80 max-w-3xl">
               <p>
                 Danas — ako on nije 99% siguran da ga nećeš odbiti, radije ne napravi ništa. Nisu nesigurni. Samo su naučeni
                 da bez jasnog signala — ispadaju čudaci, napadni ili “nepozvani”.
@@ -415,18 +403,18 @@ export default function TestPage() {
         </Section>
 
         <Section bg="white">
-          <div className="mx-auto flex max-w-5xl flex-col gap-8">
-            <h2 className="text-center font-heading text-3xl font-bold text-espresso sm:text-4xl">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 text-center">
+            <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">
               Evo kako ćeš privući kvalitetnog muškarca u samo 7 dana — kroz 4 koraka koji dolaze gotovo neprimjetno
             </h2>
-            <div className="flex flex-col gap-6">
+            <div className="flex w-full flex-col gap-6">
               {steps.map((step, index) => (
-                <div key={step.title} className="space-y-4 rounded-3xl bg-ivory/70 p-6">
+                <div key={step.title} className="space-y-4 rounded-3xl bg-ivory/70 p-6 text-center">
                   <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry/90">
                     <span className="font-heading italic">Korak 0{index + 1}</span>
                   </p>
                   <h3 className="font-heading text-2xl font-bold">{step.title}</h3>
-                  <Image src={step.image} alt={step.alt} width={560} height={360} className="w-full rounded-3xl sm:w-1/2" />
+                  <Image src={step.image} alt={step.alt} width={560} height={360} className="mx-auto w-full rounded-3xl sm:w-1/2" />
                   <p className="text-base leading-relaxed text-espresso/80">{step.description}</p>
                 </div>
               ))}
@@ -435,12 +423,12 @@ export default function TestPage() {
         </Section>
 
         <Section bg="ivory">
-          <div className="mx-auto flex max-w-5xl flex-col gap-6">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
             <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">
               Što ćeš znati o sebi… što većina žena nikada ne otkrije
             </h2>
-            <Image src="/hero-2.png" alt="Samopouzdana žena" width={720} height={640} className="w-full rounded-3xl sm:w-1/2" />
-            <ul className="space-y-3 text-lg text-espresso/85">
+            <Image src="/hero-2.png" alt="Samopouzdana žena" width={720} height={640} className="mx-auto w-full rounded-3xl sm:w-1/2" />
+            <ul className="space-y-3 text-left text-lg text-espresso/85">
               {knowledgePoints.map((point) => (
                 <li key={point} className="flex items-start gap-3">
                   <Check className="mt-1 h-5 w-5 text-cherry" />
@@ -452,22 +440,22 @@ export default function TestPage() {
         </Section>
 
         <Section bg="white">
-          <div className="mx-auto flex max-w-5xl flex-col gap-6 text-lg leading-relaxed text-espresso/85">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center text-lg leading-relaxed text-espresso/85">
             <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Tko stoji iza Signala Strasti?</h2>
-            <Image src="/Tim.png" alt="Dunja i tim" width={680} height={520} className="w-full rounded-3xl sm:w-1/2" />
-            <p>
+            <Image src="/Tim.png" alt="Dunja i tim" width={680} height={520} className="mx-auto w-full rounded-3xl sm:w-1/2" />
+            <p className="max-w-3xl">
               Ja sam Dunja, godinama promatram kako muškarci uistinu reagiraju kad im se neka žena svidi... i što se zapravo
               događa prije nego priđu.
             </p>
-            <p>
+            <p className="max-w-3xl">
               Specijalistica sam za neverbalnu komunikaciju i već 10 godina pomažem ženama da vrate ono što su mislile da su
               izgubile: svoju prisutnost, magnetizam i sigurnost u vlastito tijelo.
             </p>
-            <p>
+            <p className="max-w-3xl">
               Autorica sam knjige „Što muškarci zapravo žele“, i gostovala sam na brojnim televizijama gdje sam govorila o
               onome što se ne kaže naglas: što privlači, a što gasi mušku inicijativu.
             </p>
-            <p>
+            <p className="max-w-3xl">
               “Signali Strasti” nisu proizvod. To je rezultat mog rada sa stvarnim ženama koje nisu htjele glumiti, ni igrati
               igrice, ni biti nečije “rješenje”. One su samo htjele da ih se opet vidi.
             </p>
@@ -479,7 +467,7 @@ export default function TestPage() {
             <h3 className="font-heading text-3xl font-bold text-espresso">Dojmovi polaznica s prošlog programa</h3>
             <div className="grid gap-4 sm:grid-cols-2">
               {["/Taf-1.png", "/Taf-2.png", "/Taf-3.png", "/Taf-4.png"].map((src) => (
-                <Image key={src} src={src} alt="Komentar polaznice" width={620} height={420} className="w-full rounded-3xl" />
+                <Image key={src} src={src} alt="Komentar polaznice" width={620} height={420} className="mx-auto w-3/5 rounded-3xl sm:w-1/2" />
               ))}
             </div>
           </div>
@@ -493,7 +481,7 @@ export default function TestPage() {
             <p className="font-heading text-xl uppercase tracking-[0.35em]">
               PROGRAM <span className="italic text-cherry">Signali Strasti</span>
             </p>
-            <Image src="/FullProduct.png" alt="Program Signali Strasti" width={900} height={620} className="w-full sm:w-1/2" />
+            <Image src="/FullProduct.png" alt="Program Signali Strasti" width={900} height={620} className="mx-auto w-full sm:w-1/2" />
             <ul className="mx-auto max-w-3xl space-y-3 text-left text-base text-espresso/90">
               {[
                 "17 mikro-signala koji nesvjesno pozivaju njegovu pažnju (i daju mu dozvolu da ti priđe)",
@@ -511,13 +499,25 @@ export default function TestPage() {
             <div className="space-y-4 text-left text-base text-espresso/85">
               <h3 className="text-center text-2xl font-heading font-bold">Bonusi uključeni odmah</h3>
               <div className="space-y-6">
-                {bonuses.map((bonus) => (
-                  <div key={bonus.title} className="space-y-3">
-                    <h4 className="font-heading text-xl font-bold">{bonus.title}</h4>
-                    <Image src={bonus.image} alt={bonus.title} width={720} height={420} className="w-full rounded-3xl" />
-                    <p>{bonus.description}</p>
-                  </div>
-                ))}
+                {bonuses.map((bonus) => {
+                  const [labelText, bonusHeading] = bonus.title.split(" — ");
+                  return (
+                    <div key={bonus.title} className="space-y-3 text-center">
+                      <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
+                        <span className="font-heading italic">{labelText}</span>
+                      </p>
+                      <h4 className="font-heading text-xl font-bold">{bonusHeading ?? bonus.title}</h4>
+                      <Image
+                        src={bonus.image}
+                        alt={bonus.title}
+                        width={720}
+                        height={420}
+                        className="mx-auto w-3/5 rounded-3xl sm:w-1/2"
+                      />
+                      <p>{bonus.description}</p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className="space-y-4 text-center">
@@ -532,19 +532,19 @@ export default function TestPage() {
         </Section>
 
         <Section bg="white">
-          <div className="mx-auto flex max-w-5xl flex-col gap-6 text-lg leading-relaxed text-espresso/80">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center text-lg leading-relaxed text-espresso/80">
             <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Ograničeno na 100 mjesta mjesečno</h2>
-            <Image src="/tim-2.png" alt="Dunja s timom" width={620} height={480} className="w-full rounded-3xl" />
-            <p>
+            <Image src="/tim-2.png" alt="Dunja s timom" width={620} height={480} className="mx-auto w-full rounded-3xl sm:w-1/2" />
+            <p className="max-w-3xl">
               Zbog mentor podrške i osobnog pristupa, Dunja i tim primaju samo 100 novih korisnica mjesečno. Nakon toga se
               prijave zatvaraju — kako bi se svakoj ženi moglo posvetiti s punom pažnjom.
             </p>
-            <p>
+            <p className="max-w-3xl">
               <em>Ako osjećaš da je ovo tvoj trenutak, ne čekaj.</em>
             </p>
-            <div className="space-y-4 text-lg text-espresso/85">
+            <div className="w-full space-y-4 text-lg text-espresso/85">
               <h3 className="font-heading text-2xl font-bold text-espresso">Za koga je ovo?</h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3 text-left">
                 {forWho.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="text-xl text-cherry">✔️</span>
@@ -554,7 +554,12 @@ export default function TestPage() {
               </ul>
             </div>
             <div className="text-center">
-              <CTAButton href="/prijava" size="lg" className="bg-cherry text-ivory hover:bg-cherry/90">
+              <CTAButton
+                href="/prijava"
+                size="lg"
+                className="bg-cherry text-ivory hover:bg-cherry/90"
+                scrollToCheckout
+              >
                 {CTA_TEXT}
               </CTAButton>
             </div>
@@ -568,10 +573,22 @@ export default function TestPage() {
             </h2>
             <div className="grid gap-4 md:grid-cols-2">
               {testimonialImages.map((src, index) => (
-                <Image key={src} src={src} alt={`Komentar polaznice ${index + 1}`} width={620} height={420} className="w-full rounded-3xl" />
+                <Image
+                  key={src}
+                  src={src}
+                  alt={`Komentar polaznice ${index + 1}`}
+                  width={620}
+                  height={420}
+                  className="mx-auto w-3/5 rounded-3xl sm:w-1/2"
+                />
               ))}
             </div>
-            <CTAButton href="/prijava" size="lg" className="mt-6 bg-cherry text-ivory hover:bg-cherry/90">
+            <CTAButton
+              href="/prijava"
+              size="lg"
+              className="mt-6 bg-cherry text-ivory hover:bg-cherry/90"
+              scrollToCheckout
+            >
               {CTA_TEXT}
             </CTAButton>
           </div>
@@ -625,7 +642,12 @@ export default function TestPage() {
                 ))}
               </ul>
               <div className="mt-8 text-center">
-                <CTAButton href="/prijava" size="lg" className="w-full max-w-md bg-cherry text-ivory hover:bg-cherry/90">
+                <CTAButton
+                  href="/prijava"
+                  size="lg"
+                  className="w-full max-w-md bg-cherry text-ivory hover:bg-cherry/90"
+                  scrollToCheckout
+                >
                   {CTA_TEXT}
                 </CTAButton>
               </div>
@@ -702,7 +724,12 @@ export default function TestPage() {
             <p className="text-lg text-espresso/80">
               <u>Pošalji ga danas.</u>
             </p>
-            <CTAButton href="/prijava" size="lg" className="bg-cherry text-ivory hover:bg-cherry/90">
+            <CTAButton
+              href="/prijava"
+              size="lg"
+              className="bg-cherry text-ivory hover:bg-cherry/90"
+              scrollToCheckout
+            >
               {CTA_TEXT}
             </CTAButton>
           </div>

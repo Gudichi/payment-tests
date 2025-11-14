@@ -120,7 +120,7 @@ export default function PaymentForm({
         </div>
 
         {orderBumps?.length ? (
-          <div className="space-y-5">
+          <div className="space-y-5 max-w-3xl mx-auto">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cherry">
               Preporučeno
             </p>
@@ -160,7 +160,7 @@ export default function PaymentForm({
                     </div>
                   </label>
                   <div className="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4 items-center sm:items-start text-left">
-                    <div className="w-full sm:w-36">
+                    <div className="w-3/5 sm:w-32 mx-auto sm:mx-0">
                       <div className="overflow-hidden rounded-xl border border-gray-200 bg-ivory">
                         <Image
                           src={bump.image}
@@ -171,7 +171,7 @@ export default function PaymentForm({
                         />
                       </div>
                     </div>
-                    <div className="flex-1 text-sm sm:text-base text-gray-700 leading-relaxed">
+                    <div className="flex-1 text-sm sm:text-base text-gray-700 leading-relaxed text-center sm:text-left">
                       {bump.description}
                     </div>
                   </div>
