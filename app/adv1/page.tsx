@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import styles from "./Adv1.module.css";
 import { Lora, Poppins } from "next/font/google";
+import { CommentsSection } from "./CommentsSection";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
@@ -276,6 +277,7 @@ export default function Adv1Page() {
           <div className={styles.articleBody}>
             <div className={styles.bodyText} dangerouslySetInnerHTML={{ __html: advertorialHtml }} />
           </div>
+          <CommentsSection />
         </article>
 
         <aside className={styles.sidebar}>
