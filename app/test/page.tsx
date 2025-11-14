@@ -577,50 +577,84 @@ export default function TestPage() {
               </dl>
             </div>
 
-            <div className="rounded-3xl border border-[#efe5d6] bg-ivory p-6 shadow-card">
+            <div className="rounded-3xl border border-[#efe0ce] bg-ivory p-6 shadow-card sm:p-8">
               <h3 className="font-heading text-2xl font-bold text-espresso">Najčešće preuziman među:</h3>
-              <ul className="mt-4 space-y-3 text-base text-espresso/85">
+              <ul className="mt-5 space-y-4 text-base text-espresso/85">
                 {mostDownloaded.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="text-lg">✔️</span>
+                  <li key={item} className="flex items-center gap-4 rounded-2xl border border-white/70 bg-white px-4 py-3 shadow-card">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cherry/10 text-cherry">✔</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-[#e1e5f0] bg-gradient-to-b from-[#f9fafc] to-white p-6 shadow-card">
-              <h3 className="font-heading text-2xl font-bold text-espresso">Što korisnice kažu</h3>
-              <p className="mt-3 text-base text-espresso/80">
+            <div className="rounded-3xl border border-[#dfe3f0] bg-white p-6 shadow-glow sm:p-8">
+              <h3 className="font-heading text-2xl font-bold text-espresso sm:text-3xl">Što korisnice kažu</h3>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-espresso/85">
                 Korisnice opisuju ovaj vodič kao elegantan, dubok i nevjerojatno primjenjiv u stvarnim situacijama. Najviše ga
                 cijene jer ne koristi “igre” – nego pomaže ženi da zadrži moć, dok mu pokazuje da je otvorena.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-[#f0e4d8] bg-ivory p-6 shadow-card">
+            <div className="rounded-3xl border border-[#f0e4d8] bg-ivory p-6 shadow-card sm:p-8">
               <h3 className="font-heading text-2xl font-bold text-espresso">Najviše hvaljeno:</h3>
-              <ul className="mt-4 grid gap-3 md:grid-cols-2">
+              <ul className="mt-5 grid gap-4 md:grid-cols-2">
                 {highlightedPraise.map((item) => (
-                  <li key={item} className="flex items-center gap-3 rounded-2xl border border-[#e8d8cb] bg-white px-4 py-3 text-espresso/90">
-                    <span className="text-lg text-cherry">✔</span>
-                    <span>{item}</span>
+                  <li
+                    key={item}
+                    className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white px-5 py-4 shadow-card"
+                  >
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cherry/10 text-cherry">✔</span>
+                    <span className="text-espresso/90">{item}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 text-center">
-                <CTAButton href="/prijava" size="lg" className="bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
+              <div className="mt-8 text-center">
+                <CTAButton href="/prijava" size="lg" className="w-full max-w-md bg-[#6A1F29] text-[#F8F5F0] hover:bg-[#52161f]">
                   {CTA_TEXT}
                 </CTAButton>
               </div>
             </div>
 
-            <div className="rounded-3xl border border-[#e5e8ef] bg-[#f8f9fb] p-6 shadow-card">
+            <div className="rounded-3xl border border-[#e1e5f0] bg-[#f8f9fb] p-6 shadow-card sm:p-8">
               <h3 className="font-heading text-3xl font-bold text-espresso">Najbolje recenzije iz Hrvatske</h3>
-              <div className="mt-4 divide-y divide-[#dfe3f0]">
-                {amazonReviews.map((review, index) => (
-                  <article key={review.name} className="py-4">
-                    <p className="font-semibold text-espresso">{review.name} — ★★★★★</p>
+              <div className="mt-6 flex flex-col gap-6 rounded-2xl border border-[#dbe0ef] bg-white p-5 sm:flex-row sm:items-center sm:justify-between">
+                <div className="text-center sm:text-left">
+                  <p className="text-4xl font-bold text-espresso">4,7 od 5</p>
+                  <p className="mt-2 text-lg text-espresso/80">na temelju 467 recenzija</p>
+                  <div className="mt-3 flex justify-center sm:justify-start">
+                    <span className="text-2xl text-[#ff9c25]">★★★★★</span>
+                  </div>
+                </div>
+                <div className="flex-1 space-y-2">
+                  {[
+                    { label: "5 zvjezdica", percent: 78 },
+                    { label: "4 zvjezdice", percent: 14 },
+                    { label: "3 zvjezdice", percent: 5 },
+                    { label: "2 zvjezdice", percent: 2 },
+                    { label: "1 zvjezdica", percent: 1 },
+                  ].map((row) => (
+                    <div key={row.label} className="flex items-center gap-3 text-sm text-espresso/80">
+                      <span className="w-24">{row.label}</span>
+                      <div className="relative h-3 flex-1 rounded-full bg-[#e6e9f3]">
+                        <div className="absolute left-0 top-0 h-full rounded-full bg-cherry" style={{ width: `${row.percent}%` }} />
+                      </div>
+                      <span className="w-10 text-right">{row.percent}%</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-6 space-y-4">
+                {amazonReviews.map((review) => (
+                  <article key={review.name} className="rounded-2xl border border-[#dfe3f0] bg-white p-5">
+                    <p className="font-semibold text-espresso">
+                      {review.name} — <span className="text-[#ff9c25]">★★★★★</span>
+                    </p>
                     <p className="mt-2 text-base text-espresso/85">{review.body}</p>
+                    <button className="mt-3 rounded-full border border-[#cbcfe0] px-4 py-1 text-sm text-espresso/70 hover:border-cherry hover:text-cherry">
+                      Korisno
+                    </button>
                   </article>
                 ))}
               </div>
