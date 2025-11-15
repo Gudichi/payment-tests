@@ -289,9 +289,9 @@ const faqs = [
 ];
 
 type Props = {
-  searchParams: Promise<{
+  searchParams: {
     payment_intent?: string;
-  }>;
+  };
 };
 
 const CTAGroup = ({
@@ -328,7 +328,7 @@ const CTAGroup = ({
 export default async function Oto1Page({ searchParams }: Props) {
   const priceId = process.env.STRIPE_OTO1_PRICE_ID;
   const secret = process.env.STRIPE_SECRET_KEY;
-  const { payment_intent } = await searchParams;
+  const { payment_intent } = searchParams;
 
   if (!priceId || !secret) {
     return (
@@ -628,7 +628,6 @@ export default async function Oto1Page({ searchParams }: Props) {
           <CTAGroup paymentIntentId={payment_intent} />
         </div>
 
-        <Section bg="white" title="Najbolje recenzije iz Hrvatske" contentClassName="space-y-6">
         <Section
           bg="white"
           align="center"

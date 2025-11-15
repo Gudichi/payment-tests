@@ -110,16 +110,15 @@ export const TimedContent = ({
         </h3>
 
         <div className="grid grid-cols-1 gap-6 md:gap-8 w-full mb-12">
-            {[...Array(3)].map((_, index) => (
-              <img
-                key={index}
-                src={`testem-pre-${index + 1}-min.png`}
-                alt={`Žena ${index + 1}`}
-              />
-            ))}
-          </div>
+          {[...Array(3)].map((_, index) => (
+            <img
+              key={index}
+              src={`testem-pre-${index + 1}-min.png`}
+              alt={`Žena ${index + 1}`}
+            />
+          ))}
         </div>
-      )}
+      </div>
 
       <div id="offer-section" className="max-w-4xl mx-auto px-4 py-8 md:py-16">
         <div className="bg-white rounded-2xl md:shadow-lg md:border border-gray-100 p-0 md:p-8">
