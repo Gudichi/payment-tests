@@ -555,7 +555,10 @@ export default function TestPage() {
               <p className="text-lg text-espresso/80">Ukupna vrijednost svega što dobivaš: 532€</p>
               <p className="text-6xl font-bold text-cherry">17€</p>
               <div className="mx-auto max-w-xl">
-                <InlineCheckout buttonLabel={CTA_TEXT} buttonClassName="w-full rounded-3xl bg-cherry px-8 py-5 text-base font-semibold uppercase tracking-wide text-ivory shadow-card transition hover:bg-cherry/90" />
+                <InlineCheckout
+                  buttonLabel={CTA_TEXT}
+                  buttonClassName="w-full rounded-3xl bg-[#1C7C7D] px-8 py-5 text-base font-semibold uppercase tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
+                />
               </div>
             </div>
           </div>
@@ -585,10 +588,9 @@ export default function TestPage() {
             </div>
             <div className="text-center">
               <CTAButton
-                href="/prijava"
+                href="/portal"
                 size="lg"
-                className="bg-cherry text-ivory hover:bg-cherry/90"
-                scrollToCheckout
+                className="bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
               >
                 {CTA_TEXT}
               </CTAButton>
@@ -614,10 +616,9 @@ export default function TestPage() {
               ))}
             </div>
             <CTAButton
-              href="/prijava"
+              href="/portal"
               size="lg"
-              className="mt-6 bg-cherry text-ivory hover:bg-cherry/90"
-              scrollToCheckout
+              className="mt-6 bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
             >
               {CTA_TEXT}
             </CTAButton>
@@ -673,10 +674,9 @@ export default function TestPage() {
               </ul>
               <div className="mt-8 text-center">
                 <CTAButton
-                  href="/prijava"
+                  href="/portal"
                   size="lg"
-                  className="w-full max-w-md bg-cherry text-ivory hover:bg-cherry/90"
-                  scrollToCheckout
+                  className="w-full max-w-md bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
                 >
                   {CTA_TEXT}
                 </CTAButton>
