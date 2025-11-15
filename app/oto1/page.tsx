@@ -60,6 +60,34 @@ const coreBenefits = [
   },
 ];
 
+const offerItems = [
+  {
+    title: "Kviz kroz 4 faze odnosa",
+    body:
+      "Dobivaš točno strukturiran kviz koji koristiš dok odnos napreduje — prva poruka, dopisivanje i dogovor izlaska, prvi dejt, prvih mjesec dana. U svakoj fazi znaš što promatrati, što pitati i kako dobiti jasan emocionalni profil muškarca.",
+  },
+  {
+    title: "Interpretacijski vodič “Zeleno, Žuto, Crveno”",
+    body: "Praktično objašnjenje kako tumačiti njegove odgovore, ponašanja i nijanse komunikacije — bez da se izgubiš u analiziranju.",
+  },
+  {
+    title: "Crveni Zastavnik™",
+    body: "12 suptilnih ponašanja koja ti jasno govore da on nije ozbiljan. Checklist za brzo donošenje odluka.",
+  },
+  {
+    title: "7 rečenica koje ga emocionalno razotkrivaju",
+    body: "Copy-paste fraze koje koristiš u razgovoru. Njegov odgovor otkriva sve.",
+  },
+  {
+    title: "Player vs. Zreo muškarac",
+    body: "Screenshot biblioteka stvarnih poruka s analizama. Znaš iz prve tko je tko.",
+  },
+  {
+    title: "5 emocionalnih rupa",
+    body: "Razlikuj emocionalno dostupnog muškarca od onog koji traži terapeuta, a ne partnericu.",
+  },
+];
+
 const bonuses = [
   {
     label: "BONUS 1",
@@ -466,60 +494,32 @@ export default async function Oto1Page({ searchParams }: Props) {
           </div>
         </Section>
 
-        <Section
-          bg="ivory"
-          align="center"
-          title="Tvoj alat za emocionalnu jasnoću prije nego ti uđe pod kožu."
-          contentClassName="space-y-10"
-        >
+        <Section bg="ivory" contentClassName="space-y-10">
           <div className="mx-auto max-w-4xl space-y-8 rounded-[32px] border border-[#efe0ce] bg-white px-6 py-12 text-left shadow-card sm:px-10">
-            <div className="space-y-4 text-center text-lg text-espresso/85">
-              <p>
-                Program <span className="font-semibold">Kompas <em className="text-cherry">Strasti™</em></span> ti daje potpuno isti dizajn,
-                tempo i osjećaj kao na glavnoj stranici — samo s novim fokusom: <strong>da znaš koga puštaš unutra.</strong>
-              </p>
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
-                Program <em className="text-cherry">Kompas Strasti™</em>
-              </p>
+            <div className="text-center">
+              <h3 className="font-heading text-3xl font-bold text-espresso">Tvoj alat za emocionalnu jasnoću prije nego ti uđe pod kožu.</h3>
             </div>
-
-            <div className="space-y-6 text-espresso/90">
-              {coreBenefits.map((item, index) => (
-                <div key={item.title} className="flex flex-col gap-3 rounded-2xl border border-ivory bg-[#fdfaf7] p-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry">
-                    <span className="font-heading italic">Korak {index + 1}</span>
-                  </p>
-                  <p className="font-heading text-2xl font-bold">{item.title}</p>
-                  <p>{item.body}</p>
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cherry">{item.value}</p>
+            <div className="space-y-5 text-espresso/90">
+              {offerItems.map((item) => (
+                <div key={item.title} className="flex gap-4 rounded-2xl border border-ivory/70 bg-[#fdfaf7] p-5">
+                  <span className="text-2xl text-cherry">✔</span>
+                  <div className="space-y-2">
+                    <p className="font-heading text-xl font-bold">{item.title}</p>
+                    <p className="text-base leading-relaxed">{item.body}</p>
+                  </div>
                 </div>
               ))}
             </div>
-
-            <div className="space-y-4 rounded-2xl border border-[#f3d9c7] bg-blush/50 p-5">
-              <p className="text-center text-base font-semibold uppercase tracking-[0.3em] text-cherry">
-                Također dobivaš i ove bonuse:
+            <div className="space-y-3 text-center text-espresso">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-espresso/70">Ukupna vrijednost: 172 €</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-cherry">
+                Kompas Strasti je samo danas tvoj za:
               </p>
-              <div className="space-y-4">
-                {bonuses.map((bonus) => (
-                  <div key={bonus.label} className="space-y-2">
-                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry">
-                      <span className="font-heading italic">{bonus.label}</span>
-                    </p>
-                    <p className="font-heading text-xl font-bold">{bonus.title}</p>
-                    <p>{bonus.body}</p>
-                    <p className="text-sm font-semibold text-cherry">{bonus.value}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-4 text-center text-lg text-espresso/85">
-              <p className="text-2xl font-semibold text-espresso">Ukupna vrijednost: 172 €</p>
-              <p>
+              <p className="text-2xl font-semibold text-espresso/70 line-through">172€</p>
+              <p className="text-6xl font-heading font-bold text-cherry">{amount}€</p>
+              <p className="text-base leading-relaxed text-espresso/85">
                 Program <em className="text-cherry">Kompas Strasti™</em> bio je samostalno u prodaji po punoj cijeni. Ali danas ga ne možeš
-                kupiti nigdje — osim ovdje. Dobivaš ga kao poklon uz tvoju narudžbu Signala Strasti™ — za samo{" "}
-                <strong>{amount} €</strong>.
+                kupiti nigdje — osim ovdje. Dobivaš ga kao poklon uz tvoju narudžbu Signala Strasti™ — za samo <strong>0.50 €</strong>.
               </p>
               <div className="space-y-3">
                 {payment_intent ? (
