@@ -149,6 +149,37 @@ const praiseHighlights = [
   "Samopouzdanje koje dolazi iz znanja, a ne maski",
 ];
 
+const ratingBreakdown = [
+  { label: "5 zvjezdica", percent: 78 },
+  { label: "4 zvjezdice", percent: 14 },
+  { label: "3 zvjezdice", percent: 5 },
+  { label: "2 zvjezdice", percent: 2 },
+  { label: "1 zvjezdica", percent: 1 },
+];
+
+const reviewList = [
+  { name: "Tihana Krmpotić", stars: "★★★★★", body: "Prvi put u životu nisam ignorirala intuiciju. Kompas mi je samo dao hrabrost da je poslušam." },
+  { name: "Sara Ugrinić", stars: "★★★★★", body: "Lik mi je na dejtu stalno gledao u mobitel. Kompas mi je već ranije dao kriterij za to — i nisam ga više vidila. Nema više toleriranja nepoštovanja." },
+  { name: "Bruna Blažević", stars: "★★★★★", body: "Napokon znam razliku između tihe nesigurnosti i tihe PRISUTNOSTI. To mi je Kompas dao." },
+  { name: "Dijana Sertić", stars: "★★★★★", body: "Nakon dva dana sam skužila da je lik emocionalno nedostupan. Prije bi mi trebalo dva mjeseca da to prihvatim." },
+  { name: "Martina Gazivoda", stars: "★★★★★", body: "Zbilja sam mislila da je on “onaj pravi”. A Kompas mi je dao checklistu… i ispalo je da sam gledala potencijal, ne realnost." },
+  { name: "Danijela Ljubić", stars: "★★★★★", body: "Kolega s posla — tihi, normalan, stabilan. Kompas mi ga je odmah prepoznao kao zelenog. Sad se više družimo i sve ide lagano." },
+  { name: "Antonija Kalađurđević", stars: "★★★★★", body: "Najveći benefit? Nema više vraćanja bivšima. Nema više “ali možda se promijenio”. Kompas me naučio da vjerujem ponašanju, ne pričama." },
+  { name: "Sara Lovrić", stars: "★★★★★", body: "Kad sam stavila njegovo ponašanje pod Kompas kategorije, shvatila sam da sam zapravo bila druga opcija. I otišla sam." },
+  { name: "Irena Petrović", stars: "★★★★★", body: "Prepoznala sam “neozbiljnog” u roku od 10 minuta. Ako bježi od jednostavnih pitanja — stvarno nije to." },
+  { name: "Lucija Mršić", stars: "★★★★★", body: "Dečko kojeg sam upoznala preko frendice ispao je totalno drugačiji nego što sam mislila. Kompas me spasio od još jedne razočaravajuće “investicije”." },
+  { name: "Andrea Novak", stars: "★★★★☆", body: "Super alat, malo sam se pogubila prvi dan, ali drugi dan mi je sve sjelo. Najbolje mi je što ti pokaže gdje gubiš vrijeme." },
+  { name: "Matea Vručina", stars: "★★★★☆", body: "Čisto koristan vodič. Možda sam očekivala još više primjera poruka, ali svejedno mi je pomoglo da filtriram jednog lika koji me mlatio hladno-toplo." },
+  { name: "Nika Vulić", stars: "★★★★☆", body: "Nisam mislila da će djelovat ovako brzo. Jedino bih voljela da ima dio o online dejtanju, ali filter za realne situacije je vrh." },
+  { name: "Ivana Ružičić", stars: "★★★☆☆", body: "Nije mi sve savršeno sjelo odmah, ali nakon par dana primjene skužila sam neke stvari o sebi i o tome zašto biram krive. Iskreno, pomoglo mi je više nego što sam mislila." },
+  { name: "Lea Soldo", stars: "★★★★★", body: "Kompas me naučio da muškarac koji želi — pokaže da želi. Bez nagađanja." },
+  { name: "Josipa Pleić", stars: "★★★★★", body: "Vidila sam razliku već prvi tjedan. Jedan lik se trudio, drugi nije. I to je to." },
+  { name: "Ena Vuk", stars: "★★★★★", body: "Nakon godina lutanja, osjećam se kao da sam se vratila sebi. Nisam više dostupna svakome." },
+  { name: "Mirna Jakšić", stars: "★★★★★", body: "Upoznala sam normalnog dečka na busnoj. Kompas mi je dao sigurnost da ga ne odbacim iz impulsa." },
+  { name: "Monika Barišić", stars: "★★★★★", body: "Toliko godina sam davala šansu “zabavnim”, a ignorirala stabilne. Kompas me osvijestio." },
+  { name: "Tea Jakić", stars: "★★★★★", body: "Najbolja stvar mi je što nema igrica. Samo realnost. I zbog toga sam danas s muškarcem koji zna što želi." },
+];
+
 
 type Props = {
   searchParams: Promise<{
@@ -396,16 +427,20 @@ export default async function Oto1Page({ searchParams }: Props) {
           title="Tvoj alat za emocionalnu jasnoću prije nego ti uđe pod kožu."
           contentClassName="space-y-10"
         >
-          <p className="text-lg text-espresso/85">
-            Program <span className="font-semibold">Kompas <em className="text-cherry">Strasti™</em></span> ti daje potpuno
-            isti dizajn, tempo i osjećaj kao na glavnoj stranici — samo s novim fokusom: <strong>da znaš koga puštaš
-            unutra.</strong>
-          </p>
-          <div className="mx-auto max-w-3xl space-y-6 text-left text-espresso/90">
-            {coreBenefits.map((item, index) => (
-              <div key={item.title} className="flex gap-4">
-                <span className="text-2xl text-cherry">✔</span>
-                <div className="space-y-2">
+          <div className="mx-auto max-w-4xl space-y-8 rounded-[32px] border border-[#efe0ce] bg-white px-6 py-12 text-left shadow-card sm:px-10">
+            <div className="space-y-4 text-center text-lg text-espresso/85">
+              <p>
+                Program <span className="font-semibold">Kompas <em className="text-cherry">Strasti™</em></span> ti daje potpuno isti dizajn,
+                tempo i osjećaj kao na glavnoj stranici — samo s novim fokusom: <strong>da znaš koga puštaš unutra.</strong>
+              </p>
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
+                Program <em className="text-cherry">Kompas Strasti™</em>
+              </p>
+            </div>
+
+            <div className="space-y-6 text-espresso/90">
+              {coreBenefits.map((item, index) => (
+                <div key={item.title} className="flex flex-col gap-3 rounded-2xl border border-ivory bg-[#fdfaf7] p-5">
                   <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry">
                     <span className="font-heading italic">Korak {index + 1}</span>
                   </p>
@@ -413,59 +448,63 @@ export default async function Oto1Page({ searchParams }: Props) {
                   <p>{item.body}</p>
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cherry">{item.value}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-          <div className="mx-auto max-w-3xl space-y-6 text-left text-espresso/90">
-            <p className="text-center text-base font-semibold uppercase tracking-[0.3em] text-cherry">
-              Također dobivaš i ove bonuse:
-            </p>
-            {bonuses.map((bonus) => (
-              <div key={bonus.label} className="space-y-2 rounded-none">
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry">
-                  <span className="font-heading italic">{bonus.label}</span>
-                </p>
-                <p className="font-heading text-xl font-bold">{bonus.title}</p>
-                <p>{bonus.body}</p>
-                <p className="text-sm font-semibold text-cherry">{bonus.value}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mx-auto max-w-3xl space-y-4 text-center text-lg text-espresso/85">
-            <p className="font-semibold">Ukupna vrijednost: 172 €</p>
-            <p>
-              Program <em className="text-cherry">Kompas Strasti™</em> bio je samostalno u prodaji po punoj cijeni. Ali danas ga ne možeš
-              kupiti nigdje — osim ovdje. Dobivaš ga kao poklon uz tvoju narudžbu Signala Strasti™ — za samo{" "}
-              <strong>{amount} €</strong>.
-            </p>
-            <div className="space-y-3">
-              {payment_intent ? (
-                <OneClickUpsellButton
-                  paymentIntentId={payment_intent}
-                  label={PRIMARY_LABEL}
-                  className="w-full rounded-3xl bg-[#1C7C7D] px-8 py-5 text-base font-semibold uppercase tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
-                />
-              ) : (
-                <CTAButton
-                  href="/portal"
-                  size="lg"
-                  className="w-full rounded-3xl bg-[#1C7C7D] px-8 py-5 text-base font-semibold uppercase tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
-                >
-                  {PRIMARY_LABEL}
-                </CTAButton>
-              )}
-              <CTAButton
-                href="/oto1-no"
-                size="lg"
-                className="w-full rounded-3xl border border-[#6A1F29] bg-transparent px-8 py-5 text-base font-semibold uppercase tracking-wide text-[#6A1F29] transition hover:bg-[#6A1F29]/5"
-              >
-                {DECLINE_LABEL}
-              </CTAButton>
+              ))}
             </div>
-            <p className="text-sm italic text-espresso/70">
-              Ova stranica se prikazuje samo jednom. Ako je zatvoriš, više nećeš moći pristupiti programu. Ni kasnije. Ni
-              sutra. Ni sljedeći tjedan.
-            </p>
+
+            <div className="space-y-4 rounded-2xl border border-[#f3d9c7] bg-blush/50 p-5">
+              <p className="text-center text-base font-semibold uppercase tracking-[0.3em] text-cherry">
+                Također dobivaš i ove bonuse:
+              </p>
+              <div className="space-y-4">
+                {bonuses.map((bonus) => (
+                  <div key={bonus.label} className="space-y-2">
+                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry">
+                      <span className="font-heading italic">{bonus.label}</span>
+                    </p>
+                    <p className="font-heading text-xl font-bold">{bonus.title}</p>
+                    <p>{bonus.body}</p>
+                    <p className="text-sm font-semibold text-cherry">{bonus.value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-4 text-center text-lg text-espresso/85">
+              <p className="text-2xl font-semibold text-espresso">Ukupna vrijednost: 172 €</p>
+              <p>
+                Program <em className="text-cherry">Kompas Strasti™</em> bio je samostalno u prodaji po punoj cijeni. Ali danas ga ne možeš
+                kupiti nigdje — osim ovdje. Dobivaš ga kao poklon uz tvoju narudžbu Signala Strasti™ — za samo{" "}
+                <strong>{amount} €</strong>.
+              </p>
+              <div className="space-y-3">
+                {payment_intent ? (
+                  <OneClickUpsellButton
+                    paymentIntentId={payment_intent}
+                    label={PRIMARY_LABEL}
+                    className="w-full rounded-3xl bg-[#1C7C7D] px-8 py-5 text-base font-semibold uppercase tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
+                  />
+                ) : (
+                  <CTAButton
+                    href="/portal"
+                    size="lg"
+                    className="w-full rounded-3xl bg-[#1C7C7D] px-8 py-5 text-base font-semibold uppercase tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
+                  >
+                    {PRIMARY_LABEL}
+                  </CTAButton>
+                )}
+                <CTAButton
+                  href="/oto1-no"
+                  size="lg"
+                  className="w-full rounded-3xl border border-[#6A1F29] bg-transparent px-8 py-5 text-base font-semibold uppercase tracking-wide text-[#6A1F29] transition hover:bg-[#6A1F29]/5"
+                >
+                  {DECLINE_LABEL}
+                </CTAButton>
+              </div>
+              <p className="text-sm italic text-espresso/70">
+                Ova stranica se prikazuje samo jednom. Ako je zatvoriš, više nećeš moći pristupiti programu. Ni kasnije. Ni
+                sutra. Ni sljedeći tjedan.
+              </p>
+            </div>
           </div>
         </Section>
 
@@ -546,6 +585,56 @@ export default async function Oto1Page({ searchParams }: Props) {
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-[#e1e5f0] bg-[#f8f9fb] p-6 shadow-card sm:p-8">
+              <h3 className="font-heading text-3xl font-bold text-espresso">Najbolje recenzije iz Hrvatske</h3>
+              <div className="mt-6 flex flex-col gap-6 rounded-2xl border border-[#dbe0ef] bg-white p-5 sm:flex-row sm:items-center sm:justify-between">
+                <div className="text-center sm:text-left">
+                  <p className="text-4xl font-bold text-espresso">4,8 od 5</p>
+                  <p className="mt-2 text-lg text-espresso/80">na temelju 467 recenzija</p>
+                  <div className="mt-3 flex justify-center text-[#ff9c25] sm:justify-start">
+                    <span className="text-2xl">★★★★★</span>
+                  </div>
+                </div>
+                <div className="flex-1 space-y-2">
+                  {ratingBreakdown.map((row) => (
+                    <div key={row.label} className="flex items-center gap-3 text-sm text-espresso/80">
+                      <button
+                        type="button"
+                        className="text-left text-cherry underline underline-offset-2 transition hover:text-cherry/70"
+                      >
+                        {row.label}
+                      </button>
+                      <div className="h-2 flex-1 rounded-full bg-[#ebeef7]">
+                        <div className="h-2 rounded-full bg-[#f4c15b]" style={{ width: `${row.percent}%` }} />
+                      </div>
+                      <span className="w-10 text-right">{row.percent}%</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-8 grid gap-4">
+                {reviewList.map((review) => (
+                  <article
+                    key={review.name}
+                    className="rounded-2xl border border-[#e6eaf5] bg-white/90 p-5 text-left shadow-card"
+                  >
+                    <p className="font-heading text-lg font-bold text-espresso">
+                      {review.name} — <span className="text-[#ff9c25]">{review.stars}</span>
+                    </p>
+                    <p className="mt-3 text-base leading-relaxed text-espresso/85">{review.body}</p>
+                    <div className="mt-4">
+                      <button
+                        type="button"
+                        className="rounded-full border border-[#e1e5f2] px-4 py-2 text-sm font-semibold text-espresso/80 transition hover:border-cherry hover:text-cherry"
+                      >
+                        Korisno
+                      </button>
+                    </div>
+                  </article>
+                ))}
               </div>
             </div>
           </div>
