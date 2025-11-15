@@ -564,7 +564,7 @@ export default function TestPage() {
           </div>
         </Section>
 
-        <Section bg="white">
+        <Section bg="white" id="checkout-section">
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center text-lg leading-relaxed text-espresso/80">
             <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Ograničeno na 100 mjesta mjesečno</h2>
             <Image src="/tim-2.png" alt="Dunja s timom" width={620} height={480} className="mx-auto w-full rounded-3xl sm:w-1/2" />
@@ -588,7 +588,7 @@ export default function TestPage() {
             </div>
             <div className="text-center">
               <CTAButton
-                href="/portal"
+                href="#checkout-section"
                 size="lg"
                 className="bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
                 scrollToCheckout
@@ -617,7 +617,7 @@ export default function TestPage() {
               ))}
             </div>
             <CTAButton
-              href="/portal"
+              href="#checkout-section"
               size="lg"
               className="mt-6 bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
               scrollToCheckout
@@ -676,7 +676,7 @@ export default function TestPage() {
               </ul>
               <div className="mt-8 text-center">
                 <CTAButton
-                  href="/portal"
+                  href="#checkout-section"
                   size="lg"
                   className="w-full max-w-md bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
                   scrollToCheckout

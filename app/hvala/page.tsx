@@ -55,9 +55,9 @@ const processPaymentIntent = async (paymentIntentId: string) => {
 export default async function CompletionPage({
   searchParams,
 }: {
-  searchParams: Promise<SearchParams>;
+  searchParams: SearchParams;
 }) {
-  const { payment_intent, redirect_status } = await searchParams;
+  const { payment_intent, redirect_status } = searchParams;
   let successful = false;
   let paymentIntent = null;
 
@@ -66,7 +66,7 @@ export default async function CompletionPage({
       paymentIntent = await processPaymentIntent(payment_intent);
       successful = true;
       if (paymentIntent?.id) {
-        redirect(`/oto?payment_intent=${paymentIntent.id}`);
+        redirect(`/oto1?payment_intent=${paymentIntent.id}`);
       }
     } catch (error) {
       console.error("Greška kod obrade plaćanja:", error);
