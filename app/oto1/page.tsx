@@ -45,21 +45,6 @@ const stepItems = [
 
 
 
-const coreBenefits = [
-  {
-    title: "Kviz kroz 4 faze odnosa",
-    body:
-      "Dobivaš točno strukturiran kviz koji koristiš dok odnos napreduje — prva poruka, dopisivanje i dogovor izlaska, prvi dejt, prvih mjesec dana. U svakoj fazi znaš što promatrati, što pitati i kako dobiti jasan emocionalni profil muškarca.",
-    value: "U zasebnoj prodaji: 49 €",
-  },
-  {
-    title: "Interpretacijski vodič “Zeleno, Žuto, Crveno”",
-    body:
-      "Praktično objašnjenje kako tumačiti njegove odgovore, ponašanja i nijanse komunikacije — bez da se izgubiš u analiziranju.",
-    value: "U zasebnoj prodaji: 39 €",
-  },
-];
-
 const offerItems = [
   {
     title: "Kviz kroz 4 faze odnosa",
@@ -70,48 +55,24 @@ const offerItems = [
     title: "Interpretacijski vodič “Zeleno, Žuto, Crveno”",
     body: "Praktično objašnjenje kako tumačiti njegove odgovore, ponašanja i nijanse komunikacije — bez da se izgubiš u analiziranju.",
   },
-  {
-    title: "Crveni Zastavnik™",
-    body: "12 suptilnih ponašanja koja ti jasno govore da on nije ozbiljan. Checklist za brzo donošenje odluka.",
-  },
-  {
-    title: "7 rečenica koje ga emocionalno razotkrivaju",
-    body: "Copy-paste fraze koje koristiš u razgovoru. Njegov odgovor otkriva sve.",
-  },
-  {
-    title: "Player vs. Zreo muškarac",
-    body: "Screenshot biblioteka stvarnih poruka s analizama. Znaš iz prve tko je tko.",
-  },
-  {
-    title: "5 emocionalnih rupa",
-    body: "Razlikuj emocionalno dostupnog muškarca od onog koji traži terapeuta, a ne partnericu.",
-  },
 ];
 
 const bonuses = [
   {
-    label: "BONUS 1",
-    title: "Crveni Zastavnik™",
+    title: "Bonus 1 - Crveni Zastavnik™",
     body: "12 suptilnih ponašanja koja ti jasno govore da on nije ozbiljan. Checklist za brzo donošenje odluka.",
-    value: "Vrijednost: 17 €",
   },
   {
-    label: "BONUS 2",
-    title: "7 rečenica koje ga emocionalno razotkrivaju",
+    title: "Bonus 2 - 7 rečenica koje ga emocionalno razotkrivaju",
     body: "Copy-paste fraze koje koristiš u razgovoru. Njegov odgovor otkriva sve.",
-    value: "Vrijednost: 21 €",
   },
   {
-    label: "BONUS 3",
-    title: "Player vs. Zreo muškarac",
+    title: "Bonus 3 - Player vs. Zreo muškarac",
     body: "Screenshot biblioteka stvarnih poruka s analizama. Znaš iz prve tko je tko.",
-    value: "Vrijednost: 27 €",
   },
   {
-    label: "BONUS 4",
-    title: "5 emocionalnih rupa",
+    title: "Bonus 4 - 5 emocionalnih rupa",
     body: "Razlikuj emocionalno dostupnog muškarca od onog koji traži terapeuta, a ne partnericu.",
-    value: "Vrijednost: 19 €",
   },
 ];
 
@@ -224,6 +185,108 @@ const midTestimonials = [
   { name: "Katarina Mišetić", stars: "★★★★★", body: "Mislila sam da pretjerujem kad mi se javljao svakih par dana… ali Kompas je to odmah označio kao nezainteresiranog. I pogodilo je. Nakon toga sam dala šansu tipu koji je radio sve “zelene” korake — inicijativa, poštovanje, jasnoća. Sad smo stvarno zajedno." },
 ];
 
+const faqs = [
+  {
+    question: "Za koliko dana mogu očekivati jasnu sliku o njemu?",
+    answer:
+      "Većina žena dobije vrlo jasnu procjenu u 3–7 dana, jer Kompas pokazuje konkretna ponašanja na koja treba paziti — bez nagađanja.",
+  },
+  {
+    question: "Pomaže li Kompas ako sam već “zagrijana” za njega?",
+    answer:
+      "Da, možda čak i više. Kad smo emotivne, lako previdimo signale. Kompas daje hladnu, objektivnu jasnoću u trenucima kad si ti subjektivna.",
+  },
+  {
+    question: "Mogu li pogriješiti u procjeni?",
+    answer:
+      "Ne možeš “pokvariti” procjenu. Čak i ako se dvoumiš, Kompas traži ponašanja, a ne “feelinge”. Ako muškarac ima zdrave namjere — to se vidi.",
+  },
+  {
+    question: "Što ako me on već neko vrijeme zbunjuje?",
+    answer:
+      "To je idealna situacija za Kompas. U samo par dana shvatit ćeš je li njegovo ponašanje dosljedno ili samo “povremeno toplo”.",
+  },
+  {
+    question: "Je li Kompas dobar ako sam ponovno “u igri” nakon razvoda?",
+    answer:
+      "Da — mnoge žene koriste Kompas upravo nakon dužih pauza jer žele izbjeći istu grešku. Vodi te kroz jasne, jednostavne muške obrasce.",
+  },
+  {
+    question: "Je li ovo predetaljno? Nemam vremena za komplikacije.",
+    answer:
+      "Kompas je napravljen da radi i ako imaš 10 sekundi dnevno. Samo prati male okidače — sve ostalo aplikacija odradi za tebe.",
+  },
+  {
+    question: "Mogu li koristiti Kompas i ako upoznajem muškarce uživo, a ne preko aplikacija?",
+    answer:
+      "Naravno. Kompas je dizajniran za stvarne situacije — kafić, posao, teretana, šetnja… upravo tu najlakše vidiš njegove namjere.",
+  },
+  {
+    question: "Što ako on isprva djeluje savršeno, ali osjećam čudnu prazninu?",
+    answer:
+      "Kompas ti pomaže razlikovati prave kvalitete od “scenskog nastupa”. Muškarac koji je ozbiljan to pokaže kroz mala, konzistentna ponašanja.",
+  },
+  {
+    question: "Je li ovo manipulacija?",
+    answer:
+      "Ne. Kompas te uči prepoznati njegove namjere, ne utjecati na njih. Ti samo donosiš odluke iz mjesta jasnoće, umjesto iz straha ili nade.",
+  },
+  {
+    question: "Može li mi pomoći ako sam kronično birala pogrešne muškarce?",
+    answer:
+      "Da — to je zapravo najčešći razlog zašto žene uzimaju Kompas. Prestaneš birati po emociji, počneš birati po stvarnim ponašanjima.",
+  },
+  {
+    question: "Mogu li koristiti Kompas s muškarcem za kojeg još nisam sigurna da mi se sviđa?",
+    answer:
+      "Apsolutno. Kompas te štiti baš u tim situacijama “vidit ćemo”. Brzo pokaže je li vrijedno ulaganja tvog vremena, energije i emocija.",
+  },
+  {
+    question: "Kako da znam da nisam prekritična?",
+    answer:
+      "Kompas nije lista nerealnih kriterija. To su minimalni standardi koje ostvaruju svi emocionalno zreli muškarci.",
+  },
+  {
+    question: "Pomaže li i ako je on malo zatvoren ili sramežljiv?",
+    answer:
+      "Da — Kompas razlikuje tihe, stabilne muškarce od emocionalno nedostupnih. To je ogromna razlika koju mnoge žene prije nisu vidjele.",
+  },
+  {
+    question: "Što ako on ima puno obaveza i ne može biti stalno dostupan?",
+    answer:
+      "Zato postoji Kompas — ne gleda količinu vremena, nego kvalitetu ponašanja. Zauzet muškarac može biti vrlo jasan i vrlo ozbiljan.",
+  },
+  {
+    question: "Hoće li Kompas “odbaciti” muškarce prerano?",
+    answer:
+      "Ne, upravo suprotno. Kompas ti pomaže da ne odbaciš prave, nego da prestaneš držati vrata otvorena za neozbiljne.",
+  },
+  {
+    question: "Je li prikladan i za cure u ranim 20-ima?",
+    answer:
+      "Da, jer postavlja temelje zdravog odabira prije nego upadneš u godine lutanja. Što prije — to bolje.",
+  },
+  {
+    question: "Mogu li ga koristiti i ako sam već u nekoj “situaciji shipu”?",
+    answer:
+      "Da. Kompas vrlo brzo pokazuje ide li to prema vezi ili prema još jednom emocionalnom zamoru.",
+  },
+  {
+    question: "Što ako me je strah da ću ostati sama ako “otpustim” pogrešnog?",
+    answer:
+      "To je najčešći osjećaj — i najgori savjetnik. Kompas ti daje do znanja kad puštaš nešto što ti nikako ne bi donijelo sreću.",
+  },
+  {
+    question: "Pomaže li Kompas ako sam već previše emocionalno uključena?",
+    answer:
+      "Da — zato što procjenjuješ njegovo ponašanje, a ne svoj osjećaj. To umiri glavu i zaustavi idealiziranje.",
+  },
+  {
+    question: "Mogu li stvarno dobiti rezultate u samo tjedan dana?",
+    answer:
+      "Da — jer ne mijenjaš ti sebe, nego samo gledaš ono što je oduvijek tu: njegove navike, ritam, interes, inicijativu i konzistentnost.",
+  },
+];
 
 type Props = {
   searchParams: Promise<{
@@ -306,7 +369,6 @@ export default async function Oto1Page({ searchParams }: Props) {
               <strong>Kompas Strasti™</strong> ti daje jasan filter da u prvih 7 dana otkriješ želi li on zapravo tebe —
               ili se samo zabavlja.
             </p>
-            <CTAGroup paymentIntentId={payment_intent} />
           </div>
         </section>
 
@@ -498,6 +560,7 @@ export default async function Oto1Page({ searchParams }: Props) {
           <div className="mx-auto max-w-4xl space-y-8 rounded-[32px] border border-[#efe0ce] bg-white px-6 py-12 text-left shadow-card sm:px-10">
             <div className="text-center">
               <h3 className="font-heading text-3xl font-bold text-espresso">Tvoj alat za emocionalnu jasnoću prije nego ti uđe pod kožu.</h3>
+              <p className="mt-3 text-sm font-semibold uppercase tracking-[0.35em] text-cherry">Program Kompas Strasti</p>
             </div>
             <div className="space-y-5 text-espresso/90">
               {offerItems.map((item) => (
@@ -509,10 +572,19 @@ export default async function Oto1Page({ searchParams }: Props) {
                   </div>
                 </div>
               ))}
+              {bonuses.map((item) => (
+                <div key={item.title} className="flex gap-4 rounded-2xl border border-ivory/70 bg-white p-5">
+                  <span className="text-2xl text-cherry">✔</span>
+                  <div className="space-y-2">
+                    <p className="font-heading text-xl font-bold">{item.title}</p>
+                    <p className="text-base leading-relaxed">{item.body}</p>
+                  </div>
+                </div>
+              ))}
             </div>
             <div className="space-y-3 text-center text-espresso">
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-espresso/70">Ukupna vrijednost: 172 €</p>
-              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-cherry">
+              <p className="text-base font-semibold uppercase tracking-[0.35em] text-espresso">
                 Kompas Strasti je samo danas tvoj za:
               </p>
               <p className="text-2xl font-semibold text-espresso/70 line-through">172€</p>
@@ -552,7 +624,11 @@ export default async function Oto1Page({ searchParams }: Props) {
             </div>
           </div>
         </Section>
+        <div className="text-center">
+          <CTAGroup paymentIntentId={payment_intent} />
+        </div>
 
+        <Section bg="white" title="Najbolje recenzije iz Hrvatske" contentClassName="space-y-6">
         <Section
           bg="white"
           align="center"
@@ -578,6 +654,9 @@ export default async function Oto1Page({ searchParams }: Props) {
             ))}
           </ul>
         </Section>
+        <div className="text-center">
+          <CTAGroup paymentIntentId={payment_intent} />
+        </div>
 
         <Section
           bg="white"
@@ -607,6 +686,9 @@ export default async function Oto1Page({ searchParams }: Props) {
             ))}
           </div>
         </Section>
+        <div className="text-center">
+          <CTAGroup paymentIntentId={payment_intent} />
+        </div>
 
         <Section bg="white">
           <div className="mx-auto max-w-4xl space-y-8">
@@ -663,7 +745,6 @@ export default async function Oto1Page({ searchParams }: Props) {
             </div>
 
             <div className="rounded-3xl border border-[#e1e5f0] bg-[#f8f9fb] p-6 shadow-card sm:p-8">
-              <h3 className="font-heading text-3xl font-bold text-espresso">Najbolje recenzije iz Hrvatske</h3>
               <div className="mt-6 flex flex-col gap-6 rounded-2xl border border-[#dbe0ef] bg-white p-5 sm:flex-row sm:items-center sm:justify-between">
                 <div className="text-center sm:text-left">
                   <p className="text-4xl font-bold text-espresso">4,8 od 5</p>
@@ -713,12 +794,34 @@ export default async function Oto1Page({ searchParams }: Props) {
             </div>
           </div>
         </Section>
+        <div className="text-center">
+          <CTAGroup paymentIntentId={payment_intent} />
+        </div>
+
+        <Section
+          bg="white"
+          title="Najčešća pitanja"
+          contentClassName="mx-auto max-w-4xl space-y-4 text-left"
+        >
+          <div className="space-y-4 text-espresso/90">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="rounded-2xl border border-[#ebe5dc] bg-ivory/60 p-4 shadow-card">
+                <p className="font-heading text-xl font-bold text-espresso">{faq.question}</p>
+                <p className="mt-2 text-base leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+        <div className="text-center">
+          <CTAGroup paymentIntentId={payment_intent} />
+        </div>
 
         <Section bg="ivory" contentClassName="space-y-6 text-center">
-          <p className="text-lg text-espresso/90">
-            ✔️ Privukla si njegov pogled. ✔️ Pokrenula si njegovu inicijativu.{" "}
-            <strong>❌ Ali ako ne znaš tko je on</strong> — možeš opet izgubiti sebe.
-          </p>
+          <ul className="mx-auto flex max-w-3xl flex-col gap-3 text-left text-lg text-espresso/90 sm:flex-row sm:text-center">
+            <li>✔️ Privukla si njegov pogled.</li>
+            <li>✔️ Pokrenula si njegovu inicijativu.</li>
+            <li className="text-cherry">❌ Ali ako ne znaš tko je on — možeš opet izgubiti sebe.</li>
+          </ul>
           <CTAGroup paymentIntentId={payment_intent} />
         </Section>
       </main>
