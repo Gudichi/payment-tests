@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Stripe from "stripe";
-import { redirect } from "next/navigation";
 import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { OneClickUpsellButton } from "@/components/one-click-upsell";
@@ -94,16 +93,22 @@ const CTAGroup = ({
   primaryLabel = PRIMARY_LABEL,
   secondaryLabel = DECLINE_LABEL,
 }: {
-  paymentIntentId: string;
+  paymentIntentId?: string;
   primaryLabel?: string;
   secondaryLabel?: string;
 }) => (
   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
-    <OneClickUpsellButton
-      paymentIntentId={paymentIntentId}
-      label={primaryLabel}
-      className="bg-cherry hover:bg-cherry/90 text-ivory"
-    />
+    {paymentIntentId ? (
+      <OneClickUpsellButton
+        paymentIntentId={paymentIntentId}
+        label={primaryLabel}
+        className="bg-cherry hover:bg-cherry/90 text-ivory"
+      />
+    ) : (
+      <CTAButton href="/portal" size="lg" className="bg-cherry text-ivory">
+        {primaryLabel}
+      </CTAButton>
+    )}
     <CTAButton
       href="/oto1-no"
       size="lg"
@@ -118,10 +123,6 @@ export default async function Oto1Page({ searchParams }: Props) {
   const priceId = process.env.STRIPE_OTO1_PRICE_ID;
   const secret = process.env.STRIPE_SECRET_KEY;
   const { payment_intent } = await searchParams;
-
-  if (!payment_intent) {
-    redirect("/portal");
-  }
 
   if (!priceId || !secret) {
     return (
@@ -327,4 +328,3 @@ export default async function Oto1Page({ searchParams }: Props) {
     </div>
   );
 }
-
