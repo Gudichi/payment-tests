@@ -180,6 +180,22 @@ const reviewList = [
   { name: "Tea Jakić", stars: "★★★★★", body: "Najbolja stvar mi je što nema igrica. Samo realnost. I zbog toga sam danas s muškarcem koji zna što želi." },
 ];
 
+const heroTestimonials = [
+  { name: "Kristina Šarunić", stars: "★★★★★", body: "Kompas mi je doslovno spasija tri mjeseca života. Bila sam uvjerena da je jedan lik “ozbiljan” jer se fin ponaša… a Kompas mi ga označi kao žuti. Tjedan dana kasnije pokazalo se sve — neodgovorene poruke, toplo-hladno. Da nisam imala Kompas, opet bi izgubila vrijeme i samu sebe." },
+  { name: "Marina Horvat", stars: "★★★★★", body: "Nakon dvije godine izlazaka i razočaranja, mislila sam da je problem u meni. Kompas mi je dao ono što sam izgubila — mir. Upoznala sam dečka u teretani, i u prva 3 dana sam vidjela po njegovim “signalima” da je zapravo stabilan i siguran. Sad smo tri mjeseca zajedno… prvi put osjećam da sam izabrala dobro." },
+  { name: "Jelena Živković", stars: "★★★★★", body: "Kompas mi je otvorio oči u vezi jednog momka koji je bio “previše dobar da bi bio istinit”. Sve je djelovalo super, ali nešto nije štimalo. Odgovara sporadično, nestaje pa se vraća… Kompas ga je odmah stavio u kategoriju koju nikad više ne želim. I iskreno — osjećam olakšanje, kao da imam štit." },
+  { name: "Ivona Tolić", stars: "★★★★★", body: "Prepoznala sam jednog kvalitetnog muškarca doslovno prvi tjedan. Nije bio najglasniji, ni najpametniji u društvu — ali sve što je radio poklapalo se s “zelenim” kriterijima. Da nisam imala Kompas, vjerovatno bih ga skroz preskočila. Sad mi je prvi put u životu lijepo biti birana… bez igrica." },
+  { name: "Ana-Marija Prlić", stars: "★★★★★", body: "Onaj osjećaj kad shvatiš da si godinama normalizirala mrvice… Kompas mi je doslovno pokazao koliko sam dugo pristajala na polu-emocionalne muškarce. I prvi put kad sam ga koristila, točno sam znala s kim trebam prekinuti kontakt. Nema više lutanja. Prvi put osjećam samopoštovanje u odlukama." },
+];
+
+const midTestimonials = [
+  { name: "Maja Vukelić", stars: "★★★★★", body: "Izlazila sam s likom koji je bio “zabavan”… ali nije bio tu kad treba. Kompas mi je dao jasnoću u tri dana — kad sam vidila kako se ponaša u realnim situacijama, bilo mi je jasno da je nezreo. Nisam plakala ovaj put. Samo sam pustila — i nastavila dalje sa smješkom." },
+  { name: "Tea Pavlinić", stars: "★★★★★", body: "Frajer s kojim sam se dopisivala tjednima nikad nije konkretizirao susret. Kompas mi je dao kriterije i kroz to sam skužila da je samo ubijao vrijeme. Odma sam ga makla. Tjedan poslije upoznala jednog totalno normalnog, prisutnog i toplog lika u kafiću… i sve ide prirodno." },
+  { name: "Ivana Herceg", stars: "★★★★★", body: "Nakon razvoda sam imala osjećaj kao da ne znam više procijeniti muškarca. Kompas mi je dao mir. Konkretne situacije, konkretni kriteriji. Jednom liku sam već na prvom dejtu znala da nije to — ne zna slušat, priča samo o sebi, izbjegava pitanja. Nisam se opet zavarala." },
+  { name: "Paula Mihaljević", stars: "★★★★★", body: "Najbolji dejting alat koji sam ikad koristila. Bez glume. Bez “pravila igara”. Samo stvarne crvene zastavice koje prije nisam tila vidit. Kompas me naučio da ne moram čekati tri mjeseca da shvatim kakav je — nego mogu znat u par dana." },
+  { name: "Katarina Mišetić", stars: "★★★★★", body: "Mislila sam da pretjerujem kad mi se javljao svakih par dana… ali Kompas je to odmah označio kao nezainteresiranog. I pogodilo je. Nakon toga sam dala šansu tipu koji je radio sve “zelene” korake — inicijativa, poštovanje, jasnoća. Sad smo stvarno zajedno." },
+];
+
 
 type Props = {
   searchParams: Promise<{
@@ -424,6 +440,35 @@ export default async function Oto1Page({ searchParams }: Props) {
         <Section
           bg="ivory"
           align="center"
+          title="Dojmovi polaznica s prošlog programa možeš vidjeti ispod"
+          contentClassName="space-y-6"
+        >
+          <div className="grid gap-4 md:grid-cols-2">
+            {heroTestimonials.map((review) => (
+              <article
+                key={review.name}
+                className="rounded-3xl border border-[#e6eaf5] bg-white p-6 text-left shadow-card"
+              >
+                <p className="font-heading text-lg font-bold text-espresso">
+                  {review.name} — <span className="text-[#ff9c25]">{review.stars}</span>
+                </p>
+                <p className="mt-3 text-base leading-relaxed text-espresso/85">{review.body}</p>
+                <div className="mt-4">
+                  <button
+                    type="button"
+                    className="rounded-full border border-[#e1e5f2] px-4 py-2 text-sm font-semibold text-espresso/80 transition hover:border-cherry hover:text-cherry"
+                  >
+                    Korisno
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Section>
+
+        <Section
+          bg="ivory"
+          align="center"
           title="Tvoj alat za emocionalnu jasnoću prije nego ti uđe pod kožu."
           contentClassName="space-y-10"
         >
@@ -532,6 +577,35 @@ export default async function Oto1Page({ searchParams }: Props) {
               </li>
             ))}
           </ul>
+        </Section>
+
+        <Section
+          bg="white"
+          align="center"
+          title="Evo još neki od dojmova polaznica s prošlog programa…"
+          contentClassName="space-y-6"
+        >
+          <div className="grid gap-4 md:grid-cols-2">
+            {midTestimonials.map((review) => (
+              <article
+                key={review.name}
+                className="rounded-3xl border border-[#e6eaf5] bg-ivory/60 p-6 text-left shadow-card"
+              >
+                <p className="font-heading text-lg font-bold text-espresso">
+                  {review.name} — <span className="text-[#ff9c25]">{review.stars}</span>
+                </p>
+                <p className="mt-3 text-base leading-relaxed text-espresso/85">{review.body}</p>
+                <div className="mt-4">
+                  <button
+                    type="button"
+                    className="rounded-full border border-[#e1e5f2] px-4 py-2 text-sm font-semibold text-espresso/80 transition hover:border-cherry hover:text-cherry"
+                  >
+                    Korisno
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
         </Section>
 
         <Section bg="white">
