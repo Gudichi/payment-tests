@@ -303,7 +303,7 @@ const CTAGroup = ({
   primaryLabel?: string;
   secondaryLabel?: string;
 }) => (
-  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+  <div className="flex flex-col items-center gap-4">
     {paymentIntentId ? (
       <OneClickUpsellButton
         paymentIntentId={paymentIntentId}
@@ -624,10 +624,6 @@ export default async function Oto1Page({ searchParams }: Props) {
             </div>
           </div>
         </Section>
-        <div className="text-center">
-          <CTAGroup paymentIntentId={payment_intent} />
-        </div>
-
         <Section
           bg="white"
           align="center"
@@ -797,18 +793,20 @@ export default async function Oto1Page({ searchParams }: Props) {
           <CTAGroup paymentIntentId={payment_intent} />
         </div>
 
-        <Section
-          bg="white"
-          title="Najčešća pitanja"
-          contentClassName="mx-auto max-w-4xl space-y-4 text-left"
-        >
-          <div className="space-y-4 text-espresso/90">
-            {faqs.map((faq) => (
-              <div key={faq.question} className="rounded-2xl border border-[#ebe5dc] bg-ivory/60 p-4 shadow-card">
-                <p className="font-heading text-xl font-bold text-espresso">{faq.question}</p>
-                <p className="mt-2 text-base leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
+        <Section bg="white">
+          <div className="mx-auto max-w-4xl space-y-6">
+            <h2 className="text-center font-heading text-4xl font-bold text-espresso">Najčešća pitanja</h2>
+            <div className="space-y-4">
+              {faqs.map((faq) => (
+                <details key={faq.question} className="group rounded-3xl border border-blush/50 bg-white p-5 shadow-card">
+                  <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-espresso">
+                    <span>{faq.question}</span>
+                    <span className="text-cherry transition-transform duration-200 group-open:rotate-45">+</span>
+                  </summary>
+                  <div className="mt-3 border-t border-blush/40 pt-3 text-base text-espresso/80">{faq.answer}</div>
+                </details>
+              ))}
+            </div>
           </div>
         </Section>
         <div className="text-center">

@@ -6,7 +6,7 @@ import { Section } from "@/components/Section";
 import { InlineCheckout } from "@/components/InlineCheckout";
 import { productInfo } from "@/lib/brand";
 
-const CTA_TEXT = "Da, želim pristupiti Signalima Strasti i postati žena kojoj on prilazi prvi – za 17€";
+const CTA_TEXT = "Da, želim pristupiti SIGNALIMA STRASTI";
 
 export const metadata: Metadata = {
   title: "Signali Strasti — Program koji budi njegov prvi korak",
@@ -591,6 +591,7 @@ export default function TestPage() {
                 href="/portal"
                 size="lg"
                 className="bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
+                scrollToCheckout
               >
                 {CTA_TEXT}
               </CTAButton>
@@ -619,6 +620,7 @@ export default function TestPage() {
               href="/portal"
               size="lg"
               className="mt-6 bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
+              scrollToCheckout
             >
               {CTA_TEXT}
             </CTAButton>
@@ -677,6 +679,7 @@ export default function TestPage() {
                   href="/portal"
                   size="lg"
                   className="w-full max-w-md bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
+                  scrollToCheckout
                 >
                   {CTA_TEXT}
                 </CTAButton>
