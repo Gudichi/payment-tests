@@ -47,14 +47,14 @@ export default function PaymentForm({
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Make sure to change this to your payment completion page
         payment_method_data: {
           billing_details: {
             name: customerName,
             email: customerEmail,
           },
         },
-        return_url: `${window.location.origin}/hvala?redirect_status=succeeded`,
+        // Nakon glavne kupnje vodi na OTO1 (Stripe dodaje payment_intent parametar)
+        return_url: `${window.location.origin}/oto1?redirect_status=succeeded`,
       },
     });
 
