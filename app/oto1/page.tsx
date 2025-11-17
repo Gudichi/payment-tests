@@ -353,9 +353,14 @@ export default async function Oto1Page({ searchParams }: Props) {
     );
   }
 
-  const stripe = new Stripe(secret);
-  const price = await stripe.prices.retrieve(priceId);
-  const amount = price.unit_amount ? (price.unit_amount / 100).toFixed(2) : "37.00";
+  let amount = "37.00";
+  try {
+    const stripe = new Stripe(secret);
+    const price = await stripe.prices.retrieve(priceId);
+    amount = price.unit_amount ? (price.unit_amount / 100).toFixed(2) : "37.00";
+  } catch (error) {
+    console.error("Failed to load OTO1 price:", error);
+  }
 
   return (
     <div className="bg-ivory text-espresso">

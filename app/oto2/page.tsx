@@ -468,9 +468,13 @@ export default async function Oto2Page({ searchParams }: Props) {
 
   let amount: string | null = null;
   if (priceId && secret) {
-    const stripe = new Stripe(secret);
-    const price = await stripe.prices.retrieve(priceId);
-    amount = price.unit_amount ? (price.unit_amount / 100).toFixed(2) : null;
+    try {
+      const stripe = new Stripe(secret);
+      const price = await stripe.prices.retrieve(priceId);
+      amount = price.unit_amount ? (price.unit_amount / 100).toFixed(2) : null;
+    } catch (error) {
+      console.error("Failed to load OTO2 price:", error);
+    }
   }
 
   return (
