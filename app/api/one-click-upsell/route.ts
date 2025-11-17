@@ -28,17 +28,16 @@ export async function POST(req: NextRequest) {
     priceId && allowedPriceIds.includes(priceId) ? priceId : allowedPriceIds[0];
 
   try {
-    const originalIntent = await stripe.paymentIntents.retrieve(
-      paymentIntentId,
-      {
-        expand: ["latest_charge", "payment_method"],
-      }
-    );
+    const originalIntent = await stripe.paymentIntents.retrieve(paymentIntentId, {
+      expand: ["latest_charge", "payment_method"],
+    });
 
+    const charge = originalIntent.latest_charge as Stripe.Charge | null;
     const paymentMethodId =
       typeof originalIntent.payment_method === "string"
         ? originalIntent.payment_method
-        : originalIntent.payment_method?.id;
+        : originalIntent.payment_method?.id ||
+          (charge?.payment_method as string | undefined);
 
     if (!paymentMethodId) {
       return NextResponse.json(

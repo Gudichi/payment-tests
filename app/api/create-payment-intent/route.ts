@@ -5,12 +5,10 @@ export async function POST(req: NextRequest) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
   const { data } = await req.json();
-  const { amount, metadata = {} } = data;
+  const { amount, metadata = {}, paymentIntentId } = data;
 
   if (amount <= 0) {
-    return new NextResponse(JSON.stringify({ error: "Invalid amount" }), {
-      status: 400,
-    });
+    return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
   }
 
   try {
@@ -24,21 +22,49 @@ export async function POST(req: NextRequest) {
       return acc;
     }, {});
 
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.trunc(Number(amount) * 100),
-      currency: "eur",
-      automatic_payment_methods: { enabled: true },
-      setup_future_usage: "off_session",
-      metadata: {
-        order_total_eur: Number(amount).toFixed(2),
-        ...normalizedMetadata,
-      },
-    });
+    const amountInCents = Math.trunc(Number(amount) * 100);
+    const baseMetadata = {
+      order_total_eur: Number(amount).toFixed(2),
+    };
 
-    return new NextResponse(paymentIntent.client_secret, { status: 200 });
+    let paymentIntent: Stripe.PaymentIntent;
+
+    if (paymentIntentId) {
+      try {
+        await stripe.paymentIntents.update(paymentIntentId, {
+          amount: amountInCents,
+          metadata: { ...baseMetadata, ...normalizedMetadata },
+        });
+        paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+      } catch (error) {
+        console.error("Update payment intent failed, creating new.", error);
+        paymentIntent = await stripe.paymentIntents.create({
+          amount: amountInCents,
+          currency: "eur",
+          automatic_payment_methods: { enabled: true },
+          setup_future_usage: "off_session",
+          metadata: { ...baseMetadata, ...normalizedMetadata },
+        });
+      }
+    } else {
+      paymentIntent = await stripe.paymentIntents.create({
+        amount: amountInCents,
+        currency: "eur",
+        automatic_payment_methods: { enabled: true },
+        setup_future_usage: "off_session",
+        metadata: { ...baseMetadata, ...normalizedMetadata },
+      });
+    }
+
+    return NextResponse.json(
+      {
+        clientSecret: paymentIntent.client_secret,
+        paymentIntentId: paymentIntent.id,
+      },
+      { status: 200 }
+    );
   } catch (error: any) {
-    return new NextResponse(error, {
-      status: 400,
-    });
+    console.error("payment-intent error", error);
+    return NextResponse.json({ error: "Failed to create payment intent" }, { status: 400 });
   }
 }

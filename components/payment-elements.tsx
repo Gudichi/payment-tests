@@ -32,6 +32,7 @@ export default function PaymentElements({
   onToggleBump?: (id: string, checked: boolean) => void;
 }) {
   const [clientSecret, setClientSecret] = useState<string>("");
+  const [paymentIntentId, setPaymentIntentId] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const metadataKey = useMemo(
@@ -41,14 +42,12 @@ export default function PaymentElements({
 
   useEffect(() => {
     if (!price || price <= 0) {
-      setClientSecret("");
       setIsLoading(false);
       return;
     }
 
     const controller = new AbortController();
     setIsLoading(true);
-    setClientSecret("");
 
     fetch("/api/create-payment-intent", {
       method: "POST",
@@ -59,31 +58,37 @@ export default function PaymentElements({
         data: {
           amount: price,
           metadata: metadata ?? {},
+          paymentIntentId: paymentIntentId || undefined,
         },
       }),
       signal: controller.signal,
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Failed to create payment intent");
+          throw new Error("Failed to create/update payment intent");
         }
-        return res.text();
+        return res.json();
       })
-      .then((secret) => {
-        setClientSecret(secret);
+      .then((payload: { clientSecret: string; paymentIntentId: string }) => {
+        if (payload.clientSecret) {
+          setClientSecret(payload.clientSecret);
+        }
+        if (payload.paymentIntentId) {
+          setPaymentIntentId(payload.paymentIntentId);
+        }
         setIsLoading(false);
       })
       .catch((error) => {
         if (error.name !== "AbortError") {
-          console.error("Failed to create payment intent", error);
+          console.error("Failed to create/update payment intent", error);
           setIsLoading(false);
         }
       });
 
     return () => controller.abort();
-  }, [price, metadataKey]);
+  }, [price, metadataKey, paymentIntentId]);
 
-  if (isLoading || !clientSecret) {
+  if (!clientSecret) {
     return (
       <div className="flex items-center justify-center h-[200px]">
         <div role="status" aria-label="loading">
@@ -114,7 +119,6 @@ export default function PaymentElements({
 
   return (
     <Elements
-      key={clientSecret}
       stripe={stripePromise}
       options={{
         fonts: [
