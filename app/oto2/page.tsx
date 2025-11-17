@@ -432,29 +432,34 @@ const CTAGroup = ({
 }: {
   paymentIntentId?: string;
   priceId?: string;
-}) => (
-  <div className="flex flex-col items-center gap-4">
-    {paymentIntentId && priceId ? (
-      <OneClickUpsellButton
-        paymentIntentId={paymentIntentId}
-        priceId={priceId}
-        label={PRIMARY_LABEL}
-        className="bg-[#1C7C7D] hover:bg-[#165a5c] text-ivory"
-      />
-    ) : (
-      <CTAButton href="/portal" size="lg" className="bg-[#1C7C7D] text-ivory">
-        {PRIMARY_LABEL}
+}) => {
+  const thankYouUrl = paymentIntentId ? `/hvala?payment_intent=${paymentIntentId}` : "/hvala";
+
+  return (
+    <div className="flex flex-col items-center gap-4">
+      {paymentIntentId && priceId ? (
+        <OneClickUpsellButton
+          paymentIntentId={paymentIntentId}
+          priceId={priceId}
+          label={PRIMARY_LABEL}
+          className="bg-[#1C7C7D] hover:bg-[#165a5c] text-ivory"
+          onSuccessHref={thankYouUrl}
+        />
+      ) : (
+        <CTAButton href={thankYouUrl} size="lg" className="bg-[#1C7C7D] text-ivory">
+          {PRIMARY_LABEL}
+        </CTAButton>
+      )}
+      <CTAButton
+        href={thankYouUrl}
+        size="lg"
+        className="border border-[#6A1F29] text-[#6A1F29] bg-transparent hover:bg-[#6A1F29]/5"
+      >
+        {DECLINE_LABEL}
       </CTAButton>
-    )}
-    <CTAButton
-      href="/portal"
-      size="lg"
-      className="border border-[#6A1F29] text-[#6A1F29] bg-transparent hover:bg-[#6A1F29]/5"
-    >
-      {DECLINE_LABEL}
-    </CTAButton>
-  </div>
-);
+    </div>
+  );
+};
 
 export default async function Oto2Page({ searchParams }: Props) {
   const priceId = process.env.STRIPE_OTO2_PRICE_ID;

@@ -40,7 +40,14 @@ const testimonials = [
   { name: "Tea Jakić", stars: "★★★★★", body: "Najbolja stvar mi je što nema igrica. Samo realnost. I zbog toga sam danas s muškarcem koji zna što želi." },
 ];
 
-export default function Oto1NoPage() {
+type Props = {
+  searchParams: {
+    payment_intent?: string;
+  };
+};
+
+export default function Oto1NoPage({ searchParams }: Props) {
+  const paymentIntentId = searchParams.payment_intent;
   return (
     <div className="bg-ivory text-espresso">
       <main className="space-y-16 py-12 sm:space-y-24 sm:py-20">
@@ -98,12 +105,16 @@ export default function Oto1NoPage() {
             Želiš da ti još jednom otvorim ponudu prije nego nestane?
           </p>
           <div className="space-y-4 text-lg text-espresso/85">
-            <CTAButton href="/oto1" size="lg" className="w-full bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]">
-              Da, želim znati tko je stvarno zreo — prije nego uopće uđe pod moju kožu. Puni pristup Kompasu Strasti™ i
+            <CTAButton
+              href={paymentIntentId ? `/oto1?payment_intent=${paymentIntentId}` : "/oto1"}
+              size="lg"
+              className="w-full bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
+            >
+              Da, želim znati tko je stvarно zreo — prije nego uopće uđe pod moju kožu. Puni pristup Kompasu Strasti™ i
               svim bonusima za 37 € – odmah.
             </CTAButton>
             <CTAButton
-              href="/oto2"
+              href={paymentIntentId ? `/oto2?payment_intent=${paymentIntentId}` : "/oto2"}
               size="lg"
               className="w-full border border-[#6A1F29] bg-transparent text-[#6A1F29] hover:bg-[#6A1F29]/5"
             >

@@ -8,6 +8,7 @@ type Props = {
   label?: string;
   className?: string;
   priceId?: string;
+  onSuccessHref?: string;
 };
 
 export function OneClickUpsellButton({
@@ -15,6 +16,7 @@ export function OneClickUpsellButton({
   label = "Da, želim i ovu ponudu",
   className,
   priceId,
+  onSuccessHref,
 }: Props) {
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [message, setMessage] = useState<string>("");
@@ -39,6 +41,9 @@ export function OneClickUpsellButton({
 
       setStatus("success");
       setMessage("Upsell je uspješno dodan! Račun poslan na email.");
+      if (onSuccessHref) {
+        window.location.href = onSuccessHref;
+      }
     } catch (error: any) {
       setStatus("error");
       setMessage(error.message || "Dogodila se greška.");
