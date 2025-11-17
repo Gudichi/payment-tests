@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Stripe from "stripe";
 import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
@@ -84,7 +85,7 @@ const STEP_ITEMS = [
 
 const SKILL_ITEMS = [
   {
-    title: "💌 Čitanje muških signala",
+    title: "Čitanje muških signala",
     body:
       "Naučit ćeš prepoznati što zapravo stoji iza njegovih poruka, šutnje i ponašanja — i reagirati pametno, bez pritiska.",
   },
@@ -179,6 +180,242 @@ const NAJCESE_PREUZIMAN = [
   "✔ Klijenticama koje su prošle Signale i Kompas — i sada žele dublji emocionalni utjecaj",
 ];
 
+const faqs = [
+  {
+    question: "Za koliko dana mogu očekivati jasnu sliku o njemu?",
+    answer:
+      "Većina žena dobije vrlo jasnu procjenu u 3–7 dana, jer Kompas pokazuje konkretna ponašanja na koja treba paziti — bez nagađanja.",
+  },
+  {
+    question: "Pomaže li Kompas ako sam već “zagrijana” za njega?",
+    answer:
+      "Da, možda čak i više. Kad smo emotivne, lako previdimo signale. Kompas daje hladnu, objektivnu jasnoću u trenucima kad si ti subjektivna.",
+  },
+  {
+    question: "Mogu li pogriješiti u procjeni?",
+    answer:
+      "Ne možeš “pokvariti” procjenu. Čak i ako se dvoumiš, Kompas traži ponašanja, a ne “feelinge”. Ako muškarac ima zdrave namjere — to se vidi.",
+  },
+  {
+    question: "Što ako me on već neko vrijeme zbunjuje?",
+    answer:
+      "To je idealna situacija za Kompas. U samo par dana shvatit ćeš je li njegovo ponašanje dosljedno ili samo “povremeno toplo”.",
+  },
+  {
+    question: "Je li Kompas dobar ako sam ponovno “u igri” nakon razvoda?",
+    answer:
+      "Da — mnoge žene koriste Kompas upravo nakon dužih pauza jer žele izbjeći istu grešku. Vodi te kroz jasne, jednostavne muške obrasce.",
+  },
+  {
+    question: "Je li ovo predetaljno? Nemam vremena za komplikacije.",
+    answer:
+      "Kompas je napravljen da radi i ako imaš 10 sekundi dnevno. Samo prati male okidače — sve ostalo aplikacija odradi za tebe.",
+  },
+  {
+    question: "Mogu li koristiti Kompas i ako upoznajem muškarce uživo, a ne preko aplikacija?",
+    answer:
+      "Naravno. Kompas je dizajniran za stvarne situacije — kafić, posao, teretana, šetnja… upravo tu najlakše vidiš njegove namjere.",
+  },
+  {
+    question: "Što ako on isprva djeluje savršeno, ali osjećam čudnu prazninu?",
+    answer:
+      "Kompas ti pomaže razlikovati prave kvalitete od “scenskog nastupa”. Muškarac koji je ozbiljan to pokaže kroz mala, konzistentna ponašanja.",
+  },
+  {
+    question: "Je li ovo manipulacija?",
+    answer:
+      "Ne. Kompas te uči prepoznati njegove namjere, ne utjecati na njih. Ti samo donosiš odluke iz mjesta jasnoće, umjesto iz straha ili nade.",
+  },
+  {
+    question: "Može li mi pomoći ako sam kronično birala pogrešne muškarce?",
+    answer:
+      "Da — to je zapravo najčešći razlog zašto žene uzimaju Kompas. Prestaneš birati po emociji, počneš birati po stvarnim ponašanjima.",
+  },
+  {
+    question: "Mogu li koristiti Kompas s muškarcem za kojeg još nisam sigurna da mi se sviđa?",
+    answer:
+      "Apsolutno. Kompas te štiti baš u tim situacijama “vidit ćemo”. Brzo pokaže je li vrijedno ulaganja tvog vremena, energije i emocija.",
+  },
+  {
+    question: "Kako da znam da nisam prekritična?",
+    answer:
+      "Kompas nije lista nerealnih kriterija. To su minimalni standardi koje ostvaruju svi emocionalno zreli muškarci.",
+  },
+  {
+    question: "Pomaže li i ako je on malo zatvoren ili sramežljiv?",
+    answer:
+      "Da — Kompas razlikuje tihe, stabilne muškarce od emocionalno nedostupnih. To je ogromna razlika koju mnoge žene prije nisu vidjele.",
+  },
+  {
+    question: "Što ako on ima puno obaveza i ne može biti stalno dostupan?",
+    answer:
+      "Zato postoji Kompas — ne gleda količinu vremena, nego kvalitetu ponašanja. Zauzet muškarac može biti vrlo jasan i vrlo ozbiljan.",
+  },
+  {
+    question: "Hoće li Kompas “odbaciti” muškarce prerano?",
+    answer:
+      "Ne, upravo suprotno. Kompas ti pomaže da ne odbaciš prave, nego da prestaneš držati vrata otvorena za neozbiljne.",
+  },
+  {
+    question: "Je li prikladan i za cure u ranim 20-ima?",
+    answer:
+      "Da, jer postavlja temelje zdravog odabira prije nego upadneš u godine lutanja. Što prije — to bolje.",
+  },
+  {
+    question: "Mogu li ga koristiti i ako sam već u nekoj “situaciji shipu”?",
+    answer:
+      "Da. Kompas vrlo brzo pokazuje ide li to prema vezi ili prema još jednom emocionalnom zamoru.",
+  },
+  {
+    question: "Što ako me je strah da ću ostati sama ako “otpustim” pogrešnog?",
+    answer:
+      "To je najčešći osjećaj — i najgori savjetник. Kompas ti daje do znanja kad puštaš nešto što ti nikako ne bi donijelo sreću.",
+  },
+  {
+    question: "Pomaže li Kompas ako sam već previše emocionalno uključena?",
+    answer:
+      "Da — zato što procjenjuješ njegovo ponašanje, a ne svoj osjećaj. To umiri glavu i zaustavi idealiziranje.",
+  },
+  {
+    question: "Mogu li stvarno dobiti rezultate u samo tjedan dana?",
+    answer:
+      "Da — jer ne mijenjaš ti sebe, nego samo gledaš ono što je oduvijek tu: njegove navike, ritam, interes, inicijativu i konzistentnost.",
+  },
+];
+
+const HERO_IMAGE_SET = ["/vsl-testem-1-min.png", "/vsl-testem-2-min.png", "/vsl-testem-3-min.png"];
+const STORY_IMAGE_SET = [
+  "/testem-1-min.png",
+  "/testem-2-min.png",
+  "/testem-3-min.png",
+  "/testem-4-min.png",
+  "/testem-5-min.png",
+  "/testem-6-min.png",
+];
+
+const REVIEW_CARDS = [
+  {
+    name: "Mia Vidas",
+    stars: "★★★★★",
+    body:
+      "Nisam mogla vjerovati koliko je točno opisano njegovo ponašanje. Koristila sam dvije rečenice iz situacijske putanje “hladi se” i doslovno isti dan se opet otvorio. Nije magija, ali iskreno – tako je djelovalo.",
+  },
+  {
+    name: "Laura Marković",
+    stars: "★★★★★",
+    body:
+      "Kad sam shvatila da muški mozak reagira na određene riječi, sve mi je sjelo. Poslala sam mu jednu od preporučenih rečenica i rekao je da mu “fali moja energija”. To se nikad prije nije dogodilo.",
+  },
+  {
+    name: "Ana Vukelić",
+    stars: "★★★★★",
+    body:
+      "Moj muž i ja smo prošli tešku fazu šutnje i hladnoće. Primijenila sam dvije rečenice iz modula za brak i prvi put u godini dana me zagrlio bez da sam ga ja poticala. Osjetila sam da se nešto vratilo.",
+  },
+  {
+    name: "Jelena Sertić",
+    stars: "★★★★★",
+    body:
+      "Nisam vjerovala da će djelovati jer sam bila previše povrijeđena. Ali onda sam testirala jednu rečenicu nakon što se moj “simpa” opet povukao… i drugi dan je poslao najdužu poruku ikad. Kao da ga je nešto dotaklo.",
+  },
+  {
+    name: "Nina Bilobrk",
+    stars: "★★★★★",
+    body:
+      "Ono što mi je najviše pomoglo je što sve ima kontekst. Ne moraš nagađati. Ja sam bila u onoj fazi “na početku sve divno, kasnije se gasi” i baš u tom segmentu su rečenice otvorile nešto u njemu.",
+  },
+  {
+    name: "Katarina Tišljar",
+    stars: "★★★★★",
+    body:
+      "Nevjerojatno koliko su precizni ti muški emocionalni receptori opisani u programu. Jedna rečenica – i odjednom mi šalje poruke sa smješkom i planira susret. A prije je jedva odgovarao.",
+  },
+  {
+    name: "Tihana Majstorović",
+    stars: "★★★★★",
+    body:
+      "Bila sam skeptična jer zvuči prejednostavno. Ali stvarno djeluje. Rečenica koju sam mu poslala ga je pogodila na način da se sam otvorio i rekao nešto jako iskreno. To se nikad nije dogodilo.",
+  },
+  {
+    name: "Martina Krmpotić",
+    stars: "★★★★★",
+    body:
+      "Moj bivši se vratio nakon 3 mjeseca pauze. I ovaj put nisam htjela napraviti istu grešku. Rečenice Strasti su mi dale točan tajming, i prvi put nisam izgledala kao da trčim za njim. On je trčao za mnom.",
+  },
+  {
+    name: "Ela Tomić",
+    stars: "★★★★★",
+    body:
+      "Napokon znam što reći kad osjetim da ga gubim. SOS rečenice iz bonusa su me spasile dvije situacije kad bi se prije sve raspalo.",
+  },
+  {
+    name: "Ivana Drobac",
+    stars: "★★★★★",
+    body:
+      "Nije fora u manipulaciji – nego u tome da mu vratiš osjećaj koji ga je prvi put privukao. Ovaj program točno to radi. Kod mene je upalilo u roku od 48 sati.",
+  },
+  {
+    name: "Sandra Herceg",
+    stars: "★★★★★",
+    body:
+      "Kad sam pročitala dio o dopaminu i emocionalnom tragu, sve mi je bilo jasno. Primijenila sam rečenice iz putanje “polu-hladan odnos” i sve se promijenilo doslovno preko noći.",
+  },
+  {
+    name: "Dina Majić",
+    stars: "★★★★★",
+    body:
+      "Ja sam bila u braku gdje je sve postalo rutinski. Jedna rečenica, u pravom trenutku – i moj muž me pogledao kao da me prvi put vidi. I to nakon godina.",
+  },
+  {
+    name: "Lucija Burić",
+    stars: "★★★★★",
+    body:
+      "Najbolje što sam naučila je tajming. Prije bih sve rekla u krivom trenutku. Sada znam točno kada nešto pokrene njegov mozak, a kada ga gasi.",
+  },
+  {
+    name: "Sara Jakovljević",
+    stars: "★★★★★",
+    body:
+      "Imala sam osjećaj da me već gubi… i onda sam probala jednu “nježniju” rečenicu iz modula. Njegov odgovor me rasplakao jer je bio tako iskren. To je to – vratila se povezanost.",
+  },
+  {
+    name: "Leona Radić",
+    stars: "★★★★★",
+    body:
+      "Najbolje potrošeno vrijeme ikad. Nije mi trebalo više od 10 minuta da skužim gdje sam griješila. A onda sam rekla pravu rečenicu u pravom trenutku – i sve se preokrenulo.",
+  },
+  {
+    name: "Renata Legin",
+    stars: "★★★★★",
+    body:
+      "Program mi je dao hrabrost da stanem iza svojih emocija bez da zvučim “previše”. Muškarci stvarno drugačije reagiraju na određene riječi – nisam znala da je to tako snažno.",
+  },
+  {
+    name: "Nika Jurčić",
+    stars: "★★★★★",
+    body:
+      "Najluđa stvar – poruka od 7 riječi koju sam poslala ga je pogodila više nego sve romantične stvari koje sam prije radila mjesecima.",
+  },
+  {
+    name: "Vesna Popović",
+    stars: "★★★★★",
+    body:
+      "Dugo sam mislila da ne znam komunicirati svoje potrebe. Rečenice Strasti su mi pokazale kako to reći nježno, ali moćno. I on to stvarno osjeti.",
+  },
+  {
+    name: "Ivona Lipovac",
+    stars: "★★★★★",
+    body:
+      "Koristila sam putanju “hladna faza” jer nisam znala kako prići без да ispadnem naporna. Rečenica koju sam poslala ga je doslovno vratila u odnos.",
+  },
+  {
+    name: "Karla Zenko",
+    stars: "★★★★★",
+    body:
+      "Nakon godina pokušaja i krivih riječi, osjećam kao da sam napokon naučila svoj jezik muško-ženskog odnosa. Ne могу vjerovati da je jedna rečenica toliko utjecala na njega.",
+  },
+];
+
 const PRIMARY_LABEL =
   "Da, želim njegove emocije zauvijek vezati za mene — kroz riječi koje pamti.";
 const DECLINE_LABEL = "Ne, hvala. Radije riskiram da opet sve nestane… i da ne znam zašto.";
@@ -257,10 +494,11 @@ export default async function Oto2Page({ searchParams }: Props) {
             <p>čak i ako sve ostalo napraviš savršeno…</p>
             <p>postoji velika šansa da opet ostaneš u istoj priči:</p>
           </div>
-          <ul className="grid gap-3 text-left sm:grid-cols-3">
+          <ul className="space-y-3 text-left text-lg text-espresso/90">
             {HERO_BULLETS.map((item) => (
-              <li key={item} className="rounded-2xl bg-white p-4 shadow-card">
-                {item}
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-1 text-xl text-cherry">✔</span>
+                <span>{item}</span>
               </li>
             ))}
           </ul>
@@ -342,10 +580,11 @@ export default async function Oto2Page({ searchParams }: Props) {
             <p>ali ne ostaje zbog tebe kao osobe.</p>
             <p>I onda se dogodi klasični scenarij:</p>
           </div>
-          <ul className="grid gap-3 text-left sm:grid-cols-3">
+          <ul className="space-y-3 text-left text-lg text-espresso/90">
             {CRAVING_BULLETS.map((item) => (
-              <li key={item} className="rounded-2xl bg-white p-4 shadow-card">
-                {item}
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-1 text-xl text-cherry">✔</span>
+                <span>{item}</span>
               </li>
             ))}
           </ul>
@@ -362,10 +601,11 @@ export default async function Oto2Page({ searchParams }: Props) {
             <p>Zato što ne zna kako to objasniti.</p>
             <p>Ali zna jedno:</p>
           </div>
-          <ul className="grid gap-3 text-left sm:grid-cols-3">
+          <ul className="space-y-3 text-left text-lg text-espresso/90">
             {LONGING_BULLETS.map((item) => (
-              <li key={item} className="rounded-2xl bg-white p-4 shadow-card">
-                {item}
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-1 text-xl text-cherry">✔</span>
+                <span>{item}</span>
               </li>
             ))}
           </ul>
@@ -381,7 +621,7 @@ export default async function Oto2Page({ searchParams }: Props) {
             Evo kako će izgledati transformacija tvog ljubavnog života:
           </h2>
           <div className="grid gap-6 lg:grid-cols-2">
-            {STEP_ITEMS.map((step) => (
+            {STEP_ITEMS.map((step, index) => (
               <article
                 key={step.title}
                 className="space-y-3 rounded-3xl border border-ivory bg-[#fdfaf7] p-6 shadow-card"
@@ -390,13 +630,21 @@ export default async function Oto2Page({ searchParams }: Props) {
                   {step.label}
                 </p>
                 <h3 className="font-heading text-xl font-bold text-espresso">{step.title}</h3>
-                <ul className="space-y-2 text-base leading-relaxed text-espresso/90">
-                  {step.body.map((line) => (
-                    <li key={line} className="list-disc list-inside">
-                      {line}
-                    </li>
-                  ))}
-                </ul>
+                {index === 3 ? (
+                  <ul className="space-y-2 text-base leading-relaxed text-espresso/90">
+                    {step.body.map((line) => (
+                      <li key={line} className="list-disc list-inside">
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="space-y-2 text-base leading-relaxed text-espresso/90">
+                    {step.body.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </div>
+                )}
               </article>
             ))}
           </div>
@@ -404,8 +652,8 @@ export default async function Oto2Page({ searchParams }: Props) {
 
         <Section
           bg="ivory"
-          title="Što sve radimo?"
-          subtitle="Da on postane lud za tobom."
+          title="Da on postane lud za tobom."
+          subtitle="Što sve radimo?"
           contentClassName="space-y-6"
         >
           <div className="space-y-4 text-lg leading-relaxed text-espresso/90">
@@ -458,116 +706,239 @@ export default async function Oto2Page({ searchParams }: Props) {
           </p>
         </Section>
 
+        <Section
+          bg="ivory"
+          align="center"
+          title="Dojmovi polaznica s prošlog programa"
+          contentClassName="space-y-6"
+        >
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {HERO_IMAGE_SET.map((src) => (
+              <div
+                key={src}
+                className="overflow-hidden rounded-3xl border border-ivory/80 bg-white shadow-card"
+              >
+                <Image src={src} alt="Dojmovi polaznica" width={520} height={520} className="h-full w-full object-cover" />
+              </div>
+            ))}
+          </div>
+        </Section>
+
         <Section bg="ivory" contentClassName="space-y-10">
-          <div className="mx-auto max-w-4xl space-y-6 rounded-[32px] border border-[#efe0ce] bg-white px-6 py-12 shadow-card sm:px-10">
-            <div className="space-y-3 text-center text-espresso">
-              <h2 className="font-heading text-3xl font-bold text-espresso">Tvoj alat za emocionalnu ovisnost — bez igre, bez pritiska.</h2>
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
-                Što točno dobivaš u Rečenicama Strasti™
-              </p>
-            </div>
-            <div className="space-y-5 text-espresso/90">
-              {OFFER_ITEMS.map((item) => (
-                <div key={item.title} className="flex gap-4 rounded-2xl border border-ivory/70 bg-[#fdfaf7] p-5">
-                  <span className="text-2xl text-cherry">✔</span>
-                  <div className="space-y-2">
-                    <p className="font-heading text-xl font-bold">{item.title}</p>
-                    <p className="text-base leading-relaxed">{item.body}</p>
+          <div className="mx-auto max-w-5xl rounded-[32px] border border-[#efe0ce] bg-white shadow-card">
+            <div className="grid gap-0 border-b border-[#efe0ce] md:grid-cols-[1.1fr,0.9fr]">
+              <div className="space-y-5 border-b border-[#efe0ce] p-6 sm:p-10 md:border-b-0 md:border-r">
+                <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
+                  Što točno dobivaš u Rečenicama Strasti™
+                </p>
+                <h2 className="font-heading text-3xl font-bold leading-tight text-espresso sm:text-4xl">
+                  Tvoj alat za emocionalnu ovisnost — bez igre, bez pritiska.
+                </h2>
+                <div className="space-y-5 text-espresso/90">
+                  {OFFER_ITEMS.map((item) => (
+                    <div
+                      key={item.title}
+                      className="flex gap-4 rounded-2xl border border-ivory/80 bg-[#fdfaf7] p-5"
+                    >
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cherry/10 text-xl text-cherry">
+                        ✔
+                      </span>
+                      <div className="space-y-2">
+                        <p className="font-heading text-xl font-bold text-espresso">{item.title}</p>
+                        <p className="text-base leading-relaxed">{item.body}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="space-y-5 p-6 sm:p-10">
+                <div className="space-y-3 text-espresso">
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-espresso/70">
+                    Ukupna vrijednost: 214 €
+                  </p>
+                  <p className="text-base font-semibold uppercase tracking-[0.3em] text-espresso">
+                    Rečenice Strasti™ su nekoć bile dostupne kao samostalni program — ali više nisu u slobodnoj prodaji.
+                  </p>
+                  <p className="text-lg leading-relaxed text-espresso/85">
+                    Danas ih možeš aktivirati samo ovdje — u ovom trenutku.
+                  </p>
+                  <div className="space-y-1 text-center">
+                    <p className="text-2xl font-semibold text-espresso/70 line-through">214 €</p>
+                    <p className="text-6xl font-heading font-bold text-cherry">{amount ?? "67"} €</p>
                   </div>
+                  <p className="text-base leading-relaxed text-espresso/85">
+                    Danas ih dobivaš uz tvoju narudžbu Kompasa — za samo:
+                    <br />
+                    67 €
+                  </p>
+                  <p className="text-lg font-semibold text-espresso">
+                    Puni pristup Rečenicama Strasti™ i svim bonusima za 47 € – odmah.
+                  </p>
                 </div>
-              ))}
-              {BONUSES.map((bonus) => (
-                <div key={bonus} className="flex gap-4 rounded-2xl border border-ivory/70 bg-white p-5">
-                  <span className="text-2xl text-cherry">✔</span>
-                  <p className="text-base leading-relaxed">{bonus}</p>
+                <div className="space-y-4">
+                  <div className="space-y-3 rounded-3xl border border-ivory/80 bg-ivory p-5">
+                    <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cherry">Bonusi</p>
+                    <ul className="space-y-3 text-base leading-relaxed text-espresso/90">
+                      {BONUSES.map((bonus) => (
+                        <li key={bonus} className="flex items-start gap-3">
+                          <span className="mt-1 text-xl text-cherry">✔</span>
+                          <span>{bonus}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <CTAGroup
+                    paymentIntentId={priceId ? payment_intent : undefined}
+                    priceId={priceId ?? undefined}
+                  />
+                  <p className="text-center text-sm leading-relaxed text-espresso/75">
+                    Ova stranica se prikazuje samo jednom. Ako je zatvoriš — više joj nećeš moći pristupiti.
+                  </p>
+                  <p className="text-center text-sm leading-relaxed text-espresso/75">
+                    Jer više nikada nećeš naslijepo vjerovati energiji početka. Sada znaš kako stvoriti ono što ostaje
+                    — čak i kad početna iskra prođe.
+                  </p>
                 </div>
-              ))}
+              </div>
             </div>
-            <div className="space-y-3 text-center text-espresso">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-espresso/70">Ukupna vrijednost: 214 €</p>
-              <p className="text-base font-semibold uppercase tracking-[0.35em] text-espresso">
-                Rečenice Strasti™ su nekoć bile dostupne kao samostalni program — ali više nisu u slobodnoj prodaji.
-              </p>
-              <p className="text-lg leading-relaxed text-espresso/85">
-                Danas ih možeš aktivirati samo ovdje — u ovom trenutku.
-              </p>
-              <p className="text-2xl font-semibold text-espresso/70 line-through">214 €</p>
-              <p className="text-6xl font-heading font-bold text-cherry">{amount ?? "67"} €</p>
-              <p className="text-base leading-relaxed text-espresso/85">
-                Danas ih dobivaš uz tvoju narudžbu Kompasa — za samo:
-                <br />
-                67 €
-              </p>
-              <p className="text-lg font-semibold text-espresso">
-                Puni pristup Rečenicama Strasti™ i svim bonusima za 47 € – odmah.
-              </p>
-            </div>
-            <CTAGroup
-              paymentIntentId={priceId ? payment_intent : undefined}
-              priceId={priceId ?? undefined}
-            />
-            <p className="text-center text-base leading-relaxed text-espresso/85">
-              Ova stranica se prikazuje samo jednom.
-              <br />
-              Ako je zatvoriš — više joj nećeš moći pristupiti.
-              <br />
-              Ni sutra. Ni sljedeći tjedan. Ni kada sve opet krene nizbrdo.
-            </p>
-            <p className="text-center text-base leading-relaxed text-espresso/85">
-              Jer više nikada nećeš naslijepo vjerovati energiji početka.
-              <br />
-              Sada znaš kako stvoriti ono što ostaje — čak i kad početna iskra prođe.
-            </p>
           </div>
         </Section>
 
-        <Section bg="white" title="Za koga je ovo?" contentClassName="space-y-6">
-          <div className="grid gap-3 rounded-3xl bg-ivory p-6 shadow-card sm:grid-cols-2">
+        <Section
+          bg="white"
+          align="center"
+          title="Za koga je ovo?"
+          subtitle="Rečenice Strasti™ su za tebe ako:"
+          contentClassName="mx-auto max-w-4xl space-y-6"
+        >
+          <ul className="space-y-3 text-left text-lg text-espresso/90">
             {FOR_WHO.map((item) => (
-              <div key={item} className="flex gap-3 text-base leading-relaxed text-espresso/90">
-                <span className="text-xl text-cherry">–</span>
+              <li key={item} className="flex items-start gap-3">
+                <span className="text-xl text-cherry">✔</span>
                 <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section
+          bg="white"
+          align="center"
+          title="Evo što kažu žene koje su već prošle kroz Rečenice Strasti™"
+          contentClassName="space-y-6"
+        >
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {STORY_IMAGE_SET.map((src) => (
+              <div
+                key={src}
+                className="overflow-hidden rounded-3xl border border-ivory/80 bg-white shadow-card"
+              >
+                <Image src={src} alt="Iskustva polaznica" width={520} height={520} className="h-full w-full object-cover" />
               </div>
             ))}
           </div>
-          <div className="rounded-3xl border border-dashed border-cherry/30 bg-white p-6 text-center text-base leading-relaxed text-espresso/90">
-            [⟶ mjesto za svjedočanstva i komentare iz communityja ili screenshotove]
+        </Section>
+
+        <Section bg="ivory">
+          <div className="mx-auto max-w-4xl space-y-8">
+            <div className="rounded-3xl border border-[#e5e8ef] bg-[#f8f9fb] p-6 shadow-card sm:p-8">
+              <h3 className="font-heading text-2xl font-bold text-espresso">Detalji Programa</h3>
+              <dl className="mt-4 divide-y divide-[#e1e5f2]">
+                {PROGRAM_DETAILS.map((row) => (
+                  <div key={row.label} className="grid gap-3 py-3 sm:grid-cols-[180px,1fr]">
+                    <dt className="text-sm font-semibold uppercase tracking-[0.2em] text-[#6a6f83]">
+                      {row.label}
+                    </dt>
+                    <dd className="text-base text-espresso/90">{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="rounded-3xl border border-[#efe0ce] bg-ivory p-6 shadow-card sm:p-8">
+                <h3 className="font-heading text-2xl font-bold text-espresso">Preporučeno za žene koje žele:</h3>
+                <ul className="mt-5 space-y-3 text-base text-espresso/85">
+                  {PREPORUKE.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-4 rounded-2xl border border-white/70 bg-white px-4 py-3 shadow-card"
+                    >
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cherry/10 text-cherry">✔</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-3xl border border-[#dfe3f0] bg-white p-6 shadow-card sm:p-8">
+                <h3 className="font-heading text-2xl font-bold text-espresso">Najčešće preuziman među:</h3>
+                <ul className="mt-5 space-y-4 text-base text-espresso/85">
+                  {NAJCESE_PREUZIMAN.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-4 rounded-2xl border border-[#f0e4d8] bg-ivory px-5 py-4 shadow-card"
+                    >
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cherry/10 text-cherry">
+                        ✔
+                      </span>
+                      <span className="text-espresso/90">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </Section>
 
-        <Section bg="ivory" title="Detalji Programa" contentClassName="space-y-6">
+        <Section
+          bg="white"
+          align="center"
+          title="Recenzije polaznica"
+          contentClassName="space-y-6"
+        >
           <div className="grid gap-4 md:grid-cols-2">
-            {PROGRAM_DETAILS.map((detail) => (
-              <div key={detail.label} className="rounded-2xl bg-white p-5 shadow-card">
-                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cherry">{detail.label}</p>
-                <p className="mt-2 text-base leading-relaxed text-espresso/90">{detail.value}</p>
-              </div>
+            {REVIEW_CARDS.map((review) => (
+              <article
+                key={review.name}
+                className="rounded-3xl border border-[#e6eaf5] bg-ivory/60 p-6 text-left shadow-card"
+              >
+                <p className="font-heading text-lg font-bold text-espresso">
+                  {review.name} — <span className="text-[#ff9c25]">{review.stars}</span>
+                </p>
+                <p className="mt-3 text-base leading-relaxed text-espresso/85">{review.body}</p>
+                <div className="mt-4">
+                  <button
+                    type="button"
+                    className="rounded-full border border-[#e1e5f2] px-4 py-2 text-sm font-semibold text-espresso/80 transition hover:border-cherry hover:text-cherry"
+                  >
+                    Korisno
+                  </button>
+                </div>
+              </article>
             ))}
           </div>
         </Section>
 
-        <Section bg="white" contentClassName="space-y-8 max-w-4xl">
-          <h2 className="font-heading text-2xl font-bold text-espresso sm:text-3xl">
-            Preporučeno za žene koje žele:
-          </h2>
-          <ul className="space-y-3 text-base leading-relaxed text-espresso/90">
-            {PREPORUKE.map((item) => (
-              <li key={item} className="flex items-start gap-3 rounded-2xl bg-ivory p-4 shadow-card">
-                <span className="text-2xl text-cherry">✔</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <h3 className="font-heading text-xl font-bold text-espresso">Najčešće preuziman među:</h3>
-          <ul className="space-y-3 text-base leading-relaxed text-espresso/90">
-            {NAJCESE_PREUZIMAN.map((item) => (
-              <li key={item} className="flex items-start gap-3 rounded-2xl bg-ivory p-4 shadow-card">
-                <span className="text-2xl text-cherry">✔</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+        <Section bg="white">
+          <div className="mx-auto max-w-4xl space-y-6">
+            <h2 className="text-center font-heading text-4xl font-bold text-espresso">Najčešća pitanja</h2>
+            <div className="space-y-4">
+              {faqs.map((faq) => (
+                <details key={faq.question} className="group rounded-3xl border border-blush/50 bg-white p-5 shadow-card">
+                  <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-espresso">
+                    <span>{faq.question}</span>
+                    <span className="text-cherry transition-transform duration-200 group-open:rotate-45">+</span>
+                  </summary>
+                  <div className="mt-3 border-t border-blush/40 pt-3 text-base text-espresso/80">{faq.answer}</div>
+                </details>
+              ))}
+            </div>
+          </div>
         </Section>
+
+        <div className="text-center pb-16">
+          <CTAGroup paymentIntentId={priceId ? payment_intent : undefined} priceId={priceId ?? undefined} />
+        </div>
       </main>
     </div>
   );
