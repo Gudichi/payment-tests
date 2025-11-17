@@ -1,18 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const OTO_PRICE_ID = process.env.STRIPE_OTO1_PRICE_ID;
+const OTO1_PRICE_ID = process.env.STRIPE_OTO1_PRICE_ID;
+const OTO2_PRICE_ID = process.env.STRIPE_OTO2_PRICE_ID;
 
 export async function POST(req: NextRequest) {
-  if (!OTO_PRICE_ID) {
+  const allowedPriceIds = [OTO1_PRICE_ID, OTO2_PRICE_ID].filter(Boolean) as string[];
+
+  if (allowedPriceIds.length === 0) {
     return NextResponse.json(
-      { error: "Missing STRIPE_OTO1_PRICE_ID env variable." },
+      { error: "Missing STRIPE_OTO price IDs in environment." },
       { status: 500 }
     );
   }
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-  const { paymentIntentId } = await req.json();
+  const { paymentIntentId, priceId } = await req.json();
 
   if (!paymentIntentId) {
     return NextResponse.json(
@@ -20,6 +23,9 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
+
+  const selectedPriceId =
+    priceId && allowedPriceIds.includes(priceId) ? priceId : allowedPriceIds[0];
 
   try {
     const originalIntent = await stripe.paymentIntents.retrieve(
@@ -79,7 +85,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const price = await stripe.prices.retrieve(OTO_PRICE_ID);
+    const price = await stripe.prices.retrieve(selectedPriceId);
     if (!price.unit_amount || !price.currency) {
       return NextResponse.json(
         { error: "OTO price is missing amount or currency." },
@@ -95,11 +101,12 @@ export async function POST(req: NextRequest) {
       off_session: true,
       confirm: true,
       metadata: {
-        source: "oto1_one_click",
+        source:
+          selectedPriceId === OTO2_PRICE_ID ? "oto2_one_click" : "oto1_one_click",
         original_payment_intent: paymentIntentId,
-        price_id: OTO_PRICE_ID,
+        price_id: selectedPriceId,
       },
-      description: price.nickname ?? "OTO 1 Upsell",
+      description: price.nickname ?? "Upsell",
     });
 
     return NextResponse.json(

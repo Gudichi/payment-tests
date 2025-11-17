@@ -7,12 +7,14 @@ type Props = {
   paymentIntentId: string;
   label?: string;
   className?: string;
+  priceId?: string;
 };
 
 export function OneClickUpsellButton({
   paymentIntentId,
   label = "Da, želim i ovu ponudu",
   className,
+  priceId,
 }: Props) {
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [message, setMessage] = useState<string>("");
@@ -27,7 +29,7 @@ export function OneClickUpsellButton({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ paymentIntentId }),
+        body: JSON.stringify({ paymentIntentId, priceId }),
       });
 
       if (!response.ok) {
