@@ -41,10 +41,9 @@ export function OneClickUpsellButton({
 
       setStatus("success");
       setMessage("Upsell je uspješno dodan! Račun poslan na email.");
-      if (onSuccessHref) {
-        // Go to the next step immediately after successful charge
-        window.location.replace(onSuccessHref);
-      }
+      const target = onSuccessHref || "/oto2";
+      // Go to the next step immediately after successful charge
+      window.location.replace(target);
     } catch (error: any) {
       setStatus("error");
       setMessage(error.message || "Dogodila se greška.");
