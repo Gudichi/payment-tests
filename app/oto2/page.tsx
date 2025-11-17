@@ -480,19 +480,25 @@ export default async function Oto2Page({ searchParams }: Props) {
             Prije nego što pristupiš programima koje si kupila, moram ti reći možda najvažniju stvar…
           </h1>
           <div className="space-y-4 text-lg leading-relaxed text-espresso/90">
-            <p>Jedna stvar koju ti nisam htjela reći odmah na početku,</p>
-            <p>ali jednostavno MORAM – jer bi bilo nepošteno da to prešutim.</p>
+            <p><strong>Jedna stvar koju ti nisam htjela reći odmah na početku,</strong></p>
             <p>
-              Znam da želiš odmah ući u Signale i Kompas,
+              ali jednostavno <span className="underline decoration-cherry/60 decoration-2">MORAM</span> – jer bi bilo
+              nepošteno da to prešutim.
+            </p>
+            <p>
+              Znam da želiš odmah ući u <strong>Signale i Kompas</strong>,
               <br />
               početi ih gledati, isprobati prve poruke i osjetiti prve promjene…
             </p>
-            <p>Ali, molim te, obrati pažnju još na OVO.</p>
-            <p>Jer je krucijalno.</p>
+            <p><strong>Ali, molim te, obrati pažnju još na OVO.</strong></p>
+            <p className="underline decoration-cherry/50 decoration-2">Jer je krucijalno.</p>
             <p>I ne, ne govorim to da bih ti “nešto dodatno prodala”.</p>
-            <p>Govorim ti to jer bez ovoga…</p>
-            <p>čak i ako sve ostalo napraviš savršeno…</p>
-            <p>postoji velika šansa da opet ostaneš u istoj priči:</p>
+            <p>
+              Govorim ti to jer bez ovoga…
+              <br />
+              čak i ako sve ostalo napraviš savršeno…
+            </p>
+            <p className="font-semibold text-espresso">postoji velika šansa da opet ostaneš u istoj priči:</p>
           </div>
           <ul className="space-y-3 text-left text-lg text-espresso/90">
             {HERO_BULLETS.map((item) => (
@@ -511,7 +517,7 @@ export default async function Oto2Page({ searchParams }: Props) {
           </h2>
           <div className="space-y-4 text-lg leading-relaxed text-espresso/90">
             <p>U jednoj fazi života… imala sam vezu iz snova.</p>
-            <p>Bio je sve ono što sam zamišljala: zreo, emotivno prisutan, zabavan, ambiciozan.</p>
+            <p>Bio je sve ono što sam zamišljala: <strong>zreo, emotivno prisutan, zabavan, ambiciozan.</strong></p>
             <p>Na početku — kemija kakvu nisam osjećala godinama.</p>
             <p>Zvao me svakog dana, planirao putovanja, govorio kako osjeća nešto što nikad prije nije.</p>
             <p>I onda, kao da je netko ugasio svjetlo.</p>
@@ -652,8 +658,8 @@ export default async function Oto2Page({ searchParams }: Props) {
 
         <Section
           bg="ivory"
-          title="Da on postane lud za tobom."
-          subtitle="Što sve radimo?"
+          title="Što sve radimo?"
+          subtitle="Da on postane lud za tobom."
           contentClassName="space-y-6"
         >
           <div className="space-y-4 text-lg leading-relaxed text-espresso/90">
@@ -712,94 +718,77 @@ export default async function Oto2Page({ searchParams }: Props) {
           title="Dojmovi polaznica s prošlog programa"
           contentClassName="space-y-6"
         >
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div className="flex flex-col items-center gap-4">
             {HERO_IMAGE_SET.map((src) => (
-              <div
+              <Image
                 key={src}
-                className="overflow-hidden rounded-3xl border border-ivory/80 bg-white shadow-card"
-              >
-                <Image src={src} alt="Dojmovi polaznica" width={520} height={520} className="h-full w-full object-cover" />
-              </div>
+                src={src}
+                alt="Dojmovi polaznica"
+                width={1200}
+                height={1200}
+                className="w-full max-w-full sm:max-w-[80%] object-contain"
+              />
             ))}
           </div>
         </Section>
 
-        <Section bg="ivory" contentClassName="space-y-10">
-          <div className="mx-auto max-w-5xl rounded-[32px] border border-[#efe0ce] bg-white shadow-card">
-            <div className="grid gap-0 border-b border-[#efe0ce] md:grid-cols-[1.1fr,0.9fr]">
-              <div className="space-y-5 border-b border-[#efe0ce] p-6 sm:p-10 md:border-b-0 md:border-r">
-                <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
-                  Što točno dobivaš u Rečenicama Strasti™
-                </p>
-                <h2 className="font-heading text-3xl font-bold leading-tight text-espresso sm:text-4xl">
-                  Tvoj alat za emocionalnu ovisnost — bez igre, bez pritiska.
-                </h2>
-                <div className="space-y-5 text-espresso/90">
-                  {OFFER_ITEMS.map((item) => (
-                    <div
-                      key={item.title}
-                      className="flex gap-4 rounded-2xl border border-ivory/80 bg-[#fdfaf7] p-5"
-                    >
-                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cherry/10 text-xl text-cherry">
-                        ✔
-                      </span>
-                      <div className="space-y-2">
-                        <p className="font-heading text-xl font-bold text-espresso">{item.title}</p>
-                        <p className="text-base leading-relaxed">{item.body}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+        <Section bg="ivory" contentClassName="space-y-8">
+          <div className="mx-auto max-w-4xl space-y-6 rounded-[32px] border border-[#efe0ce] bg-white p-6 shadow-card sm:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
+              Što točno dobivaš u Rečenicama Strasti™
+            </p>
+            <h2 className="font-heading text-3xl font-bold leading-tight text-espresso sm:text-4xl">
+              Tvoj alat za emocionalnu ovisnost — bez igre, bez pritiska.
+            </h2>
+
+            <h3 className="font-heading text-lg font-bold text-espresso">
+              Puni pristup Rečenicama Strasti™ i svim bonusima za 47 € – odmah.
+            </h3>
+
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry">BONUSI</p>
+              <ul className="space-y-3 text-base leading-relaxed text-espresso/90">
+                {BONUSES.map((bonus) => (
+                  <li key={bonus} className="flex items-start gap-3">
+                    <span className="mt-1 text-xl text-cherry">✔</span>
+                    <span>{bonus}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-3 text-espresso">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-espresso/70">
+                Ukupna vrijednost: 214 €
+              </p>
+              <p className="text-base leading-relaxed text-espresso/85">
+                Rečenice Strasti™ su nekoć bile dostupne kao samostalni program — ali više nisu u slobodnoj prodaji.
+              </p>
+              <p className="text-base leading-relaxed text-espresso/85">
+                Danas ih možeš aktivirati samo ovdje — u ovom trenutku.
+              </p>
+              <div className="flex items-center justify-center gap-3">
+                <Image src="/Taf-1.png" alt="Strelica" width={48} height={48} className="h-8 w-8 animate-bounce" />
+                <Image src="/Taf-1.png" alt="Strelica" width={48} height={48} className="h-8 w-8 animate-bounce delay-150" />
               </div>
-              <div className="space-y-5 p-6 sm:p-10">
-                <div className="space-y-3 text-espresso">
-                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-espresso/70">
-                    Ukupna vrijednost: 214 €
-                  </p>
-                  <p className="text-base font-semibold uppercase tracking-[0.3em] text-espresso">
-                    Rečenice Strasti™ su nekoć bile dostupne kao samostalni program — ali više nisu u slobodnoj prodaji.
-                  </p>
-                  <p className="text-lg leading-relaxed text-espresso/85">
-                    Danas ih možeš aktivirati samo ovdje — u ovom trenutku.
-                  </p>
-                  <div className="space-y-1 text-center">
-                    <p className="text-2xl font-semibold text-espresso/70 line-through">214 €</p>
-                    <p className="text-6xl font-heading font-bold text-cherry">{amount ?? "67"} €</p>
-                  </div>
-                  <p className="text-base leading-relaxed text-espresso/85">
-                    Danas ih dobivaš uz tvoju narudžbu Kompasa — za samo:
-                    <br />
-                    67 €
-                  </p>
-                  <p className="text-lg font-semibold text-espresso">
-                    Puni pristup Rečenicama Strasti™ i svim bonusima za 47 € – odmah.
-                  </p>
-                </div>
-                <div className="space-y-4">
-                  <div className="space-y-3 rounded-3xl border border-ivory/80 bg-ivory p-5">
-                    <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cherry">Bonusi</p>
-                    <ul className="space-y-3 text-base leading-relaxed text-espresso/90">
-                      {BONUSES.map((bonus) => (
-                        <li key={bonus} className="flex items-start gap-3">
-                          <span className="mt-1 text-xl text-cherry">✔</span>
-                          <span>{bonus}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <CTAGroup
-                    paymentIntentId={priceId ? payment_intent : undefined}
-                    priceId={priceId ?? undefined}
-                  />
-                  <p className="text-center text-sm leading-relaxed text-espresso/75">
-                    Ova stranica se prikazuje samo jednom. Ako je zatvoriš — više joj nećeš moći pristupiti.
-                  </p>
-                  <p className="text-center text-sm leading-relaxed text-espresso/75">
-                    Jer više nikada nećeš naslijepo vjerovati energiji početka. Sada znaš kako stvoriti ono što ostaje
-                    — čak i kad početna iskra prođe.
-                  </p>
-                </div>
+              <div className="text-center">
+                <p className="text-2xl font-semibold text-espresso/70 line-through">214 €</p>
+                <p className="text-6xl font-heading font-bold text-cherry">{amount ?? "67"} €</p>
               </div>
+            </div>
+
+            <div className="space-y-4">
+              <CTAGroup
+                paymentIntentId={priceId ? payment_intent : undefined}
+                priceId={priceId ?? undefined}
+              />
+              <p className="text-center text-sm leading-relaxed text-espresso/75">
+                Ova stranica se prikazuje samo jednom. Ako je zatvoriš — više joj nećeš moći pristupiti.
+              </p>
+              <p className="text-center text-sm leading-relaxed text-espresso/75">
+                Jer više nikada nećeš naslijepo vjerovati energiji početka. Sada znaš kako stvoriti ono što ostaje — čak
+                i kad početna iskra prođe.
+              </p>
             </div>
           </div>
         </Section>
@@ -827,14 +816,16 @@ export default async function Oto2Page({ searchParams }: Props) {
           title="Evo što kažu žene koje su već prošle kroz Rečenice Strasti™"
           contentClassName="space-y-6"
         >
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div className="flex flex-col items-center gap-4">
             {STORY_IMAGE_SET.map((src) => (
-              <div
+              <Image
                 key={src}
-                className="overflow-hidden rounded-3xl border border-ivory/80 bg-white shadow-card"
-              >
-                <Image src={src} alt="Iskustva polaznica" width={520} height={520} className="h-full w-full object-cover" />
-              </div>
+                src={src}
+                alt="Iskustva polaznica"
+                width={1200}
+                height={1200}
+                className="w-full max-w-full sm:max-w-[80%] object-contain"
+              />
             ))}
           </div>
         </Section>
