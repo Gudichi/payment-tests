@@ -131,9 +131,18 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    console.error("One-click upsell failed:", error);
+    console.error("One-click upsell failed:", {
+      message: error?.message,
+      code: error?.code,
+      type: error?.type,
+      decline_code: error?.decline_code,
+    });
     return NextResponse.json(
-      { error: "Nismo mogli dovršiti naplatu upsella." },
+      {
+        error:
+          error?.message ||
+          "Nismo mogli dovršiti naplatu upsella. Provjeri karticu ili pokušaj ponovno.",
+      },
       { status: 500 }
     );
   }
