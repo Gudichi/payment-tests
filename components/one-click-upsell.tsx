@@ -42,8 +42,8 @@ export function OneClickUpsellButton({
       setStatus("success");
       setMessage("Upsell je uspješno dodan! Račun poslan na email.");
       if (onSuccessHref) {
-        // Use replace to avoid back navigation to the upsell page
-        setTimeout(() => window.location.replace(onSuccessHref), 100);
+        // Go to the next step immediately after successful charge
+        window.location.replace(onSuccessHref);
       }
     } catch (error: any) {
       setStatus("error");
