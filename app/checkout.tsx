@@ -3,7 +3,7 @@
 import PaymentElements from "@/components/payment-elements";
 import { useMemo, useState } from "react";
 
-const BASE_PRICE = 1;
+const BASE_PRICE = 17;
 
 const ORDER_BUMPS = [
   {

@@ -4,7 +4,7 @@ import PaymentElements from "@/components/payment-elements";
 import { RefreshCcw, ShieldCheck } from "lucide-react";
 import { useMemo, useState } from "react";
 
-const BASE_PRICE = 1;
+const BASE_PRICE = 17;
 const ORDER_BUMP_PRICE = 1;
 
 export const PRICE = BASE_PRICE;
