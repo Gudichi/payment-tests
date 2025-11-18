@@ -1,23 +1,136 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Inter, Merriweather } from "next/font/google";
 import styles from "./Adv2.module.css";
-import { CommentsAdv2 } from "./CommentsAdv2";
+import { Lora, Poppins } from "next/font/google";
+import { CommentsSection } from "./CommentsSection";
 
-const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-body" });
-const merriweather = Merriweather({
-  weight: ["400", "700"],
+const poppins = Poppins({
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-heading",
+  variable: "--font-poppins",
+});
+
+const lora = Lora({
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-lora",
 });
 
 export const metadata: Metadata = {
   title:
-    "Smijali su se kad sam rekla da mi svakog dana barem jedan dečko priđe na ulici — dok im nisam otkrila TAJNU zbog koje se to događa!",
+    "Smijali su se kad sam rekla da mi svakog dana barem jedan dečko priđe na ulici",
   description:
-    "Tačna priča objavljena kao feature članak: bez izmjena u tekstu, samo premium novinski dizajn.",
+    "ALI onda sam im otkrila TAJNU. Prijateljice. Kolegice. Čak i sestra. Iskreno? Vjerojatno bih i ja isto rekla da nisam prošla kroz... ono što sam prošla.",
+  openGraph: {
+    title:
+      "Smijali su se kad sam rekla da mi svakog dana barem jedan dečko priđe na ulici",
+    description:
+      "ALI onda sam im otkrila TAJNU. Prijateljice. Kolegice. Čak i sestra.",
+    type: "article",
+    publishedTime: new Date().toISOString(),
+  },
 };
+
+const latestNews = [
+  { category: "Lifestyle", title: "5 znakova da je vrijeme za promjenu", time: "12 min" },
+  { category: "Savjeti", title: "Kako prepoznati pravu priliku", time: "25 min" },
+  { category: "Odnosi", title: "Što muškarci stvarno žele", time: "1h" },
+  { category: "Psihologija", title: "Neverbalna komunikacija u praksi", time: "2h" },
+  { category: "Lifestyle", title: "10 načina kako poboljšati samopouzdanje", time: "3h" },
+  { category: "Savjeti", title: "Kako se osjećati sigurno u bilo kojoj situaciji", time: "5h" },
+  { category: "Odnosi", title: "Tajna uspješnih veza", time: "1 dan" },
+];
+
+function normalizeAdvertorialHTML(raw: string): string {
+  let html = raw;
+
+  html = html.replace(/<u>([\s\S]*?)<\/u>/gi, '<span class="u">$1</span>');
+  html = html.replace(/<b>/gi, "<strong>").replace(/<\/b>/gi, "</strong>");
+  html = html.replace(/<i>/gi, "<em>").replace(/<\/i>/gi, "</em>");
+
+  html = html.replace(/<(h[1-3])([^>]*)>([\s\S]*?)<\/\1>/gi, (match, tag, attrs, inner) => {
+    const cleaned = inner.replace(/<\/?strong>/gi, "").replace(/<\/?em>/gi, "");
+    return `<${tag}${attrs}>${cleaned}</${tag}>`;
+  });
+
+  html = html
+    .replace(/<strong>\s*(<em>[\s\S]*?<\/em>)\s*<\/strong>/gi, "$1")
+    .replace(/<em>\s*(<strong>[\s\S]*?<\/strong>)\s*<\/em>/gi, "$1");
+
+  html = applyBlockquoteHeuristics(html);
+  html = wrapBareTextLines(html);
+
+  return html.trim();
+}
+
+function applyBlockquoteHeuristics(html: string): string {
+  return html.replace(/<p\b([^>]*)>([\s\S]*?)<\/p>/gi, (match, attrs, inner) => {
+    const textOnly = inner.replace(/<[^>]+>/g, "").trim();
+    const startsWithQuote = /^("|“|„|')/.test(textOnly);
+    const endsWithQuote = /("|”|'|")$/.test(textOnly);
+    if (textOnly && startsWithQuote && endsWithQuote) {
+      return `<blockquote>${inner}</blockquote>`;
+    }
+    return match;
+  });
+}
+
+function wrapBareTextLines(html: string): string {
+  return html.replace(/(?:^|\n)([^<\n][^\n]+)(?=\n|$)/g, (match, line) => {
+    if (/^\s*(#+|[-*]>?|<\/?\w)/.test(line)) {
+      return match;
+    }
+    const trimmedLine = line.trim();
+    if (!trimmedLine) {
+      return match;
+    }
+    return `\n<p>${trimmedLine}</p>`;
+  });
+}
+
+function enforceEmphasisLimits(html: string): string {
+  const limitTag = (content: string, tag: "strong" | "em") => {
+    let count = 0;
+    const tagRegExp = new RegExp(`<${tag}>([\\s\\S]*?)<\/${tag}>`, "gi");
+    return content.replace(tagRegExp, (_fullMatch, inner) => {
+      count += 1;
+      if (count <= 2) {
+        return `<${tag}>${inner}</${tag}>`;
+      }
+      return inner;
+    });
+  };
+
+  return html.replace(/<p\b([^>]*)>([\s\S]*?)<\/p>/gi, (match, attrs, inner) => {
+    const limitedStrong = limitTag(inner, "strong");
+    const limitedEm = limitTag(limitedStrong, "em");
+    return `<p${attrs}>${limitedEm}</p>`;
+  });
+}
+
+function addLeadClasses(html: string, maxLead = 3): string {
+  let seen = 0;
+  return html.replace(/<p\b([^>]*)>/gi, (match, attrs) => {
+    if (seen >= maxLead) {
+      return match;
+    }
+    const attrString = attrs || "";
+    seen += 1;
+    if (/class=/i.test(attrString)) {
+      return `<p${attrString.replace(/class="([^"]*)"/i, (_m, classNames) => ` class="${classNames} lead"`)}>`;
+    }
+    return `<p${attrString} class="lead">`;
+  });
+}
+
+function prepareAdvertorialHtml(raw: string): string {
+  const normalized = normalizeAdvertorialHTML(raw);
+  const limited = enforceEmphasisLimits(normalized);
+  return addLeadClasses(limited);
+}
 
 const rawAdvertorialContent = `
 <p><strong>ALI onda sam im otkrila TAJNU.</strong></p>
@@ -81,130 +194,107 @@ const rawAdvertorialContent = `
 <p class="ctaFooterHint">(i vidi što se dogodi sljedeći put kad uđeš u kafić.)</p>
 `;
 
-function normalizeAdvertorialHTML(raw: string): string {
-  let html = raw;
-
-  html = html.replace(/<u>([\s\S]*?)<\/u>/gi, '<span class="u">$1</span>');
-  html = html.replace(/<b>/gi, "<strong>").replace(/<\/b>/gi, "</strong>");
-  html = html.replace(/<i>/gi, "<em>").replace(/<\/i>/gi, "</em>");
-
-  html = html.replace(/<(h[1-3])([^>]*)>([\s\S]*?)<\/\1>/gi, (_match, tag, attrs, inner) => {
-    const cleaned = inner.replace(/<\/?strong>/gi, "").replace(/<\/?em>/gi, "");
-    return `<${tag}${attrs}>${cleaned}</${tag}>`;
-  });
-
-  return html.trim();
-}
-
-function addCaptions(html: string): string {
-  return html.replace(/<figure>([\s\S]*?)<\/figure>/gi, (_match, inner) => {
-    if (/figcaption/gi.test(inner)) {
-      return `<figure>${inner}</figure>`;
-    }
-    return `<figure>${inner}<figcaption>Foto: ilustracija / arhiva</figcaption></figure>`;
-  });
-}
-
-function prepareAdvertorialHtml(raw: string): string {
-  return addCaptions(normalizeAdvertorialHTML(raw));
-}
-
 const advertorialHtml = prepareAdvertorialHtml(rawAdvertorialContent);
-const contentSections = advertorialHtml.split("<hr />");
 
-const quoteOne =
-  'Muškarac ne prilazi zato što želi, nego zato što osjeti da smije.';
-const quoteTwo =
-  "Većina žena ne stigne ni do trećeg dana, a da se nešto ne dogodi.";
+function AsSeenIn() {
+  const brands = [
+    { name: "24sata.hr", logo: "/adv1/24h.png", width: 132, height: 36, alt: "24sata.hr" },
+    { name: "Jutarnji.hr", logo: "/adv1/jutranji.png", width: 160, height: 36, alt: "Jutarnji.hr" },
+    { name: "Index Rouge", logo: "/adv1/Index-rogue.png", width: 156, height: 36, alt: "Index Rouge" },
+    { name: "Lepa & Srećna", logo: "/adv1/Lepa-srecna.png", width: 164, height: 36, alt: "Lepa & Srećna" },
+  ];
 
-function RelatedArticles() {
   return (
-    <section className={styles.related} aria-label="Povezani članci">
-      <h3>Related Articles</h3>
-      <ul>
-        <li><a href="#">Kako čitati neverbalne signale u prvim susretima</a></li>
-        <li><a href="#">5 načina da tvoja prisutnost djeluje sigurnije</a></li>
-        <li><a href="#">Što znači “zeleno svjetlo” u realnim situacijama</a></li>
-      </ul>
+    <section className={styles.asSeenWrap} aria-label="Viđeno u medijima">
+      <div className={styles.asSeenHeader}>
+        <span className={styles.ruleLeft} aria-hidden="true" />
+        <span className={styles.asSeenLabel}>Viđeno u medijima</span>
+        <span className={styles.ruleRight} aria-hidden="true" />
+      </div>
+      <div className={styles.asSeenBox}>
+        <ul className={styles.brandList}>
+          {brands.map((brand) => (
+            <li key={brand.name} className={styles.brandItem}>
+              {brand.logo ? (
+                <Image
+                  src={brand.logo}
+                  alt={brand.alt ?? brand.name}
+                  width={brand.width}
+                  height={brand.height}
+                  className={styles.brandLogo}
+                />
+              ) : (
+                <span className={styles.brandText} aria-label={brand.name}>
+                  {brand.name}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
 
-function AsSeenStrip() {
-  return (
-    <div className={styles.asSeen} aria-label="As seen in">
-      <div className={styles.asSeenLabel}>As seen in</div>
-      <div className={styles.asSeenLogos}>
-        {["LOGO", "NEWS", "MEDIA", "PORTAL", "MAG"].map((label) => (
-          <div key={label} className={styles.logoPlaceholder}>
-            {label}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+export default function Adv1Page() {
+  const publishDate = new Date();
+  const dayNames = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
+  const dayName = dayNames[publishDate.getDay()];
+  const timeString = publishDate.toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" });
 
-export default function Adv2Page() {
   return (
-    <div className={`${inter.variable} ${merriweather.variable} ${styles.page}`}>
-      <header className={styles.newsHeader}>
-        <div className={styles.newsBar}>
-          <div className={styles.newsLogo}>NEWS</div>
-          <nav className={styles.newsNav}>
-            <a href="#">News</a>
-            <a href="#">Lifestyle</a>
-            <a href="#">Relationships</a>
-            <a href="#">Trending</a>
-          </nav>
+    <div className={`${poppins.variable} ${lora.variable} ${styles.page}`}>
+      <header className={styles.siteHeader}>
+        <div className={styles.headerContent}>
+          <h1 className={styles.siteLogo}>Ja Sam Žena</h1>
         </div>
       </header>
-
-      <main className={styles.container}>
+      <div className={styles.container}>
         <article className={styles.article}>
-          <div className={styles.metaStrip}>
-            <span>RELATIONSHIPS</span>
-            <span className={styles.dot} />
-            <span>FEATURE STORY</span>
-          </div>
-          <h1 className={styles.title}>
-            Smijali su se kad sam rekla da mi svakog dana barem jedan dečko priđe na ulici — dok im nisam otkrila TAJNU zbog koje se to događa!
-          </h1>
-          <div className={styles.readingTime}>3 min read</div>
-          <figure className={styles.cover}>
-            <Image
-              src="/adv1/adv1-im1.png"
-              alt="Cover slika"
-              width={1920}
-              height={800}
-              priority
-            />
-            <figcaption className={styles.caption}>Foto: ilustracija / arhiva</figcaption>
-          </figure>
-          <div className={styles.pubInfo}>
-            Objavljeno 18.11.2025. • Autor: Redakcija • Verified Content
-          </div>
-
-          <AsSeenStrip />
-
-          {contentSections.map((section, index) => (
-            <div key={index} className={styles.section}>
-              <div className={styles.bodyText} dangerouslySetInnerHTML={{ __html: section }} />
-              {index < contentSections.length - 1 && <div className={styles.divider} role="presentation" />}
-              {index === 1 && <div className={styles.callout}>{quoteOne}</div>}
-              {index === 3 && <RelatedArticles />}
-              {index === 4 && <div className={styles.callout}>{quoteTwo}</div>}
+          <header className={styles.header}>
+            <h1 className={styles.headline}>
+              Smijali su se kad sam rekla da mi svakog dana barem jedan dečko priđe na ulici — dok im nisam otkrila TAJNU zbog koje se to događa!
+            </h1>
+            <div className={styles.categoryTag}>LJUBAVNI ODNOSI</div>
+            <div className={styles.byline}>
+              Piše Martina Akrapović, {dayName} u {timeString}
             </div>
-          ))}
+            <div className={styles.readingTime}>Čitanje članka: 2 minute</div>
+            <figure className={styles.coverImage}>
+              <Image
+                src="/adv1/adv1-im1.png"
+                alt="Cover slika"
+                width={1920}
+                height={800}
+                className={styles.coverImg}
+                priority
+              />
+            </figure>
+          </header>
 
-          <div className={styles.editorialNotice}>
-            <strong>Editorial Notice:</strong> Ovaj sadržaj je verificiran od strane redakcije i objavljen u informativne
-            svrhe. Savjeti ne zamjenjuju profesionalno savjetovanje; čitateljice odluke donose samostalno.
+          <AsSeenIn />
+
+          <div className={styles.articleBody}>
+            <div className={styles.bodyText} dangerouslySetInnerHTML={{ __html: advertorialHtml }} />
           </div>
-
-          <CommentsAdv2 />
+          <CommentsSection />
         </article>
-      </main>
+
+        <aside className={styles.sidebar}>
+          <h3 className={styles.sidebarTitle}>Najnovije</h3>
+          <ul className={styles.latestList}>
+            {latestNews.map((item, index) => (
+              <li key={index} className={styles.latestItem}>
+                <a href="#" className={styles.latestLink}>
+                  <span className={styles.latestCategory}>{item.category}</span>
+                  <span className={styles.latestTitle}>{item.title}</span>
+                  <span className={styles.latestTime}>{item.time}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
     </div>
   );
 }
