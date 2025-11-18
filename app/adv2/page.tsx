@@ -84,74 +84,349 @@ const AsSeenIn = () => {
 
 const advertorialHtml = `
 <article class="adv-article">
+
   <header class="article-header">
-    <h1>On ne zna da ti se sviđa. Zato ne prilazi. ALI evo kako ćeš mu reći da priđe bez izgovorene riječi.</h1>
-    <p class="article-meta">13. studenog 2025. • SignaliStrasti tim | Balkanska studija neverbalne privlačnosti</p>
+    <h1>
+      <em>On ne zna da ti se sviđa.</em> Zato ne
+      prilazi. <strong><u>ALI evo kako ćeš mu reći da priđe bez izgovorene riječi.</u></strong>
+    </h1>
+    <p class="article-meta">
+      13. studenog 2025. • <strong>SignaliStrasti tim</strong> | <em>Balkanska studija neverbalne privlačnosti</em>
+    </p>
   </header>
 
-  <section class="article-intro">
-    <blockquote><strong>“Prilaze mi samo oni koje ne bih ni pogledala. A onaj koji mi se sviđa – ništa.”</strong></blockquote>
-    <p class="lead"><strong>Ako si ovo ikad pomislila, nisi sama.</strong></p>
-    <p><strong>Ali razlog nije u tebi</strong> — <em>nego u onome što on (ne) vidi.</em></p>
+  <section class="article-section article-intro">
+    <blockquote>
+      “Prilaze mi samo oni koje ne bih ni pogledala. A onaj koji mi se
+      sviđa – ništa.”
+    </blockquote>
+
+    <p><strong>Ako si ovo ikad pomislila, nisi sama.</strong></p>
+
+    <p>
+      Ali razlog nije u tebi — nego u onome što <em>on</em> (ne) vidi.
+    </p>
+
     <figure class="article-image">
-      <img src="/images/hero-2.png" alt="Hero vizual za SignaliStrasti advertorial" />
+      <img src="/hero-2.png" alt="Hero vizual - žena u gradu, muškarac u pozadini">
+      <!-- <hero-2.png> -->
     </figure>
-    <p><u>Danas, čak i kad ga pogledaš — on neće prići, osim ako ne zna da smije.</u></p>
-    <p><strong>Evo što mu zapravo trebaš “reći”</strong> — bez da izgovoriš ijednu riječ</p>
-    <p><strong>Jer nisi ti ta koja ne zna privući pažnju.</strong><br/>Već si je privukla — <em>samo nije bila od onih kojima vrijediš.</em></p>
-    <p><strong>Zapravo. ti nikad nisi ni željela samo pažnju.</strong><br/>Ti želiš nešto drugo.<br/><em>Ne još jedan “upad”.</em><br/>Ne još jedan razgovor koji nikamo ne vodi.</p>
-    <p><strong>Ti želiš muškarca koji je stvaran.</strong></p>
-    <p><strong>Onog koji ne mora glumiti liderstvo.</strong></p>
-    <p><em>Koji se ne skriva iza poruka i storija.</em></p>
-    <p>Koji zna pogledati ženu i — <strong>vidjeti više od izgleda.</strong></p>
+
+    <p>
+      <strong>Danas, čak i kad ga pogledaš — on neće prići, osim ako ne zna da smije.</strong>
+    </p>
+
+    <p>
+      <u>Evo što mu zapravo trebaš “reći” — bez da izgovoriš
+      ijednu riječ.</u>
+    </p>
+
+    <p>
+      Jer nisi ti ta koja ne zna privući pažnju.<br>
+      Već si je privukla — samo nije bila od onih kojima vrijediš.
+    </p>
+
+    <p>
+      Zapravo... ti nikad nisi ni željela samo pažnju.<br>
+      <strong>Ti želiš nešto drugo.</strong><br>
+      Ne još jedan “upad”. Ne još jedan razgovor koji nikamo ne vodi.
+    </p>
+
+    <p>
+      <strong>Ti želiš muškarca koji je stvaran.</strong><br>
+      Onog koji ne mora glumiti liderstvo.<br>
+      Koji se ne skriva iza poruka i storija.<br>
+      Koji zna pogledati ženu i — vidjeti više od izgleda.
+    </p>
+
+    <p>
+      <strong><u>Gdje su nestali oni PRAVI muškarci?</u></strong>
+    </p>
   </section>
 
   <section class="article-section">
-    <h2><u>Gdje su nestali oni PRAVI muškarci?</u></h2>
     <figure class="article-image">
-      <img src="/images/prijateljica.png" alt="Prijateljice u razgovoru" />
+      <img src="/muskarci-zele-prici.png" alt="Muškarci žele prići - vizual s terase">
+      <!-- <muskarci-zele-prici.png> -->
     </figure>
-    <p><strong>Koliko je prethodno bilo loših razgovora, površnih poruka, nestanaka bez objašnjenja</strong> i — onih koji su samo tražili "zabavu"</p>
-    <p><strong>Realnost?</strong><br/><u>Kvalitetan muškarac tamo je izuzetak — a ne pravilo.</u></p>
-    <p><strong>On nije stalno online.</strong><br/>On ne lajka storye.<br/>On ne šalje 43 poruke dnevno.</p>
-    <p><strong>On se pojavljuje u stvarnom svijetu.</strong><br/>Ali prići će ti samo ako zna da neće biti odbijen, posramljen ili pogrešno shvaćen.</p>
+
+    <p>
+      Znaš kako izgleda kad ti netko priđe, ali ti je odmah jasno da... <em>nije to to?</em>
+    </p>
+
+    <p>
+      Ne znaš što točno fali — ali znaš da to nije ono što tražiš.
+    </p>
+
+    <p>Možda je previše napadan.</p>
+    <p>Možda je nesiguran, pa glumi samopouzdanje.</p>
+    <p>Možda samo ponavlja “forice” koje je već isprobao na pet drugih.</p>
+
+    <p><strong>A ti?</strong></p>
+
+    <p>
+      Ti osjećaš da možeš privući pažnju — ali ne pažnju koju želiš.
+    </p>
+
+    <p><strong>Ali evo stvarnosti:</strong></p>
+
+    <p><strong>Takvi muškarci postaju sve rjeđi.</strong></p>
+
+    <p>
+      I još važnije — <u>oni ne traže svuda, gdje su oni zapravo?</u>
+    </p>
+
+    <p>
+      <em>Tinder? Instagram?</em>
+    </p>
   </section>
 
   <section class="article-section">
-    <h2><u>Ali evo zašto on (kvalitetan muškarac) ne prilazi</u></h2>
     <figure class="article-image">
-      <img src="/images/ne-peilaze.gif" alt="Zašto muškarci ne prilaze" />
+      <img src="/tinder-insta.png" alt="Žena leži s mobitelom - Tinder/Instagram">
+      <!-- <tinder-insta.png> -->
     </figure>
-    <p><strong>To nije zato što je slab.</strong></p>
+
+    <p>
+      Sigurno znaš barem jednu prijateljicu koja kaže:
+    </p>
+
+    <p>
+      “Ma slušaj, ja sam upoznala svog dečka na Tinderu, i baš je super.”
+    </p>
+
+    <p>
+      I to ti nekako potajno da nadu…<br>
+      …da možda samo trebaš “probati još jednom”.<br>
+      Da se taj pravi nalazi iza nekoliko swipova ljevo ili desno…
+    </p>
+
+    <p>
+      <strong><u>Ali znaš što ti ta ista prijateljica neće reći?</u></strong>
+    </p>
   </section>
 
   <section class="article-section">
-    <h2><u>A što kad on reagira?</u></h2>
     <figure class="article-image">
-      <img src="/images/sto-kad-reagira.png" alt="Što kad muškarac reagira" />
+      <img src="/prijateljica.png" alt="Prijateljica gleda u mobitel noću">
+      <!-- <prijateljica.png> -->
     </figure>
-    <p><strong>Zato dodatno dobivaš i alate</strong> za ono što dolazi poslije:</p>
+
+    <p>
+      Koliko je prethodno bilo loših razgovora, površnih poruka, nestanaka bez objašnjenja i
+      — onih koji su samo tražili "zabavu"...
+    </p>
+
+    <p><em>Realnost?</em><br>
+      <strong>Kvalitetan muškarac tamo je izuzetak — a ne pravilo.</strong>
+    </p>
+
+    <p>On nije stalno online.<br>
+      On ne lajka storye.<br>
+      On ne šalje 43 poruke dnevno.
+    </p>
+
+    <p>
+      On se pojavljuje u stvarnom svijetu.<br>
+      Ali prići će ti samo ako zna da neće biti odbijen, posramljen ili pogrešno shvaćen.
+    </p>
+
+    <p>
+      <strong><u>Ali evo zašto on (kvalitetan muškarac) ne prilazi</u></strong>
+    </p>
+  </section>
+
+  <section class="article-section">
+    <figure class="article-image">
+      <img src="/ne-peilaze.gif" alt="Gif - muškarac razmišlja hoće li prići">
+      <!-- <ne-peilaze.gif> -->
+    </figure>
+
+    <p>
+      To nije zato što je slab. Ili neodlučan.
+    </p>
+
+    <p>
+      To je zato što je danas <em>preoprezan.</em>
+    </p>
+
+    <p>
+      Ne želi biti “onaj lik” koji ti smeta.<br>
+      Ne želi pogrešno tumačiti tvoju energiju.<br>
+      Ne želi riskirati neugodu — jer te ne poznaje još.
+    </p>
+
+    <p><strong>Znaš što zapravo čeka?</strong></p>
+
+    <p>
+      <u>Da mu pokažeš jedan jasan, ali diskretan signal:</u><br>
+      “U redu je. Možeš.”
+    </p>
+
+    <p>
+      To ne mora biti pogled. Niti osmijeh.<br>
+      To ne mora biti ništa teatralno.
+    </p>
+
+    <p>
+      Dovoljno je nešto što će njegov <em>muški mozak</em> nesvjesno prepoznati kao:<br>
+      “Otvorena je. Neće me odbiti. Ovo ima smisla.”
+    </p>
+
+    <p>
+      <strong><em>I tu dolazimo do onoga o čemu se ne priča — ali odlučuje
+      sve.</em></strong>
+    </p>
+  </section>
+
+  <section class="article-section">
+    <figure class="article-image">
+      <img src="/pekara.png" alt="Žena i muškarac u pekari">
+      <!-- <pekara.png> -->
+    </figure>
+
+    <p>
+      Kada se muškarac pita “prilazim li ili ne?”, njegov mozak analizira prostor, tvoje
+      držanje, mikro pokrete, energiju.
+    </p>
+
+    <p>
+      To nije logično. To je instinktivno.
+    </p>
+
+    <p>
+      Zato tvoja namjera često ne dolazi do izražaja — jer on je ne čita riječima.<br>
+      Nego <em>signalima.</em>
+    </p>
+
+    <p>
+      I kada nemaš te signale — on to ne doživljava kao nedostatak interesa.<br>
+      On to doživljava kao zatvorena vrata.
+    </p>
+
+    <p>
+      Kao rizik.<br>
+      Kao: “Ona ne želi da joj priđem.”
+    </p>
+
+    <p>
+      I tu sve staje. Prije nego je i počelo.
+    </p>
+
+    <p>
+      <strong><u>Zato sam stvorila Signale Strasti</u></strong>
+    </p>
+  </section>
+
+  <section class="article-section">
+    <figure class="article-image">
+      <img src="/signli.png" alt="Usporedba - bez signala / sa Signalima Strasti">
+      <!-- <signli.png> -->
+    </figure>
+
+    <p>
+      Ne da te “pretvore” u nekog drugog.<br>
+      Ne da glumiš femme fatale iz filma.<br>
+      I ne da se igra igara.
+    </p>
+
+    <p>
+      Nego da ti, u svom stvarnom svakodnevnom prostoru — u kafiću, na poslu, u teretani
+      —
+      imaš jednu malu stvar koju napraviš taj dan…<br>
+      …i koja nesvjesno daje muškom mozgu zeleno svjetlo.
+    </p>
+
+    <p>
+      Bez riječi.<br>
+      Bez glume.<br>
+      Bez da se osjećaš izloženo.
+    </p>
+
+    <p>
+      <strong><em>Evo kako ćeš privući kvalitetnog muškarca u samo 7
+      dana:</em></strong>
+    </p>
+  </section>
+
+  <section class="article-section">
+    <figure class="article-image">
+      <img src="/Gif-1.gif" alt="Gif - mikro-signal i muškarčeva reakcija">
+      <!-- <Gif-1.gif> -->
+    </figure>
+
+    <p>
+      Otvoriš aplikaciju.<br>
+      Dobiješ jedan mikro-signal — jednostavan pokret, stav ili pogled.<br>
+      Točno znaš gdje ga koristiti (ovisno o mjestu gdje jesi).<br>
+      Sve traje manje od minute.
+    </p>
+
+    <p>
+      I već tog dana možeš primijetiti promjenu.<br>
+      Ljudi te gledaju drugačije.<br>
+      Muškarci traže kontakt očima.<br>
+      Netko ti priđe. Pitaju nešto. Osmjehnu se. Pokrenu razgovor.
+    </p>
+
+    <p>
+      Jer si poslala signal koji kaže:<br>
+      “Otvorena sam. Svoja. I spremna da me vidiš.”
+    </p>
+
+    <p>
+      <strong><u>A što kad on reagira?</u></strong>
+    </p>
+  </section>
+
+  <section class="article-section">
+    <figure class="article-image">
+      <img src="/sto-kad-reagira.png" alt="Muškarac prati ženu pogledom">
+      <!-- <sto-kad-reagira.png> -->
+    </figure>
+
+    <p>
+      Zato dodatni dobivaš i alate za ono što dolazi poslije:
+    </p>
+
     <ul>
-      <li><strong>Kako ostaviti prvi dojam</strong> koji mu ostaje u mislima</li>
-      <li><strong>Kako mu dati prostora</strong> da se osjeća kao da on vodi — ali znaš da vodiš ti</li>
-      <li><strong>Kako mu otvoriti prostor</strong> da on pita za tvoj broj (a vjeruje da je to bila njegova ideja)</li>
-      <li><strong>Kako odgovarati na poruke</strong> — a da zadržiš onu istu prisutnost koja ga je privukla</li>
-      <li><strong>I kako ući u prvi susret</strong> bez tenzije — ali s toplinom koju će dugo pamtiti</li>
+      <li>Kako ostaviti prvi dojam koji mu ostaje u mislima</li>
+      <li>Kako mu dati prostora da se osjeća kao da on vodi — ali znaš da vodiš ti</li>
+      <li>Kako mu otvoriti prostor da on pita za tvoj broj (a vjeruje da je to bila njegova ideja)</li>
+      <li>Kako odgovarati na poruke — a da zadržiš onu istu prisutnost koja ga je privukla</li>
+      <li>I kako ući u prvi susret bez tenzije — ali s toplinom koju će dugo pamtiti</li>
     </ul>
+
+    <p>
+      <strong><em>Na kraju — nije stvar u aplikaciji. Niti u tebi.</em></strong>
+    </p>
   </section>
 
   <section class="article-section article-ending">
-    <h2><u>Na kraju — nije stvar u aplikaciji. Niti u tebi.</u></h2>
     <figure class="article-image">
-      <img src="/images/na-kraju.png" alt="Na kraju nije stvar u aplikaciji" />
+      <img src="/na-kraju.png" alt="Prije/poslije - bez signala i sa Signalima Strasti">
+      <!-- <na-kraju.png> -->
     </figure>
-    <p><strong>Stvar je u jeziku koji on razumije</strong> — a ti nikad nisi imala priliku naučiti.</p>
-    <p>I kada ga jednom koristiš…<br/>…nećeš se više pitati:<br/><em>“Zašto nitko ne prilazi?”</em></p>
-    <p><strong>Pitat ćeš se samo:</strong><br/><em>“Zašto sam ikad sumnjala u sebe?”</em></p>
-    <div class="ctaFooter">
-      <a class="ctaFooterButton" href="#">SAZNAJ VIŠE O SIGNALIMA STRASTI — CTA</a>
-    </div>
+
+    <p>
+      Stvar je u jeziku koji on razumije — a ti nikad nisi imala priliku naučiti.
+    </p>
+
+    <p>
+      I kada ga jednom koristiš…<br>
+      …nećeš se više pitati: “Zašto nitko ne prilazi?”
+    </p>
+
+    <p>
+      Pitat ćeš se samo:<br>
+      “Zašto sam ikad sumnjala u sebe?”
+    </p>
+
+    <p class="cta">
+      <strong><u>SAZNAJ VIŠE O SIGNALIMA STRASTI - CTA</u></strong>
+    </p>
   </section>
+
 </article>
 `;
 
@@ -182,7 +457,7 @@ export default function Adv2Page() {
             <div className={styles.readingTime}>Čitanje članka: 2 minute</div>
             <figure className={styles.coverImage}>
               <Image
-                src="/images/hero-2.png"
+                src="/hero-2.png"
                 alt="Cover slika"
                 width={1920}
                 height={800}
