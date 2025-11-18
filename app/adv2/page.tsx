@@ -116,9 +116,7 @@ const advertorialHtml = `
       I još važnije — <u>oni ne traže svuda, gdje su oni zapravo?</u>
     </p>
 
-    <p>
-      <em>Tinder? Instagram?</em>
-    </p>
+    <h2>Tinder? Instagram?</h2>
   </section>
 
   <section class="article-section">
@@ -132,17 +130,17 @@ const advertorialHtml = `
     </p>
 
     <p>
-      “Ma slušaj, ja sam upoznala svog dečka na Tinderu, i baš je super.”
+      <em><u>“Ma slušaj, ja sam upoznala svog dečka na Tinderu, i baš je super.”</u></em>
     </p>
 
     <p>
       I to ti nekako potajno da nadu…<br>
-      …da možda samo trebaš “probati još jednom”.<br>
+      …da možda samo trebaš <strong>“probati još jednom”.</strong><br>
       Da se taj pravi nalazi iza nekoliko swipova ljevo ili desno…
     </p>
 
     <p>
-      <strong><u>Ali znaš što ti ta ista prijateljica neće reći?</u></strong>
+      <h2>Ali znaš što ti ta ista prijateljica neće reći?</h2>
     </p>
   </section>
 
@@ -154,7 +152,7 @@ const advertorialHtml = `
 
     <p>
       Koliko je prethodno bilo loših razgovora, površnih poruka, nestanaka bez objašnjenja i
-      — onih koji su samo tražili "zabavu"...
+      — <strong>onih koji su samo tražili "zabavu"...</strong>
     </p>
 
     <p><em>Realnost?</em><br>
@@ -172,7 +170,7 @@ const advertorialHtml = `
     </p>
 
     <p>
-      <strong><u>Ali evo zašto on (kvalitetan muškarac) ne prilazi</u></strong>
+      <h2>Ali evo zašto on (kvalitetan muškarac) ne prilazi</h2>
     </p>
   </section>
 
@@ -213,10 +211,7 @@ const advertorialHtml = `
       “Otvorena je. Neće me odbiti. Ovo ima smisla.”
     </p>
 
-    <p>
-      <strong><em>I tu dolazimo do onoga o čemu se ne priča — ali odlučuje
-      sve.</em></strong>
-    </p>
+    <h2>I tu dolazimo do onoga o čemu se ne priča — ali odlučuje sve.</h2>
   </section>
 
   <section class="article-section">
@@ -253,9 +248,7 @@ const advertorialHtml = `
       I tu sve staje. Prije nego je i počelo.
     </p>
 
-    <p>
-      <strong><u>Zato sam stvorila Signale Strasti</u></strong>
-    </p>
+    <h2>Zato sam stvorila Signale Strasti</h2>
   </section>
 
   <section class="article-section">
@@ -283,10 +276,7 @@ const advertorialHtml = `
       Bez da se osjećaš izloženo.
     </p>
 
-    <p>
-      <strong><em>Evo kako ćeš privući kvalitetnog muškarca u samo 7
-      dana:</em></strong>
-    </p>
+    <h2>Evo kako ćeš privući kvalitetnog muškarca u samo 7 dana:</h2>
   </section>
 
   <section class="article-section">
@@ -314,9 +304,7 @@ const advertorialHtml = `
       “Otvorena sam. Svoja. I spremna da me vidiš.”
     </p>
 
-    <p>
-      <strong><u>A što kad on reagira?</u></strong>
-    </p>
+    <h2>A što kad on reagira?</h2>
   </section>
 
   <section class="article-section">
@@ -325,11 +313,9 @@ const advertorialHtml = `
       <!-- <sto-kad-reagira.png> -->
     </figure>
 
-    <p>
-      Zato dodatni dobivaš i alate za ono što dolazi poslije:
-    </p>
+    <h2>Zato dodatni dobivaš i alate za ono što dolazi poslije:</h2>
 
-    <ul>
+    <ul class="checklist">
       <li>Kako ostaviti prvi dojam koji mu ostaje u mislima</li>
       <li>Kako mu dati prostora da se osjeća kao da on vodi — ali znaš da vodiš ti</li>
       <li>Kako mu otvoriti prostor da on pita za tvoj broj (a vjeruje da je to bila njegova ideja)</li>
