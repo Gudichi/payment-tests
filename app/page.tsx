@@ -1,8 +1,7 @@
-import AboveTheFold from "./atf";
-import { getVersion } from "./versions";
+import TestPage, { metadata as testMetadata } from "./test/page";
+
+export const metadata = testMetadata;
 
 export default function HomePage() {
-  const version = getVersion();
-
-  return <AboveTheFold version={version} />;
+  return <TestPage />;
 }
