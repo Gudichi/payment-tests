@@ -6,6 +6,14 @@ export async function POST(req: NextRequest) {
 
   const { data } = await req.json();
   const { amount, metadata = {}, paymentIntentId, email } = data;
+  const normalizedEmail = (email || (metadata as any).email || "").trim();
+
+  if (!normalizedEmail) {
+    return NextResponse.json(
+      { error: "Email is required to create a payment intent" },
+      { status: 400 }
+    );
+  }
 
   if (amount <= 0) {
     return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
@@ -40,11 +48,13 @@ export async function POST(req: NextRequest) {
 
     const baseMetadata = {
       order_total_eur: Number(amount).toFixed(2),
-      email: email || normalizedMetadata.email || "",
+      email: normalizedEmail,
       main_offer: "true",
       bump_1: bump1Selected ? "true" : "false",
       bump_2: bump2Selected ? "true" : "false",
     };
+
+    const { email: _ignoredEmail, ...cleanedMetadata } = normalizedMetadata;
 
     let paymentIntent: Stripe.PaymentIntent;
 
