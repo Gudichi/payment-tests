@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
   }
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-  const { paymentIntentId, priceId } = await req.json();
+  const { paymentIntentId, priceId, email: incomingEmail } = await req.json();
 
   if (!paymentIntentId) {
     return NextResponse.json(
@@ -92,6 +92,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const email =
+      incomingEmail ||
+      originalIntent.metadata?.email ||
+      originalIntent.receipt_email ||
+      (charge?.billing_details.email ?? undefined) ||
+      originalIntent.metadata?.customer_email ||
+      "";
+    const isOto2 = selectedPriceId === OTO2_PRICE_ID;
+
     const upsellIntent = await stripe.paymentIntents.create({
       amount: price.unit_amount,
       currency: price.currency,
@@ -100,10 +109,12 @@ export async function POST(req: NextRequest) {
       off_session: true,
       confirm: true,
       metadata: {
-        source:
-          selectedPriceId === OTO2_PRICE_ID ? "oto2_one_click" : "oto1_one_click",
+        source: isOto2 ? "oto2_one_click" : "oto1_one_click",
         original_payment_intent: paymentIntentId,
         price_id: selectedPriceId,
+        email,
+        oto_1: isOto2 ? "false" : "true",
+        oto_2: isOto2 ? "true" : "false",
       },
       description: price.nickname ?? "Upsell",
     });

@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
   const { data } = await req.json();
-  const { amount, metadata = {}, paymentIntentId } = data;
+  const { amount, metadata = {}, paymentIntentId, email } = data;
 
   if (amount <= 0) {
     return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
@@ -23,8 +23,27 @@ export async function POST(req: NextRequest) {
     }, {});
 
     const amountInCents = Math.trunc(Number(amount) * 100);
+    const selectedBumpsRaw =
+      (typeof normalizedMetadata.selected_bumps === "string" && normalizedMetadata.selected_bumps) || "";
+    const selectedBumps = selectedBumpsRaw
+      .split(",")
+      .map((b) => b.trim().toLowerCase())
+      .filter(Boolean);
+    const bump1Selected =
+      selectedBumps.includes("signal8") ||
+      selectedBumps.includes("bump1") ||
+      selectedBumps.includes("bump_1");
+    const bump2Selected =
+      selectedBumps.includes("textmagic") ||
+      selectedBumps.includes("bump2") ||
+      selectedBumps.includes("bump_2");
+
     const baseMetadata = {
       order_total_eur: Number(amount).toFixed(2),
+      email: email || normalizedMetadata.email || "",
+      main_offer: "true",
+      bump_1: bump1Selected ? "true" : "false",
+      bump_2: bump2Selected ? "true" : "false",
     };
 
     let paymentIntent: Stripe.PaymentIntent;
