@@ -437,7 +437,7 @@ const CTAGroup = ({
 
   return (
     <div className="flex flex-col items-center gap-4">
-      {paymentIntentId && priceId ? (
+      {paymentIntentId ? (
         <OneClickUpsellButton
           paymentIntentId={paymentIntentId}
           priceId={priceId}
