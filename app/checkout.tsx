@@ -7,42 +7,31 @@ const BASE_PRICE = 17;
 
 const ORDER_BUMPS = [
   {
-    id: "signal8",
-    title: "8. Signal – Kada te gleda, ali ne prilazi",
+    id: "nekabroj",
+    title: "Neka on pita za tvoj broj",
     price: 9,
     oldPrice: 37,
-    image: "/Order-1.png",
+    image: "/Bonus-3.png",
     description: (
       <>
-        Posebni mikro-signal koji koristiš kada osjetiš da te primjećuje — ali ne
-        prilazi. <em>Bez obzira koliko tvoj govor tijela bio jak</em> — ova situacija
-        dogodi se svima:{" "}
-        <u>
-          on te gleda… ali ne napravi ništa.
-        </u>{" "}
-        Zato žene koje aktiviraju 8. signal{" "}
-        <strong>
-          vide rezultate 3x brže — jer znaju što točno napraviti kada on
-          zastane, ali još nije siguran.
-        </strong>
+        I kad mu se sviđaš — mnogi se ne usude pitati. Ovaj mikro-vodič ti
+        pokazuje gdje ostaviti prostor u razgovoru da mu daš zeleno svjetlo.{" "}
+        <strong>Žene koje ga koriste vide rezultate 3x brže</strong> — jer znaju
+        što točno napraviti kada on zastane, ali još nije siguran.
       </>
     ),
   },
   {
-    id: "textmagic",
-    title: "Kako Pisati Da Te Poželi Vidjeti",
-    price: 17,
-    oldPrice: 61,
+    id: "lokacijskimagnetizam",
+    title: "Lokacijski Magnetizam",
+    price: 13,
+    oldPrice: 34,
     image: "/Order-2.png",
     description: (
       <>
-        Žene koje primijene ovaj vodič{" "}
-        <strong>
-          vide 2x brže rezultate — jer znaju kako porukom zadržati njegov interes
-          i doći do susreta.
-        </strong>{" "}
-        Savršeno za one koje žele da on poželi još — i ne nestane nakon prvog
-        dojma.
+        Nije isti signal za kafić i za ured. Ako želiš 2x brže rezultate — koristi
+        pravi mikro-pokret na pravom mjestu. Ovaj mini modul ti daje instant
+        navigaciju za sve ključne lokacije: kafić, posao, teretana, shopping...
       </>
     ),
   },

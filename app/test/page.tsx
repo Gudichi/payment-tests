@@ -66,12 +66,6 @@ const bonuses = [
     description: "Kako signalizirati otvorenost, a da on osjeti da sve dolazi od njega. (67€, uključeno bez dodatne naplate.)",
   },
   {
-    title: "Bonus 3 — Kako da on zatraži tvoj broj",
-    image: "/Bonus-3.png",
-    description:
-      "Čak i kad mu se sviđaš, mnogi muškarci se povuku prije nego zatraže broj. Nauči kako ostaviti točno onu malu pauzu i signal koji ga potiče da napravi prvi korak — s vjerom da neće biti odbijen.",
-  },
-  {
     title: "Bonus 4 — Poruka koja ga vraća, čak i ako se povukao",
     image: "/Bonus-4.png",
     description: "Kada znaš što reći (i kako), njegova pažnja se vraća spontano. (Vrijednost 77€, sada dio paketa.)",
@@ -516,7 +510,6 @@ export default function TestPage() {
               {[
                 "17 mikro-signala koji nesvjesno pozivaju njegovu pažnju (i daju mu dozvolu da ti priđe)",
                 "1-minutni dnevni ritual koji možeš raditi gdje god jesi (diskretno, prirodno)",
-                "Lokacijska navigacija — jer nije isti signal za kafić i za ured",
                 "Objašnjenja zašto svaki signal djeluje (da se ne pitaš: \"Radim li ovo bezveze?\")",
                 "Mentor podrška ako želiš diskretnu provjeru ili samo podijeliti kako je prošlo",
               ].map((item) => (
