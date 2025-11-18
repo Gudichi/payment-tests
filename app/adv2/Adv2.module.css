@@ -111,6 +111,23 @@
   box-shadow: 0 24px 48px rgba(31, 21, 12, 0.18);
 }
 
+.heroIntro {
+  margin-top: 1.6rem;
+}
+
+.heroTitle {
+  font-family: var(--font-poppins, "Poppins"), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  line-height: 1.25;
+  color: #20140c;
+  margin: 0 0 0.65rem;
+}
+
+.subLead {
+  font-family: var(--font-poppins, "Poppins"), system-ui, sans-serif;
+}
+
 .coverImg {
   width: 100%;
   height: auto;
@@ -144,6 +161,15 @@
 .bodyText .lead {
   font-size: 18.5px;
   line-height: 1.9;
+}
+
+.leadQuote {
+  font-family: var(--font-poppins, "Poppins"), system-ui, sans-serif;
+  font-size: 1.05rem;
+  color: #403530;
+  border-left: 3px solid #e3d6c9;
+  padding-left: 1rem;
+  margin: 0.75rem 0 1.25rem;
 }
 
 .bodyText strong {
@@ -511,9 +537,10 @@
 
 .asSeenBox {
   border: 2px solid #f0e7c9;
-  border-radius: 12px;
-  padding: 16px 18px;
-  background: #ffffff;
+  border-radius: 0;
+  padding: 10px 0 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .brandList {
@@ -539,6 +566,7 @@
   align-items: center;
   justify-content: center;
   min-height: 38px;
+  padding: 8px 6px;
 }
 
 .brandText {
@@ -561,16 +589,15 @@
 }
 
 .brandLogo {
-  max-height: 32px;
+  max-height: 96px;
   width: auto;
-  opacity: 0.9;
-  filter: grayscale(100%);
-  transition: opacity 0.2s ease, filter 0.2s ease;
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.2s ease;
 }
 
 .brandLogo:hover {
-  filter: grayscale(60%);
-  opacity: 1;
+  opacity: 0.88;
 }
 
 .brandItem:nth-child(1) .brandText {

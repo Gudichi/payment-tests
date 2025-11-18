@@ -84,66 +84,6 @@ const AsSeenIn = () => {
 
 const advertorialHtml = `
 <article class="adv-article">
-
-  <header class="article-header">
-    <h1>
-      <em>On ne zna da ti se sviđa.</em> Zato ne
-      prilazi. <strong><u>ALI evo kako ćeš mu reći da priđe bez izgovorene riječi.</u></strong>
-    </h1>
-    <p class="article-meta">
-      13. studenog 2025. • <strong>SignaliStrasti tim</strong> | <em>Balkanska studija neverbalne privlačnosti</em>
-    </p>
-  </header>
-
-  <section class="article-section article-intro">
-    <blockquote>
-      “Prilaze mi samo oni koje ne bih ni pogledala. A onaj koji mi se
-      sviđa – ništa.”
-    </blockquote>
-
-    <p><strong>Ako si ovo ikad pomislila, nisi sama.</strong></p>
-
-    <p>
-      Ali razlog nije u tebi — nego u onome što <em>on</em> (ne) vidi.
-    </p>
-
-    <figure class="article-image">
-      <img src="/hero-2.png" alt="Hero vizual - žena u gradu, muškarac u pozadini">
-      <!-- <hero-2.png> -->
-    </figure>
-
-    <p>
-      <strong>Danas, čak i kad ga pogledaš — on neće prići, osim ako ne zna da smije.</strong>
-    </p>
-
-    <p>
-      <u>Evo što mu zapravo trebaš “reći” — bez da izgovoriš
-      ijednu riječ.</u>
-    </p>
-
-    <p>
-      Jer nisi ti ta koja ne zna privući pažnju.<br>
-      Već si je privukla — samo nije bila od onih kojima vrijediš.
-    </p>
-
-    <p>
-      Zapravo... ti nikad nisi ni željela samo pažnju.<br>
-      <strong>Ti želiš nešto drugo.</strong><br>
-      Ne još jedan “upad”. Ne još jedan razgovor koji nikamo ne vodi.
-    </p>
-
-    <p>
-      <strong>Ti želiš muškarca koji je stvaran.</strong><br>
-      Onog koji ne mora glumiti liderstvo.<br>
-      Koji se ne skriva iza poruka i storija.<br>
-      Koji zna pogledati ženu i — vidjeti više od izgleda.
-    </p>
-
-    <p>
-      <strong><u>Gdje su nestali oni PRAVI muškarci?</u></strong>
-    </p>
-  </section>
-
   <section class="article-section">
     <figure class="article-image">
       <img src="/muskarci-zele-prici.png" alt="Muškarci žele prići - vizual s terase">
@@ -422,9 +362,9 @@ const advertorialHtml = `
       “Zašto sam ikad sumnjala u sebe?”
     </p>
 
-    <p class="cta">
-      <strong><u>SAZNAJ VIŠE O SIGNALIMA STRASTI - CTA</u></strong>
-    </p>
+    <div class="ctaFooter">
+      <a class="ctaFooterButton" href="/">SAZNAJ VIŠE O SIGNALIMA STRASTI</a>
+    </div>
   </section>
 
 </article>
@@ -448,13 +388,16 @@ export default function Adv2Page() {
         <article className={styles.article}>
           <header className={styles.header}>
             <h1 className={styles.headline}>
-              On ne zna da ti se sviđa. Zato ne prilazi. ALI evo kako ćeš mu reći da priđe bez izgovorene riječi.
+              <em>On ne zna da ti se sviđa.</em> Zato ne
+              prilazi. <strong className={styles.u}>ALI evo kako ćeš mu reći da priđe bez izgovorene riječi.</strong>
             </h1>
             <div className={styles.categoryTag}>LJUBAVNI ODNOSI</div>
             <div className={styles.byline}>
-              Piše SignaliStrasti tim, {dayName} u {timeString}
+              13. studenog 2025. • <strong>SignaliStrasti tim</strong> | <em>Balkanska studija neverbalne privlačnosti</em>
             </div>
-            <div className={styles.readingTime}>Čitanje članka: 2 minute</div>
+            <blockquote className={styles.leadQuote}>
+              “Prilaze mi samo oni koje ne bih ni pogledala. A onaj koji mi se sviđa – ništa.”
+            </blockquote>
             <figure className={styles.coverImage}>
               <Image
                 src="/hero-2.png"
@@ -465,6 +408,14 @@ export default function Adv2Page() {
                 priority
               />
             </figure>
+            <div className={styles.heroIntro}>
+              <h2 className={styles.heroTitle}>
+                <strong>Danas, čak i kad ga pogledaš — on neće prići, osim ako ne zna da smije.</strong>
+              </h2>
+              <p className={`${styles.lead} ${styles.subLead}`}>
+                <u>Evo što mu zapravo trebaš “reći” — bez da izgovoriš ijednu riječ.</u>
+              </p>
+            </div>
           </header>
 
           <AsSeenIn />
