@@ -4,6 +4,7 @@ import Stripe from "stripe";
 import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { OneClickUpsellButton } from "@/components/one-click-upsell";
+import { EnsurePaymentIntentParam } from "@/components/payment-intent-sync";
 
 export const metadata: Metadata = {
   title: "Kompas Strasti™ — One Time Offer",
@@ -364,6 +365,7 @@ export default async function Oto1Page({ searchParams }: Props) {
 
   return (
     <div className="bg-ivory text-espresso">
+      <EnsurePaymentIntentParam paymentIntentId={payment_intent} />
       <div className="bg-[#6A1F29] py-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#F8F5F0] sm:text-sm">
         Ova Ponuda je dostupna samo jednom nakon što kupiš Signale Strasti i nikad više
       </div>
