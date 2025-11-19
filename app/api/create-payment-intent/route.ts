@@ -6,6 +6,14 @@ export async function POST(req: NextRequest) {
 
   const { data } = await req.json();
   const { amount, metadata = {}, paymentIntentId, email } = data;
+  console.log(
+    "create-payment-intent incoming:",
+    JSON.stringify({
+      amount,
+      email,
+      metadata,
+    })
+  );
   const normalizedEmail = (email || (metadata as any).email || "").trim();
 
   if (!normalizedEmail) {
