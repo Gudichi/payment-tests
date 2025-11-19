@@ -90,6 +90,8 @@ export async function POST(req: Request) {
 
   const amount = paymentIntent.amount;
   const currency = paymentIntent.currency;
+  console.log("Stripe webhook metadata:", JSON.stringify(metadata));
+  console.log("Stripe webhook selected_bumps:", metadata.selected_bumps);
   const selectedBumps = (metadata.selected_bumps || "").toString();
   const hasBump1 =
     metadata.bump_1 === "true" ||
