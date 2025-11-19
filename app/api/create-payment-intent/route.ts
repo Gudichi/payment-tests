@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
       try {
         await stripe.paymentIntents.update(paymentIntentId, {
           amount: amountInCents,
-          metadata: { ...baseMetadata, ...normalizedMetadata },
+          metadata: { ...baseMetadata, ...cleanedMetadata },
         });
         paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
       } catch (error) {
@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
           currency: "eur",
           automatic_payment_methods: { enabled: true },
           setup_future_usage: "off_session",
-          metadata: { ...baseMetadata, ...normalizedMetadata },
+          metadata: { ...baseMetadata, ...cleanedMetadata },
         });
       }
     } else {
@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
         currency: "eur",
         automatic_payment_methods: { enabled: true },
         setup_future_usage: "off_session",
-        metadata: { ...baseMetadata, ...normalizedMetadata },
+        metadata: { ...baseMetadata, ...cleanedMetadata },
       });
     }
 
