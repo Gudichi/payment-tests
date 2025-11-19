@@ -99,7 +99,8 @@ export async function POST(req: Request) {
     selectedBumpsRaw.includes("nekabroj");
   const hasBump2 =
     metadata.bump_2 === "true" ||
-    selectedBumpsRaw.includes("bump2");
+    selectedBumpsRaw.includes("bump2") ||
+    selectedBumpsRaw.includes("lokacijskimagnetizam");
 
   const tasks: Promise<void>[] = [];
 
