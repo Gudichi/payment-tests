@@ -90,16 +90,23 @@ export async function POST(req: Request) {
 
   const amount = paymentIntent.amount;
   const currency = paymentIntent.currency;
+  const selectedBumps = (metadata.selected_bumps || "").toString();
+  const hasBump1 =
+    metadata.bump_1 === "true" ||
+    selectedBumps.includes("bump1");
+  const hasBump2 =
+    metadata.bump_2 === "true" ||
+    selectedBumps.includes("bump2");
 
   const tasks: Promise<void>[] = [];
 
   if (metadata.main_offer === "true") {
     tasks.push(sendToKlaviyo(email, "MAIN_OFFER", amount, currency));
   }
-  if (metadata.bump_1 === "true") {
+  if (hasBump1) {
     tasks.push(sendToKlaviyo(email, "BUMP_1", amount, currency));
   }
-  if (metadata.bump_2 === "true") {
+  if (hasBump2) {
     tasks.push(sendToKlaviyo(email, "BUMP_2", amount, currency));
   }
   if (metadata.oto_1 === "true") {
