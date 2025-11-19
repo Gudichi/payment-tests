@@ -92,13 +92,14 @@ export async function POST(req: Request) {
   const currency = paymentIntent.currency;
   console.log("Stripe webhook metadata:", JSON.stringify(metadata));
   console.log("Stripe webhook selected_bumps:", metadata.selected_bumps);
-  const selectedBumps = (metadata.selected_bumps || "").toString();
+  const selectedBumpsRaw = (metadata.selected_bumps || "").toString().toLowerCase();
   const hasBump1 =
     metadata.bump_1 === "true" ||
-    selectedBumps.includes("bump1");
+    selectedBumpsRaw.includes("bump1") ||
+    selectedBumpsRaw.includes("nekabroj");
   const hasBump2 =
     metadata.bump_2 === "true" ||
-    selectedBumps.includes("bump2");
+    selectedBumpsRaw.includes("bump2");
 
   const tasks: Promise<void>[] = [];
 
