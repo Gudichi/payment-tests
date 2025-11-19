@@ -34,6 +34,7 @@ export default function PaymentElements({
   const [clientSecret, setClientSecret] = useState<string>("");
   const [paymentIntentId, setPaymentIntentId] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const customerEmail = metadata?.email ?? "test+checkout@signalistrasti.com";
 
   const metadataKey = useMemo(
     () => JSON.stringify(metadata ?? {}),
@@ -59,6 +60,7 @@ export default function PaymentElements({
           amount: price,
           metadata: metadata ?? {},
           paymentIntentId: paymentIntentId || undefined,
+          email: customerEmail,
         },
       }),
       signal: controller.signal,
