@@ -7,20 +7,36 @@ type ProductType = "MAIN_OFFER" | "BUMP_1" | "BUMP_2" | "OTO_1" | "OTO_2";
 
 async function sendToKlaviyo(email: string, productType: ProductType, amount: number, currency: string) {
   if (!email) return;
+  const metricName = `purchased_${productType.toLowerCase()}`;
+  const value = amount / 100;
   const payload = {
     data: {
       type: "event",
       attributes: {
-        metric: { name: `purchased_${productType.toLowerCase()}` },
+        time: new Date().toISOString(),
+        value,
+        value_currency: currency.toUpperCase(),
+        metric: {
+          data: {
+            type: "metric",
+            attributes: {
+              name: metricName,
+            },
+          },
+        },
+        profile: {
+          data: {
+            type: "profile",
+            attributes: {
+              email,
+            },
+          },
+        },
         properties: {
           product_type: productType,
           amount,
           currency,
         },
-        profile: {
-          email,
-        },
-        time: new Date().toISOString(),
       },
     },
   };
@@ -31,6 +47,7 @@ async function sendToKlaviyo(email: string, productType: ProductType, amount: nu
       Authorization: `Klaviyo-API-Key ${process.env.KLAVIYO_PRIVATE_KEY}`,
       "Content-Type": "application/json",
       Accept: "application/json",
+      revision: "2024-02-15",
     },
     body: JSON.stringify(payload),
   });
