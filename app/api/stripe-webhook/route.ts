@@ -25,7 +25,7 @@ async function sendToKlaviyo(email: string, productType: ProductType, amount: nu
     },
   };
 
-  await fetch("https://a.klaviyo.com/api/events/", {
+  const res = await fetch("https://a.klaviyo.com/api/events/", {
     method: "POST",
     headers: {
       Authorization: `Klaviyo-API-Key ${process.env.KLAVIYO_PRIVATE_KEY}`,
@@ -34,6 +34,12 @@ async function sendToKlaviyo(email: string, productType: ProductType, amount: nu
     },
     body: JSON.stringify(payload),
   });
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error("Klaviyo API error", res.status, res.statusText, text);
+    throw new Error(`Klaviyo request failed with status ${res.status}`);
+  }
 }
 
 export async function POST(req: Request) {
@@ -87,10 +93,12 @@ export async function POST(req: Request) {
   }
 
   try {
-    await Promise.all(tasks);
-  } catch (error) {
-    console.error("Failed to send events to Klaviyo", error);
-    return NextResponse.json({ error: "Failed to send Klaviyo events" }, { status: 500 });
+    if (tasks.length > 0) {
+      await Promise.all(tasks);
+    }
+  } catch (err) {
+    console.error("Error sending events to Klaviyo", err);
+    return NextResponse.json({ error: "Failed to send events to Klaviyo" }, { status: 500 });
   }
 
   return NextResponse.json({ received: true });
