@@ -12,13 +12,13 @@ type Comment = {
 const staticComments: Comment[] = [
   {
     username: "marina.veljac",
-    time: "13.11.2025. u 18:42",
+    time: "12.11.2025. u 18:42",
     body:
       "Ja sam se zaledila kad sam pročitala onaj dio “ako mu ne daš zeleno svjetlo, neće prić”. Toliko istinito 😭 Kupila sam Signale prošli tjedan i prvi put nakon dugo — lik mi sam prišao u kafiću. Preporučam stvarno.",
   },
   {
     username: "softblush_23",
-    time: "13.11.2025. u 19:15",
+    time: "13.11.2025. u 09:15",
     body:
       "Ovo je baš pogodilo… onaj osjećaj kad se središ ko kraljica i nitko te ne pogleda. 😅 Ako će mi ovo makar malo promijenit energiju, idem probat.",
   },
@@ -30,55 +30,55 @@ const staticComments: Comment[] = [
   },
   {
     username: "lena.kovac",
-    time: "13.11.2025. u 22:47",
+    time: "15.11.2025. u 22:47",
     body:
       "Ja sam probala jedan od signala (onaj za dućan) i lik se nasmija i rekao: “hej, smijem ti nešto pitat?” — JA ŠOK. 😂 Radi ženo, radi.",
   },
   {
     username: "moonhoney",
-    time: "14.11.2025. u 08:22",
+    time: "16.11.2025. u 08:22",
     body:
       "Nisam inače fan ovih programa, ali ovaj tekst mi je imao smisla. Pogotovo dio da njima treba znak da nisu napadni. Sad me baš zanima što je dalje.",
   },
   {
     username: "jovana_.petrov",
-    time: "14.11.2025. u 09:41",
+    time: "16.11.2025. u 20:14",
     body:
       "Ona rečenica “Ako nije 99% siguran da ga nećeš odbit – neće prići” me pogodila ko grom. Sad bar kužim zašto me normalni ignoriraju. Idem vidit te signale.",
   },
   {
     username: "zelena_magnolija",
-    time: "14.11.2025. u 11:05",
+    time: "17.11.2025. u 11:05",
     body:
       "8. signal mi je promijenio sve. Frajer me gledao cijelu kavu i ništa… primijenim to i dođe za 30 sekundi. Program vrijedi više od 17€, realno.",
   },
   {
     username: "milica.mar",
-    time: "14.11.2025. u 12:27",
+    time: "18.11.2025. u 12:27",
     body:
       "Iskreno, malo sam skeptična. Nisam ja za neke velike gestikulacije… al ako traje minutu dnevno, možda stvarno nije ništa napadno. Razmišljam da probam.",
   },
   {
     username: "crystal_nova",
-    time: "14.11.2025. u 14:18",
+    time: "19.11.2025. u 14:18",
     body:
       "Kad sam pročitala advertorial — sve mi je sjelo na mjesto. Ja mislim da sam samo ostavljala dojam pre-zatvorene. Sad sam kupila program, jedva čekam primijenit u uredu haha.",
   },
   {
     username: "dorisf",
-    time: "14.11.2025. u 15:39",
+    time: "20.11.2025. u 15:39",
     body:
       "U teretani sam probala onaj “meki pogled” i lik mi prvi put rekao: “Oprosti jel ti ovo još treba?” — a inače me nitko ni ne pogleda 😭😂 Valjda stvarno radi.",
   },
   {
     username: "natalija.grubic",
-    time: "14.11.2025. u 17:02",
+    time: "21.11.2025. u 09:54",
     body:
       "Ovo mi je prvi put da osjećam da mi netko objašnjava mušku psihu na NORMALAN način. Ako im treba signal — ok, naučit ćemo ga dat.",
   },
   {
     username: "sunset.vibes",
-    time: "14.11.2025. u 18:21",
+    time: "22.11.2025. u 18:21",
     body:
       "Malo sam starija i mislila sam da ovo nije za mene, ali iskreno… jako lijepo objašnjeno. Ne loviš nikoga, samo otvaraš prostor. Zvuči stvarno elegantno.",
   },

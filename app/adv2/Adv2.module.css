@@ -207,6 +207,13 @@
   margin-top: 2.25rem;
 }
 
+.bodyText .subSubHeadline {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 600;
+  margin-top: 1.65rem;
+  color: #2a1b12;
+}
+
 .bodyText figure {
   margin: 2.2rem 0;
 }
@@ -219,6 +226,19 @@
   box-shadow: 0 20px 38px rgba(30, 16, 7, 0.14);
 }
 
+.bodyText .signal-callout {
+  margin: 1.1rem 0 0.9rem;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(120deg, #fff2ea 0%, #ffe4d5 100%);
+  border-left: 4px solid #ff9d7a;
+  border-radius: 12px;
+  color: #1f130a;
+}
+
+.bodyText .signal-callout strong {
+  font-weight: 700;
+}
+
 .bodyText ul.checklist {
   list-style: none;
   padding-left: 0;
@@ -226,18 +246,26 @@
 }
 
 .bodyText ul.checklist li {
-  position: relative;
-  padding-left: 1.6em;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65em;
   margin-top: 0.5em;
+  padding-left: 0;
 }
 
-.bodyText ul.checklist li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  top: 0.1em;
-  color: currentColor;
+.bodyText .checkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 50%;
+  background: #ffe7d0;
+  color: #7b4121;
   font-weight: 700;
+  font-size: 0.9em;
+  flex-shrink: 0;
+  margin-top: 0.1em;
 }
 
 .bodyText hr {
@@ -638,12 +666,12 @@
   letter-spacing: 0.1em;
 }
 
-.bodyText .ctaFooter {
+.ctaFooter {
   margin-top: 2.4rem;
   text-align: center;
 }
 
-.bodyText .ctaFooterButton {
+.ctaFooterButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -659,18 +687,23 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.bodyText .ctaFooterButton:hover {
+.ctaFooterButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 24px rgba(255, 102, 102, 0.3);
 }
 
-.bodyText .ctaFooterButton:focus-visible {
+.ctaFooterButton:focus-visible {
   outline: 3px solid rgba(255, 102, 102, 0.45);
   outline-offset: 4px;
 }
 
-.bodyText .ctaFooterHint {
+.ctaFooterHint {
   margin-top: 0.75rem;
   font-size: 0.95rem;
   color: #6d6259;
+}
+
+.pageCta {
+  margin: 2.75rem 0 0;
+  text-align: center;
 }

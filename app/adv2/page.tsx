@@ -110,13 +110,13 @@ const advertorialHtml = `
 
     <p><strong>Ali evo stvarnosti:</strong></p>
 
-    <p><strong>Takvi muškarci postaju sve rjeđi.</strong></p>
+    <p><strong>Takvi muškarci postoju sve rijeđe.</strong></p>
 
     <p>
-      I još važnije — <u>oni ne traže svuda, gdje su oni zapravo?</u>
+      I još važnije — <u>oni ne traže svuda.</u>
     </p>
 
-    <h2>Tinder? Instagram?</h2>
+    <h2>Gdje su oni zapravo? Tinder? Instagram?</h2>
   </section>
 
   <section class="article-section">
@@ -194,7 +194,7 @@ const advertorialHtml = `
       Ne želi riskirati neugodu — jer te ne poznaje još.
     </p>
 
-    <p><strong>Znaš što zapravo čeka?</strong></p>
+    <h2>Evo što kvalitetni muškarci zapravo čekaju prije nego ti priđu?</h2>
 
     <p>
       <u>Da mu pokažeš jedan jasan, ali diskretan signal:</u><br>
@@ -299,9 +299,9 @@ const advertorialHtml = `
       Netko ti priđe. Pitaju nešto. Osmjehnu se. Pokrenu razgovor.
     </p>
 
-    <p>
-      Jer si poslala signal koji kaže:<br>
-      “Otvorena sam. Svoja. I spremna da me vidiš.”
+    <p class="signal-callout">
+      <strong>Jer si poslala signal koji kaže:<br>
+      “Otvorena sam. Svoja. I spremna da me vidiš.”</strong>
     </p>
 
     <h2>A što kad on reagira?</h2>
@@ -313,14 +313,14 @@ const advertorialHtml = `
       <!-- <sto-kad-reagira.png> -->
     </figure>
 
-    <h2>Zato dodatni dobivaš i alate za ono što dolazi poslije:</h2>
+    <h3 class="subSubHeadline">Zato dodatni dobivaš i alate za ono što dolazi poslije:</h3>
 
     <ul class="checklist">
-      <li>Kako ostaviti prvi dojam koji mu ostaje u mislima</li>
-      <li>Kako mu dati prostora da se osjeća kao da on vodi — ali znaš da vodiš ti</li>
-      <li>Kako mu otvoriti prostor da on pita za tvoj broj (a vjeruje da je to bila njegova ideja)</li>
-      <li>Kako odgovarati na poruke — a da zadržiš onu istu prisutnost koja ga je privukla</li>
-      <li>I kako ući u prvi susret bez tenzije — ali s toplinom koju će dugo pamtiti</li>
+      <li><span class="checkIcon" aria-hidden="true">✓</span>Kako ostaviti prvi dojam koji mu ostaje u mislima</li>
+      <li><span class="checkIcon" aria-hidden="true">✓</span>Kako mu dati prostora da se osjeća kao da on vodi — ali znaš da vodiš ti</li>
+      <li><span class="checkIcon" aria-hidden="true">✓</span>Kako mu otvoriti prostor da on pita za tvoj broj (a vjeruje da je to bila njegova ideja)</li>
+      <li><span class="checkIcon" aria-hidden="true">✓</span>Kako odgovarati na poruke — a da zadržiš onu istu prisutnost koja ga je privukla</li>
+      <li><span class="checkIcon" aria-hidden="true">✓</span>I kako ući u prvi susret bez tenzije — ali s toplinom koju će dugo pamtiti</li>
     </ul>
 
     <p>
@@ -357,19 +357,8 @@ const advertorialHtml = `
 `;
 
 export default function Adv2Page() {
-  const publishDate = new Date();
-  const dayNames = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
-  const dayName = dayNames[publishDate.getDay()];
-  const timeString = publishDate.toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" });
-
   return (
     <div className={`${poppins.variable} ${lora.variable} ${styles.page}`}>
-      <header className={styles.siteHeader}>
-        <div className={styles.headerContent}>
-          <h1 className={styles.siteLogo}>Ja Sam Žena</h1>
-        </div>
-      </header>
-
       <div className={styles.container}>
         <article className={styles.article}>
           <header className={styles.header}>
@@ -410,6 +399,9 @@ export default function Adv2Page() {
             <div className={styles.bodyText} dangerouslySetInnerHTML={{ __html: advertorialHtml }} />
           </div>
           <CommentsSection />
+          <div className={styles.pageCta}>
+            <a className={styles.ctaFooterButton} href="/">SAZNAJ VIŠE O SIGNALIMA STRASTI</a>
+          </div>
         </article>
 
         <aside className={styles.sidebar}>
