@@ -381,7 +381,7 @@ export default function TestPage() {
             <div className="space-y-4 max-w-3xl">
               <div className="flex items-center justify-center gap-3 text-cherry">
                 <div className="overflow-hidden rounded-full border border-cherry/30 bg-white">
-                  <Image src="/Tim.png" alt="Profilna Dunje Kramarić" width={48} height={48} className="h-12 w-12 object-cover" />
+                  <Image src="/PROFILNA.png" alt="Profilna Dunje Kramarić" width={48} height={48} className="h-12 w-12 object-cover" />
                 </div>
                 <h2 className="text-sm font-semibold uppercase tracking-[0.35em]">Piše: Dunja Kramarić</h2>
               </div>
