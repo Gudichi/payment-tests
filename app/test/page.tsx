@@ -531,11 +531,14 @@ export default function TestPage() {
             </ul>
             <div className="space-y-4 text-left text-base text-espresso/85">
               <h3 className="text-center text-2xl font-heading font-bold">Bonusi uključeni odmah</h3>
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="flex flex-col gap-6">
                 {bonuses.map((bonus) => {
                   const [labelText, bonusHeading] = bonus.title.split(" — ");
                   return (
-                    <div key={bonus.title} className="space-y-3 rounded-3xl bg-white p-5 shadow-card text-left">
+                    <div
+                      key={bonus.title}
+                      className="space-y-3 rounded-3xl border border-white/70 bg-ivory/70 p-6 shadow-card text-left"
+                    >
                       <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
                         <span className="font-heading italic">{labelText}</span>
                       </p>
