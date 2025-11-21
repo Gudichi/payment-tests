@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Signali Strasti — Program koji budi njegov prvi korak",
   description:
     "Aktiviraj tihi govor tijela koji mu daje zeleno svjetlo. Signali Strasti pokazuje ti kako u par minuta dnevno privući pažnju kvalitetnih muškaraca.",
+  other: {
+    "facebook-domain-verification": "cu2mqx41ucervi4ucd27awtvabnihw",
+  },
 };
 
 const steps = [
