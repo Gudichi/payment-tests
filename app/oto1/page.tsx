@@ -314,18 +314,22 @@ const CTAGroup = ({
           paymentIntentId={paymentIntentId}
           priceId={process.env.STRIPE_OTO1_PRICE_ID}
           label={primaryLabel}
-          className="bg-[#1C7C7D] hover:bg-[#165a5c] text-ivory"
+          className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-4 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
           onSuccessHref={nextOto2}
         />
       ) : (
-        <CTAButton href={nextOto2} size="lg" className="bg-[#1C7C7D] text-ivory">
+        <CTAButton
+          href={nextOto2}
+          size="lg"
+          className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-4 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
+        >
           {primaryLabel}
         </CTAButton>
       )}
       <CTAButton
         href={oto1No}
         size="lg"
-        className="border border-[#6A1F29] text-[#6A1F29] bg-transparent hover:bg-[#6A1F29]/5"
+        className="w-full sm:w-auto rounded-3xl border border-[#6A1F29] bg-transparent px-8 py-4 text-base font-semibold tracking-wide text-[#6A1F29] transition hover:bg-[#6A1F29]/5"
       >
         {secondaryLabel}
       </CTAButton>
@@ -451,8 +455,12 @@ export default async function Oto1Page({ searchParams }: Props) {
           <p className="whitespace-pre-line">
             “Znam kako izgleda kad žena uđe u svoje 30-e s idejom da je još uvijek sve ispred nje… a onda joj jedna, dvije
             ili tri veze oduzmu ne samo vrijeme — već i onu finu vjeru u sebe.
-            Godine ti same po sebi ništa ne oduzimaju.
+          </p>
+          <p className="whitespace-pre-line">
+            Godine ti samo po sebi ništa ne oduzimaju.
             Ali veze s krivim muškarcima? One uzmu najvrijednije: tvoju toplinu, tvoju spontanost, tvoju želju da vjeruješ.
+          </p>
+          <p className="whitespace-pre-line">
             Ne želim da to bude tvoja priča. Zato sam napravila Kompas Strasti™.
             Da ne pogodiš opet na isti obrazac — u godinama kad si najviše svoja.”
           </p>
@@ -496,6 +504,8 @@ export default async function Oto1Page({ searchParams }: Props) {
         >
           <p className="whitespace-pre-line">
             Tvoja intuicija te nikad nije lagala — ali ako ne znaš što gledaš, lako ti promakne ono najbitnije.
+          </p>
+          <p className="whitespace-pre-line">
             Kompas Strasti™ je vodič kroz 5 najvažnijih znakova emocionalne zrelosti muškarca — u porukama, u načinu kako sluša,
             kako odgovara na neslaganje, i kako reagira kad osjeti tvoju ranjivost.
           </p>
