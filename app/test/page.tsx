@@ -548,7 +548,7 @@ export default function TestPage() {
                         alt={bonus.title}
                         width={720}
                         height={420}
-                        className={`mx-auto rounded-2xl ${bonus.title.startswith("Bonus 2") ? "w-1/2 sm:w-[30%]" : "w-3/4 sm:w-[40%]"}`}
+                        className={`mx-auto rounded-2xl ${typeof bonus.title === "string" && bonus.title.startsWith("Bonus 2") ? "w-1/2 sm:w-[30%]" : "w-3/4 sm:w-[40%]"}`}
                       />
                       <p className="text-base text-espresso/85">{bonus.description}</p>
                     </div>
