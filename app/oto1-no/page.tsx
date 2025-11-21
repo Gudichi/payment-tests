@@ -68,34 +68,6 @@ export default function Oto1NoPage({ searchParams }: Props) {
             <p>I sve ćeš to pokušati analizirati bez alata.</p>
             <p>Sama.<br />Opet.</p>
             <p>I ti i ja znamo kako to najčešće završi.</p>
-        </Section>
-
-        <Section align="center" contentClassName="max-w-3xl space-y-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
-            A možda nisi htjela reći “ne”…
-          </p>
-          <div className="space-y-4 text-lg text-espresso/85">
-            <p className="font-heading text-2xl font-bold text-espresso">…možda si pomislila “Još ću razmisliti”.</p>
-            <p>…možda ti je cijena u ovom trenutku zasmetala.</p>
-            <p>…možda si pomislila “Nije hitno.”</p>
-            <p>
-              Ali ja znam nešto što ti možda ne osjećaš sada — ali hoćeš kasnije: Kad se javi onaj novi. Kad počneš
-              osjećati leptiriće. Kad se opet pitaš: “Je li on stvarno taj?” Tada nećeš imati ovaj alat. I možda nećeš
-              imati priliku ponovno ga uzeti.
-            </p>
-        </Section>
-
-        <Section align="center" contentClassName="max-w-3xl space-y-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
-            Zato ti želim olakšati odluku.
-          </p>
-          <div className="space-y-4 text-lg text-espresso/85">
-            <p className="font-heading text-2xl font-bold text-espresso">
-              Danas možeš dobiti cijeli Kompas Strasti™ i sve bonuse
-            </p>
-            <p>— ne za punu cijenu od 172 €, već za samo jednokratnu donaciju od 37 €</p>
-            <p>kao ekskluzivni poklon jer si prošla Signale Strasti™.</p>
-            <p>To nije trošak. To je osiguranje protiv još jedne izgubljene godine.</p>
           </div>
         </Section>
 
@@ -130,7 +102,6 @@ export default function Oto1NoPage({ searchParams }: Props) {
               Ne, hvala. Radije riskiram da opet mjesecima nagađam tko je on — i možda ponovno izgubim najvrijednije
               godine na pogrešnog.
             </CTAButton>
-          </div>
           </div>
         </Section>
 
