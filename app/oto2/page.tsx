@@ -51,7 +51,7 @@ const STEP_ITEMS = [
     label: "KORAK 2:",
     title: "Testiraj “Rečenice Strasti”",
     body: [
-      "Gotovo za 5 minuta nakon prijave u progrma",
+      "Gotovo za 5 minuta nakon prijave u program",
       "Zamisli da imaš male čarobne rečenice koje kad ih kažeš muškarcu, njegov mozak se upali kao lampice na božićnom drvcu — i odjednom mu postaneš najdraže biće na svijetu.",
       "To su “Rečenice Strast”",
       "One mu ne “prave pritisak” i ne mole ga za ljubav — nego mu pokreću osjećaj: “Ona je posebna. Ja je želim. Moram biti blizu nje.”",
@@ -63,7 +63,7 @@ const STEP_ITEMS = [
     label: "KORAK 3:",
     title: "Javi mentorima rezultate ili pitaj što te muči",
     body: [
-      "Gotovo za 1 minuta nakon što poašlješ rečenice",
+      "Gotovo za 1 minutu nakon što pošalješ rečenice",
       "Kod svake rečenice imaš polje gdje možeš pisati: “Evo što sam mu poslala”, “ovo mi je odgovorio”, “što da sad?”, ili jednostavno: “Pomoć, ne želim zeznuti ovo!”",
       "Ti napišeš — mentori odgovore u roku 24 sata.",
       "Mi smo tu da te držimo za ruku dok tvoj odnos cvjeta. 🌸✨",
@@ -502,7 +502,9 @@ export default async function Oto2Page({ searchParams }: Props) {
               <br />
               početi ih gledati, isprobati prve poruke i osjetiti prve promjene…
             </p>
-            <p><strong>Ali, molim te, obrati pažnju još na OVO.</strong></p>
+            <p className="text-xl font-heading font-semibold">
+              Ali, molim te, obrati pažnju još na OVO, jer je <u>JAKO VAŽNO...</u>
+            </p>
             <p className="underline decoration-cherry/50 decoration-2">Jer je krucijalno.</p>
             <p>I ne, ne govorim to da bih ti “nešto dodatno prodala”.</p>
             <p>
@@ -525,31 +527,34 @@ export default async function Oto2Page({ searchParams }: Props) {
 
         <Section bg="white" contentClassName="space-y-6 max-w-4xl">
           <h2 className="font-heading text-2xl font-bold text-espresso sm:text-3xl">
-            Evo, ispričat ću ti zašto je to važno — kroz jednu kratku priču.
+            Evo, ispričat ću ti zašto je to važno — kroz jednu kratku, jednominutnu priču koju stvarno trebaš pročitati.
           </h2>
           <div className="space-y-4 text-lg leading-relaxed text-espresso/90">
-            <p>U jednoj fazi života… imala sam vezu iz snova.</p>
-            <p>Bio je sve ono što sam zamišljala: <strong>zreo, emotivno prisutan, zabavan, ambiciozan.</strong></p>
-            <p>Na početku — kemija kakvu nisam osjećala godinama.</p>
+            <p>U jednoj fazi života… imala sam <strong>vezu iz snova.</strong></p>
+            <p>
+              Bio je sve ono što sam zamišljala: <em className="font-semibold">zreo, emotivno prisutan, zabavan, ambiciozan.</em>
+            </p>
+            <p>Na početku — <u className="decoration-cherry/70 decoration-2">kemija kakvu nisam osjećala godinama.</u></p>
             <p>Zvao me svakog dana, planirao putovanja, govorio kako osjeća nešto što nikad prije nije.</p>
-            <p>I onda, kao da je netko ugasio svjetlo.</p>
+            <p className="font-semibold text-espresso">I onda, kao da je netko ugasio svjetlo.</p>
             <p>Počeo je odgovarati s "ok". Više nije predlagao susrete.</p>
             <p>Zagrljaji su postali navika, a razgovori tišina.</p>
-            <p>Tada sam upisivala u svoj dnevnik:</p>
-            <p>
-              "Osjećam da mu smetam svojim postojanjem." "Ne znam što se promijenilo." "Zar nije rekao da me
-              nikada neće pustiti?"
+            <p className="italic text-espresso/85">Tada sam upisivala u svoj dnevnik:</p>
+            <p className="rounded-2xl bg-ivory p-4 shadow-card">
+              <strong>“Osjećam da mu smetam svojim postojanjem.”</strong> <br />
+              <em>“Ne znam što se promijenilo.”</em> <br />
+              <u>“Zar nije rekao da me nikada neće pustiti?”</u>
             </p>
-            <p>Mjesec dana kasnije, rekao je da ne zna što osjeća.</p>
+            <p><strong>Mjesec dana kasnije</strong>, rekao je da ne zna što osjeća.</p>
             <p>Nekoliko tjedana nakon toga — nije se više javljao.</p>
             <p>I to nije bila jedina takva priča.</p>
             <p>Imala sam i one odnose gdje sve ide sporo, nikada ne dođe do ozbiljnog.</p>
             <p>Imala sam i one gdje se sve rasplamsa… i samo izgori.</p>
             <p>U svakom od tih odnosa bila sam iskrena. Dobra. Prisutan partner.</p>
-            <p>Ali sam svaki put osjećala isto:</p>
-            <p>Na početku me žele. Kasnije me zaborave.</p>
+            <p className="font-semibold text-espresso">Ali sam svaki put osjećala isto:</p>
+            <p className="italic text-espresso/85">Na početku me žele. Kasnije me zaborave.</p>
             <p>Zato sam istraživala. Testirala. Tražila uzrok.</p>
-            <p>I ono što sam otkrila promijenilo je sve:</p>
+            <p className="text-espresso font-semibold">I ono što sam otkrila promijenilo je sve:</p>
           </div>
           <ul className="space-y-3 rounded-3xl bg-ivory p-6 text-lg leading-relaxed shadow-card">
             {DISCOVERY_BULLETS.map((item) => (
@@ -574,29 +579,31 @@ export default async function Oto2Page({ searchParams }: Props) {
             Sad ću ti objasniti zašto ovo djeluje.
           </h2>
           <div className="space-y-4 text-lg leading-relaxed text-espresso/90">
-            <p>Ne zato što je “fora” ili neka magija…</p>
-            <p>nego zato što tvoj mozak — i njegov mozak — ne reagiraju jednako na riječi.</p>
-            <p>Ženski mozak procesira jezik kroz centre povezane s emocijama, nijansama, kontekstom.</p>
-            <p>Mi čujemo što je netko rekao… i što je zapravo htio reći.</p>
-            <p>Muški mozak — posebno u kontekstu privlačnosti — reagira potpuno drugačije.</p>
-            <p>On ne analizira. On se pali na određene fraze. Doslovno.</p>
+            <p><strong>Ne zato što je “fora” ili neka magija…</strong></p>
             <p>
-              U njegovom mozgu postoje specifični receptori koji se aktiviraju kada čuje određeni emocionalni stimulans —
+              nego zato što <u>tvoj mozak</u> — i <u>njegov mozak</u> — ne reagiraju jednako na riječi.
+            </p>
+            <p>Ženski mozak procesira jezik kroz centre povezane s emocijama, nijansama, kontekstom.</p>
+            <p className="italic text-espresso/85">Mi čujemo što je netko rekao… i što je zapravo htio reći.</p>
+            <p>Muški mozak — posebno u kontekstu privlačnosti — reagira potpuno drugačije.</p>
+            <p className="font-semibold text-espresso">On ne analizira. On se pali na određene fraze. Doslovno.</p>
+            <p>
+              U njegovom mozgu postoje specifični receptori koji se aktiviraju kada čuje <strong>određeni emocionalni stimulans</strong> —
             </p>
             <p>bilo da je to opasnost, izazov, gubitak, pa čak i… čežnja.</p>
-            <p>Te riječi izazivaju izlučivanje DOPAMINA.</p>
-            <p>A dopamin je ono što stvara OVISNOST.</p>
+            <p className="text-espresso font-semibold">Te riječi izazivaju izlučivanje DOPAMINA.</p>
+            <p className="underline decoration-cherry/50 decoration-2">A dopamin je ono što stvara OVISNOST.</p>
             <p>Ne o tebi — nego o osjećaju koji ima kad je s tobom.</p>
-            <p>I tu većina žena — potpuno nesvjesno — napravi istu grešku.</p>
+            <p className="font-semibold">I tu većina žena — potpuno nesvjesno — napravi istu grešku.</p>
             <p>Muškarac ne postaje ovisan o ženi zato što je ona “dobra prema njemu”.</p>
             <p>Niti zato što mu stalno piše, daje sve od sebe i pokušava da sve ide glatko.</p>
-            <p>U stvarnosti, takav pristup često učini suprotno.</p>
+            <p className="italic text-espresso/85">U stvarnosti, takav pristup često učini suprotno.</p>
             <p>Jer mu ne aktivira emociju.</p>
-            <p>Nema tenzije, nema osjećaja mogućeg gubitka, nema uzbuđenja.</p>
+            <p><u>Nema tenzije, nema osjećaja mogućeg gubitka, nema uzbuđenja.</u></p>
             <p>Zato muškarci najčešće postanu ovisni o seksu — ali ne i o ženi.</p>
             <p>To znači da ga privlači tvoja energija… tvoje tijelo…</p>
-            <p>ali ne ostaje zbog tebe kao osobe.</p>
-            <p>I onda se dogodi klasični scenarij:</p>
+            <p className="font-semibold">ali ne ostaje zbog tebe kao osobe.</p>
+            <p>Onda se dogodi klasični scenarij:</p>
           </div>
           <ul className="space-y-3 text-left text-lg text-espresso/90">
             {CRAVING_BULLETS.map((item) => (
@@ -658,8 +665,17 @@ export default async function Oto2Page({ searchParams }: Props) {
                   </ul>
                 ) : (
                   <div className="space-y-2 text-base leading-relaxed text-espresso/90">
-                    {step.body.map((line) => (
-                      <p key={line}>{line}</p>
+                    {step.body.map((line, lineIndex) => (
+                      lineIndex === 0 ? (
+                        <p
+                          key={line}
+                          className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-sm font-semibold text-[#6A1F29] shadow-sm"
+                        >
+                          {line}
+                        </p>
+                      ) : (
+                        <p key={line}>{line}</p>
+                      )
                     ))}
                   </div>
                 )}
@@ -670,8 +686,11 @@ export default async function Oto2Page({ searchParams }: Props) {
 
         <Section
           bg="ivory"
-          title="Što sve radimo?"
-          subtitle="Da on postane lud za tobom."
+          title={(
+            <>
+              Što sve radimo? <br /> <span className="text-cherry">Da on postane lud za tobom.</span>
+            </>
+          )}
           contentClassName="space-y-6"
         >
           <div className="space-y-4 text-lg leading-relaxed text-espresso/90">
@@ -684,8 +703,14 @@ export default async function Oto2Page({ searchParams }: Props) {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {SKILL_ITEMS.map((skill) => (
-              <div key={skill.title} className="space-y-2 rounded-2xl bg-white p-5 shadow-card">
-                <p className="font-heading text-lg font-bold text-espresso">{skill.title}</p>
+              <div
+                key={skill.title}
+                className="space-y-2 rounded-3xl border border-[#ffe1ec] bg-gradient-to-br from-white via-rose-50 to-[#fff4f8] p-5 shadow-card"
+              >
+                <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-sm font-semibold text-cherry shadow-sm">
+                  ❤️
+                  <span className="font-heading text-lg font-bold text-espresso">{skill.title}</span>
+                </p>
                 <p className="text-base leading-relaxed text-espresso/85">{skill.body}</p>
               </div>
             ))}
@@ -697,25 +722,25 @@ export default async function Oto2Page({ searchParams }: Props) {
             Nikad više nećeš moći pristupiti Rečenicama Strasti™ (nakon ovog trenutka)
           </h2>
           <div className="space-y-4 text-lg leading-relaxed text-espresso/90">
-            <p>Možda zvuči dramatično — ali je istina.</p>
-            <p>Rečenice Strasti™ nisu u slobodnoj prodaji. Bile su.</p>
-            <p> Od 2019. do danas prošlo ih je više od 1000 žena — više čak i od Signala i Kompasa.</p>
+            <p><strong>Možda zvuči dramatično — ali je istina.</strong></p>
+            <p><em>Rečenice Strasti™ nisu u slobodnoj prodaji.</em> Bile su.</p>
+            <p className="font-semibold text-espresso">Od 2019. do danas prošlo ih je više od 1000 žena — više čak i od Signala i Kompasa.</p>
             <p>
               Tada smo kroz istraživanje otkrili da je upravo ovo najčešći razlog zašto se muškarci hlade nakon nekog
               vremena:
             </p>
-            <p> 👉 Jer žena nesvjesno koristi riječi koje gase, umjesto da povezuju.</p>
+            <p className="rounded-2xl bg-ivory p-4 shadow-card"><strong>👉 Jer žena nesvjesno koristi riječi koje gase, umjesto da povezuju.</strong></p>
             <p>I zato smo ih maknuli iz otvorene prodaje.</p>
-            <p>Zašto?</p>
-            <p>Zato što Rečenice Strasti™ jednostavno — nisu za svakoga.</p>
-            <p> Ovaj alat djeluje samo kad je žena već prošla prve korake.</p>
-            <p> Kad zna što je signal. Kad zna čitati tišinu. Kad zna kako mu prići bez da izgubi sebe.</p>
-            <p>Jer ako dođe prerano… može zbuniti.</p>
+            <p className="italic text-espresso/85">Zašto?</p>
+            <p className="font-semibold">Zato što Rečenice Strasti™ jednostavno — <u>nisu za svakoga.</u></p>
+            <p>Ovaj alat djeluje samo kad je žena već prošla prve korake.</p>
+            <p>Kad zna što je signal. Kad zna čitati tišinu. Kad zna kako mu prići bez da izgubi sebe.</p>
+            <p className="italic">Jer ako dođe prerano… može zbuniti.</p>
             <p> Ako se koristi s pogrešnim namjerama… može djelovati kao trik.</p>
-            <p> A ova komunikacija nije igra.</p>
+            <p className="font-semibold">A ova komunikacija nije igra.</p>
             <p>Zato ih vidiš samo sada.</p>
-            <p> Jer sada si spremna. I znaš zašto ih koristiš.</p>
-            <p> Ne da bi ga natjerala — nego da ga emocionalno pozoveš.</p>
+            <p>Jer sada si spremna. I znaš zašto ih koristiš.</p>
+            <p><strong>Ne da bi ga natjerala — nego da ga emocionalno pozoveš.</strong></p>
           </div>
           <p className="rounded-2xl bg-ivory p-5 text-lg font-semibold leading-relaxed text-espresso/90 shadow-card">
             Zato: ovo je jedina prilika da ih dodaš.
@@ -743,48 +768,77 @@ export default async function Oto2Page({ searchParams }: Props) {
             ))}
           </div>
         </Section>
-
-        <Section bg="ivory" contentClassName="space-y-8">
-          <div className="mx-auto max-w-4xl space-y-6 rounded-[32px] border border-[#efe0ce] bg-white p-6 shadow-card sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
-              Što točno dobivaš u Rečenicama Strasti™
-            </p>
-            <h2 className="font-heading text-3xl font-bold leading-tight text-espresso sm:text-4xl">
-              Tvoj alat za emocionalnu ovisnost — bez igre, bez pritiska.
-            </h2>
-
-            <h3 className="font-heading text-lg font-bold text-espresso">
-              Puni pristup Rečenicama Strasti™ i svim bonusima za 47 € – odmah.
-            </h3>
-
-            <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry">BONUSI</p>
-              <ul className="space-y-3 text-base leading-relaxed text-espresso/90">
-                {BONUSES.map((bonus) => (
-                  <li key={bonus} className="flex items-start gap-3">
-                    <span className="mt-1 text-xl text-cherry">✔</span>
-                    <span>{bonus}</span>
-                  </li>
-                ))}
-              </ul>
+        <Section bg="ivory" contentClassName="space-y-10">
+          <div className="mx-auto max-w-5xl space-y-10 rounded-[32px] border border-[#efe0ce] bg-white p-6 shadow-card sm:p-10">
+            <div className="text-center space-y-2">
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">PROGRAM <span className="italic text-espresso">Rečenice Strasti</span></p>
+              <h2 className="font-heading text-3xl font-bold leading-tight text-espresso sm:text-4xl">21 rečenica koje čine muškarca opsjednutim tobom</h2>
+              <p className="text-xl font-heading text-espresso">Evo što dobivaš ako danas odlučiš transformirati svoj ljubavni život</p>
             </div>
 
-            <div className="space-y-3 text-espresso">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-espresso/70">
-                Ukupna vrijednost: 214 €
-              </p>
-              <p className="text-base leading-relaxed text-espresso/85">
-                Rečenice Strasti™ su nekoć bile dostupne kao samostalni program — ali više nisu u slobodnoj prodaji.
-              </p>
-              <p className="text-base leading-relaxed text-espresso/85">
-                Danas ih možeš aktivirati samo ovdje — u ovom trenutku.
-              </p>
-              <div className="flex items-center justify-center">
-                <Image src="/arrow-down.svg" alt="Strelica prema cijeni" width={48} height={48} className="h-10 w-10 animate-bounce" />
+            <div className="grid gap-8 lg:grid-cols-[1.1fr,1fr] items-center">
+              <div className="space-y-4 text-base leading-relaxed text-espresso/90">
+                <ul className="space-y-3">
+                  {[
+                    'Program "Rečenice Strasti" – kompletna formula od 21 "Sjeme dopamina" rečenice koje će učiniti da muškarac postane potpuno opsjednut tobom (bez manipulacije - samo čista psihologija)',
+                    'Timing master guide – kako da znaš TOČNO kada izgovoriti koju rečenicu za maksimalni učinak (ovo je ključ uspjeha)',
+                    'WhatsApp script kolekcija – gotove poruke koje možeš kopirati i poslati da ga natjeraš da trči za tobom',
+                    'Psihologija povratka – kako da bivši partner poželi vratiti vezu, čak i kad je rekao da je "gotovo zauvijek"',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 rounded-2xl bg-ivory/70 p-4 shadow-sm">
+                      <span className="mt-1 text-emerald-600">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="space-y-3 rounded-2xl bg-[#fff5f8] p-4 shadow-card">
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry">BONUSI</p>
+                  <ul className="space-y-3">
+                    {[
+                      'BONUS 1: "Znakovi strasti" trening (Vrijednost 53€) → BESPLATNO DANAS — Kako prepoznati je li STVARNO zaljubljen ili se samo igra s tobom? Naučit ćeš čitati 7 nesvjesnih znakova koji otkrivaju njegovu pravu namjeru (prestani pogađati - ZNAT ĆEŠ sa sigurnošću)',
+                      'BONUS 2: "Seksualna opsjednutost" Program (Vrijednost 107€) → BESPLATNO DANAS — Kako da postaneš JEDINA žena o kojoj fantazira - čak i ako je prije gledao druge žene. Naučit ćeš tehnike koje ga čine seksualno opsjednutim SAMO tobom (bez manipulacije - samo čista psihologija privlačnosti).',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3 rounded-2xl border border-[#ffddea] bg-white p-3">
+                        <span className="mt-1 text-lg">🎁</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="space-y-2 rounded-2xl bg-white p-4 shadow-sm">
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-espresso/70">UKUPNA VRIJEDNOST PAKETA (Sve Što Dobivaš):</p>
+                  <ul className="space-y-1 text-espresso/90">
+                    {[
+                      'Program Rečenice Strasti = Vrijednost 147€',
+                      'BONUS 1: Znakovi Strasti = Vrijednost 53€',
+                      'BONUS 2: Knjiga Muški Um = Vrijednost 73€',
+                      'BONUS 3: Seksualna Opsj. = Vrijednost 107€',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="text-emerald-600">✔</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-base font-semibold text-[#a23d52] line-through">UKUPNA VRIJEDNOST: 380€</p>
+                </div>
               </div>
-              <div className="text-center">
-                <p className="text-2xl font-semibold text-espresso/70 line-through">214 €</p>
-                <p className="text-6xl font-heading font-bold text-cherry">{amount ?? "57"} €</p>
+
+              <div className="flex flex-col items-center gap-4">
+                <Image
+                  src="/product-min.png"
+                  alt="Program Rečenice Strasti"
+                  width={620}
+                  height={720}
+                  className="w-full max-w-xs sm:max-w-sm"
+                />
+                <div className="text-center space-y-2">
+                  <Image src="/arrow-down.svg" alt="Strelica prema cijeni" width={48} height={48} className="mx-auto h-10 w-10 animate-bounce" />
+                  <p className="text-6xl font-heading font-bold text-cherry">{amount ?? "57"}€</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.35em] text-espresso">Tvoja cijena danas</p>
+                </div>
               </div>
             </div>
 
@@ -801,43 +855,6 @@ export default async function Oto2Page({ searchParams }: Props) {
                 i kad početna iskra prođe.
               </p>
             </div>
-          </div>
-        </Section>
-
-        <Section
-          bg="white"
-          align="center"
-          title="Za koga je ovo?"
-          subtitle="Rečenice Strasti™ su za tebe ako:"
-          contentClassName="mx-auto max-w-4xl space-y-6"
-        >
-          <ul className="space-y-3 text-left text-lg text-espresso/90">
-            {FOR_WHO.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <span className="text-xl text-cherry">✔</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        <Section
-          bg="white"
-          align="center"
-          title="Evo što kažu žene koje su već prošle kroz Rečenice Strasti™"
-          contentClassName="space-y-6"
-        >
-          <div className="flex flex-col items-center gap-4">
-            {STORY_IMAGE_SET.map((src) => (
-              <Image
-                key={src}
-                src={src}
-                alt="Iskustva polaznica"
-                width={1200}
-                height={1200}
-                className="w-full max-w-full sm:max-w-[80%] object-contain"
-              />
-            ))}
           </div>
         </Section>
 
