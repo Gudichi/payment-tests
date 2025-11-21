@@ -3,6 +3,8 @@ import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { OneClickUpsellButton } from "@/components/one-click-upsell";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Kompas Strasti™ — Odustanak potvrđen",
   description: "Ako ipak poželiš dodatni alat za emocionalnu jasnoću, ponuda je još kratko otvorena.",
@@ -82,13 +84,13 @@ export default function Oto1NoPage({ searchParams }: Props) {
                 priceId={process.env.STRIPE_OTO1_PRICE_ID}
                 onSuccessHref={paymentIntentId ? `/oto2?payment_intent=${paymentIntentId}` : "/oto2"}
                 label="Da, dodaj Kompas Strasti™ za 37 € i vodi me dalje"
-                className="w-full bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
+                className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-4 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
               />
             ) : (
               <CTAButton
                 href={paymentIntentId ? `/oto1?payment_intent=${paymentIntentId}` : "/oto1"}
                 size="lg"
-                className="w-full bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
+                className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-4 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
               >
                 Da, želim znati tko je stvarno zreo — prije nego uopće uđe pod moju kožu. Puni pristup Kompasu Strasti™ i
                 svim bonusima za 37 € – odmah.
@@ -97,7 +99,7 @@ export default function Oto1NoPage({ searchParams }: Props) {
             <CTAButton
               href={paymentIntentId ? `/oto2?payment_intent=${paymentIntentId}` : "/oto2"}
               size="lg"
-              className="w-full border border-[#6A1F29] bg-transparent text-[#6A1F29] hover:bg-[#6A1F29]/5"
+              className="w-full sm:w-auto rounded-3xl border border-[#6A1F29] bg-transparent px-8 py-4 text-base font-semibold tracking-wide text-[#6A1F29] transition hover:bg-[#6A1F29]/5"
             >
               Ne, hvala. Radije riskiram da opet mjesecima nagađam tko je on — i možda ponovno izgubim najvrijednije
               godine na pogrešnog.
