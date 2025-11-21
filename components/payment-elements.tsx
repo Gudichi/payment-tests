@@ -139,7 +139,12 @@ export default function PaymentElements({
           },
           rules: {
             ".TermsText, .TermsText *": {
-              display: "none",
+              color: "transparent",
+              fontSize: "0px",
+            },
+            ".Terms": {
+              color: "transparent",
+              fontSize: "0px",
             },
           },
         },
