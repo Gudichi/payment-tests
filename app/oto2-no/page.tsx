@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { OneClickUpsellButton } from "@/components/one-click-upsell";
+import { EnsurePaymentIntentParam } from "@/components/payment-intent-sync";
 
 export const dynamic = "force-dynamic";
 const OTO2_PRICE_ID = process.env.STRIPE_OTO2_PRICE_ID ?? "";
@@ -54,6 +55,7 @@ export default function Oto1NoPage({ searchParams }: Props) {
   const paymentIntentId = searchParams.payment_intent;
   return (
     <div className="bg-ivory text-espresso">
+      <EnsurePaymentIntentParam paymentIntentId={paymentIntentId} />
       <main className="space-y-16 py-12 sm:space-y-24 sm:py-20">
         <Section align="center" contentClassName="max-w-3xl space-y-6">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
