@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./Adv2.module.css";
 import { Lora, Poppins } from "next/font/google";
 import { CommentsSection } from "./CommentsSection";
+import { CTAButton } from "@/components/CTAButton";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
@@ -400,7 +401,9 @@ export default function Adv2Page() {
           </div>
           <CommentsSection />
           <div className={styles.pageCta}>
-            <a className={styles.ctaFooterButton} href="/">SAZNAJ VIŠE O SIGNALIMA STRASTI</a>
+            <CTAButton href="/" size="lg" className={styles.ctaFooterButton}>
+              Saznaj više o Signalima Strasti
+            </CTAButton>
           </div>
         </article>
 
