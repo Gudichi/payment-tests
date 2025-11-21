@@ -68,6 +68,7 @@ export default function Oto1NoPage({ searchParams }: Props) {
             <p>I sve ćeš to pokušati analizirati bez alata.</p>
             <p>Sama.<br />Opet.</p>
             <p>I ti i ja znamo kako to najčešće završi.</p>
+          </div>
         </Section>
 
         <Section align="center" contentClassName="max-w-3xl space-y-6">
