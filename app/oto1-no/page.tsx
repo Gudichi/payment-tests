@@ -4,6 +4,7 @@ import { CTAButton } from "@/components/CTAButton";
 import { OneClickUpsellButton } from "@/components/one-click-upsell";
 
 export const dynamic = "force-dynamic";
+const OTO1_PRICE_ID = process.env.STRIPE_OTO1_PRICE_ID ?? "";
 
 export const metadata: Metadata = {
   title: "Kompas Strasti™ — Odustanak potvrđen",
@@ -81,7 +82,7 @@ export default function Oto1NoPage({ searchParams }: Props) {
             {paymentIntentId ? (
               <OneClickUpsellButton
                 paymentIntentId={paymentIntentId}
-                priceId={process.env.STRIPE_OTO1_PRICE_ID}
+                priceId={OTO1_PRICE_ID || undefined}
                 onSuccessHref={paymentIntentId ? `/oto2?payment_intent=${paymentIntentId}` : "/oto2"}
                 label="Da, dodaj Kompas Strasti™ za 37 € i vodi me dalje"
                 className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-4 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
