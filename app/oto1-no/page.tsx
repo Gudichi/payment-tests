@@ -83,7 +83,6 @@ export default function Oto1NoPage({ searchParams }: Props) {
               osjećati leptiriće. Kad se opet pitaš: “Je li on stvarno taj?” Tada nećeš imati ovaj alat. I možda nećeš
               imati priliku ponovno ga uzeti.
             </p>
-          </div>
         </Section>
 
         <Section align="center" contentClassName="max-w-3xl space-y-6">
