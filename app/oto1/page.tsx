@@ -354,11 +354,12 @@ export default async function Oto1Page({ searchParams }: Props) {
     );
   }
 
-  let amount = "37.00";
+  let amount = "37";
   try {
     const stripe = new Stripe(secret);
     const price = await stripe.prices.retrieve(priceId);
-    amount = price.unit_amount ? (price.unit_amount / 100).toFixed(2) : "37.00";
+    const formatted = price.unit_amount ? (price.unit_amount / 100).toString() : "37";
+    amount = formatted.replace(/\.0+$/, "");
   } catch (error) {
     console.error("Failed to load OTO1 price:", error);
   }
@@ -426,9 +427,6 @@ export default async function Oto1Page({ searchParams }: Props) {
             <strong>👉 Ovaj vodič je za tebe ako si makar jednom pomislila:</strong> “Zvučao je kao ozbiljan muškarac –
             ali sve je bila šminka.”
           </p>
-          <p className="text-base italic text-espresso/70">
-            Vrijeme ti ne ističe – ali ako ga daješ krivima, onda nestaje brže nego što misliš.
-          </p>
         </Section>
 
         <Section
@@ -443,11 +441,6 @@ export default async function Oto1Page({ searchParams }: Props) {
             height={620}
             className="mx-auto w-full max-w-3xl rounded-3xl"
           />
-          <blockquote className="text-lg leading-relaxed text-espresso/80">
-            “Znam kako izgleda kad žena uđe u svoje 30-e s idejom da je još uvijek sve ispred nje... a onda joj jedna,
-            dvije ili tri veze oduzmu ne samo vrijeme — već i onu finu vjeru u sebe.” <br />
-            <span className="font-semibold">— Dunja, autorica Signala Strasti™</span>
-          </blockquote>
         </Section>
 
         <Section
@@ -455,12 +448,13 @@ export default async function Oto1Page({ searchParams }: Props) {
           title="Nakon 100+ razgovora sa ženama… mogu ti reći samo ovo."
           contentClassName="space-y-4 text-lg text-espresso/85"
         >
-          <p>
-            “Znam kako izgleda kad žena uđe u svoje 30-e s idejom da je još uvijek sve ispred nje… a onda joj jedna,
-            dvije ili tri veze oduzmu ne samo vrijeme — već i onu finu vjeru u sebe. Godine ti same po sebi ništa ne
-            oduzimaju. Ali veze s krivim muškarcima? One uzmu najvrijednije: tvoju toplinu, tvoju spontanost, tvoju
-            želju da vjeruješ. Ne želim da to bude tvoja priča. Zato sam napravila Kompas Strasti™. Da ne pogodiš opet
-            na isti obrazac — u godinama kad si najviše svoja.”
+          <p className="whitespace-pre-line">
+            “Znam kako izgleda kad žena uđe u svoje 30-e s idejom da je još uvijek sve ispred nje… a onda joj jedna, dvije
+            ili tri veze oduzmu ne samo vrijeme — već i onu finu vjeru u sebe.
+            Godine ti same po sebi ništa ne oduzimaju.
+            Ali veze s krivim muškarcima? One uzmu najvrijednije: tvoju toplinu, tvoju spontanost, tvoju želju da vjeruješ.
+            Ne želim da to bude tvoja priča. Zato sam napravila Kompas Strasti™.
+            Da ne pogodiš opet na isti obrazac — u godinama kad si najviše svoja.”
           </p>
           <p className="font-semibold">— Dunja, autorica Signala Strasti™</p>
         </Section>
@@ -479,7 +473,7 @@ export default async function Oto1Page({ searchParams }: Props) {
         <Section
           bg="white"
           title="Evo kako prestaješ gubiti vrijeme na pogrešne – u samo 4 faze"
-          subtitle="“Kad ti netko pokaže tko je zapravo — vjeruj mu već prvi put.” — Maya Angelou"
+          subtitle={<span className="text-lg italic">“Kad ti netko pokaže tko je zapravo — vjeruj mu već prvi put.” — <strong>Maya Angelou</strong></span>}
           contentClassName="space-y-6"
         >
           <ol className="space-y-4 text-lg text-espresso/85">
@@ -488,7 +482,7 @@ export default async function Oto1Page({ searchParams }: Props) {
                 <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
                   <span className="font-heading italic">{step.label}</span>
                 </p>
-                <h3 className="mt-2 font-heading text-2xl text-espresso">{step.title}</h3>
+                <h3 className="mt-2 font-heading text-2xl font-bold text-espresso">{step.title}</h3>
                 <p className="mt-2 text-base leading-relaxed">{step.body}</p>
               </li>
             ))}
@@ -500,14 +494,14 @@ export default async function Oto1Page({ searchParams }: Props) {
           title="Više ne moraš birati između intuicije i razuma."
           contentClassName="space-y-4 text-lg text-espresso/85"
         >
-          <p>
-            Tvoja intuicija te nikad nije lagala — ali ako ne znaš što gledaš, lako ti promakne ono najbitnije. Kompas
-            Strasti™ je vodič kroz 5 najvažnijih znakova emocionalne zrelosti muškarca — u porukama, u načinu kako sluša,
+          <p className="whitespace-pre-line">
+            Tvoja intuicija te nikad nije lagala — ali ako ne znaš što gledaš, lako ti promakne ono najbitnije.
+            Kompas Strasti™ je vodič kroz 5 najvažnijih znakova emocionalne zrelosti muškarca — u porukama, u načinu kako sluša,
             kako odgovara na neslaganje, i kako reagira kad osjeti tvoju ranjivost.
           </p>
-          <p>
-            Jer nije stvar u tome je li zgodan, uspješan i šarmantan... <br />...nego je li emocionalno prisutan kad to
-            najviše trebaš.
+          <p className="whitespace-pre-line">
+            Jer nije stvar u tome je li zgodan, uspješan i šarmantan...
+            ...nego je li emocionalno prisutan kad to najviše trebaš.
           </p>
         </Section>
 
@@ -520,23 +514,21 @@ export default async function Oto1Page({ searchParams }: Props) {
           }
           contentClassName="space-y-4 text-lg text-espresso/85"
         >
-          <p>Možda zvuči dramatično — ali je istina.</p>
-          <p>
-            Kompas Strasti™ nije u slobodnoj prodaji. Bio je. Zapravo, bio je jedan od naših najtraženijih i
-            najviralnijih programa. Preko 500 žena iz Hrvatske je prošlo kroz njega — i nismo primili niti jednu
-            negativnu poruku.
+          <p className="whitespace-pre-line">Možda zvuči dramatično — ali je istina.</p>
+          <p className="whitespace-pre-line">
+            Kompas Strasti™ nije u slobodnoj prodaji. Bio je. Zapravo, bio je jedan od naših najtraženijih i najviralnijih programa.
+            Preko 500 žena iz Hrvatske je prošlo kroz njega — i nismo primili niti jednu negativnu poruku.
           </p>
-          <p>
-            Ali smo ga maknuli. Jer smo shvatili nešto važno: Ako žena još nije naučila kako aktivirati pravu pažnju
-            muškarca — onda ovaj vodič ne pomaže u pravom trenutku. Zato ga sada dajemo isključivo kao poklon ženama koje
-            su već prošle Signale Strasti™. Poput tebe.
+          <p className="whitespace-pre-line">
+            Ali smo ga maknuli. Jer smo shvatili nešto važno: Ako žena još nije naučila kako aktivirati pravu pažnju muškarca — onda ovaj vodič ne pomaže u pravom trenutku.
+            Zato ga sada dajemo isključivo kao poklon ženama koje su već prošle Signale Strasti™. Poput tebe.
           </p>
           <ul className="space-y-2">
             <li>Ovo je tvoj drugi korak.</li>
             <li>— Naučila si kako privući.</li>
             <li>— Sada učiš koga vrijedi pustiti unutra.</li>
           </ul>
-          <p>
+          <p className="whitespace-pre-line">
             Ako sada zatvoriš ovu stranicu — Kompas nećeš više moći kupiti. Ni sutra. Ni kasnije.
           </p>
         </Section>
@@ -597,28 +589,25 @@ export default async function Oto1Page({ searchParams }: Props) {
               ))}
             </div>
             <div className="space-y-3 text-center text-espresso">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-espresso/70">Ukupna vrijednost: 172 €</p>
-              <p className="text-base font-semibold uppercase tracking-[0.35em] text-espresso">
-                Kompas Strasti je samo danas tvoj za:
-              </p>
-              <p className="text-2xl font-semibold text-espresso/70 line-through">172€</p>
+              <p className="text-lg font-bold text-[#a23d52] line-through">Ukupna vrijednost svega što dobivaš: 172 €</p>
+              <p className="text-base font-semibold text-espresso">Kompas Strasti je samo danas tvoj za:</p>
+              <Image src="/arrow-down.svg" alt="Strelica prema ponudi" width={48} height={48} className="mx-auto w-14 animate-bounce" />
               <p className="text-6xl font-heading font-bold text-cherry">{amount}€</p>
               <p className="text-base leading-relaxed text-espresso/85">
-                Program <em className="text-cherry">Kompas Strasti™</em> bio je samostalno u prodaji po punoj cijeni. Ali danas ga ne možeš
-                kupiti nigdje — osim ovdje. Dobivaš ga kao poklon uz tvoju narudžbu Signala Strasti™ — za samo <strong>0.50 €</strong>.
+                Dobivaš ga kao poklon uz tvoju narudžbu Signala Strasti™ — po cijeni od <strong>37 €</strong>.
               </p>
               <div className="space-y-3">
                 {payment_intent ? (
                   <OneClickUpsellButton
                     paymentIntentId={payment_intent}
                     label={PRIMARY_LABEL}
-                    className="w-full rounded-3xl bg-[#1C7C7D] px-8 py-5 text-base font-semibold uppercase tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
+                    className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-5 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
                   />
                 ) : (
                   <CTAButton
                     href="/portal"
                     size="lg"
-                    className="w-full rounded-3xl bg-[#1C7C7D] px-8 py-5 text-base font-semibold uppercase tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
+                    className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-5 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
                   >
                     {PRIMARY_LABEL}
                   </CTAButton>
@@ -626,7 +615,7 @@ export default async function Oto1Page({ searchParams }: Props) {
                 <CTAButton
                   href="/oto1-no"
                   size="lg"
-                  className="w-full rounded-3xl border border-[#6A1F29] bg-transparent px-8 py-5 text-base font-semibold uppercase tracking-wide text-[#6A1F29] transition hover:bg-[#6A1F29]/5"
+                  className="w-full sm:w-auto rounded-3xl border border-[#6A1F29] bg-transparent px-8 py-5 text-base font-semibold tracking-wide text-[#6A1F29] transition hover:bg-[#6A1F29]/5"
                 >
                   {DECLINE_LABEL}
                 </CTAButton>

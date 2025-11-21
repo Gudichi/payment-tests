@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
+import { OneClickUpsellButton } from "@/components/one-click-upsell";
 
 export const metadata: Metadata = {
   title: "Kompas Strasti™ — Odustanak potvrđen",
@@ -105,14 +106,24 @@ export default function Oto1NoPage({ searchParams }: Props) {
             Želiš da ti još jednom otvorim ponudu prije nego nestane?
           </p>
           <div className="space-y-4 text-lg text-espresso/85">
-            <CTAButton
-              href={paymentIntentId ? `/oto1?payment_intent=${paymentIntentId}` : "/oto1"}
-              size="lg"
-              className="w-full bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
-            >
-              Da, želim znati tko je stvarно zreo — prije nego uopće uđe pod moju kožu. Puni pristup Kompasu Strasti™ i
-              svim bonusima za 37 € – odmah.
-            </CTAButton>
+            {paymentIntentId ? (
+              <OneClickUpsellButton
+                paymentIntentId={paymentIntentId}
+                priceId={process.env.STRIPE_OTO1_PRICE_ID}
+                onSuccessHref={paymentIntentId ? `/oto2?payment_intent=${paymentIntentId}` : "/oto2"}
+                label="Da, dodaj Kompas Strasti™ za 37 € i vodi me dalje"
+                className="w-full bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
+              />
+            ) : (
+              <CTAButton
+                href={paymentIntentId ? `/oto1?payment_intent=${paymentIntentId}` : "/oto1"}
+                size="lg"
+                className="w-full bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
+              >
+                Da, želim znati tko je stvarno zreo — prije nego uopće uđe pod moju kožu. Puni pristup Kompasu Strasti™ i
+                svim bonusima za 37 € – odmah.
+              </CTAButton>
+            )}
             <CTAButton
               href={paymentIntentId ? `/oto2?payment_intent=${paymentIntentId}` : "/oto2"}
               size="lg"
@@ -121,6 +132,7 @@ export default function Oto1NoPage({ searchParams }: Props) {
               Ne, hvala. Radije riskiram da opet mjesecima nagađam tko je on — i možda ponovno izgubim najvrijednije
               godine na pogrešnog.
             </CTAButton>
+          </div>
           </div>
         </Section>
 

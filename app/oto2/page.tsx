@@ -472,7 +472,8 @@ export default async function Oto2Page({ searchParams }: Props) {
     try {
       const stripe = new Stripe(secret);
       const price = await stripe.prices.retrieve(priceId);
-      amount = price.unit_amount ? (price.unit_amount / 100).toFixed(2) : null;
+      const rawAmount = price.unit_amount ? price.unit_amount / 100 : null;
+      amount = rawAmount !== null ? rawAmount.toString().replace(/\.0+$/, "") : null;
     } catch (error) {
       console.error("Failed to load OTO2 price:", error);
     }
@@ -778,13 +779,12 @@ export default async function Oto2Page({ searchParams }: Props) {
               <p className="text-base leading-relaxed text-espresso/85">
                 Danas ih možeš aktivirati samo ovdje — u ovom trenutku.
               </p>
-              <div className="flex items-center justify-center gap-3">
-                <Image src="/Taf-1.png" alt="Strelica" width={48} height={48} className="h-8 w-8 animate-bounce" />
-                <Image src="/Taf-1.png" alt="Strelica" width={48} height={48} className="h-8 w-8 animate-bounce delay-150" />
+              <div className="flex items-center justify-center">
+                <Image src="/arrow-down.svg" alt="Strelica prema cijeni" width={48} height={48} className="h-10 w-10 animate-bounce" />
               </div>
               <div className="text-center">
                 <p className="text-2xl font-semibold text-espresso/70 line-through">214 €</p>
-                <p className="text-6xl font-heading font-bold text-cherry">{amount ?? "67"} €</p>
+                <p className="text-6xl font-heading font-bold text-cherry">{amount ?? "57"} €</p>
               </div>
             </div>
 

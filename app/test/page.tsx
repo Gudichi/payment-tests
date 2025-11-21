@@ -557,6 +557,7 @@ export default function TestPage() {
               </div>
             </div>
             <div className="space-y-4 text-center" id="offer-section">
+              <Image src="/arrow-down.svg" alt="Strelica prema ponudi" width={48} height={48} className="mx-auto w-12 animate-bounce" />
               <h3 className="font-heading text-3xl font-bold text-espresso">Cijeli paket — dostupan odmah</h3>
               <p className="text-lg font-bold text-[#a23d52] line-through">Ukupna vrijednost svega što dobivaš: 532€</p>
               <p className="mx-auto w-1/2 text-6xl font-extrabold text-cherry sm:w-1/5 sm:text-7xl">17€</p>
