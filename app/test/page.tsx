@@ -18,14 +18,14 @@ const steps = [
   {
     title: "Otvori aplikaciju",
     description:
-      "Čim uđeš, sve te čeka spremno. Dobivaš kompletan popis Signala i odmah vidiš koji signal se koristi gdje — u kafiću, na poslu, u teretani, u trgovini, u šetnji…",
+      "Čim uđeš, sve te čeka spremno. Dobivaš kompletan popis Signala s jasnim uputama — kad, kako i zašto ih koristiti — tako da se nikada ne pitaš ‘radim li ovo dobro?’",
     image: "/Gif-1.gif",
     alt: "Pregled aplikacije Signali Strasti",
   },
   {
     title: "Aktiviraj signal (1 min)",
     description:
-      "Ne mijenjaš rutinu — izabereš 3 mjesta na kojima se već krećeš i aplikacija ti kaže koji je signal za to mjesto. Kafić, put do posla ili park — sve je obuhvaćeno.",
+      "Ne mijenjaš rutinu — samo izabereš jedan od preporučenih Signala za taj dan i koristiš ga u svom prirodnom okruženju. Sve traje manje od minute, ali pokreće puno više nego što misliš.",
     image: "/aktiviraj-signale.png",
     alt: "Aktiviranje signala",
   },
@@ -66,12 +66,12 @@ const bonuses = [
     description: "Kako signalizirati otvorenost, a da on osjeti da sve dolazi od njega. (67€, uključeno bez dodatne naplate.)",
   },
   {
-    title: "Bonus 4 — Poruka koja ga vraća, čak i ako se povukao",
+    title: "Bonus 3 — Poruka koja ga vraća, čak i ako se povukao",
     image: "/Bonus-4.png",
     description: "Kada znaš što reći (i kako), njegova pažnja se vraća spontano. (Vrijednost 77€, sada dio paketa.)",
   },
   {
-    title: "Bonus 5 — Prva kava koju pamti danima",
+    title: "Bonus 4 — Prva kava koju pamti danima",
     image: "/Bonus-5.png",
     description: "Bez glume. Bez skripti. Samo ti — u svom najsvježijem, najprivlačnijem izdanju. (87€, uključen.)",
   },
@@ -351,8 +351,8 @@ export default function TestPage() {
               uz Jedan Signal o Kojem Nitko Ne Priča
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-espresso/80 sm:text-xl">
-              <strong>Ne moraš mijenjati sebe.</strong> Samo ponovno aktiviraj ono što muškarci već nesvjesno traže. Ovo je
-              program za žene koje žele da ih napokon u masi primijete <em>kvalitetni muškarci.</em>
+              Ne moraš mijenjati sebe. Samo ponovno aktiviraj ono što muškarci već nesvjesno traže. Ovo je za žene koje
+              žele da ih napokon u masi primijete kvalitetni muškarci.
             </p>
             <div className="mt-8 w-full sm:w-1/2">
               <Image
@@ -364,7 +364,7 @@ export default function TestPage() {
                 className="w-full rounded-3xl mx-auto"
               />
             </div>
-            <div className="mt-6 w-full sm:w-2/5 sm:self-end">
+            <div className="mt-6 w-full sm:w-2/5 flex justify-center">
               <Image
                 src="/SocialProof.png"
                 alt="Social proof Signali Strasti"
@@ -379,14 +379,21 @@ export default function TestPage() {
         <Section bg="white">
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center text-lg leading-relaxed text-espresso/90">
             <div className="space-y-4 max-w-3xl">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">Piše: Dunja Kramarić</h2>
+              <div className="flex items-center justify-center gap-3 text-cherry">
+                <div className="overflow-hidden rounded-full border border-cherry/30 bg-white">
+                  <Image src="/Tim.png" alt="Profilna Dunje Kramarić" width={48} height={48} className="h-12 w-12 object-cover" />
+                </div>
+                <h2 className="text-sm font-semibold uppercase tracking-[0.35em]">Piše: Dunja Kramarić</h2>
+              </div>
               <p>
                 <em>Ćao,</em> Ako si se ikad dotjerala, izašla iz kuće, a onda se vratila s osjećajem da te nitko nije ni{" "}
                 <u>pogledao...</u>
               </p>
               <p>
-                Ili još gore — da su te pogledali, ali da to nisu bili muškarci koji ti baš preferiraš… Onaj s TikTok
-                frizurom. Onaj koji priđe s “di si mala”. Onaj koji ti reagira na story s 🔥 i nestane…
+                Ili još gore — da su te pogledali, ali da to nisu bili muškarci koji ti baš preferiraš…<br />
+                Onaj s TikTok frizurom.<br />
+                Onaj koji priđe s “di si mala”.<br />
+                Onaj koji ti reagira na story s 🔥 i nestane…
               </p>
               <p className="font-heading text-2xl font-bold text-espresso">Sigurno si barem jednom dobila ovakav komentar:</p>
             </div>
@@ -396,8 +403,9 @@ export default function TestPage() {
                 <strong>Znam</strong> da ti možeš privući pažnju i znam da možeš pronaći muškarca…
               </p>
               <p>
-                Ali ti ne tražiš bilo kakvog, ti tražiš muškarca koji zna što vidi — i zna što želi. <em>I znaš što je
-                najljepše?</em> U 90% slučajeva znaš prepoznati takvog kad ga vidiš…
+                Ali ti ne tražiš bilo kakvog, ti tražiš muškarca koji zna što vidi — i zna što želi.<br />
+                <em>I znaš što je najljepše?</em><br />
+                U 90% slučajeva znaš prepoznati takvog kad ga vidiš…
               </p>
               <p>
                 Sad je vrijeme da on prepozna tebe. Ne riječima. Ne skriptom. Ne glumom. Već s tihim signalom zbog kojeg
@@ -414,8 +422,10 @@ export default function TestPage() {
             <Image src="/muskarci-zele-prici.png" alt="Muškarci žele prići" width={720} height={560} className="mx-auto w-full rounded-3xl sm:w-1/2" />
             <div className="space-y-4 text-lg leading-relaxed text-espresso/80 max-w-3xl">
               <p>
-                Danas — ako on nije 99% siguran da ga nećeš odbiti, radije ne napravi ništa. Nisu nesigurni. Samo su naučeni
-                da bez jasnog signala — ispadaju čudaci, napadni ili “nepozvani”.
+                Danas — ako on nije 99% siguran da ga nećeš odbiti, radije ne napravi ništa. Nisu nesigurni.
+              </p>
+              <p>
+                <strong>Samo su naučeni da bez jasnog signala — ispadaju čudaci, napadni ili “nepozvani”.</strong>
               </p>
               <p>
                 A ako im suptilno pokažeš “u redu je, možeš” — njihov mozak to registrira kao zeleno svjetlo. Zato sam
@@ -490,7 +500,7 @@ export default function TestPage() {
           <div className="mx-auto flex max-w-5xl flex-col gap-6 text-center">
             <h3 className="font-heading text-3xl font-bold text-espresso">Dojmovi polaznica s prošlog programa</h3>
             <div className="grid gap-4 sm:grid-cols-2">
-              {["/Taf-1.png", "/Taf-2.png", "/Taf-3.png", "/Taf-4.png"].map((src) => (
+              {["/Taf-1.png", "/Taf-2.png", "/Taf-3.png", "/Taf-4.png", "/Taf-5.png", "/Taf-6.png", "/Taf-7.png"].map((src) => (
                 <Image key={src} src={src} alt="Komentar polaznice" width={620} height={420} className="mx-auto w-full rounded-3xl sm:w-4/5" />
               ))}
             </div>
@@ -521,11 +531,11 @@ export default function TestPage() {
             </ul>
             <div className="space-y-4 text-left text-base text-espresso/85">
               <h3 className="text-center text-2xl font-heading font-bold">Bonusi uključeni odmah</h3>
-              <div className="space-y-6">
+              <div className="grid gap-6 md:grid-cols-2">
                 {bonuses.map((bonus) => {
                   const [labelText, bonusHeading] = bonus.title.split(" — ");
                   return (
-                    <div key={bonus.title} className="space-y-3 text-center">
+                    <div key={bonus.title} className="space-y-3 rounded-3xl bg-white p-5 shadow-card text-left">
                       <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
                         <span className="font-heading italic">{labelText}</span>
                       </p>
@@ -535,18 +545,18 @@ export default function TestPage() {
                         alt={bonus.title}
                         width={720}
                         height={420}
-                        className="mx-auto w-3/5 rounded-3xl sm:w-1/2"
+                        className="w-full rounded-2xl"
                       />
-                      <p>{bonus.description}</p>
+                      <p className="text-base text-espresso/85">{bonus.description}</p>
                     </div>
                   );
                 })}
               </div>
             </div>
-            <div className="space-y-4 text-center">
+            <div className="space-y-4 text-center" id="offer-section">
               <h3 className="font-heading text-3xl font-bold text-espresso">Cijeli paket — dostupan odmah</h3>
-              <p className="text-lg text-espresso/80">Ukupna vrijednost svega što dobivaš: 532€</p>
-              <p className="text-6xl font-bold text-cherry">17€</p>
+              <p className="text-lg font-bold text-[#a23d52] line-through">Ukupna vrijednost svega što dobivaš: 532€</p>
+              <p className="mx-auto w-1/2 text-6xl font-extrabold text-cherry sm:w-1/5 sm:text-7xl">17€</p>
               <div className="mx-auto max-w-xl">
                 <InlineCheckout
                   buttonLabel={CTA_TEXT}
@@ -581,10 +591,11 @@ export default function TestPage() {
             </div>
             <div className="text-center">
               <CTAButton
-                href="#checkout-section"
+                href="#offer-section"
                 size="lg"
                 className="bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
                 scrollToCheckout
+                scrollTargetId="offer-section"
               >
                 {CTA_TEXT}
               </CTAButton>
@@ -610,10 +621,11 @@ export default function TestPage() {
               ))}
             </div>
             <CTAButton
-              href="#checkout-section"
+              href="#offer-section"
               size="lg"
               className="mt-6 bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
               scrollToCheckout
+              scrollTargetId="offer-section"
             >
               {CTA_TEXT}
             </CTAButton>
@@ -669,10 +681,11 @@ export default function TestPage() {
               </ul>
               <div className="mt-8 text-center">
                 <CTAButton
-                  href="#checkout-section"
+                  href="#offer-section"
                   size="lg"
                   className="w-full max-w-md bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
                   scrollToCheckout
+                  scrollTargetId="offer-section"
                 >
                   {CTA_TEXT}
                 </CTAButton>
@@ -753,10 +766,11 @@ export default function TestPage() {
               <u>Pošalji ga danas.</u>
             </p>
             <CTAButton
-              href="/prijava"
+              href="#offer-section"
               size="lg"
               className="bg-cherry text-ivory hover:bg-cherry/90"
               scrollToCheckout
+              scrollTargetId="offer-section"
             >
               {CTA_TEXT}
             </CTAButton>

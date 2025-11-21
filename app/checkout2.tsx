@@ -29,7 +29,7 @@ export const Checkout2 = () => {
                 </span>
               </div>
               <span className="text-xs sm:text-sm font-medium text-gray-600 hidden sm:inline">
-                Video pogledan
+                Članak pogledan
               </span>
             </div>
             <div className="w-4 sm:w-8 h-0.5 bg-green-500"></div>

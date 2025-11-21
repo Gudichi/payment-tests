@@ -26,7 +26,7 @@ const ORDER_BUMPS = [
     title: "Lokacijski Magnetizam",
     price: 13,
     oldPrice: 34,
-    image: "/Order-2.png",
+    image: "/Lokaciskimagentizam-min.png",
     description: (
       <>
         Nije isti signal za kafić i za ured. Ako želiš 2x brže rezultate — koristi
@@ -77,7 +77,7 @@ export const Checkout = () => {
                 </span>
               </div>
               <span className="text-xs sm:text-sm font-medium text-gray-600 hidden sm:inline">
-                Video pogledan
+                Članak pogledan
               </span>
             </div>
             <div className="w-4 sm:w-8 h-0.5 bg-green-500"></div>

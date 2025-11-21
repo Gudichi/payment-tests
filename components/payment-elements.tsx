@@ -137,10 +137,16 @@ export default function PaymentElements({
             fontFamily: "Poppins, sans-serif",
             colorPrimary: "#374151",
           },
+          rules: {
+            ".TermsText, .TermsText *": {
+              display: "none",
+            },
+          },
         },
       }}
     >
       <PaymentForm
+        totalAmount={price}
         orderBumps={orderBumps}
         selectedBumps={selectedBumps}
         onToggleBump={onToggleBump}

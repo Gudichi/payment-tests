@@ -32,6 +32,7 @@ type CTAButtonProps = VariantProps<typeof buttonStyles> & {
   children: ReactNode;
   className?: string;
   scrollToCheckout?: boolean;
+  scrollTargetId?: string;
 };
 
 export function CTAButton({
@@ -41,6 +42,7 @@ export function CTAButton({
   variant,
   size,
   scrollToCheckout = false,
+  scrollTargetId = "checkout-section",
 }: CTAButtonProps) {
   const handleClick = useCallback(
     (event: MouseEvent<HTMLAnchorElement>) => {
@@ -48,14 +50,14 @@ export function CTAButton({
         return;
       }
       event.preventDefault();
-      const checkoutNode = document.getElementById("checkout-section");
+      const checkoutNode = document.getElementById(scrollTargetId);
       if (checkoutNode) {
         checkoutNode.scrollIntoView({ behavior: "smooth", block: "start" });
       } else {
         window.location.href = href;
       }
     },
-    [href, scrollToCheckout]
+    [href, scrollTargetId, scrollToCheckout]
   );
 
   return (
