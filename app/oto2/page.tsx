@@ -435,6 +435,7 @@ const CTAGroup = ({
   priceId?: string;
 }) => {
   const thankYouUrl = paymentIntentId ? `/hvala?payment_intent=${paymentIntentId}` : "/hvala";
+  const declineUrl = paymentIntentId ? `/oto2-no?payment_intent=${paymentIntentId}` : "/oto2-no";
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -452,7 +453,7 @@ const CTAGroup = ({
         </CTAButton>
       )}
       <CTAButton
-        href={thankYouUrl}
+        href={declineUrl}
         size="lg"
         className="border border-[#6A1F29] text-[#6A1F29] bg-transparent hover:bg-[#6A1F29]/5"
       >
