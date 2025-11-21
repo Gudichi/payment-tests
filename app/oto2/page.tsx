@@ -777,8 +777,8 @@ export default async function Oto2Page({ searchParams }: Props) {
               <p className="text-xl font-heading text-espresso">Evo što dobivaš ako danas odlučiš transformirati svoj ljubavni život</p>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-[1.1fr,1fr] items-center">
-              <div className="space-y-4 text-base leading-relaxed text-espresso/90">
+            <div className="flex flex-col items-center gap-8">
+              <div className="w-full space-y-4 text-base leading-relaxed text-espresso/90">
                 <ul className="space-y-3">
                   {[
                     'Program "Rečenice Strasti" – kompletna formula od 21 "Sjeme dopamina" rečenice koje će učiniti da muškarac postane potpuno opsjednut tobom (bez manipulacije - samo čista psihologija)',
@@ -827,7 +827,7 @@ export default async function Oto2Page({ searchParams }: Props) {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center gap-4">
+              <div className="flex w-full flex-col items-center gap-6">
                 <Image
                   src="/product-min.png"
                   alt="Program Rečenice Strasti"
@@ -835,7 +835,7 @@ export default async function Oto2Page({ searchParams }: Props) {
                   height={720}
                   className="w-full max-w-xs sm:max-w-sm"
                 />
-                <div className="text-center space-y-2">
+                <div className="space-y-2 text-center">
                   <Image src="/arrow-down.svg" alt="Strelica prema cijeni" width={48} height={48} className="mx-auto h-10 w-10 animate-bounce" />
                   <p className="text-6xl font-heading font-bold text-cherry">{amount ?? "57"}€</p>
                   <p className="text-sm font-semibold uppercase tracking-[0.35em] text-espresso">Tvoja cijena danas</p>
