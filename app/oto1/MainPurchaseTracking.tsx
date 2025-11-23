@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { trackPurchase } from "@/lib/meta";
+import { trackPurchase, trackCustomEvent } from "@/lib/meta";
 
 export function MainPurchaseTracking() {
   const hasTrackedRef = useRef(false);
@@ -51,6 +51,17 @@ export function MainPurchaseTracking() {
             bump_9: bump9Selected,
             bump_13: bump13Selected,
             products,
+            orderId: paymentIntent.id,
+          });
+
+          // Track custom event for main purchase
+          trackCustomEvent("RS_Main_Purchase", {
+            value: amount,
+            currency: "EUR",
+            product: "main-17",
+            bump_9: bump9Selected,
+            bump_13: bump13Selected,
+            route: "/checkout-main",
             orderId: paymentIntent.id,
           });
         }

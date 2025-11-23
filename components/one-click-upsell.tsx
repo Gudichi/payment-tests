@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { trackPurchase } from "@/lib/meta";
+import { trackPurchase, trackCustomEvent } from "@/lib/meta";
 
 type Props = {
   paymentIntentId: string;
@@ -70,6 +70,25 @@ export function OneClickUpsellButton({
                 ],
                 orderId: paymentIntent.id,
               });
+
+              // Track custom event for OTO purchase
+              if (isOTO1) {
+                trackCustomEvent("RS_OTO1_Purchase", {
+                  value: amount,
+                  currency: "EUR",
+                  product: "oto1-37",
+                  route: "/oto1",
+                  orderId: paymentIntent.id,
+                });
+              } else if (isOTO2) {
+                trackCustomEvent("RS_OTO2_Purchase", {
+                  value: amount,
+                  currency: "EUR",
+                  product: "oto2-57",
+                  route: "/oto2",
+                  orderId: paymentIntent.id,
+                });
+              }
             }
           }
         } catch (error) {
