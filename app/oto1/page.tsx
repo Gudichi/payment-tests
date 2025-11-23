@@ -7,6 +7,7 @@ import { OneClickUpsellButton } from "@/components/one-click-upsell";
 import { EnsurePaymentIntentParam } from "@/components/payment-intent-sync";
 import { Oto1Tracking } from "./Oto1Tracking";
 import { Oto1CTAGroup } from "./Oto1CTAGroup";
+import { MainPurchaseTracking } from "./MainPurchaseTracking";
 
 export const metadata: Metadata = {
   title: "Kompas Strasti™ — One Time Offer",
@@ -332,6 +333,7 @@ export default async function Oto1Page({ searchParams }: Props) {
   return (
     <>
       <Oto1Tracking />
+      <MainPurchaseTracking />
       <div className="bg-ivory text-espresso">
         <EnsurePaymentIntentParam paymentIntentId={payment_intent} />
       <div className="bg-[#6A1F29] py-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#F8F5F0] sm:text-sm">

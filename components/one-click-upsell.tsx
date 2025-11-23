@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { trackPurchase } from "@/lib/meta";
 
 type Props = {
   paymentIntentId: string;
@@ -41,12 +42,49 @@ export function OneClickUpsellButton({
         throw new Error(data.error || "Upsell nije prošao.");
       }
 
+      const data = await response.json();
+      const upsellPaymentIntentId = data.paymentIntentId;
+
+      // Fetch payment intent to get amount and determine if OTO1 or OTO2
+      if (upsellPaymentIntentId) {
+        try {
+          const intentResponse = await fetch(`/api/payment-intent-info?payment_intent=${upsellPaymentIntentId}`);
+          if (intentResponse.ok) {
+            const intentData = await intentResponse.json();
+            const paymentIntent = intentData.paymentIntent;
+            
+            if (paymentIntent) {
+              const amount = paymentIntent.amount / 100;
+              const metadata = paymentIntent.metadata || {};
+              const isOTO1 = metadata.oto_1 === "true" || metadata.source === "oto1_one_click";
+              const isOTO2 = metadata.oto_2 === "true" || metadata.source === "oto2_one_click";
+              
+              // Track purchase
+              trackPurchase(amount, {
+                currency: "EUR",
+                product: isOTO1 ? "oto1-37" : "oto2-57",
+                products: [
+                  isOTO1
+                    ? { id: "oto1-37", price: 37, quantity: 1 }
+                    : { id: "oto2-57", price: 57, quantity: 1 },
+                ],
+                orderId: paymentIntent.id,
+              });
+            }
+          }
+        } catch (error) {
+          console.error("Failed to fetch payment intent for tracking:", error);
+        }
+      }
+
       setStatus("success");
       setMessage("Upsell je uspješno dodan! Račun poslan na email.");
       onSuccess?.();
       const target = onSuccessHref || "/oto2";
-      // Go to the next step immediately after successful charge
-      window.location.replace(target);
+      // Go to the next step after tracking (with delay to ensure tracking is sent)
+      setTimeout(() => {
+        window.location.href = target;
+      }, 250);
     } catch (error: any) {
       setStatus("error");
       setMessage(error.message || "Dogodila se greška.");

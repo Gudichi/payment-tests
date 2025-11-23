@@ -48,11 +48,13 @@ export async function POST(req: NextRequest) {
     const bump1Selected =
       selectedBumps.includes("signal8") ||
       selectedBumps.includes("bump1") ||
-      selectedBumps.includes("bump_1");
+      selectedBumps.includes("bump_1") ||
+      selectedBumps.includes("nekabroj");
     const bump2Selected =
       selectedBumps.includes("textmagic") ||
       selectedBumps.includes("bump2") ||
-      selectedBumps.includes("bump_2");
+      selectedBumps.includes("bump_2") ||
+      selectedBumps.includes("lokacijskimagnetizam");
 
     const baseMetadata = {
       order_total_eur: Number(amount).toFixed(2),
