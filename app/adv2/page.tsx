@@ -4,6 +4,7 @@ import styles from "./Adv2.module.css";
 import { Lora, Poppins } from "next/font/google";
 import { CommentsSection } from "./CommentsSection";
 import { CTAButton } from "@/components/CTAButton";
+import { Adv2Tracking } from "./Adv2Tracking";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
@@ -359,7 +360,9 @@ const advertorialHtml = `
 
 export default function Adv2Page() {
   return (
-    <div className={`${poppins.variable} ${lora.variable} ${styles.page}`}>
+    <>
+      <Adv2Tracking />
+      <div className={`${poppins.variable} ${lora.variable} ${styles.page}`}>
       <div className={styles.container}>
         <article className={styles.article}>
           <header className={styles.header}>
@@ -423,5 +426,6 @@ export default function Adv2Page() {
         </aside>
       </div>
     </div>
+    </>
   );
 }

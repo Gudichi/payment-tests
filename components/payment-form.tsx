@@ -7,6 +7,7 @@ import {
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { ReactNode, useState } from "react";
+import { trackCustomEvent } from "@/lib/meta";
 
 type OrderBump = {
   id: string;

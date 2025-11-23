@@ -3,6 +3,8 @@ import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { OneClickUpsellButton } from "@/components/one-click-upsell";
 import { EnsurePaymentIntentParam } from "@/components/payment-intent-sync";
+import { Oto2NoTracking } from "./Oto2NoTracking";
+import { Oto2NoCTAGroup } from "./Oto2NoCTAGroup";
 
 export const dynamic = "force-dynamic";
 const OTO2_PRICE_ID = process.env.STRIPE_OTO2_PRICE_ID ?? "";
@@ -51,11 +53,14 @@ type Props = {
   };
 };
 
-export default function Oto1NoPage({ searchParams }: Props) {
+export default function Oto2NoPage({ searchParams }: Props) {
   const paymentIntentId = searchParams.payment_intent;
+  const priceId = process.env.STRIPE_OTO2_PRICE_ID;
   return (
-    <div className="bg-ivory text-espresso">
-      <EnsurePaymentIntentParam paymentIntentId={paymentIntentId} />
+    <>
+      <Oto2NoTracking />
+      <div className="bg-ivory text-espresso">
+        <EnsurePaymentIntentParam paymentIntentId={paymentIntentId} />
       <main className="space-y-16 py-12 sm:space-y-24 sm:py-20">
         <Section align="center" contentClassName="max-w-3xl space-y-6">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
@@ -80,34 +85,7 @@ export default function Oto1NoPage({ searchParams }: Props) {
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cherry">
             Želiš da ti još jednom otvorim ponudu prije nego nestane?
           </p>
-          <div className="space-y-4 text-lg text-espresso/85">
-            {paymentIntentId ? (
-              <OneClickUpsellButton
-                paymentIntentId={paymentIntentId}
-                priceId={OTO2_PRICE_ID || undefined}
-                onSuccessHref={paymentIntentId ? `/hvala?payment_intent=${paymentIntentId}` : "/hvala"}
-                label="Da, dodaj Rečenice Strasti™ za 57 € i vodi me dalje"
-                className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-4 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
-              />
-            ) : (
-              <CTAButton
-                href={paymentIntentId ? `/oto2?payment_intent=${paymentIntentId}` : "/oto2"}
-                size="lg"
-                className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-4 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
-              >
-                Da, želim znati tko je stvarno zreo — prije nego uopće uđe pod moju kožu. Puni pristup Rečenicama Strasti™ i
-                svim bonusima za 57 € – odmah.
-              </CTAButton>
-            )}
-            <CTAButton
-              href={paymentIntentId ? `/hvala?payment_intent=${paymentIntentId}` : "/hvala"}
-              size="lg"
-              className="w-full sm:w-auto rounded-3xl border border-[#6A1F29] bg-transparent px-8 py-4 text-base font-semibold tracking-wide text-[#6A1F29] transition hover:bg-[#6A1F29]/5"
-            >
-              Ne, hvala. Radije riskiram da opet mjesecima nagađam tko je on — i možda ponovno izgubim najvrijednije
-              godine na pogrešnog.
-            </CTAButton>
-          </div>
+          <Oto2NoCTAGroup paymentIntentId={paymentIntentId} priceId={priceId} />
         </Section>
 
         <Section
@@ -131,5 +109,6 @@ export default function Oto1NoPage({ searchParams }: Props) {
         </Section>
       </main>
     </div>
+    </>
   );
 }

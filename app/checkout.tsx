@@ -2,6 +2,7 @@
 
 import PaymentElements from "@/components/payment-elements";
 import { useMemo, useState } from "react";
+import { trackCustomEvent } from "@/lib/meta";
 
 const BASE_PRICE = 17;
 
@@ -62,6 +63,24 @@ export const Checkout = () => {
 
   const handleBumpToggle = (id: string, checked: boolean) => {
     setSelectedBumps((prev) => ({ ...prev, [id]: checked }));
+    
+    // Track bump selection
+    if (checked) {
+      const bump = ORDER_BUMPS.find((b) => b.id === id);
+      if (bump) {
+        if (bump.price === 9) {
+          trackCustomEvent("RS_OrderBump_9_Accepted", {
+            value: 9,
+            currency: "EUR",
+          });
+        } else if (bump.price === 13) {
+          trackCustomEvent("RS_OrderBump_13_Accepted", {
+            value: 13,
+            currency: "EUR",
+          });
+        }
+      }
+    }
   };
 
   return (
