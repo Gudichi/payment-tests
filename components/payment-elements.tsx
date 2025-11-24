@@ -2,7 +2,7 @@
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { ReactNode, useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import PaymentForm from "./payment-form";
 
 const stripePromise = loadStripe(
@@ -31,10 +31,14 @@ export default function PaymentElements({
   selectedBumps?: Record<string, boolean>;
   onToggleBump?: (id: string, checked: boolean) => void;
 }) {
+  const DEFAULT_EMAIL = "test+checkout@signalistrasti.com";
   const [clientSecret, setClientSecret] = useState<string>("");
   const [paymentIntentId, setPaymentIntentId] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const customerEmail = metadata?.email ?? "test+checkout@signalistrasti.com";
+  const [customerEmail, setCustomerEmail] = useState<string>(
+    (metadata?.email ?? "").trim()
+  );
+  const [customerFirstName, setCustomerFirstName] = useState<string>("");
 
   const metadataKey = useMemo(
     () => JSON.stringify(metadata ?? {}),
@@ -50,6 +54,10 @@ export default function PaymentElements({
     const controller = new AbortController();
     setIsLoading(true);
 
+    const emailForRequest =
+      (customerEmail || metadata?.email || "").trim() || DEFAULT_EMAIL;
+    const firstNameForRequest = customerFirstName.trim();
+
     fetch("/api/create-payment-intent", {
       method: "POST",
       headers: {
@@ -60,7 +68,8 @@ export default function PaymentElements({
           amount: price,
           metadata: metadata ?? {},
           paymentIntentId: paymentIntentId || undefined,
-          email: customerEmail,
+          email: emailForRequest,
+          firstName: firstNameForRequest,
         },
       }),
       signal: controller.signal,
@@ -89,6 +98,59 @@ export default function PaymentElements({
 
     return () => controller.abort();
   }, [price, metadataKey, paymentIntentId]);
+
+  const lastSyncedProfileRef = useRef<{ email: string; firstName: string }>({
+    email: "",
+    firstName: "",
+  });
+
+  useEffect(() => {
+    if (!paymentIntentId) return;
+    const trimmedEmail = customerEmail.trim();
+    const trimmedFirstName = customerFirstName.trim();
+    if (!trimmedEmail && !trimmedFirstName) return;
+
+    const alreadySynced =
+      lastSyncedProfileRef.current.email === trimmedEmail &&
+      lastSyncedProfileRef.current.firstName === trimmedFirstName;
+
+    if (alreadySynced) return;
+
+    const controller = new AbortController();
+
+    const controller = new AbortController();
+    const currentMetadata = metadata ?? {};
+
+    fetch("/api/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: {
+          amount: price,
+          metadata: currentMetadata,
+          paymentIntentId,
+          email: trimmedEmail || DEFAULT_EMAIL,
+          firstName: trimmedFirstName,
+        },
+      }),
+      signal: controller.signal,
+    })
+      .then(() => {
+        lastSyncedProfileRef.current = {
+          email: trimmedEmail,
+          firstName: trimmedFirstName,
+        };
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          console.error("Failed to sync profile info to payment intent", error);
+        }
+      });
+
+    return () => controller.abort();
+  }, [customerEmail, customerFirstName, paymentIntentId, price, metadataKey]);
 
   if (!clientSecret) {
     return (
@@ -151,10 +213,13 @@ export default function PaymentElements({
       }}
     >
       <PaymentForm
-        totalAmount={price}
         orderBumps={orderBumps}
         selectedBumps={selectedBumps}
         onToggleBump={onToggleBump}
+        customerEmail={customerEmail}
+        onCustomerEmailChange={setCustomerEmail}
+        customerFirstName={customerFirstName}
+        onCustomerFirstNameChange={setCustomerFirstName}
       />
     </Elements>
   );

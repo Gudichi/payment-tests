@@ -5,10 +5,22 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 type ProductType = "MAIN_OFFER" | "BUMP_1" | "BUMP_2" | "OTO_1" | "OTO_2";
 
-async function sendToKlaviyo(email: string, productType: ProductType, amount: number, currency: string) {
+async function sendToKlaviyo(
+  email: string,
+  productType: ProductType,
+  amount: number,
+  currency: string,
+  firstName?: string
+) {
   if (!email) return;
+
   const metricName = `purchased_${productType.toLowerCase()}`;
   const value = amount / 100;
+  const profileAttributes: Record<string, any> = { email };
+  if (firstName) {
+    profileAttributes.first_name = firstName;
+  }
+
   const payload = {
     data: {
       type: "event",
@@ -27,9 +39,7 @@ async function sendToKlaviyo(email: string, productType: ProductType, amount: nu
         profile: {
           data: {
             type: "profile",
-            attributes: {
-              email,
-            },
+            attributes: profileAttributes,
           },
         },
         properties: {
@@ -57,6 +67,8 @@ async function sendToKlaviyo(email: string, productType: ProductType, amount: nu
     console.error("Klaviyo API error", res.status, res.statusText, text);
     throw new Error(`Klaviyo request failed with status ${res.status}`);
   }
+
+  console.log("Sent Klaviyo event", metricName, "for", email, firstName ?? "");
 }
 
 export async function POST(req: Request) {
@@ -82,11 +94,21 @@ export async function POST(req: Request) {
 
   const paymentIntent = event.data.object as Stripe.PaymentIntent;
   const metadata = paymentIntent.metadata || {};
-  const email = metadata.email || paymentIntent.receipt_email || "";
+  const email =
+    metadata.email ||
+    paymentIntent.receipt_email ||
+    (paymentIntent.charges?.data?.[0]?.billing_details?.email ?? "");
 
   if (!email) {
     return NextResponse.json({ received: true });
   }
+
+  const firstNameFromMetadata = (metadata.first_name || metadata.firstName || "") as string;
+  const firstNameFromBilling =
+    (paymentIntent.charges?.data?.[0]?.billing_details?.name ?? "")
+      .toString()
+      .split(" ")[0] || "";
+  const firstName = firstNameFromMetadata || firstNameFromBilling || "";
 
   const amount = paymentIntent.amount;
   const currency = paymentIntent.currency;
@@ -105,19 +127,19 @@ export async function POST(req: Request) {
   const tasks: Promise<void>[] = [];
 
   if (metadata.main_offer === "true") {
-    tasks.push(sendToKlaviyo(email, "MAIN_OFFER", amount, currency));
+    tasks.push(sendToKlaviyo(email, "MAIN_OFFER", amount, currency, firstName));
   }
-  if (hasBump1) {
-    tasks.push(sendToKlaviyo(email, "BUMP_1", amount, currency));
+  if (metadata.bump_1 === "true" || hasBump1) {
+    tasks.push(sendToKlaviyo(email, "BUMP_1", amount, currency, firstName));
   }
-  if (hasBump2) {
-    tasks.push(sendToKlaviyo(email, "BUMP_2", amount, currency));
+  if (metadata.bump_2 === "true" || hasBump2) {
+    tasks.push(sendToKlaviyo(email, "BUMP_2", amount, currency, firstName));
   }
   if (metadata.oto_1 === "true") {
-    tasks.push(sendToKlaviyo(email, "OTO_1", amount, currency));
+    tasks.push(sendToKlaviyo(email, "OTO_1", amount, currency, firstName));
   }
   if (metadata.oto_2 === "true") {
-    tasks.push(sendToKlaviyo(email, "OTO_2", amount, currency));
+    tasks.push(sendToKlaviyo(email, "OTO_2", amount, currency, firstName));
   }
 
   try {

@@ -350,9 +350,6 @@ const advertorialHtml = `
       “Zašto sam ikad sumnjala u sebe?”
     </p>
 
-    <div class="ctaFooter">
-      <a class="ctaFooterButton" href="/">SAZNAJ VIŠE O SIGNALIMA STRASTI</a>
-    </div>
   </section>
 
 </article>
@@ -401,6 +398,15 @@ export default function Adv2Page() {
 
           <div className={styles.articleBody}>
             <div className={styles.bodyText} dangerouslySetInnerHTML={{ __html: advertorialHtml }} />
+          </div>
+          <div className={styles.advertorialCta}>
+            <p className={styles.advertorialCtaTitle}>Želiš da on vidi tvoju pravu energiju?</p>
+            <p className={styles.advertorialCtaHint}>
+              Klikni i otkrij Signale Strasti — mikro poteze koji nesvjesno daju zeleno svjetlo pravom muškarcu.
+            </p>
+            <CTAButton href="/" size="lg" className={styles.advertorialCtaButton}>
+              SAZNAJ VIŠE O SIGNALIMA STRASTI
+            </CTAButton>
           </div>
           <CommentsSection />
           <div className={styles.pageCta}>
