@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
+import { sendProductEmail, ProductType } from "@/lib/postmark";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
-type ProductType = "MAIN_OFFER" | "BUMP_1" | "BUMP_2" | "OTO_1" | "OTO_2";
 
 function isValidEmailBasic(email: string) {
   if (!email || typeof email !== "string") return false;
@@ -139,26 +138,62 @@ export async function POST(req: Request) {
     selectedBumpsRaw.includes("lokacijskimagnetizam");
 
   const tasks: Promise<void>[] = [];
+  const postmarkTasks: Promise<void>[] = [];
 
   if (metadata.main_offer === "true") {
     tasks.push(sendToKlaviyo(email, "MAIN_OFFER", amount, currency, firstName));
+    postmarkTasks.push(
+      sendProductEmail({
+        toEmail: email,
+        firstName,
+        productType: "MAIN_OFFER",
+      })
+    );
   }
   if (metadata.bump_1 === "true" || hasBump1) {
     tasks.push(sendToKlaviyo(email, "BUMP_1", amount, currency, firstName));
+    postmarkTasks.push(
+      sendProductEmail({
+        toEmail: email,
+        firstName,
+        productType: "BUMP_1",
+      })
+    );
   }
   if (metadata.bump_2 === "true" || hasBump2) {
     tasks.push(sendToKlaviyo(email, "BUMP_2", amount, currency, firstName));
+    postmarkTasks.push(
+      sendProductEmail({
+        toEmail: email,
+        firstName,
+        productType: "BUMP_2",
+      })
+    );
   }
   if (metadata.oto_1 === "true") {
     tasks.push(sendToKlaviyo(email, "OTO_1", amount, currency, firstName));
+    postmarkTasks.push(
+      sendProductEmail({
+        toEmail: email,
+        firstName,
+        productType: "OTO_1",
+      })
+    );
   }
   if (metadata.oto_2 === "true") {
     tasks.push(sendToKlaviyo(email, "OTO_2", amount, currency, firstName));
+    postmarkTasks.push(
+      sendProductEmail({
+        toEmail: email,
+        firstName,
+        productType: "OTO_2",
+      })
+    );
   }
 
   try {
-    if (tasks.length > 0) {
-      await Promise.all(tasks);
+    if (tasks.length > 0 || postmarkTasks.length > 0) {
+      await Promise.all([...tasks, ...postmarkTasks]);
     }
   } catch (err) {
     console.error("Error sending events to Klaviyo", err);
