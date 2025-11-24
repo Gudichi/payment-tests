@@ -5,6 +5,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 type ProductType = "MAIN_OFFER" | "BUMP_1" | "BUMP_2" | "OTO_1" | "OTO_2";
 
+function isValidEmailBasic(email: string) {
+  if (!email || typeof email !== "string") return false;
+  return email.includes("@") && email.includes(".");
+}
+
 async function sendToKlaviyo(
   email: string,
   productType: ProductType,
@@ -12,7 +17,10 @@ async function sendToKlaviyo(
   currency: string,
   firstName?: string
 ) {
-  if (!email) return;
+  if (!isValidEmailBasic(email)) {
+    console.warn("Skipping Klaviyo event – invalid email:", email);
+    return;
+  }
 
   const metricName = `purchased_${productType.toLowerCase()}`;
   const value = amount / 100;
@@ -65,6 +73,12 @@ async function sendToKlaviyo(
   if (!res.ok) {
     const text = await res.text();
     console.error("Klaviyo API error", res.status, res.statusText, text);
+
+    if (res.status === 400 && text.includes("Invalid email address")) {
+      console.warn("Skipping Klaviyo event - invalid email:", email);
+      return;
+    }
+
     throw new Error(`Klaviyo request failed with status ${res.status}`);
   }
 

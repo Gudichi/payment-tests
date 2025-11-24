@@ -355,6 +355,18 @@ const advertorialHtml = `
 </article>
 `;
 
+const AdvertorialCTA = () => (
+  <div className={styles.advertorialCta}>
+    <p className={styles.advertorialCtaTitle}>Želiš da on vidi tvoju pravu energiju?</p>
+    <p className={styles.advertorialCtaHint}>
+      Klikni i otkrij Signale Strasti — mikro poteze koji nesvjesno daju zeleno svjetlo pravom muškarcu.
+    </p>
+    <CTAButton href="/" size="lg" className={styles.advertorialCtaButton}>
+      SAZNAJ VIŠE O SIGNALIMA STRASTI
+    </CTAButton>
+  </div>
+);
+
 export default function Adv2Page() {
   return (
     <>
@@ -399,37 +411,10 @@ export default function Adv2Page() {
           <div className={styles.articleBody}>
             <div className={styles.bodyText} dangerouslySetInnerHTML={{ __html: advertorialHtml }} />
           </div>
-          <div className={styles.advertorialCta}>
-            <p className={styles.advertorialCtaTitle}>Želiš da on vidi tvoju pravu energiju?</p>
-            <p className={styles.advertorialCtaHint}>
-              Klikni i otkrij Signale Strasti — mikro poteze koji nesvjesno daju zeleno svjetlo pravom muškarcu.
-            </p>
-            <CTAButton href="/" size="lg" className={styles.advertorialCtaButton}>
-              SAZNAJ VIŠE O SIGNALIMA STRASTI
-            </CTAButton>
-          </div>
+          <AdvertorialCTA />
           <CommentsSection />
-          <div className={styles.pageCta}>
-            <CTAButton href="/" size="lg" className={styles.ctaFooterButton}>
-              Saznaj više o Signalima Strasti
-            </CTAButton>
-          </div>
+          <AdvertorialCTA />
         </article>
-
-        <aside className={styles.sidebar}>
-          <h3 className={styles.sidebarTitle}>Najnovije</h3>
-          <ul className={styles.latestList}>
-            {latestNews.map((item, index) => (
-              <li key={index} className={styles.latestItem}>
-                <a href="#" className={styles.latestLink}>
-                  <span className={styles.latestCategory}>{item.category}</span>
-                  <span className={styles.latestTitle}>{item.title}</span>
-                  <span className={styles.latestTime}>{item.time}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </aside>
       </div>
     </div>
     </>
