@@ -118,7 +118,7 @@ export default function PaymentElements({
 
     const controller = new AbortController();
 
-    const controller = new AbortController();
+    const profileController = new AbortController();
     const currentMetadata = metadata ?? {};
 
     fetch("/api/create-payment-intent", {
@@ -135,7 +135,7 @@ export default function PaymentElements({
           firstName: trimmedFirstName,
         },
       }),
-      signal: controller.signal,
+      signal: profileController.signal,
     })
       .then(() => {
         lastSyncedProfileRef.current = {
@@ -149,7 +149,7 @@ export default function PaymentElements({
         }
       });
 
-    return () => controller.abort();
+    return () => profileController.abort();
   }, [customerEmail, customerFirstName, paymentIntentId, price, metadataKey]);
 
   if (!clientSecret) {
