@@ -59,15 +59,15 @@ Uživaj,<br>
     htmlTemplate: `
 Hej {{firstName}},<br><br>
 
-odabrala si jedan od najbržih modula za vidljive rezultate — i zato mi je drago da ga imaš.<br><br>
+odabrala si modul <strong>Lokacijski magnetizam</strong> — jedan od najmoćnijih dodataka koji ženama donosi brze i vidljive pomake u dinamici s muškarcima.<br><br>
 
 U vodiču koji te čeka otkrit ćeš:<br>
-• 3 mikro-geste zbog kojih muškarci spontano preuzmu inicijativu<br>
-• kako stvoriti magnetsku prisutnost bez forsiranja<br>
-• kako voditi razgovor tako da on želi nastaviti<br>
-• kako da NJEMU postane prirodno da prvi pita za tvoj broj<br><br>
+• kako se tvoj signal mijenja ovisno o lokaciji — kafić, ured, teretana, shopping centar…<br>
+• koje mikro-pokrete koristiti u kojoj situaciji<br>
+• što raditi kada želiš da on napravi prvi korak<br>
+• kako 2× ubrzati rezultate samo pametnijim odabirom mjesta i konteksta<br><br>
 
-Ovo je mali modul, ali moćan — i ženama često promijeni dinamiku u roku 24 sata.<br><br>
+Ovo je mali modul, ali iznimno snažan — jer ti daje <em>instant navigaciju</em> za situacije koje već živiš svakog dana.<br><br>
 
 👇 Klikni ispod da preuzmeš vodič:<br>
 
