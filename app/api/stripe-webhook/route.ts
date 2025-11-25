@@ -128,19 +128,47 @@ export async function POST(req: Request) {
   console.log("Stripe webhook metadata:", JSON.stringify(metadata));
   console.log("Stripe webhook selected_bumps:", metadata.selected_bumps);
   const selectedBumpsRaw = (metadata.selected_bumps || "").toString().toLowerCase();
-  const hasBump1 =
-    metadata.bump_1 === "true" ||
-    selectedBumpsRaw.includes("bump1") ||
-    selectedBumpsRaw.includes("nekabroj");
-  const hasBump2 =
-    metadata.bump_2 === "true" ||
-    selectedBumpsRaw.includes("bump2") ||
-    selectedBumpsRaw.includes("lokacijskimagnetizam");
+
+  const mainOfferPurchased = metadata.main_offer === "true" || metadata.main_offer === true;
+
+  const bump1FromMetadata = metadata.bump_1 === "true" || metadata.bump_1 === true;
+  const bump2FromMetadata = metadata.bump_2 === "true" || metadata.bump_2 === true;
+  const oto1Purchased = metadata.oto_1 === "true" || metadata.oto_1 === true;
+  const oto2Purchased = metadata.oto_2 === "true" || metadata.oto_2 === true;
+
+  const bump1FromSelected =
+    selectedBumpsRaw.includes("bump1") || selectedBumpsRaw.includes("nekabroj");
+  const bump2FromSelected =
+    selectedBumpsRaw.includes("bump2") || selectedBumpsRaw.includes("lokacijskimagnetizam");
+
+  const bump1Purchased = bump1FromMetadata || bump1FromSelected;
+  const bump2Purchased = bump2FromMetadata || bump2FromSelected;
+
+  const emailDiagnosticFlags = {
+    main_offer: metadata.main_offer,
+    bump_1: metadata.bump_1,
+    bump_2: metadata.bump_2,
+    oto_1: metadata.oto_1,
+    oto_2: metadata.oto_2,
+    selected_bumps: metadata.selected_bumps,
+    selectedBumpsRaw,
+    mainOfferPurchased,
+    bump1FromMetadata,
+    bump1FromSelected,
+    bump1Purchased,
+    bump2FromMetadata,
+    bump2FromSelected,
+    bump2Purchased,
+    oto1Purchased,
+    oto2Purchased,
+  };
 
   const tasks: Promise<void>[] = [];
   const postmarkTasks: Promise<void>[] = [];
 
-  if (metadata.main_offer === "true") {
+  if (mainOfferPurchased) {
+    console.log("EMAIL DEBUG", { type: "MAIN_OFFER", email, flags: emailDiagnosticFlags });
+
     tasks.push(sendToKlaviyo(email, "MAIN_OFFER", amount, currency, firstName));
     postmarkTasks.push(
       sendProductEmail({
@@ -150,7 +178,9 @@ export async function POST(req: Request) {
       })
     );
   }
-  if (metadata.bump_1 === "true" || hasBump1) {
+  if (bump1Purchased) {
+    console.log("EMAIL DEBUG", { type: "BUMP_1", email, flags: emailDiagnosticFlags });
+
     tasks.push(sendToKlaviyo(email, "BUMP_1", amount, currency, firstName));
     postmarkTasks.push(
       sendProductEmail({
@@ -160,7 +190,9 @@ export async function POST(req: Request) {
       })
     );
   }
-  if (metadata.bump_2 === "true" || hasBump2) {
+  if (bump2Purchased) {
+    console.log("EMAIL DEBUG", { type: "BUMP_2", email, flags: emailDiagnosticFlags });
+
     tasks.push(sendToKlaviyo(email, "BUMP_2", amount, currency, firstName));
     postmarkTasks.push(
       sendProductEmail({
@@ -170,7 +202,9 @@ export async function POST(req: Request) {
       })
     );
   }
-  if (metadata.oto_1 === "true") {
+  if (oto1Purchased) {
+    console.log("EMAIL DEBUG", { type: "OTO_1", email, flags: emailDiagnosticFlags });
+
     tasks.push(sendToKlaviyo(email, "OTO_1", amount, currency, firstName));
     postmarkTasks.push(
       sendProductEmail({
@@ -180,7 +214,9 @@ export async function POST(req: Request) {
       })
     );
   }
-  if (metadata.oto_2 === "true") {
+  if (oto2Purchased) {
+    console.log("EMAIL DEBUG", { type: "OTO_2", email, flags: emailDiagnosticFlags });
+
     tasks.push(sendToKlaviyo(email, "OTO_2", amount, currency, firstName));
     postmarkTasks.push(
       sendProductEmail({
