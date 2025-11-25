@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { trackPurchase, trackCustomEvent } from "@/lib/meta";
+import { phTrackPurchase } from "@/lib/posthog-events";
 
 export function MainPurchaseTracking() {
   const hasTrackedRef = useRef(false);
@@ -63,6 +64,14 @@ export function MainPurchaseTracking() {
             bump_13: bump13Selected,
             route: "/checkout-main",
             orderId: paymentIntent.id,
+          });
+
+          phTrackPurchase("main", amount, {
+            route: "/oto1",
+            products,
+            bump_9: bump9Selected,
+            bump_13: bump13Selected,
+            payment_intent_id: paymentIntent.id,
           });
         }
       })

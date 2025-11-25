@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { trackCustomEvent } from "@/lib/meta";
+import { phTrackFunnelStep, phTrackPage } from "@/lib/posthog-events";
 
 type PurchaseTrackingProps = {
   paymentIntent: {
@@ -28,6 +29,8 @@ export function PurchaseTracking({ paymentIntent, redirectTo }: PurchaseTracking
       route: "/hvala",
       orderId: paymentIntent.id,
     });
+    phTrackPage("/hvala", { orderId: paymentIntent.id });
+    phTrackFunnelStep("hvala", { route: "/hvala", orderId: paymentIntent.id });
 
     // Redirect after tracking (if redirect URL provided)
     if (redirectTo) {

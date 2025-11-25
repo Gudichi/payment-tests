@@ -200,13 +200,14 @@ export default function PaymentElements({
             colorPrimary: "#374151",
           },
           rules: {
-            ".TermsText, .TermsText *": {
-              color: "transparent",
-              fontSize: "0px",
-            },
             ".Terms": {
-              color: "transparent",
-              fontSize: "0px",
+              display: "none",
+            },
+            ".TermsText": {
+              display: "none",
+            },
+            ".TermsText *": {
+              display: "none",
             },
           },
         },

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { trackPurchase, trackCustomEvent } from "@/lib/meta";
+import { phTrackPurchase } from "@/lib/posthog-events";
 
 type Props = {
   paymentIntentId: string;
@@ -58,16 +59,18 @@ export function OneClickUpsellButton({
               const metadata = paymentIntent.metadata || {};
               const isOTO1 = metadata.oto_1 === "true" || metadata.source === "oto1_one_click";
               const isOTO2 = metadata.oto_2 === "true" || metadata.source === "oto2_one_click";
+              const route = isOTO1 ? "/oto1" : "/oto2";
+              const purchaseProducts = [
+                isOTO1
+                  ? { id: "oto1-37", type: "upsell", price: 37, quantity: 1 }
+                  : { id: "oto2-57", type: "upsell", price: 57, quantity: 1 },
+              ];
               
               // Track purchase
               trackPurchase(amount, {
                 currency: "EUR",
                 product: isOTO1 ? "oto1-37" : "oto2-57",
-                products: [
-                  isOTO1
-                    ? { id: "oto1-37", price: 37, quantity: 1 }
-                    : { id: "oto2-57", price: 57, quantity: 1 },
-                ],
+                products: purchaseProducts,
                 orderId: paymentIntent.id,
               });
 
@@ -77,16 +80,26 @@ export function OneClickUpsellButton({
                   value: amount,
                   currency: "EUR",
                   product: "oto1-37",
-                  route: "/oto1",
+                  route,
                   orderId: paymentIntent.id,
+                });
+                phTrackPurchase("oto1", amount, {
+                  route,
+                  products: purchaseProducts,
+                  payment_intent_id: paymentIntent.id,
                 });
               } else if (isOTO2) {
                 trackCustomEvent("RS_OTO2_Purchase", {
                   value: amount,
                   currency: "EUR",
                   product: "oto2-57",
-                  route: "/oto2",
+                  route,
                   orderId: paymentIntent.id,
+                });
+                phTrackPurchase("oto2", amount, {
+                  route,
+                  products: purchaseProducts,
+                  payment_intent_id: paymentIntent.id,
                 });
               }
             }
