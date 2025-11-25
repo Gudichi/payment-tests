@@ -2,8 +2,6 @@ import { ServerClient } from "postmark";
 
 export type ProductType = "MAIN_OFFER" | "BUMP_1" | "BUMP_2" | "OTO_1" | "OTO_2";
 
-const client = new ServerClient(process.env.POSTMARK_SERVER_TOKEN!);
-
 const PRODUCT_COPY: Record<ProductType, { subject: string; downloadUrl: string; friendlyName: string }> = {
   MAIN_OFFER: {
     subject: "Tvoj pristup Signalima strasti je spreman 💌",
@@ -47,6 +45,8 @@ export async function sendProductEmail(options: {
 
   const safeFirstName = (firstName && firstName.trim()) || "ljepotice";
 
+  const client = new ServerClient(process.env.POSTMARK_SERVER_TOKEN!);
+
   try {
     await client.sendEmail({
       From: "Dunja <info@signalistrasti.com>",
@@ -79,6 +79,8 @@ export async function sendProductEmail(options: {
         `Uživaj,\n— SS tim`,
       MessageStream: "outbound",
     });
+
+    console.log("Postmark email sent", toEmail, productType);
   } catch (error) {
     console.error("Postmark sendProductEmail error:", error);
   }
