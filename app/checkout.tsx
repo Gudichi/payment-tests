@@ -141,7 +141,7 @@ export const Checkout = () => {
             ],
             [
               "🔒",
-              "Stripe sigurnost - Tvoji podaci su 100% sigurni i zaštićeni (ja NE vidim tvoje bankovne podatke)",
+              "Stripe sigurnost - Tvoji podaci su 100% sigurni i zaštićeni (ja NE vidim tvoje bankovne podatke). Plaćanje je potpuno jednokratno — nema pretplate ni skrivenih naplata.",
             ],
             ["📧", "Welcome email od mene sa pristupnim detaljima"],
             [
@@ -170,6 +170,12 @@ export const Checkout = () => {
                   <p className="text-sm text-gray-500">Ukupno za platiti</p>
                   <p className="text-2xl font-bold text-accent">
                     €{total.toFixed(2)}
+                  </p>
+                  <p className="mt-1 text-sm text-gray-500">
+                    Jednokratno plaćanje. Nema pretplate.
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Uključena 60-dnevna garancija povrata novca.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2">

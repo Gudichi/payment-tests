@@ -116,6 +116,15 @@ export default function PaymentForm({
           <h4 className="font-serif text-sm font-medium text-gray-700 mb-3">
             Podaci za plaćanje
           </h4>
+          <p className="mb-2 text-sm text-gray-500">
+            Napomena: Ovo je jednokratno plaćanje. Stripe ponekad prikazuje standardnu sigurnosnu poruku o budućim naplatama, ali ova kupnja NIJE pretplata niti ima automatske naplate.
+          </p>
+          <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-gray-500">
+            <span>✅ Visa</span>
+            <span>✅ Mastercard</span>
+            <span>✅ 256-bit SSL zaštita</span>
+            <span>✅ Plaćanje preko Stripe-a</span>
+          </div>
           <PaymentElement
             id="payment-element"
             options={{
