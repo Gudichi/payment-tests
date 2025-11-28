@@ -112,19 +112,22 @@ export default function PaymentForm({
             />
           </div>
         </div>
-        <div className="md:p-4 md:bg-white md:border md:border-gray-300 md:rounded-md">
-          <h4 className="font-serif text-sm font-medium text-gray-700 mb-3">
+        <div className="md:p-4 md:bg-white md:border md:border-gray-300 md:rounded-md space-y-3">
+          <h4 className="font-serif text-sm font-medium text-gray-700">
             Podaci za plaćanje
           </h4>
-          <p className="mb-2 text-sm text-gray-500">
-            Napomena: Ovo je jednokratno plaćanje. Stripe ponekad prikazuje standardnu sigurnosnu poruku o budućim naplatama, ali ova kupnja NIJE pretplata niti ima automatske naplate.
+          <p className="text-sm text-gray-500">
+            Napomena: Ovo je jednokratno plaćanje. Stripe ponekad prikazuje standardnu sigurnosnu poruku o budućim naplatama, ali ova kupnja NIJE pretplata niti ima automatske naplate. Plaćaš putem Stripe-a, najveće svjetske platforme za obradu kartičnih uplata, tako da su tvoji kartični podaci u potpunosti zaštićeni.
           </p>
-          <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-gray-500">
+          <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
             <span>✅ Visa</span>
             <span>✅ Mastercard</span>
             <span>✅ 256-bit SSL zaštita</span>
-            <span>✅ Plaćanje preko Stripe-a</span>
+            <span>✅ Plaćanje preko Stripe-a (najveća svjetska platforma za kartična plaćanja)</span>
           </div>
+          <p className="mt-2 mb-1 text-xs text-gray-500 leading-snug">
+            <span className="font-medium">ℹ️ Mali dodatak:</span> Plaćanje ide preko Stripe-a, najveće svjetske platforme za obradu kartičnih uplata, pa su tvoji podaci 100% sigurni. Poruka ispod je njihova standardna pravna napomena — ovo je jednokratno plaćanje i kartica se neće teretiti bez tvoje nove potvrde.
+          </p>
           <PaymentElement
             id="payment-element"
             options={{

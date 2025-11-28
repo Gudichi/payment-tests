@@ -141,7 +141,7 @@ export const Checkout = () => {
             ],
             [
               "🔒",
-              "Stripe sigurnost - Tvoji podaci su 100% sigurni i zaštićeni (ja NE vidim tvoje bankovne podatke). Plaćanje je potpuno jednokratno — nema pretplate ni skrivenih naplata.",
+              "Stripe sigurnost – Plaćaš putem Stripe-a, najveće svjetske platforme za obradu kartičnih uplata. Tvoji podaci su 100% sigurni i zaštićeni (ja NE vidim tvoje bankovne podatke). Plaćanje je potpuno jednokratno — nema pretplate ni skrivenih naplata.",
             ],
             ["📧", "Welcome email od mene sa pristupnim detaljima"],
             [
@@ -164,19 +164,21 @@ export const Checkout = () => {
         {/* Checkout Form */}
         <div className="max-w-6xl mx-auto">
           <div className="space-y-6">
-            <div className="border-2 border-gray-200 rounded-lg p-4 sm:p-6 bg-gray-50 shadow-sm">
-              <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-4">
-                <div>
+            <div className="border-2 border-gray-200 rounded-lg p-4 sm:p-6 bg-gray-50 shadow-sm space-y-4">
+              <div className="flex items-center justify-between border-b border-gray-200 pb-4">
+                <div className="space-y-1">
                   <p className="text-sm text-gray-500">Ukupno za platiti</p>
                   <p className="text-2xl font-bold text-accent">
                     €{total.toFixed(2)}
                   </p>
-                  <p className="mt-1 text-sm text-gray-500">
-                    Jednokratno plaćanje. Nema pretplate.
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    Uključena 60-dnevna garancija povrata novca.
-                  </p>
+                  <div className="space-y-1">
+                    <p className="text-sm text-gray-500">
+                      Jednokratno plaćanje. Nema pretplate.
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Uključena 60-dnevna garancija povrata novca.
+                    </p>
+                  </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {selectedBumpIds.length
