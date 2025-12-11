@@ -4,6 +4,7 @@ import styles from "./Adv2.module.css";
 import { Lora, Poppins } from "next/font/google";
 import { CommentsSection } from "./CommentsSection";
 import { CTAButton } from "@/components/CTAButton";
+import { Adv2Tracking } from "./Adv2Tracking";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
@@ -349,17 +350,28 @@ const advertorialHtml = `
       “Zašto sam ikad sumnjala u sebe?”
     </p>
 
-    <div class="ctaFooter">
-      <a class="ctaFooterButton" href="/">SAZNAJ VIŠE O SIGNALIMA STRASTI</a>
-    </div>
   </section>
 
 </article>
 `;
 
+const AdvertorialCTA = () => (
+  <div className={styles.advertorialCta}>
+    <p className={styles.advertorialCtaTitle}>Želiš da on vidi tvoju pravu energiju?</p>
+    <p className={styles.advertorialCtaHint}>
+      Klikni i otkrij Signale Strasti — mikro poteze koji nesvjesno daju zeleno svjetlo pravom muškarcu.
+    </p>
+    <CTAButton href="/" size="lg" className={styles.advertorialCtaButton}>
+      SAZNAJ VIŠE O SIGNALIMA STRASTI
+    </CTAButton>
+  </div>
+);
+
 export default function Adv2Page() {
   return (
-    <div className={`${poppins.variable} ${lora.variable} ${styles.page}`}>
+    <>
+      <Adv2Tracking />
+      <div className={`${poppins.variable} ${lora.variable} ${styles.page}`}>
       <div className={styles.container}>
         <article className={styles.article}>
           <header className={styles.header}>
@@ -399,29 +411,12 @@ export default function Adv2Page() {
           <div className={styles.articleBody}>
             <div className={styles.bodyText} dangerouslySetInnerHTML={{ __html: advertorialHtml }} />
           </div>
+          <AdvertorialCTA />
           <CommentsSection />
-          <div className={styles.pageCta}>
-            <CTAButton href="/" size="lg" className={styles.ctaFooterButton}>
-              Saznaj više o Signalima Strasti
-            </CTAButton>
-          </div>
+          <AdvertorialCTA />
         </article>
-
-        <aside className={styles.sidebar}>
-          <h3 className={styles.sidebarTitle}>Najnovije</h3>
-          <ul className={styles.latestList}>
-            {latestNews.map((item, index) => (
-              <li key={index} className={styles.latestItem}>
-                <a href="#" className={styles.latestLink}>
-                  <span className={styles.latestCategory}>{item.category}</span>
-                  <span className={styles.latestTitle}>{item.title}</span>
-                  <span className={styles.latestTime}>{item.time}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </aside>
       </div>
     </div>
+    </>
   );
 }

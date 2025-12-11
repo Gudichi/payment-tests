@@ -6,6 +6,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 import "flag-icons/css/flag-icons.min.css";
 import { PostHogProvider } from "./providers";
+import { MetaPixelProvider } from "@/components/MetaPixelProvider";
 
 const title = "Formula od 6 Riječi | Transformirajte svoj odnos večeras";
 const description =
@@ -27,17 +28,6 @@ export const metadata: Metadata = {
     },
   },
 };
-
-const pixelScript = `!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1340314074457994');
-fbq('track', 'PageView');`;
 
 const poppinsBody = Poppins({
   subsets: ["latin"],
@@ -90,13 +80,6 @@ export default function RootLayout({
             name="facebook-domain-verification"
             content="z77heunv7fkzpbwsny9rhsq9cmayr5"
           />
-          <Script
-            id="fb-pixel"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: pixelScript,
-            }}
-          />
           <Script src="https://fast.wistia.com/assets/external/E-v1.js" async />
           {/* <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-EC23D3L1TP"
@@ -112,6 +95,7 @@ export default function RootLayout({
         </Script> */}
         </head>
         <body className={`${poppinsBody.variable} ${poppinsHeading.variable}`}>
+          <MetaPixelProvider />
           <PostHogProvider>
             <NuqsAdapter>{children}</NuqsAdapter>
           </PostHogProvider>

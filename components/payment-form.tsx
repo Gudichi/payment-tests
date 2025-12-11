@@ -7,6 +7,7 @@ import {
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { ReactNode, useState } from "react";
+import { trackCustomEvent } from "@/lib/meta";
 
 type OrderBump = {
   id: string;
@@ -21,19 +22,25 @@ type PaymentFormProps = {
   orderBumps?: OrderBump[];
   selectedBumps?: Record<string, boolean>;
   onToggleBump?: (id: string, checked: boolean) => void;
+  customerFirstName: string;
+  onCustomerFirstNameChange: (value: string) => void;
+  customerEmail: string;
+  onCustomerEmailChange: (value: string) => void;
 };
 
 export default function PaymentForm({
   orderBumps,
   selectedBumps,
   onToggleBump,
+  customerFirstName,
+  onCustomerFirstNameChange,
+  customerEmail,
+  onCustomerEmailChange,
 }: PaymentFormProps) {
   const stripe = useStripe();
   const elements = useElements();
   const [message, setMessage] = useState<string | null | undefined>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [customerName, setCustomerName] = useState<string>("");
-  const [customerEmail, setCustomerEmail] = useState<string>("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -49,7 +56,7 @@ export default function PaymentForm({
       confirmParams: {
         payment_method_data: {
           billing_details: {
-            name: customerName,
+            name: customerFirstName,
             email: customerEmail,
           },
         },
@@ -80,14 +87,15 @@ export default function PaymentForm({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2 text-left">
-              Ime i prezime*
+              Ime*
             </label>
             <input
               type="text"
-              value={customerName}
-              onChange={(e) => setCustomerName(e.target.value)}
-              placeholder="Vaše ime i prezime"
+              value={customerFirstName}
+              onChange={(e) => onCustomerFirstNameChange(e.target.value)}
+              placeholder="npr. Ana"
               className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#1C7C7D] focus:border-transparent text-sm sm:text-base"
+              required
             />
           </div>
           <div>
@@ -97,17 +105,29 @@ export default function PaymentForm({
             <input
               type="email"
               value={customerEmail}
-              onChange={(e) => setCustomerEmail(e.target.value)}
+              onChange={(e) => onCustomerEmailChange(e.target.value)}
               placeholder="vaš@email.com"
               className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#1C7C7D] focus:border-transparent text-sm sm:text-base"
               required
             />
           </div>
         </div>
-        <div className="md:p-4 md:bg-white md:border md:border-gray-300 md:rounded-md">
-          <h4 className="font-serif text-sm font-medium text-gray-700 mb-3">
+        <div className="md:p-4 md:bg-white md:border md:border-gray-300 md:rounded-md space-y-3">
+          <h4 className="font-serif text-sm font-medium text-gray-700">
             Podaci za plaćanje
           </h4>
+          <p className="text-sm text-gray-500">
+            Napomena: Ovo je jednokratno plaćanje. Stripe ponekad prikazuje standardnu sigurnosnu poruku o budućim naplatama, ali ova kupnja NIJE pretplata niti ima automatske naplate. Plaćaš putem Stripe-a, najveće svjetske platforme za obradu kartičnih uplata, tako da su tvoji kartični podaci u potpunosti zaštićeni.
+          </p>
+          <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
+            <span>✅ Visa</span>
+            <span>✅ Mastercard</span>
+            <span>✅ 256-bit SSL zaštita</span>
+            <span>✅ Plaćanje preko Stripe-a (najveća svjetska platforma za kartična plaćanja)</span>
+          </div>
+          <p className="mt-2 mb-1 text-xs text-gray-500 leading-snug">
+            <span className="font-medium">ℹ️ Mali dodatak:</span> Plaćanje ide preko Stripe-a, najveće svjetske platforme za obradu kartičnih uplata, pa su tvoji podaci 100% sigurni. Poruka ispod je njihova standardna pravna napomena — ovo je jednokratno plaćanje i kartica se neće teretiti bez tvoje nove potvrde.
+          </p>
           <PaymentElement
             id="payment-element"
             options={{

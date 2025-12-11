@@ -5,6 +5,8 @@ import { CTAButton } from "@/components/CTAButton";
 import { Section } from "@/components/Section";
 import { InlineCheckout } from "@/components/InlineCheckout";
 import { productInfo } from "@/lib/brand";
+import { LandingTracking } from "./LandingTracking";
+import { CTATrackingWrapper } from "./CTATrackingWrapper";
 
 const CTA_TEXT = "Da, želim pristupiti SIGNALIMA STRASTI";
 
@@ -338,7 +340,9 @@ const faqSchema = {
 
 export default function TestPage() {
   return (
-    <div className="bg-ivory text-espresso">
+    <>
+      <LandingTracking />
+      <div className="bg-ivory text-espresso">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([productSchema, faqSchema]) }}
@@ -597,15 +601,16 @@ export default function TestPage() {
               </ul>
             </div>
             <div className="text-center">
-              <CTAButton
+              <CTATrackingWrapper
                 href="#offer-section"
                 size="lg"
                 className="bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
                 scrollToCheckout
                 scrollTargetId="offer-section"
+                section="for-who-section"
               >
                 {CTA_TEXT}
-              </CTAButton>
+              </CTATrackingWrapper>
             </div>
           </div>
         </Section>
@@ -627,15 +632,16 @@ export default function TestPage() {
                 />
               ))}
             </div>
-            <CTAButton
+            <CTATrackingWrapper
               href="#offer-section"
               size="lg"
               className="mt-6 bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
               scrollToCheckout
               scrollTargetId="offer-section"
+              section="testimonials-section"
             >
               {CTA_TEXT}
-            </CTAButton>
+            </CTATrackingWrapper>
           </div>
         </Section>
 
@@ -687,15 +693,16 @@ export default function TestPage() {
                 ))}
               </ul>
               <div className="mt-8 text-center">
-                <CTAButton
+                <CTATrackingWrapper
                   href="#offer-section"
                   size="lg"
                   className="w-full max-w-md bg-[#1C7C7D] text-ivory hover:bg-[#165a5c]"
                   scrollToCheckout
                   scrollTargetId="offer-section"
+                  section="praise-highlights-section"
                 >
                   {CTA_TEXT}
-                </CTAButton>
+                </CTATrackingWrapper>
               </div>
             </div>
 
@@ -772,15 +779,16 @@ export default function TestPage() {
             <p className="text-lg text-espresso/80">
               <u>Pošalji ga danas.</u>
             </p>
-            <CTAButton
+            <CTATrackingWrapper
               href="#offer-section"
               size="lg"
               className="bg-cherry text-ivory hover:bg-cherry/90"
               scrollToCheckout
               scrollTargetId="offer-section"
+              section="final-cta-section"
             >
               {CTA_TEXT}
-            </CTAButton>
+            </CTATrackingWrapper>
           </div>
         </Section>
       </main>
@@ -806,5 +814,6 @@ export default function TestPage() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

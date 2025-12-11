@@ -5,6 +5,8 @@ import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { OneClickUpsellButton } from "@/components/one-click-upsell";
 import { EnsurePaymentIntentParam } from "@/components/payment-intent-sync";
+import { Oto2Tracking } from "./Oto2Tracking";
+import { Oto2CTAGroup } from "./Oto2CTAGroup";
 
 export const metadata: Metadata = {
   title: "Rečenice Strasti™ — One Time Offer 2",
@@ -427,41 +429,6 @@ type Props = {
   };
 };
 
-const CTAGroup = ({
-  paymentIntentId,
-  priceId,
-}: {
-  paymentIntentId?: string;
-  priceId?: string;
-}) => {
-  const thankYouUrl = paymentIntentId ? `/hvala?payment_intent=${paymentIntentId}` : "/hvala";
-  const declineUrl = paymentIntentId ? `/oto2-no?payment_intent=${paymentIntentId}` : "/oto2-no";
-
-  return (
-    <div className="flex flex-col items-center gap-4">
-      {paymentIntentId ? (
-        <OneClickUpsellButton
-          paymentIntentId={paymentIntentId}
-          priceId={priceId}
-          label={PRIMARY_LABEL}
-          className="bg-[#1C7C7D] hover:bg-[#165a5c] text-ivory"
-          onSuccessHref={thankYouUrl}
-        />
-      ) : (
-        <CTAButton href={thankYouUrl} size="lg" className="bg-[#1C7C7D] text-ivory">
-          {PRIMARY_LABEL}
-        </CTAButton>
-      )}
-      <CTAButton
-        href={declineUrl}
-        size="lg"
-        className="border border-[#6A1F29] text-[#6A1F29] bg-transparent hover:bg-[#6A1F29]/5"
-      >
-        {DECLINE_LABEL}
-      </CTAButton>
-    </div>
-  );
-};
 
 export default async function Oto2Page({ searchParams }: Props) {
   const priceId = process.env.STRIPE_OTO2_PRICE_ID;
@@ -481,8 +448,10 @@ export default async function Oto2Page({ searchParams }: Props) {
   }
 
   return (
-    <div className="bg-ivory text-espresso">
-      <EnsurePaymentIntentParam paymentIntentId={payment_intent} />
+    <>
+      <Oto2Tracking />
+      <div className="bg-ivory text-espresso">
+        <EnsurePaymentIntentParam paymentIntentId={payment_intent} />
       <div className="bg-[#6A1F29] py-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#F8F5F0] sm:text-sm">
         Ova stranica se prikazuje samo jednom. Ako je zatvoriš — više joj nećeš moći pristupiti.
       </div>
@@ -844,7 +813,7 @@ export default async function Oto2Page({ searchParams }: Props) {
             </div>
 
             <div className="space-y-4">
-              <CTAGroup
+              <Oto2CTAGroup
                 paymentIntentId={priceId ? payment_intent : undefined}
                 priceId={priceId ?? undefined}
               />
@@ -957,9 +926,10 @@ export default async function Oto2Page({ searchParams }: Props) {
         </Section>
 
         <div className="text-center pb-16">
-          <CTAGroup paymentIntentId={priceId ? payment_intent : undefined} priceId={priceId ?? undefined} />
+          <Oto2CTAGroup paymentIntentId={payment_intent} priceId={priceId ?? undefined} />
         </div>
       </main>
     </div>
+    </>
   );
 }

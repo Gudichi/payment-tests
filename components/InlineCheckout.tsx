@@ -5,6 +5,7 @@ import { Checkout } from "@/app/checkout";
 import { Checkout2 } from "@/app/checkout2";
 import PaymentIcons from "@/components/payment-icons";
 import { PRICE } from "@/app/checkout";
+import { trackCustomEvent, trackInitiateCheckout } from "@/lib/meta";
 
 type InlineCheckoutProps = {
   buttonLabel?: string;
@@ -21,6 +22,18 @@ export function InlineCheckout({
 
   const handleClick = useCallback(() => {
     if (!open) {
+      // Track checkout opening
+      trackCustomEvent("RS_Landing_CTA_Click", {
+        route: "/",
+        source: "cta-open-checkout",
+        position: "inline-checkout",
+      });
+      trackInitiateCheckout({
+        route: "/",
+        source: "cta-open-checkout",
+        position: "inline-checkout",
+      });
+
       setOpen(true);
       setTimeout(() => {
         const target = document.getElementById("checkout-section");

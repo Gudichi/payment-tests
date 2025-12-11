@@ -5,6 +5,9 @@ import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { OneClickUpsellButton } from "@/components/one-click-upsell";
 import { EnsurePaymentIntentParam } from "@/components/payment-intent-sync";
+import { Oto1Tracking } from "./Oto1Tracking";
+import { Oto1CTAGroup } from "./Oto1CTAGroup";
+import { MainPurchaseTracking } from "./MainPurchaseTracking";
 
 export const metadata: Metadata = {
   title: "Kompas Strasti™ — One Time Offer",
@@ -295,47 +298,6 @@ type Props = {
   };
 };
 
-const CTAGroup = ({
-  paymentIntentId,
-  primaryLabel = PRIMARY_LABEL,
-  secondaryLabel = DECLINE_LABEL,
-}: {
-  paymentIntentId?: string;
-  primaryLabel?: string;
-  secondaryLabel?: string;
-}) => {
-  const nextOto2 = paymentIntentId ? `/oto2?payment_intent=${paymentIntentId}` : "/oto2";
-  const oto1No = paymentIntentId ? `/oto1-no?payment_intent=${paymentIntentId}` : "/oto1-no";
-
-  return (
-    <div className="flex flex-col items-center gap-4">
-      {paymentIntentId ? (
-        <OneClickUpsellButton
-          paymentIntentId={paymentIntentId}
-          priceId={process.env.STRIPE_OTO1_PRICE_ID}
-          label={primaryLabel}
-          className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-4 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
-          onSuccessHref={nextOto2}
-        />
-      ) : (
-        <CTAButton
-          href={nextOto2}
-          size="lg"
-          className="w-full sm:w-auto rounded-3xl bg-[#1C7C7D] px-8 py-4 text-base font-semibold tracking-wide text-ivory shadow-card transition hover:bg-[#165a5c]"
-        >
-          {primaryLabel}
-        </CTAButton>
-      )}
-      <CTAButton
-        href={oto1No}
-        size="lg"
-        className="w-full sm:w-auto rounded-3xl border border-[#6A1F29] bg-transparent px-8 py-4 text-base font-semibold tracking-wide text-[#6A1F29] transition hover:bg-[#6A1F29]/5"
-      >
-        {secondaryLabel}
-      </CTAButton>
-    </div>
-  );
-};
 
 export default async function Oto1Page({ searchParams }: Props) {
   const priceId = process.env.STRIPE_OTO1_PRICE_ID;
@@ -369,8 +331,11 @@ export default async function Oto1Page({ searchParams }: Props) {
   }
 
   return (
-    <div className="bg-ivory text-espresso">
-      <EnsurePaymentIntentParam paymentIntentId={payment_intent} />
+    <>
+      <Oto1Tracking />
+      <MainPurchaseTracking />
+      <div className="bg-ivory text-espresso">
+        <EnsurePaymentIntentParam paymentIntentId={payment_intent} />
       <div className="bg-[#6A1F29] py-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#F8F5F0] sm:text-sm">
         Ova Ponuda je dostupna samo jednom nakon što kupiš Signale Strasti i nikad više
       </div>
@@ -663,7 +628,7 @@ export default async function Oto1Page({ searchParams }: Props) {
           </ul>
         </Section>
         <div className="text-center">
-          <CTAGroup paymentIntentId={payment_intent} />
+          <Oto1CTAGroup paymentIntentId={payment_intent} primaryLabel={PRIMARY_LABEL} secondaryLabel={DECLINE_LABEL} priceId={priceId} />
         </div>
 
         <Section
@@ -695,7 +660,7 @@ export default async function Oto1Page({ searchParams }: Props) {
           </div>
         </Section>
         <div className="text-center">
-          <CTAGroup paymentIntentId={payment_intent} />
+          <Oto1CTAGroup paymentIntentId={payment_intent} primaryLabel={PRIMARY_LABEL} secondaryLabel={DECLINE_LABEL} priceId={priceId} />
         </div>
 
         <Section bg="white">
@@ -803,7 +768,7 @@ export default async function Oto1Page({ searchParams }: Props) {
           </div>
         </Section>
         <div className="text-center">
-          <CTAGroup paymentIntentId={payment_intent} />
+          <Oto1CTAGroup paymentIntentId={payment_intent} primaryLabel={PRIMARY_LABEL} secondaryLabel={DECLINE_LABEL} priceId={priceId} />
         </div>
 
         <Section bg="white">
@@ -823,7 +788,7 @@ export default async function Oto1Page({ searchParams }: Props) {
           </div>
         </Section>
         <div className="text-center">
-          <CTAGroup paymentIntentId={payment_intent} />
+          <Oto1CTAGroup paymentIntentId={payment_intent} primaryLabel={PRIMARY_LABEL} secondaryLabel={DECLINE_LABEL} priceId={priceId} />
         </div>
 
         <Section bg="ivory" contentClassName="space-y-6 text-center">
@@ -832,9 +797,10 @@ export default async function Oto1Page({ searchParams }: Props) {
             <li>✔️ Pokrenula si njegovu inicijativu.</li>
             <li className="text-cherry">❌ Ali ako ne znaš tko je on — možeš opet izgubiti sebe.</li>
           </ul>
-          <CTAGroup paymentIntentId={payment_intent} />
+          <Oto1CTAGroup paymentIntentId={payment_intent} primaryLabel={PRIMARY_LABEL} secondaryLabel={DECLINE_LABEL} priceId={priceId} />
         </Section>
       </main>
     </div>
+    </>
   );
 }
