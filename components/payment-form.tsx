@@ -4,9 +4,13 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import type {
+  PaymentRequest as StripePaymentRequest,
+  StripePaymentRequestButtonElement,
+} from "@stripe/stripe-js";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { ReactNode, useState } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { trackCustomEvent } from "@/lib/meta";
 
 type OrderBump = {
@@ -19,6 +23,7 @@ type OrderBump = {
 };
 
 type PaymentFormProps = {
+  totalAmount: number;
   orderBumps?: OrderBump[];
   selectedBumps?: Record<string, boolean>;
   onToggleBump?: (id: string, checked: boolean) => void;
@@ -29,6 +34,7 @@ type PaymentFormProps = {
 };
 
 export default function PaymentForm({
+  totalAmount,
   orderBumps,
   selectedBumps,
   onToggleBump,
@@ -41,6 +47,13 @@ export default function PaymentForm({
   const elements = useElements();
   const [message, setMessage] = useState<string | null | undefined>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [paymentRequest, setPaymentRequest] =
+    useState<StripePaymentRequest | null>(null);
+  const paymentRequestButtonRef =
+    useRef<StripePaymentRequestButtonElement | null>(null);
+  const [showPaymentRequestButton, setShowPaymentRequestButton] =
+    useState(false);
+  const amountInCents = Math.trunc(Math.max(totalAmount, 0) * 100);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -78,6 +91,98 @@ export default function PaymentForm({
 
     setIsLoading(false);
   };
+
+  const unmountPaymentRequestButton = useCallback(() => {
+    if (paymentRequestButtonRef.current) {
+      paymentRequestButtonRef.current.unmount();
+      paymentRequestButtonRef.current = null;
+    }
+    setShowPaymentRequestButton(false);
+  }, []);
+
+  const mountPaymentRequestButton = useCallback(async () => {
+    if (!stripe || !elements || !amountInCents) {
+      return;
+    }
+
+    const pr = stripe.paymentRequest({
+      country: "HR",
+      currency: "eur",
+      total: {
+        label: "Ukupno",
+        amount: amountInCents,
+      },
+      requestPayerName: true,
+      requestPayerEmail: true,
+    });
+
+    const result = await pr.canMakePayment();
+    if (!result) {
+      return;
+    }
+
+    const prButton = elements.create("paymentRequestButton", {
+      paymentRequest: pr,
+    });
+
+    const target = document.getElementById("payment-request-button");
+    if (!target) {
+      return;
+    }
+
+    prButton.mount(target);
+    paymentRequestButtonRef.current = prButton;
+    setPaymentRequest(pr);
+    setShowPaymentRequestButton(true);
+  }, [amountInCents, elements, stripe]);
+
+  useEffect(() => {
+    if (!stripe || !elements || paymentRequest || !amountInCents) {
+      return;
+    }
+
+    mountPaymentRequestButton();
+
+    return () => {
+      unmountPaymentRequestButton();
+    };
+  }, [
+    amountInCents,
+    elements,
+    mountPaymentRequestButton,
+    paymentRequest,
+    stripe,
+    unmountPaymentRequestButton,
+  ]);
+
+  useEffect(() => {
+    if (!paymentRequest || !amountInCents) {
+      return;
+    }
+
+    try {
+      paymentRequest.update({
+        total: {
+          label: "Ukupno",
+          amount: amountInCents,
+        },
+      });
+      console.log("Payment Request total updated to:", amountInCents);
+    } catch (error) {
+      console.warn(
+        "Payment Request update failed. Recreating button as fallback.",
+        error
+      );
+      unmountPaymentRequestButton();
+      setPaymentRequest(null);
+      mountPaymentRequestButton();
+    }
+  }, [
+    amountInCents,
+    mountPaymentRequestButton,
+    paymentRequest,
+    unmountPaymentRequestButton,
+  ]);
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
@@ -128,6 +233,10 @@ export default function PaymentForm({
           <p className="mt-2 mb-1 text-xs text-gray-500 leading-snug">
             <span className="font-medium">ℹ️ Mali dodatak:</span> Plaćanje ide preko Stripe-a, najveće svjetske platforme za obradu kartičnih uplata, pa su tvoji podaci 100% sigurni. Poruka ispod je njihova standardna pravna napomena — ovo je jednokratno plaćanje i kartica se neće teretiti bez tvoje nove potvrde.
           </p>
+          <div
+            id="payment-request-button"
+            className={showPaymentRequestButton ? "mb-4" : "hidden"}
+          />
           <PaymentElement
             id="payment-element"
             options={{
