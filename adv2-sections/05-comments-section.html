@@ -1,0 +1,349 @@
+<!-- COMMENTS SEKCIJA - Adv2 -->
+<!-- Insertuj ovaj kod u GoHighLevel custom code blok -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+.adv2-commentsSection {
+  margin-top: 3rem;
+  padding: 2.25rem;
+  border: 1px solid #f0e4d8;
+  border-radius: 18px;
+  background: #fff8f2;
+  box-shadow: 0 18px 32px rgba(31, 21, 12, 0.08);
+}
+
+.adv2-commentsTitle {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  font-weight: 700;
+  margin: 0 0 1.5rem;
+  color: #1f130a;
+}
+
+.adv2-commentList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.adv2-comment {
+  border: 1px solid #f4dfd0;
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  background: #ffffff;
+}
+
+.adv2-commentHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-family: 'Poppins', system-ui, sans-serif;
+  margin-bottom: 0.4rem;
+}
+
+.adv2-commentUsername {
+  font-weight: 600;
+  color: #b2384b;
+}
+
+.adv2-commentTime {
+  color: #8c7c71;
+  font-size: 0.9rem;
+}
+
+.adv2-commentBody {
+  margin: 0;
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #2a1b12;
+}
+
+.adv2-commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.adv2-formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: #3a2a20;
+}
+
+.adv2-formGroup label {
+  font-weight: 500;
+}
+
+.adv2-formGroup input,
+.adv2-formGroup textarea {
+  border: 1px solid #e1d4c9;
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  color: #20140c;
+  background: #fffefd;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.adv2-formGroup input:focus,
+.adv2-formGroup textarea:focus {
+  outline: none;
+  border-color: #c45c6b;
+  box-shadow: 0 0 0 3px rgba(196, 92, 107, 0.15);
+}
+
+.adv2-submitButton {
+  align-self: flex-start;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #c24858, #f08a9d);
+  color: #ffffff;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 1.75rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.adv2-submitButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(194, 72, 88, 0.25);
+}
+
+.adv2-submitButton:focus-visible {
+  outline: 3px solid rgba(194, 72, 88, 0.4);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .adv2-commentsSection {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .adv2-commentList {
+    gap: 0.85rem;
+  }
+
+  .adv2-comment {
+    padding: 0.85rem;
+  }
+}
+</style>
+
+<section id="comments" class="adv2-commentsSection">
+  <h2 class="adv2-commentsTitle">Komentari korisnica</h2>
+
+  <div class="adv2-commentList" aria-live="polite">
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">marina.veljac</span>
+        <span class="adv2-commentTime">12.11.2025. u 18:42</span>
+      </div>
+      <p class="adv2-commentBody">
+        Ja sam se zaledila kad sam pročitala onaj dio "ako mu ne daš zeleno svjetlo, neće prić". Toliko istinito 😭 Kupila sam Signale prošli tjedan i prvi put nakon dugo — lik mi sam prišao u kafiću. Preporučam stvarno.
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">softblush_23</span>
+        <span class="adv2-commentTime">13.11.2025. u 09:15</span>
+      </div>
+      <p class="adv2-commentBody">
+        Ovo je baš pogodilo… onaj osjećaj kad se središ ko kraljica i nitko te ne pogleda. 😅 Ako će mi ovo makar malo promijenit energiju, idem probat.
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">anja.macek</span>
+        <span class="adv2-commentTime">13.11.2025. u 21:03</span>
+      </div>
+      <p class="adv2-commentBody">
+        Najviše mi se sviđa što kaže da ne moram glumit. Ne podnosim igrice. Ako je stvarno samo govor tijela — to mi je top. Upravo kupila vodič 🙈
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">lena.kovac</span>
+        <span class="adv2-commentTime">15.11.2025. u 22:47</span>
+      </div>
+      <p class="adv2-commentBody">
+        Ja sam probala jedan od signala (onaj za dućan) i lik se nasmija i rekao: "hej, smijem ti nešto pitat?" — JA ŠOK. 😂 Radi ženo, radi.
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">moonhoney</span>
+        <span class="adv2-commentTime">16.11.2025. u 08:22</span>
+      </div>
+      <p class="adv2-commentBody">
+        Nisam inače fan ovih programa, ali ovaj tekst mi je imao smisla. Pogotovo dio da njima treba znak da nisu napadni. Sad me baš zanima što je dalje.
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">jovana_.petrov</span>
+        <span class="adv2-commentTime">16.11.2025. u 20:14</span>
+      </div>
+      <p class="adv2-commentBody">
+        Ona rečenica "Ako nije 99% siguran da ga nećeš odbit – neće prići" me pogodila ko grom. Sad bar kužim zašto me normalni ignoriraju. Idem vidit te signale.
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">zelena_magnolija</span>
+        <span class="adv2-commentTime">17.11.2025. u 11:05</span>
+      </div>
+      <p class="adv2-commentBody">
+        8. signal mi je promijenio sve. Frajer me gledao cijelu kavu i ništa… primijenim to i dođe za 30 sekundi. Program vrijedi više od 17€, realno.
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">milica.mar</span>
+        <span class="adv2-commentTime">18.11.2025. u 12:27</span>
+      </div>
+      <p class="adv2-commentBody">
+        Iskreno, malo sam skeptična. Nisam ja za neke velike gestikulacije… al ako traje minutu dnevno, možda stvarno nije ništa napadno. Razmišljam da probam.
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">crystal_nova</span>
+        <span class="adv2-commentTime">19.11.2025. u 14:18</span>
+      </div>
+      <p class="adv2-commentBody">
+        Kad sam pročitala advertorial — sve mi je sjelo na mjesto. Ja mislim da sam samo ostavljala dojam pre-zatvorene. Sad sam kupila program, jedva čekam primijenit u uredu haha.
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">dorisf</span>
+        <span class="adv2-commentTime">20.11.2025. u 15:39</span>
+      </div>
+      <p class="adv2-commentBody">
+        U teretani sam probala onaj "meki pogled" i lik mi prvi put rekao: "Oprosti jel ti ovo još treba?" — a inače me nitko ni ne pogleda 😭😂 Valjda stvarno radi.
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">natalija.grubic</span>
+        <span class="adv2-commentTime">21.11.2025. u 09:54</span>
+      </div>
+      <p class="adv2-commentBody">
+        Ovo mi je prvi put da osjećam da mi netko objašnjava mušku psihu na NORMALAN način. Ako im treba signal — ok, naučit ćemo ga dat.
+      </p>
+    </div>
+
+    <div class="adv2-comment">
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">sunset.vibes</span>
+        <span class="adv2-commentTime">22.11.2025. u 18:21</span>
+      </div>
+      <p class="adv2-commentBody">
+        Malo sam starija i mislila sam da ovo nije za mene, ali iskreno… jako lijepo objašnjeno. Ne loviš nikoga, samo otvaraš prostor. Zvuči stvarno elegantno.
+      </p>
+    </div>
+  </div>
+
+  <form class="adv2-commentForm" id="adv2-comment-form">
+    <div class="adv2-formGroup">
+      <label for="adv2-comment-name">Ime ili username</label>
+      <input
+        id="adv2-comment-name"
+        name="name"
+        type="text"
+        placeholder="npr. marina.veljac"
+        required
+      >
+    </div>
+    <div class="adv2-formGroup">
+      <label for="adv2-comment-text">Komentar</label>
+      <textarea
+        id="adv2-comment-text"
+        name="text"
+        rows="3"
+        placeholder="Podijeli iskustvo ili pitanje..."
+        required
+      ></textarea>
+    </div>
+    <button type="submit" class="adv2-submitButton">
+      Objavi komentar
+    </button>
+  </form>
+</section>
+
+<script>
+(function() {
+  const form = document.getElementById('adv2-comment-form');
+  const commentList = document.querySelector('.adv2-commentList');
+  
+  if (!form || !commentList) return;
+  
+  const formatTimestamp = (date) => {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    const datePart = `${day}.${month}.${year}.`;
+    const timePart = date.toLocaleTimeString('hr-HR', {
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    return `${datePart} u ${timePart}`;
+  };
+  
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const nameInput = document.getElementById('adv2-comment-name');
+    const textInput = document.getElementById('adv2-comment-text');
+    
+    if (!nameInput.value.trim() || !textInput.value.trim()) {
+      return;
+    }
+    
+    const newComment = document.createElement('div');
+    newComment.className = 'adv2-comment';
+    newComment.innerHTML = `
+      <div class="adv2-commentHeader">
+        <span class="adv2-commentUsername">${nameInput.value.trim()}</span>
+        <span class="adv2-commentTime">${formatTimestamp(new Date())}</span>
+      </div>
+      <p class="adv2-commentBody">${textInput.value.trim()}</p>
+    `;
+    
+    commentList.appendChild(newComment);
+    nameInput.value = '';
+    textInput.value = '';
+    
+    // Scroll to new comment
+    newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+})();
+</script>
+
+

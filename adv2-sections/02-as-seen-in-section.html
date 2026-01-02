@@ -1,0 +1,122 @@
+<!-- AS SEEN IN SEKCIJA - Adv2 -->
+<!-- Insertuj ovaj kod u GoHighLevel custom code blok -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+.adv2-asSeenWrap {
+  margin: 1.75rem 0 2.25rem;
+}
+
+@media (min-width: 768px) {
+  .adv2-asSeenWrap {
+    margin: 2.5rem 0 2.9rem;
+  }
+}
+
+.adv2-asSeenHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.adv2-asSeenLabel {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+}
+
+.adv2-ruleLeft,
+.adv2-ruleRight {
+  display: block;
+  height: 4px;
+  width: 96px;
+  border-radius: 4px;
+  background: #f0e7c9;
+}
+
+@media (min-width: 768px) {
+  .adv2-ruleLeft,
+  .adv2-ruleRight {
+    width: 140px;
+  }
+}
+
+.adv2-asSeenBox {
+  border: 2px solid #f0e7c9;
+  border-radius: 0;
+  padding: 10px 0 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.adv2-brandList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .adv2-brandList {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px 24px;
+  }
+}
+
+.adv2-brandItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 8px 6px;
+}
+
+.adv2-brandLogo {
+  max-height: 96px;
+  width: auto;
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.2s ease;
+}
+
+.adv2-brandLogo:hover {
+  opacity: 0.88;
+}
+</style>
+
+<section class="adv2-asSeenWrap" aria-label="Viđeno u medijima">
+  <div class="adv2-asSeenHeader">
+    <span class="adv2-ruleLeft" aria-hidden="true"></span>
+    <span class="adv2-asSeenLabel">Viđeno u medijima</span>
+    <span class="adv2-ruleRight" aria-hidden="true"></span>
+  </div>
+  <div class="adv2-asSeenBox">
+    <ul class="adv2-brandList">
+      <li class="adv2-brandItem">
+        <img src="/adv1/24h.png" alt="24sata.hr" class="adv2-brandLogo" style="max-width: 132px; height: auto;">
+      </li>
+      <li class="adv2-brandItem">
+        <img src="/adv1/jutranji.png" alt="Jutarnji.hr" class="adv2-brandLogo" style="max-width: 160px; height: auto;">
+      </li>
+      <li class="adv2-brandItem">
+        <img src="/adv1/Index-rogue.png" alt="Index Rouge" class="adv2-brandLogo" style="max-width: 156px; height: auto;">
+      </li>
+      <li class="adv2-brandItem">
+        <img src="/adv1/Lepa-srecna.png" alt="Lepa & Srećna" class="adv2-brandLogo" style="max-width: 164px; height: auto;">
+      </li>
+    </ul>
+  </div>
+</section>
+
+

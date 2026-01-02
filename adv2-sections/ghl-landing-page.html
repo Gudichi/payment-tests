@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignaliStrasti - Balkanska studija neverbalne privlačnosti</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS Variables */
+    :root {
+      --ss-color-primary: #20140c;
+      --ss-color-secondary: #7b4121;
+      --ss-color-accent: #ffe7d0;
+      --ss-color-text: #403530;
+      --ss-color-text-light: #6d6259;
+      --ss-color-border: #e3d6c9;
+      --ss-color-white: #ffffff;
+      --ss-color-success: #10b981;
+      --ss-color-error: #ef4444;
+      
+      --ss-spacing-xs: 0.5rem;
+      --ss-spacing-sm: 0.75rem;
+      --ss-spacing-md: 1rem;
+      --ss-spacing-lg: 1.5rem;
+      --ss-spacing-xl: 2rem;
+      --ss-spacing-2xl: 3rem;
+      --ss-spacing-3xl: 4rem;
+      
+      --ss-radius-sm: 8px;
+      --ss-radius-md: 12px;
+      --ss-radius-lg: 16px;
+      --ss-radius-full: 999px;
+      
+      --ss-shadow-sm: 0 2px 8px rgba(31, 21, 12, 0.08);
+      --ss-shadow-md: 0 8px 24px rgba(31, 21, 12, 0.12);
+      --ss-shadow-lg: 0 24px 48px rgba(31, 21, 12, 0.18);
+      
+      --ss-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      color: var(--ss-color-text);
+      line-height: 1.6;
+      background-color: var(--ss-color-white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ss-color-primary);
+      margin-bottom: var(--ss-spacing-md);
+    }
+    
+    h1 {
+      font-size: clamp(1.95rem, 4vw, 3rem);
+      margin-bottom: var(--ss-spacing-lg);
+    }
+    
+    h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+    }
+    
+    h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    }
+    
+    p {
+      margin-bottom: var(--ss-spacing-md);
+    }
+    
+    a {
+      color: var(--ss-color-secondary);
+      text-decoration: none;
+      transition: var(--ss-transition);
+    }
+    
+    a:hover {
+      opacity: 0.8;
+    }
+    
+    /* Container */
+    .ss-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--ss-spacing-md);
+    }
+    
+    @media (min-width: 768px) {
+      .ss-container {
+        padding: 0 var(--ss-spacing-xl);
+      }
+    }
+    
+    /* Section Spacing */
+    .ss-section {
+      padding: var(--ss-spacing-2xl) 0;
+    }
+    
+    @media (min-width: 768px) {
+      .ss-section {
+        padding: var(--ss-spacing-3xl) 0;
+      }
+    }
+    
+    /* Header Section */
+    .ss-header {
+      padding-top: var(--ss-spacing-xl);
+      margin-bottom: var(--ss-spacing-2xl);
+    }
+    
+    .ss-category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--ss-radius-full);
+      background: var(--ss-color-accent);
+      color: var(--ss-color-secondary);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--ss-spacing-md);
+    }
+    
+    .ss-byline {
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      color: var(--ss-color-text-light);
+      margin-bottom: var(--ss-spacing-sm);
+    }
+    
+    .ss-lead-quote {
+      font-size: 1.05rem;
+      color: var(--ss-color-text);
+      border-left: 3px solid var(--ss-color-border);
+      padding-left: var(--ss-spacing-md);
+      margin: var(--ss-spacing-md) 0 var(--ss-spacing-lg);
+      font-style: italic;
+    }
+    
+    .ss-headline em {
+      font-style: italic;
+      font-weight: 700;
+    }
+    
+    .ss-headline .u {
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+    }
+    
+    /* Hero / VSL Section */
+    .ss-hero {
+      margin: var(--ss-spacing-2xl) 0;
+    }
+    
+    .ss-video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      background: #000;
+      border-radius: var(--ss-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--ss-shadow-lg);
+      margin-bottom: var(--ss-spacing-xl);
+    }
+    
+    .ss-video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .ss-video-gate {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .ss-video-gate.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    
+    .ss-video-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+    
+    .ss-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--ss-transition);
+      box-shadow: var(--ss-shadow-lg);
+      z-index: 11;
+    }
+    
+    .ss-play-button:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: var(--ss-color-white);
+    }
+    
+    .ss-play-button svg {
+      width: 32px;
+      height: 32px;
+      margin-left: 4px;
+      fill: var(--ss-color-primary);
+    }
+    
+    .ss-play-text {
+      position: absolute;
+      bottom: var(--ss-spacing-xl);
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--ss-color-white);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      z-index: 11;
+    }
+    
+    @media (min-width: 768px) {
+      .ss-play-button {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .ss-play-button svg {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    
+    /* Modal */
+    .ss-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--ss-transition);
+      padding: var(--ss-spacing-md);
+    }
+    
+    .ss-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .ss-modal {
+      background: var(--ss-color-white);
+      border-radius: var(--ss-radius-lg);
+      padding: var(--ss-spacing-xl);
+      max-width: 500px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--ss-shadow-lg);
+      transform: scale(0.9) translateY(20px);
+      transition: var(--ss-transition);
+      position: relative;
+    }
+    
+    .ss-modal-overlay.active .ss-modal {
+      transform: scale(1) translateY(0);
+    }
+    
+    .ss-modal-close {
+      position: absolute;
+      top: var(--ss-spacing-md);
+      right: var(--ss-spacing-md);
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--ss-radius-sm);
+      transition: var(--ss-transition);
+    }
+    
+    .ss-modal-close:hover {
+      background: #f3f4f6;
+    }
+    
+    .ss-modal-close svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--ss-color-text);
+    }
+    
+    .ss-modal-title {
+      font-size: 1.5rem;
+      margin-bottom: var(--ss-spacing-sm);
+      padding-right: var(--ss-spacing-xl);
+    }
+    
+    .ss-modal-subtitle {
+      color: var(--ss-color-text-light);
+      margin-bottom: var(--ss-spacing-xl);
+      font-size: 0.95rem;
+    }
+    
+    .ss-form-group {
+      margin-bottom: var(--ss-spacing-lg);
+    }
+    
+    .ss-form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: var(--ss-spacing-xs);
+      color: var(--ss-color-primary);
+      font-size: 0.9rem;
+    }
+    
+    .ss-form-input {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 2px solid var(--ss-color-border);
+      border-radius: var(--ss-radius-md);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--ss-transition);
+      background: var(--ss-color-white);
+    }
+    
+    .ss-form-input:focus {
+      outline: none;
+      border-color: var(--ss-color-secondary);
+      box-shadow: 0 0 0 3px rgba(123, 65, 33, 0.1);
+    }
+    
+    .ss-form-input.error {
+      border-color: var(--ss-color-error);
+    }
+    
+    .ss-form-error {
+      color: var(--ss-color-error);
+      font-size: 0.85rem;
+      margin-top: var(--ss-spacing-xs);
+      display: none;
+    }
+    
+    .ss-form-error.show {
+      display: block;
+    }
+    
+    .ss-form-button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--ss-color-primary);
+      color: var(--ss-color-white);
+      border: none;
+      border-radius: var(--ss-radius-md);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--ss-transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--ss-spacing-xs);
+    }
+    
+    .ss-form-button:hover:not(:disabled) {
+      background: var(--ss-color-secondary);
+      transform: translateY(-2px);
+      box-shadow: var(--ss-shadow-md);
+    }
+    
+    .ss-form-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    .ss-form-button svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    /* Checklist Section */
+    .ss-checklist {
+      list-style: none;
+      margin: var(--ss-spacing-xl) 0;
+    }
+    
+    .ss-checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--ss-spacing-md);
+      margin-bottom: var(--ss-spacing-lg);
+      padding: var(--ss-spacing-md);
+      background: #faf9f7;
+      border-radius: var(--ss-radius-md);
+      border-left: 4px solid var(--ss-color-secondary);
+    }
+    
+    .ss-checklist-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      margin-top: 2px;
+    }
+    
+    .ss-checklist-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--ss-color-success);
+    }
+    
+    .ss-checklist-text {
+      flex: 1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    
+    /* Testimonials */
+    .ss-testimonials {
+      display: grid;
+      gap: var(--ss-spacing-lg);
+      margin: var(--ss-spacing-xl) 0;
+    }
+    
+    @media (min-width: 768px) {
+      .ss-testimonials {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .ss-testimonial {
+      background: #faf9f7;
+      padding: var(--ss-spacing-xl);
+      border-radius: var(--ss-radius-md);
+      box-shadow: var(--ss-shadow-sm);
+    }
+    
+    .ss-testimonial-text {
+      font-style: italic;
+      margin-bottom: var(--ss-spacing-md);
+      color: var(--ss-color-text);
+      line-height: 1.7;
+    }
+    
+    .ss-testimonial-author {
+      font-weight: 600;
+      color: var(--ss-color-primary);
+      font-size: 0.95rem;
+    }
+    
+    /* CTA Section */
+    .ss-cta {
+      background: linear-gradient(135deg, var(--ss-color-primary) 0%, var(--ss-color-secondary) 100%);
+      color: var(--ss-color-white);
+      padding: var(--ss-spacing-3xl) var(--ss-spacing-md);
+      border-radius: var(--ss-radius-lg);
+      text-align: center;
+      margin: var(--ss-spacing-3xl) 0;
+    }
+    
+    .ss-cta h2 {
+      color: var(--ss-color-white);
+      margin-bottom: var(--ss-spacing-md);
+    }
+    
+    .ss-cta p {
+      font-size: 1.1rem;
+      margin-bottom: var(--ss-spacing-xl);
+      opacity: 0.95;
+    }
+    
+    .ss-cta-button {
+      display: inline-block;
+      padding: 1.25rem 2.5rem;
+      background: var(--ss-color-white);
+      color: var(--ss-color-primary);
+      border-radius: var(--ss-radius-md);
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: var(--ss-transition);
+      box-shadow: var(--ss-shadow-md);
+    }
+    
+    .ss-cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--ss-shadow-lg);
+    }
+    
+    /* Utility Classes */
+    .ss-text-center {
+      text-align: center;
+    }
+    
+    .ss-mb-0 {
+      margin-bottom: 0;
+    }
+    
+    /* Body scroll lock when modal is open */
+    body.ss-modal-open {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="ss-container">
+    <!-- Header Section -->
+    <header class="ss-section ss-header">
+      <div class="ss-category-tag">LJUBAVNI ODNOSI</div>
+      <h1 class="ss-headline">
+        <em>On ne zna da ti se sviđa.</em> Zato ne prilazi. <strong class="u">ALI evo kako ćeš mu reći da priđe bez izgovorene riječi.</strong>
+      </h1>
+      <div class="ss-byline">
+        13. studenog 2025. • <strong>SignaliStrasti tim</strong> | <em>Balkanska studija neverbalne privlačnosti</em>
+      </div>
+      <blockquote class="ss-lead-quote">
+        "Prilaze mi samo oni koje ne bih ni pogledala. A onaj koji mi se sviđa – ništa."
+      </blockquote>
+    </header>
+
+    <!-- Hero / VSL Section -->
+    <section class="ss-section ss-hero">
+      <h2 class="ss-hero-title">
+        <strong>Danas, čak i kad ga pogledaš — on neće prići, osim ako ne zna da smije.</strong>
+      </h2>
+      <p class="ss-sub-lead" style="font-size: 18.5px; line-height: 1.9; margin-bottom: var(--ss-spacing-xl);">
+        <u>Evo što mu zapravo trebaš "reći" — bez da izgovoriš ijednu riječ.</u>
+      </p>
+      
+      <div class="ss-video-wrapper">
+        <div class="ss-video-container" id="ss-wistia-container"></div>
+        <div class="ss-video-gate" id="ss-video-gate">
+          <img src="https://via.placeholder.com/1280x720/1a1a1a/ffffff?text=Video+Thumbnail" alt="Video thumbnail" class="ss-video-thumbnail" id="ss-video-thumbnail">
+          <button class="ss-play-button" id="ss-play-button" aria-label="Play video">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </button>
+          <div class="ss-play-text">Klikni da otključaš video</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checklist Section -->
+    <section class="ss-section">
+      <h2>Šta ćeš naučiti u ovom videu:</h2>
+      <ul class="ss-checklist">
+        <li class="ss-checklist-item">
+          <div class="ss-checklist-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+          </div>
+          <div class="ss-checklist-text">
+            <strong>Tri neverbalna signala</strong> koje mu pokazuju da si zainteresovana, bez da progovoriš
+          </div>
+        </li>
+        <li class="ss-checklist-item">
+          <div class="ss-checklist-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+          </div>
+          <div class="ss-checklist-text">
+            <strong>Kako da koristiš kontakt očima</strong> da mu pošalješ poruku da može da priđe
+          </div>
+        </li>
+        <li class="ss-checklist-item">
+          <div class="ss-checklist-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+          </div>
+          <div class="ss-checklist-text">
+            <strong>Pozicije tela i gestovi</strong> koji privlače pažnju i pozivaju na prilazak
+          </div>
+        </li>
+        <li class="ss-checklist-item">
+          <div class="ss-checklist-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+          </div>
+          <div class="ss-checklist-text">
+            <strong>Pravi trenutak</strong> kada treba da koristiš ove signale za maksimalni efekat
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="ss-section">
+      <h2 class="ss-text-center">Šta kažu drugi:</h2>
+      <div class="ss-testimonials">
+        <div class="ss-testimonial">
+          <p class="ss-testimonial-text">
+            "Nakon što sam primenila ove signale, on je prišao već prvi put kada sam ga videla. Nije bilo potrebno ništa reći!"
+          </p>
+          <div class="ss-testimonial-author">— Ana, Beograd</div>
+        </div>
+        <div class="ss-testimonial">
+          <p class="ss-testimonial-text">
+            "Ovo je promenilo moj pristup potpuno. Sada znam kako da pokažem interesovanje bez da osećam nelagodu."
+          </p>
+          <div class="ss-testimonial-author">— Marija, Novi Sad</div>
+        </div>
+        <div class="ss-testimonial">
+          <p class="ss-testimonial-text">
+            "Radilo je od prvog dana. On je primetio signale i prišao mi prirodno, bez ikakvog pritiska."
+          </p>
+          <div class="ss-testimonial-author">— Jovana, Niš</div>
+        </div>
+        <div class="ss-testimonial">
+          <p class="ss-testimonial-text">
+            "Najbolja investicija u sebe. Ovi neverbalni signali su moćniji nego što sam mislila."
+          </p>
+          <div class="ss-testimonial-author">— Sofija, Zagreb</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product/Offer Section -->
+    <section class="ss-section">
+      <h2 class="ss-text-center">Kompletan vodič za neverbalnu privlačnost</h2>
+      <p class="ss-text-center" style="font-size: 1.1rem; color: var(--ss-color-text-light); margin-bottom: var(--ss-spacing-xl);">
+        Nauči sve signale i tehnike koje će mu reći da priđe, bez da izgovoriš ijednu riječ.
+      </p>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="ss-section">
+      <div class="ss-cta">
+        <h2>Spremna da naučiš ove signale?</h2>
+        <p>Pogledaj video i otkrij kako da mu pokažeš interesovanje bez reči.</p>
+        <a href="#ss-wistia-container" class="ss-cta-button">Pogledaj Video Sada</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Lead Capture Modal -->
+  <div class="ss-modal-overlay" id="ss-modal-overlay" role="dialog" aria-labelledby="ss-modal-title" aria-modal="true">
+    <div class="ss-modal">
+      <button class="ss-modal-close" id="ss-modal-close" aria-label="Close modal">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+      <h2 class="ss-modal-title" id="ss-modal-title">Otključaj Video</h2>
+      <p class="ss-modal-subtitle">Unesi svoje podatke da otključaš video i saznaš sve o neverbalnim signalima privlačnosti.</p>
+      <form id="ss-lead-form">
+        <div class="ss-form-group">
+          <label for="ss-first-name" class="ss-form-label">Ime *</label>
+          <input 
+            type="text" 
+            id="ss-first-name" 
+            name="firstName" 
+            class="ss-form-input" 
+            required 
+            autocomplete="given-name"
+            aria-required="true"
+          >
+          <div class="ss-form-error" id="ss-first-name-error">Molimo unesite vaše ime.</div>
+        </div>
+        <div class="ss-form-group">
+          <label for="ss-email" class="ss-form-label">Email *</label>
+          <input 
+            type="email" 
+            id="ss-email" 
+            name="email" 
+            class="ss-form-input" 
+            required 
+            autocomplete="email"
+            aria-required="true"
+          >
+          <div class="ss-form-error" id="ss-email-error">Molimo unesite validnu email adresu.</div>
+        </div>
+        <button type="submit" class="ss-form-button" id="ss-submit-button">
+          <span id="ss-submit-text">Otključaj Video</span>
+          <svg id="ss-submit-spinner" style="display: none;" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"/>
+            <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" opacity="0.75"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Wistia Embed Script -->
+  <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+  <script>
+    // ============================================
+    // CONFIGURATION (Edit these values)
+    // ============================================
+    const CONFIG = {
+      environment: "test", // MUST remain "test"
+      route: "/test",
+      webhookUrl: "https://YOUR-WEBHOOK-URL-HERE", // Replace with your webhook URL
+      wistiaVideoId: "WISTIA_VIDEO_ID_HERE" // Replace with your Wistia video ID
+    };
+
+    // ============================================
+    // STATE MANAGEMENT
+    // ============================================
+    let wistiaPlayer = null;
+    let isVideoUnlocked = false;
+    let isFormSubmitting = false;
+
+    // ============================================
+    // DOM ELEMENTS
+    // ============================================
+    const elements = {
+      videoGate: document.getElementById('ss-video-gate'),
+      playButton: document.getElementById('ss-play-button'),
+      modalOverlay: document.getElementById('ss-modal-overlay'),
+      modalClose: document.getElementById('ss-modal-close'),
+      leadForm: document.getElementById('ss-lead-form'),
+      firstNameInput: document.getElementById('ss-first-name'),
+      emailInput: document.getElementById('ss-email'),
+      submitButton: document.getElementById('ss-submit-button'),
+      submitText: document.getElementById('ss-submit-text'),
+      submitSpinner: document.getElementById('ss-submit-spinner'),
+      firstNameError: document.getElementById('ss-first-name-error'),
+      emailError: document.getElementById('ss-email-error'),
+      wistiaContainer: document.getElementById('ss-wistia-container')
+    };
+
+    // ============================================
+    // UTILITY FUNCTIONS
+    // ============================================
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    function showError(input, errorElement, message) {
+      input.classList.add('error');
+      errorElement.textContent = message;
+      errorElement.classList.add('show');
+    }
+
+    function clearError(input, errorElement) {
+      input.classList.remove('error');
+      errorElement.classList.remove('show');
+    }
+
+    function setLoading(loading) {
+      isFormSubmitting = loading;
+      elements.submitButton.disabled = loading;
+      elements.submitText.style.display = loading ? 'none' : 'inline';
+      elements.submitSpinner.style.display = loading ? 'inline-block' : 'none';
+    }
+
+    // ============================================
+    // MODAL FUNCTIONS
+    // ============================================
+    function openModal() {
+      elements.modalOverlay.classList.add('active');
+      document.body.classList.add('ss-modal-open');
+      elements.firstNameInput.focus();
+    }
+
+    function closeModal() {
+      elements.modalOverlay.classList.remove('active');
+      document.body.classList.remove('ss-modal-open');
+      // Clear form
+      elements.leadForm.reset();
+      clearError(elements.firstNameInput, elements.firstNameError);
+      clearError(elements.emailInput, elements.emailError);
+    }
+
+    // ============================================
+    // VIDEO FUNCTIONS
+    // ============================================
+    function initializeWistia() {
+      if (typeof window.Wistia === 'undefined') {
+        console.warn('Wistia script not loaded yet');
+        return;
+      }
+
+      if (wistiaPlayer) {
+        return; // Already initialized
+      }
+
+      const videoId = CONFIG.wistiaVideoId;
+      if (!videoId || videoId === 'WISTIA_VIDEO_ID_HERE') {
+        console.warn('Wistia video ID not configured');
+        return;
+      }
+
+      wistiaPlayer = window.Wistia.embed(videoId, {
+        container: elements.wistiaContainer,
+        videoFoam: true,
+        autoplay: false,
+        silentAutoPlay: false,
+        playButton: false,
+        controlsVisibleOnLoad: false,
+        playerColor: '#7b4121'
+      });
+
+      wistiaPlayer.bind('ready', function() {
+        console.log('Wistia player ready');
+      });
+    }
+
+    function unlockAndPlayVSL() {
+      if (isVideoUnlocked) {
+        return;
+      }
+
+      isVideoUnlocked = true;
+      
+      // Hide the gate overlay
+      elements.videoGate.classList.add('hidden');
+      
+      // Initialize Wistia if not already done
+      if (!wistiaPlayer) {
+        initializeWistia();
+      }
+
+      // Wait a bit for Wistia to be ready, then play
+      setTimeout(() => {
+        if (wistiaPlayer && typeof wistiaPlayer.play === 'function') {
+          wistiaPlayer.play().catch(err => {
+            console.warn('Autoplay prevented:', err);
+            // On mobile, user interaction already happened via form submit
+            // Try again after a short delay
+            setTimeout(() => {
+              if (wistiaPlayer && typeof wistiaPlayer.play === 'function') {
+                wistiaPlayer.play().catch(console.warn);
+              }
+            }, 500);
+          });
+        }
+      }, 300);
+    }
+
+    // ============================================
+    // FORM SUBMISSION
+    // ============================================
+    async function submitLead(firstName, email) {
+      // Validate inputs
+      let isValid = true;
+
+      if (!firstName || firstName.trim().length === 0) {
+        showError(elements.firstNameInput, elements.firstNameError, 'Molimo unesite vaše ime.');
+        isValid = false;
+      } else {
+        clearError(elements.firstNameInput, elements.firstNameError);
+      }
+
+      if (!email || !validateEmail(email)) {
+        showError(elements.emailInput, elements.emailError, 'Molimo unesite validnu email adresu.');
+        isValid = false;
+      } else {
+        clearError(elements.emailInput, elements.emailError);
+      }
+
+      if (!isValid) {
+        return false;
+      }
+
+      setLoading(true);
+
+      const leadData = {
+        firstName: firstName.trim(),
+        email: email.trim().toLowerCase(),
+        environment: CONFIG.environment,
+        route: CONFIG.route,
+        timestamp: new Date().toISOString()
+      };
+
+      try {
+        // Submit to webhook if configured
+        if (CONFIG.webhookUrl && CONFIG.webhookUrl !== 'https://YOUR-WEBHOOK-URL-HERE') {
+          const response = await fetch(CONFIG.webhookUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(leadData)
+          });
+
+          if (!response.ok) {
+            throw new Error(`Webhook error: ${response.status}`);
+          }
+        } else {
+          // Simulate success if no webhook configured
+          console.log('Webhook not configured, simulating success:', leadData);
+          await new Promise(resolve => setTimeout(resolve, 800)); // Simulate network delay
+        }
+
+        // Success - unlock video
+        closeModal();
+        unlockAndPlayVSL();
+        
+        return true;
+      } catch (error) {
+        console.error('Error submitting lead:', error);
+        alert('Došlo je do greške. Molimo pokušajte ponovo.');
+        setLoading(false);
+        return false;
+      }
+    }
+
+    // ============================================
+    // EVENT LISTENERS
+    // ============================================
+    function setupEventListeners() {
+      // Play button click - open modal
+      elements.playButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!isVideoUnlocked) {
+          openModal();
+        }
+      });
+
+      // Video gate click - open modal
+      elements.videoGate.addEventListener('click', (e) => {
+        if (e.target === elements.videoGate || e.target.classList.contains('ss-video-thumbnail')) {
+          openModal();
+        }
+      });
+
+      // Modal close button
+      elements.modalClose.addEventListener('click', closeModal);
+
+      // Modal overlay click (outside modal)
+      elements.modalOverlay.addEventListener('click', (e) => {
+        if (e.target === elements.modalOverlay) {
+          closeModal();
+        }
+      });
+
+      // ESC key to close modal
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && elements.modalOverlay.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      // Form submission
+      elements.leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (isFormSubmitting) {
+          return;
+        }
+
+        const firstName = elements.firstNameInput.value;
+        const email = elements.emailInput.value;
+
+        await submitLead(firstName, email);
+      });
+
+      // Real-time validation
+      elements.firstNameInput.addEventListener('input', () => {
+        if (elements.firstNameInput.value.trim().length > 0) {
+          clearError(elements.firstNameInput, elements.firstNameError);
+        }
+      });
+
+      elements.emailInput.addEventListener('input', () => {
+        if (validateEmail(elements.emailInput.value)) {
+          clearError(elements.emailInput, elements.emailError);
+        }
+      });
+
+      // CTA button scroll to video
+      const ctaButton = document.querySelector('.ss-cta-button');
+      if (ctaButton) {
+        ctaButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (isVideoUnlocked) {
+            elements.wistiaContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            openModal();
+          }
+        });
+      }
+    }
+
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+    function init() {
+      // Check if we're on the correct route (basic check)
+      if (CONFIG.environment === 'test' && !window.location.pathname.includes('/test')) {
+        console.warn('This page is designed for /test route');
+      }
+
+      // Setup event listeners
+      setupEventListeners();
+
+      // Initialize Wistia when script loads
+      if (typeof window.Wistia !== 'undefined') {
+        initializeWistia();
+      } else {
+        // Wait for Wistia script to load
+        const checkWistia = setInterval(() => {
+          if (typeof window.Wistia !== 'undefined') {
+            clearInterval(checkWistia);
+            initializeWistia();
+          }
+        }, 100);
+
+        // Timeout after 10 seconds
+        setTimeout(() => {
+          clearInterval(checkWistia);
+          if (typeof window.Wistia === 'undefined') {
+            console.warn('Wistia script failed to load');
+          }
+        }, 10000);
+      }
+    }
+
+    // ============================================
+    // START
+    // ============================================
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+</html>
+
