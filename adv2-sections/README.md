@@ -40,3 +40,4 @@ Ovo su standalone HTML/JS sekcije iz `/adv2` stranice, spremne za insertovanje u
 Sve sekcije su responsive i koriste `clamp()` za font veličine i media queries za različite ekrane.
 
 
+

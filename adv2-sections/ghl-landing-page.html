@@ -7,21 +7,34 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
-    /* CSS Variables */
+    /* ============================================
+       CSS VARIABLES - Design System Tokens
+       ============================================ */
     :root {
-      --ss-color-primary: #20140c;
-      --ss-color-secondary: #7b4121;
-      --ss-color-accent: #ffe7d0;
-      --ss-color-text: #403530;
+      /* Brand Colors */
+      --ss-espresso: #1A1412;
+      --ss-cherry: #C24858;
+      --ss-blush: #E9C9C3;
+      --ss-ivory: #F6F1EC;
+      --ss-taupe: #C8B8A6;
+      --ss-gold: #D2A95B;
+      
+      /* Semantic Colors */
+      --ss-color-primary: var(--ss-espresso);
+      --ss-color-secondary: var(--ss-cherry);
+      --ss-color-accent: var(--ss-blush);
+      --ss-color-bg: var(--ss-ivory);
+      --ss-color-text: var(--ss-espresso);
       --ss-color-text-light: #6d6259;
-      --ss-color-border: #e3d6c9;
+      --ss-color-border: var(--ss-taupe);
       --ss-color-white: #ffffff;
       --ss-color-success: #10b981;
       --ss-color-error: #ef4444;
       
+      /* Spacing Scale */
       --ss-spacing-xs: 0.5rem;
       --ss-spacing-sm: 0.75rem;
       --ss-spacing-md: 1rem;
@@ -29,38 +42,58 @@
       --ss-spacing-xl: 2rem;
       --ss-spacing-2xl: 3rem;
       --ss-spacing-3xl: 4rem;
+      --ss-spacing-4xl: 6rem;
       
-      --ss-radius-sm: 8px;
-      --ss-radius-md: 12px;
-      --ss-radius-lg: 16px;
+      /* Typography */
+      --ss-font-heading: 'Playfair Display', serif;
+      --ss-font-body: 'Inter', system-ui, sans-serif;
+      
+      /* Border Radius */
+      --ss-radius-sm: 0.5rem;
+      --ss-radius-md: 1rem;
+      --ss-radius-lg: 1.25rem;
+      --ss-radius-xl: 1.5rem;
+      --ss-radius-2xl: 2rem;
       --ss-radius-full: 999px;
       
-      --ss-shadow-sm: 0 2px 8px rgba(31, 21, 12, 0.08);
-      --ss-shadow-md: 0 8px 24px rgba(31, 21, 12, 0.12);
-      --ss-shadow-lg: 0 24px 48px rgba(31, 21, 12, 0.18);
+      /* Shadows */
+      --ss-shadow-sm: 0 10px 25px rgba(26, 20, 18, 0.08);
+      --ss-shadow-md: 0 20px 40px rgba(26, 20, 18, 0.12);
+      --ss-shadow-lg: 0 30px 60px rgba(26, 20, 18, 0.16);
+      --ss-shadow-card: var(--ss-shadow-sm);
+      --ss-shadow-modal: var(--ss-shadow-lg);
       
+      /* Transitions */
       --ss-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    /* Reset & Base */
+    /* ============================================
+       RESET & BASE
+       ============================================ */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
     
+    html {
+      scroll-behavior: smooth;
+    }
+    
     body {
-      font-family: 'Poppins', system-ui, sans-serif;
+      font-family: var(--ss-font-body);
       color: var(--ss-color-text);
       line-height: 1.6;
-      background-color: var(--ss-color-white);
+      background-color: var(--ss-color-bg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
     
-    /* Typography */
+    /* ============================================
+       TYPOGRAPHY
+       ============================================ */
     h1, h2, h3, h4, h5, h6 {
-      font-family: 'Poppins', system-ui, sans-serif;
+      font-family: var(--ss-font-heading);
       font-weight: 700;
       line-height: 1.2;
       color: var(--ss-color-primary);
@@ -68,20 +101,23 @@
     }
     
     h1 {
-      font-size: clamp(1.95rem, 4vw, 3rem);
+      font-size: clamp(1.875rem, 4vw, 2.75rem);
+      line-height: 1.18;
       margin-bottom: var(--ss-spacing-lg);
     }
     
     h2 {
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      margin-bottom: var(--ss-spacing-lg);
     }
     
     h3 {
-      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     }
     
     p {
       margin-bottom: var(--ss-spacing-md);
+      line-height: 1.7;
     }
     
     a {
@@ -94,9 +130,19 @@
       opacity: 0.8;
     }
     
-    /* Container */
+    em {
+      font-style: italic;
+    }
+    
+    strong {
+      font-weight: 600;
+    }
+    
+    /* ============================================
+       LAYOUT
+       ============================================ */
     .ss-container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 var(--ss-spacing-md);
     }
@@ -107,7 +153,6 @@
       }
     }
     
-    /* Section Spacing */
     .ss-section {
       padding: var(--ss-spacing-2xl) 0;
     }
@@ -118,7 +163,21 @@
       }
     }
     
-    /* Header Section */
+    .ss-section-bg-white {
+      background-color: var(--ss-color-white);
+    }
+    
+    .ss-section-bg-ivory {
+      background-color: var(--ss-color-bg);
+    }
+    
+    .ss-text-center {
+      text-align: center;
+    }
+    
+    /* ============================================
+       HEADER / HERO SECTION
+       ============================================ */
     .ss-header {
       padding-top: var(--ss-spacing-xl);
       margin-bottom: var(--ss-spacing-2xl);
@@ -140,7 +199,6 @@
     }
     
     .ss-byline {
-      font-family: 'Lora', serif;
       font-size: 0.95rem;
       color: var(--ss-color-text-light);
       margin-bottom: var(--ss-spacing-sm);
@@ -155,28 +213,21 @@
       font-style: italic;
     }
     
-    .ss-headline em {
-      font-style: italic;
-      font-weight: 700;
-    }
-    
     .ss-headline .u {
       text-decoration: none;
       border-bottom: 1px solid currentColor;
       padding-bottom: 1px;
     }
     
-    /* Hero / VSL Section */
-    .ss-hero {
-      margin: var(--ss-spacing-2xl) 0;
-    }
-    
+    /* ============================================
+       VIDEO / VSL SECTION
+       ============================================ */
     .ss-video-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      padding-bottom: 56.25%; /* 16:9 */
       background: #000;
-      border-radius: var(--ss-radius-lg);
+      border-radius: var(--ss-radius-xl);
       overflow: hidden;
       box-shadow: var(--ss-shadow-lg);
       margin-bottom: var(--ss-spacing-xl);
@@ -273,7 +324,9 @@
       }
     }
     
-    /* Modal */
+    /* ============================================
+       MODAL
+       ============================================ */
     .ss-modal-overlay {
       position: fixed;
       top: 0;
@@ -305,7 +358,7 @@
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
-      box-shadow: var(--ss-shadow-lg);
+      box-shadow: var(--ss-shadow-modal);
       transform: scale(0.9) translateY(20px);
       transition: var(--ss-transition);
       position: relative;
@@ -353,6 +406,9 @@
       font-size: 0.95rem;
     }
     
+    /* ============================================
+       FORMS
+       ============================================ */
     .ss-form-group {
       margin-bottom: var(--ss-spacing-lg);
     }
@@ -379,7 +435,7 @@
     .ss-form-input:focus {
       outline: none;
       border-color: var(--ss-color-secondary);
-      box-shadow: 0 0 0 3px rgba(123, 65, 33, 0.1);
+      box-shadow: 0 0 0 3px rgba(194, 72, 88, 0.1);
     }
     
     .ss-form-input.error {
@@ -426,82 +482,38 @@
       cursor: not-allowed;
     }
     
-    .ss-form-button svg {
-      width: 20px;
-      height: 20px;
+    /* ============================================
+       BUTTONS / CTAs
+       ============================================ */
+    .ss-cta-button {
+      display: inline-block;
+      padding: 1.25rem 2.5rem;
+      background: var(--ss-color-secondary);
+      color: var(--ss-color-white);
+      border-radius: var(--ss-radius-lg);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: center;
+      transition: var(--ss-transition);
+      box-shadow: var(--ss-shadow-md);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
     }
     
-    /* Checklist Section */
-    .ss-checklist {
-      list-style: none;
-      margin: var(--ss-spacing-xl) 0;
+    .ss-cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--ss-shadow-lg);
+      opacity: 0.95;
     }
     
-    .ss-checklist-item {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--ss-spacing-md);
-      margin-bottom: var(--ss-spacing-lg);
-      padding: var(--ss-spacing-md);
-      background: #faf9f7;
-      border-radius: var(--ss-radius-md);
-      border-left: 4px solid var(--ss-color-secondary);
+    .ss-cta-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
     }
     
-    .ss-checklist-icon {
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      margin-top: 2px;
-    }
-    
-    .ss-checklist-icon svg {
-      width: 100%;
-      height: 100%;
-      fill: var(--ss-color-success);
-    }
-    
-    .ss-checklist-text {
-      flex: 1;
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-    
-    /* Testimonials */
-    .ss-testimonials {
-      display: grid;
-      gap: var(--ss-spacing-lg);
-      margin: var(--ss-spacing-xl) 0;
-    }
-    
-    @media (min-width: 768px) {
-      .ss-testimonials {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    .ss-testimonial {
-      background: #faf9f7;
-      padding: var(--ss-spacing-xl);
-      border-radius: var(--ss-radius-md);
-      box-shadow: var(--ss-shadow-sm);
-    }
-    
-    .ss-testimonial-text {
-      font-style: italic;
-      margin-bottom: var(--ss-spacing-md);
-      color: var(--ss-color-text);
-      line-height: 1.7;
-    }
-    
-    .ss-testimonial-author {
-      font-weight: 600;
-      color: var(--ss-color-primary);
-      font-size: 0.95rem;
-    }
-    
-    /* CTA Section */
-    .ss-cta {
+    .ss-cta-section {
       background: linear-gradient(135deg, var(--ss-color-primary) 0%, var(--ss-color-secondary) 100%);
       color: var(--ss-color-white);
       padding: var(--ss-spacing-3xl) var(--ss-spacing-md);
@@ -510,41 +522,73 @@
       margin: var(--ss-spacing-3xl) 0;
     }
     
-    .ss-cta h2 {
+    .ss-cta-section h2 {
       color: var(--ss-color-white);
       margin-bottom: var(--ss-spacing-md);
     }
     
-    .ss-cta p {
+    .ss-cta-section p {
       font-size: 1.1rem;
       margin-bottom: var(--ss-spacing-xl);
       opacity: 0.95;
     }
     
-    .ss-cta-button {
-      display: inline-block;
-      padding: 1.25rem 2.5rem;
-      background: var(--ss-color-white);
-      color: var(--ss-color-primary);
-      border-radius: var(--ss-radius-md);
-      font-weight: 700;
-      font-size: 1.1rem;
-      transition: var(--ss-transition);
-      box-shadow: var(--ss-shadow-md);
+    /* ============================================
+       IMAGES
+       ============================================ */
+    .ss-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--ss-radius-xl);
     }
     
-    .ss-cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--ss-shadow-lg);
+    .ss-image-rounded {
+      border-radius: var(--ss-radius-xl);
     }
     
-    /* Utility Classes */
-    .ss-text-center {
-      text-align: center;
+    /* ============================================
+       TESTIMONIALS GRID
+       ============================================ */
+    .ss-testimonials-grid {
+      display: grid;
+      gap: var(--ss-spacing-lg);
+      margin: var(--ss-spacing-xl) 0;
     }
     
+    @media (min-width: 768px) {
+      .ss-testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .ss-testimonials-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .ss-testimonial-item {
+      border-radius: var(--ss-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--ss-shadow-sm);
+    }
+    
+    .ss-testimonial-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* ============================================
+       UTILITY CLASSES
+       ============================================ */
     .ss-mb-0 {
       margin-bottom: 0;
+    }
+    
+    .ss-mt-0 {
+      margin-top: 0;
     }
     
     /* Body scroll lock when modal is open */
@@ -581,7 +625,7 @@
       <div class="ss-video-wrapper">
         <div class="ss-video-container" id="ss-wistia-container"></div>
         <div class="ss-video-gate" id="ss-video-gate">
-          <img src="https://via.placeholder.com/1280x720/1a1a1a/ffffff?text=Video+Thumbnail" alt="Video thumbnail" class="ss-video-thumbnail" id="ss-video-thumbnail">
+          <img data-asset="vsl-thumbnail" alt="Video thumbnail" class="ss-video-thumbnail" id="ss-video-thumbnail">
           <button class="ss-play-button" id="ss-play-button" aria-label="Play video">
             <svg viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z"/>
@@ -592,98 +636,38 @@
       </div>
     </section>
 
-    <!-- Checklist Section -->
-    <section class="ss-section">
-      <h2>Šta ćeš naučiti u ovom videu:</h2>
-      <ul class="ss-checklist">
-        <li class="ss-checklist-item">
-          <div class="ss-checklist-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </svg>
-          </div>
-          <div class="ss-checklist-text">
-            <strong>Tri neverbalna signala</strong> koje mu pokazuju da si zainteresovana, bez da progovoriš
-          </div>
-        </li>
-        <li class="ss-checklist-item">
-          <div class="ss-checklist-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </svg>
-          </div>
-          <div class="ss-checklist-text">
-            <strong>Kako da koristiš kontakt očima</strong> da mu pošalješ poruku da može da priđe
-          </div>
-        </li>
-        <li class="ss-checklist-item">
-          <div class="ss-checklist-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </svg>
-          </div>
-          <div class="ss-checklist-text">
-            <strong>Pozicije tela i gestovi</strong> koji privlače pažnju i pozivaju na prilazak
-          </div>
-        </li>
-        <li class="ss-checklist-item">
-          <div class="ss-checklist-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </svg>
-          </div>
-          <div class="ss-checklist-text">
-            <strong>Pravi trenutak</strong> kada treba da koristiš ove signale za maksimalni efekat
-          </div>
-        </li>
-      </ul>
+    <!-- Content Sections Placeholder -->
+    <section class="ss-section ss-section-bg-white" id="ss-content-sections">
+      <!-- Sections will be populated via JS based on content structure -->
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="ss-section">
-      <h2 class="ss-text-center">Šta kažu drugi:</h2>
-      <div class="ss-testimonials">
-        <div class="ss-testimonial">
-          <p class="ss-testimonial-text">
-            "Nakon što sam primenila ove signale, on je prišao već prvi put kada sam ga videla. Nije bilo potrebno ništa reći!"
-          </p>
-          <div class="ss-testimonial-author">— Ana, Beograd</div>
-        </div>
-        <div class="ss-testimonial">
-          <p class="ss-testimonial-text">
-            "Ovo je promenilo moj pristup potpuno. Sada znam kako da pokažem interesovanje bez da osećam nelagodu."
-          </p>
-          <div class="ss-testimonial-author">— Marija, Novi Sad</div>
-        </div>
-        <div class="ss-testimonial">
-          <p class="ss-testimonial-text">
-            "Radilo je od prvog dana. On je primetio signale i prišao mi prirodno, bez ikakvog pritiska."
-          </p>
-          <div class="ss-testimonial-author">— Jovana, Niš</div>
-        </div>
-        <div class="ss-testimonial">
-          <p class="ss-testimonial-text">
-            "Najbolja investicija u sebe. Ovi neverbalni signali su moćniji nego što sam mislila."
-          </p>
-          <div class="ss-testimonial-author">— Sofija, Zagreb</div>
-        </div>
-      </div>
+    <!-- Testimonials Blocks -->
+    <section class="ss-section ss-section-bg-ivory" id="ss-testimonials-b1">
+      <h2 class="ss-text-center">Dojmovi polaznica - Blok 1</h2>
+      <div class="ss-testimonials-grid" id="ss-testimonials-grid-b1"></div>
     </section>
 
-    <!-- Product/Offer Section -->
-    <section class="ss-section">
-      <h2 class="ss-text-center">Kompletan vodič za neverbalnu privlačnost</h2>
-      <p class="ss-text-center" style="font-size: 1.1rem; color: var(--ss-color-text-light); margin-bottom: var(--ss-spacing-xl);">
-        Nauči sve signale i tehnike koje će mu reći da priđe, bez da izgovoriš ijednu riječ.
-      </p>
+    <section class="ss-section ss-section-bg-white" id="ss-testimonials-b2">
+      <h2 class="ss-text-center">Dojmovi polaznica - Blok 2</h2>
+      <div class="ss-testimonials-grid" id="ss-testimonials-grid-b2"></div>
+    </section>
+
+    <section class="ss-section ss-section-bg-ivory" id="ss-testimonials-b3">
+      <h2 class="ss-text-center">Dojmovi polaznica - Blok 3</h2>
+      <div class="ss-testimonials-grid" id="ss-testimonials-grid-b3"></div>
+    </section>
+
+    <section class="ss-section ss-section-bg-white" id="ss-testimonials-b4">
+      <h2 class="ss-text-center">Dojmovi polaznica - Blok 4</h2>
+      <div class="ss-testimonials-grid" id="ss-testimonials-grid-b4"></div>
     </section>
 
     <!-- Final CTA Section -->
     <section class="ss-section">
-      <div class="ss-cta">
+      <div class="ss-cta-section">
         <h2>Spremna da naučiš ove signale?</h2>
         <p>Pogledaj video i otkrij kako da mu pokažeš interesovanje bez reči.</p>
-        <a href="#ss-wistia-container" class="ss-cta-button">Pogledaj Video Sada</a>
+        <button class="ss-cta-button" data-cta="checkout">Pogledaj Video Sada</button>
       </div>
     </section>
   </div>
@@ -741,13 +725,78 @@
 
   <script>
     // ============================================
-    // CONFIGURATION (Edit these values)
+    // CONFIGURATION
     // ============================================
     const CONFIG = {
-      environment: "test", // MUST remain "test"
+      environment: "test",
       route: "/test",
-      webhookUrl: "https://YOUR-WEBHOOK-URL-HERE", // Replace with your webhook URL
-      wistiaVideoId: "WISTIA_VIDEO_ID_HERE" // Replace with your Wistia video ID
+      webhookUrl: "",                 // if empty, simulate success
+      wistiaVideoId: "WISTIA_ID_HERE", // I will fill later
+      checkoutUrl: ""                 // I will fill later (GHL checkout)
+    };
+
+    // ============================================
+    // ASSETS MAP - Centralized Image Management
+    // ============================================
+    const ASSETS = {
+      // VSL / Hero
+      "vsl-thumbnail": "img/hero-2.png",
+      
+      // Main Page Sections
+      "s-section-2": "img/s-section-2.png",
+      "s-section-3": "img/s-section-3.png",
+      "s-section-4": "img/s-section-4.gif",
+      "s-section-5": "img/s-section-5.png",
+      "s-section-6": "img/s-section-6.png",
+      "s-section-7": "img/s-section-7.png",
+      "s-section-8-1": "img/s-section-8-1.png",
+      "s-section-8-2": "img/s-section-8-2.png",
+      
+      // Steps
+      "korak1": "img/korak1.gif",
+      "korak2": "img/korak2.gif",
+      "korak3": "img/korak3.gif",
+      
+      // Team / Guarantee
+      "tim": "img/tim.png",
+      "garancija": "img/garancija.png",
+      
+      // Portal Icons
+      "ikon-1": "img/portals/ikon-1.png",
+      "ikon-2": "img/portals/ikon-2.png",
+      "ikon-3": "img/portals/ikon-3.png",
+      "ikon-4": "img/portals/ikon-4.png",
+      "ikon-5": "img/portals/ikon-5.png",
+      "ikon-6": "img/portals/ikon-6.png",
+      "ikon-7": "img/portals/ikon-7.png",
+      
+      // Mockups
+      "mockup-1": "img/SIGNALI-MOCKUP/Mockup-1.png",
+      "mockup-2": "img/SIGNALI-MOCKUP/Mockup-2.png",
+      "mockup-3": "img/SIGNALI-MOCKUP/Mockup-3.png",
+      "mockup-4": "img/SIGNALI-MOCKUP/Mockup-4.png",
+      "mockup-5": "img/SIGNALI-MOCKUP/Mockup-5.png",
+      "mockup-6": "img/SIGNALI-MOCKUP/Mockup-6.png",
+      "mockup-7": "img/SIGNALI-MOCKUP/Mockup-7.png",
+      "full-mockup": "img/SIGNALI-MOCKUP/FullMockUp.png"
+    };
+
+    // Generate testimonial asset keys programmatically
+    for (let block = 1; block <= 4; block++) {
+      for (let slide = 1; slide <= 8; slide++) {
+        const key = `ts_b${block}_s${slide}`;
+        ASSETS[key] = `img/TESTEMES/TS-B${block}-S${slide}.png`;
+      }
+    }
+
+    // ============================================
+    // TESTIMONIAL BLOCKS DATA
+    // ============================================
+    const TESTIMONIAL_BLOCKS = {
+      B1: Array.from({ length: 8 }, (_, i) => `ts_b1_s${i + 1}`),
+      B2: Array.from({ length: 8 }, (_, i) => `ts_b2_s${i + 1}`),
+      B3: Array.from({ length: 8 }, (_, i) => `ts_b3_s${i + 1}`),
+      B4: Array.from({ length: 8 }, (_, i) => `ts_b4_s${i + 1}`)
     };
 
     // ============================================
@@ -775,6 +824,66 @@
       emailError: document.getElementById('ss-email-error'),
       wistiaContainer: document.getElementById('ss-wistia-container')
     };
+
+    // ============================================
+    // ASSET LOADING SYSTEM
+    // ============================================
+    function loadAssets() {
+      // Load images with data-asset attribute
+      document.querySelectorAll('img[data-asset]').forEach(img => {
+        const key = img.getAttribute('data-asset');
+        if (ASSETS[key]) {
+          img.src = ASSETS[key];
+          img.onerror = function() {
+            console.warn('Failed to load asset:', ASSETS[key]);
+            this.style.display = 'none';
+          };
+        } else {
+          console.warn('Asset key not found:', key);
+        }
+      });
+
+      // Load background images with data-bg attribute
+      document.querySelectorAll('[data-bg]').forEach(el => {
+        const key = el.getAttribute('data-bg');
+        if (ASSETS[key]) {
+          el.style.backgroundImage = `url(${ASSETS[key]})`;
+          el.style.backgroundSize = 'cover';
+          el.style.backgroundPosition = 'center';
+        } else {
+          console.warn('Background asset key not found:', key);
+        }
+      });
+    }
+
+    // ============================================
+    // TESTIMONIAL RENDERING
+    // ============================================
+    function renderTestimonials() {
+      Object.keys(TESTIMONIAL_BLOCKS).forEach(blockKey => {
+        const gridId = `ss-testimonials-grid-${blockKey.toLowerCase()}`;
+        const grid = document.getElementById(gridId);
+        if (!grid) return;
+
+        const block = TESTIMONIAL_BLOCKS[blockKey];
+        grid.innerHTML = '';
+
+        block.forEach(assetKey => {
+          const item = document.createElement('div');
+          item.className = 'ss-testimonial-item';
+          
+          const img = document.createElement('img');
+          img.setAttribute('data-asset', assetKey);
+          img.alt = `Testimonial ${assetKey}`;
+          
+          item.appendChild(img);
+          grid.appendChild(item);
+        });
+      });
+
+      // Reload assets after rendering
+      loadAssets();
+    }
 
     // ============================================
     // UTILITY FUNCTIONS
@@ -814,7 +923,6 @@
     function closeModal() {
       elements.modalOverlay.classList.remove('active');
       document.body.classList.remove('ss-modal-open');
-      // Clear form
       elements.leadForm.reset();
       clearError(elements.firstNameInput, elements.firstNameError);
       clearError(elements.emailInput, elements.emailError);
@@ -830,11 +938,11 @@
       }
 
       if (wistiaPlayer) {
-        return; // Already initialized
+        return;
       }
 
       const videoId = CONFIG.wistiaVideoId;
-      if (!videoId || videoId === 'WISTIA_VIDEO_ID_HERE') {
+      if (!videoId || videoId === 'WISTIA_ID_HERE') {
         console.warn('Wistia video ID not configured');
         return;
       }
@@ -846,7 +954,7 @@
         silentAutoPlay: false,
         playButton: false,
         controlsVisibleOnLoad: false,
-        playerColor: '#7b4121'
+        playerColor: '#C24858'
       });
 
       wistiaPlayer.bind('ready', function() {
@@ -860,22 +968,16 @@
       }
 
       isVideoUnlocked = true;
-      
-      // Hide the gate overlay
       elements.videoGate.classList.add('hidden');
       
-      // Initialize Wistia if not already done
       if (!wistiaPlayer) {
         initializeWistia();
       }
 
-      // Wait a bit for Wistia to be ready, then play
       setTimeout(() => {
         if (wistiaPlayer && typeof wistiaPlayer.play === 'function') {
           wistiaPlayer.play().catch(err => {
             console.warn('Autoplay prevented:', err);
-            // On mobile, user interaction already happened via form submit
-            // Try again after a short delay
             setTimeout(() => {
               if (wistiaPlayer && typeof wistiaPlayer.play === 'function') {
                 wistiaPlayer.play().catch(console.warn);
@@ -890,7 +992,6 @@
     // FORM SUBMISSION
     // ============================================
     async function submitLead(firstName, email) {
-      // Validate inputs
       let isValid = true;
 
       if (!firstName || firstName.trim().length === 0) {
@@ -922,8 +1023,7 @@
       };
 
       try {
-        // Submit to webhook if configured
-        if (CONFIG.webhookUrl && CONFIG.webhookUrl !== 'https://YOUR-WEBHOOK-URL-HERE') {
+        if (CONFIG.webhookUrl && CONFIG.webhookUrl !== '') {
           const response = await fetch(CONFIG.webhookUrl, {
             method: 'POST',
             headers: {
@@ -936,21 +1036,40 @@
             throw new Error(`Webhook error: ${response.status}`);
           }
         } else {
-          // Simulate success if no webhook configured
           console.log('Webhook not configured, simulating success:', leadData);
-          await new Promise(resolve => setTimeout(resolve, 800)); // Simulate network delay
+          await new Promise(resolve => setTimeout(resolve, 800));
         }
 
-        // Success - unlock video
         closeModal();
         unlockAndPlayVSL();
-        
         return true;
       } catch (error) {
         console.error('Error submitting lead:', error);
         alert('Došlo je do greške. Molimo pokušajte ponovo.');
         setLoading(false);
         return false;
+      }
+    }
+
+    // ============================================
+    // CTA HANDLING
+    // ============================================
+    function handleCTAClick(e) {
+      e.preventDefault();
+      const ctaType = e.target.getAttribute('data-cta') || e.target.closest('[data-cta]')?.getAttribute('data-cta');
+      
+      if (ctaType === 'checkout') {
+        if (CONFIG.checkoutUrl && CONFIG.checkoutUrl !== '') {
+          window.location.href = CONFIG.checkoutUrl;
+        } else {
+          console.warn('Checkout URL not configured. Please set CONFIG.checkoutUrl.');
+          // Optionally show a small hint to user
+          const hint = document.createElement('div');
+          hint.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #ff6b6b; color: white; padding: 12px 16px; border-radius: 8px; font-size: 14px; z-index: 10000; max-width: 300px;';
+          hint.textContent = 'Checkout URL nije konfigurisan.';
+          document.body.appendChild(hint);
+          setTimeout(() => hint.remove(), 3000);
+        }
       }
     }
 
@@ -993,14 +1112,11 @@
       // Form submission
       elements.leadForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
         if (isFormSubmitting) {
           return;
         }
-
         const firstName = elements.firstNameInput.value;
         const email = elements.emailInput.value;
-
         await submitLead(firstName, email);
       });
 
@@ -1017,28 +1133,26 @@
         }
       });
 
-      // CTA button scroll to video
-      const ctaButton = document.querySelector('.ss-cta-button');
-      if (ctaButton) {
-        ctaButton.addEventListener('click', (e) => {
-          e.preventDefault();
-          if (isVideoUnlocked) {
-            elements.wistiaContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          } else {
-            openModal();
-          }
-        });
-      }
+      // CTA buttons
+      document.querySelectorAll('[data-cta]').forEach(btn => {
+        btn.addEventListener('click', handleCTAClick);
+      });
     }
 
     // ============================================
     // INITIALIZATION
     // ============================================
     function init() {
-      // Check if we're on the correct route (basic check)
+      // Check route
       if (CONFIG.environment === 'test' && !window.location.pathname.includes('/test')) {
         console.warn('This page is designed for /test route');
       }
+
+      // Load assets
+      loadAssets();
+
+      // Render testimonials
+      renderTestimonials();
 
       // Setup event listeners
       setupEventListeners();
@@ -1047,7 +1161,6 @@
       if (typeof window.Wistia !== 'undefined') {
         initializeWistia();
       } else {
-        // Wait for Wistia script to load
         const checkWistia = setInterval(() => {
           if (typeof window.Wistia !== 'undefined') {
             clearInterval(checkWistia);
@@ -1055,7 +1168,6 @@
           }
         }, 100);
 
-        // Timeout after 10 seconds
         setTimeout(() => {
           clearInterval(checkWistia);
           if (typeof window.Wistia === 'undefined') {
@@ -1076,4 +1188,3 @@
   </script>
 </body>
 </html>
-
