@@ -347,38 +347,55 @@ export default function GHLPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([productSchema, faqSchema]) }}
       />
-      <div className="bg-[#6A1F29] py-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#F8F5F0] sm:text-sm">
-        🇭🇷 700+ žena u Hrvatskoj već koriste Signale Strasti 🇭🇷
+      {/* Announcement Bar */}
+      <div className="bg-[#7b4121] py-3 text-center text-xs font-semibold uppercase tracking-[0.2em] text-white">
+        EKSKLUZIVNI BESPLATNI TRENING
       </div>
       <main className="space-y-16 py-6 sm:space-y-24 sm:py-12">
+        {/* ATF Hero Section */}
         <section className="bg-ivory px-4 py-10 text-espresso sm:px-6 sm:py-14">
-          <div className="mx-auto flex w-full max-w-4xl flex-col items-center text-center">
-            <h1 className="font-heading text-3xl font-bold leading-tight sm:text-[44px] sm:leading-tight">
-              Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca — Bez Filtera, Aplikacija ili Igrica —
-              uz Jedan Signal o Kojem Nitko Ne Priča
+          <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center text-center">
+            {/* Hero Headline */}
+            <h1 className="font-heading text-[clamp(1.75rem,5vw,3rem)] font-extrabold leading-tight text-espresso mb-6" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
+              Počni <strong className="text-cherry">OD DANAS</strong> da šalješ signal zbog kojeg kvalitetan muškarac prestane da „samo gleda" i priđe ti uživo, kao da je odluka već doneta: <strong className="text-cherry">„NJU BIRAM."</strong>
             </h1>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-espresso/80 sm:text-xl">
-              Ne moraš mijenjati sebe. Samo ponovno aktiviraj ono što muškarci već nesvjesno traže. Ovo je za žene koje
-              žele da ih napokon u masi primijete kvalitetni muškarci.
+
+            {/* Subheadline */}
+            <p className="text-[clamp(1rem,2.5vw,1.25rem)] leading-relaxed text-espresso/85 max-w-[800px] mb-6">
+              U ovoj kratkoj reportaži pokazujem ti jedan ženski mikro-signal koji mu u sekundi daje dozvolu da priđe, bez toga da radiš bilo šta „napadno", bez aplikacija, bez slanja poruka prva i bez toga da moraš da ističeš sise i guzicu da bi te neko „primetio".
             </p>
-            <div className="mt-8 w-full sm:w-1/2">
-              <Image
-                src="/Hero1.png"
-                alt="Žena koja privlači pažnju"
-                width={960}
-                height={620}
-                priority
-                className="w-full rounded-3xl mx-auto"
+
+            {/* Note / Callout */}
+            <div className="bg-cherry/8 border-l-4 border-cherry px-6 py-4 mb-8 max-w-[700px] rounded text-base leading-relaxed text-espresso">
+              Ovo je za žene koje žele pažnju koja ima težinu: od muškarca koji ima inicijativu, karakter i plan.
+            </div>
+
+            {/* Wistia Video */}
+            <div className="relative w-full max-w-[900px] mb-8" style={{ paddingBottom: "56.25%" }}>
+              <div
+                className="wistia_embed wistia_async_v59k639lk4"
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
               />
             </div>
-            <div className="mt-6 w-full sm:w-2/5 flex justify-center">
-              <Image
-                src="/SocialProof.png"
-                alt="Social proof Signali Strasti"
-                width={1100}
-                height={220}
-                className="w-full rounded-2xl mx-auto"
-              />
+
+            {/* Portals Icon Carousel */}
+            <div className="w-full overflow-hidden py-8 bg-white my-8">
+              <div className="flex gap-8 animate-scroll-portals">
+                {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map((num, idx) => (
+                  <div key={idx} className="flex-shrink-0 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] flex items-center justify-center">
+                    <Image
+                      src={`/ikon-${num}.png`}
+                      alt={`Portal ikona ${num}`}
+                      width={150}
+                      height={150}
+                      className="w-full h-full object-contain opacity-85 hover:opacity-100 transition"
+                      style={{ filter: 'grayscale(20%)' }}
+                      onMouseEnter={(e) => e.currentTarget.style.filter = 'grayscale(0%)'}
+                      onMouseLeave={(e) => e.currentTarget.style.filter = 'grayscale(20%)'}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
