@@ -657,40 +657,108 @@
     /* ============================================
        ATF SECTION STYLES
        ============================================ */
-    .ss-announcement-bar {
-      background-color: var(--ss-color-secondary);
-      color: var(--ss-color-white);
-      padding: 0.75rem 1rem;
-      text-align: center;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
     .ss-atf-hero {
       padding: var(--ss-spacing-3xl) 0 var(--ss-spacing-2xl);
       background-color: var(--ss-color-bg);
     }
 
+    /* Badge Box with LED Dot */
+    .ss-badge-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      background-color: var(--ss-color-secondary);
+      color: var(--ss-color-white);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin: 0 auto var(--ss-spacing-xl);
+      box-shadow: 0 2px 8px rgba(194, 72, 88, 0.2);
+    }
+
+    .ss-led-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #ff0000;
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+      animation: ss-led-blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes ss-led-blink {
+      0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+      }
+      50% {
+        opacity: 0.3;
+        box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+      }
+    }
+
+    .ss-badge-box.led-on {
+      box-shadow: 0 2px 12px rgba(194, 72, 88, 0.4);
+    }
+
+    /* Sync badge glow with LED animation */
+    .ss-badge-box {
+      animation: ss-badge-glow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes ss-badge-glow {
+      0%, 100% {
+        box-shadow: 0 2px 8px rgba(194, 72, 88, 0.2);
+      }
+      50% {
+        box-shadow: 0 2px 12px rgba(194, 72, 88, 0.4);
+      }
+    }
+
+    /* Headline with Emphasis */
     .ss-atf-headline {
       font-family: var(--ss-font-poppins);
       font-size: clamp(1.75rem, 5vw, 3rem);
       font-weight: 800;
-      line-height: 1.2;
+      font-style: italic;
+      line-height: 1.3;
       color: var(--ss-color-primary);
       text-align: center;
       max-width: 900px;
       margin: 0 auto var(--ss-spacing-lg);
     }
 
-    .ss-atf-headline strong {
+    .ss-atf-headline .ss-emphasis-uppercase {
+      text-transform: uppercase;
+      color: var(--ss-color-secondary);
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    .ss-atf-headline .ss-emphasis-underline {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    .ss-atf-headline .ss-emphasis-accent {
       color: var(--ss-color-secondary);
       font-weight: 800;
     }
 
+    .ss-atf-headline .ss-emphasis-final {
+      color: var(--ss-color-secondary);
+      font-weight: 800;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    /* Subheadline */
     .ss-atf-subheadline {
+      font-family: var(--ss-font-poppins);
       font-size: clamp(1rem, 2.5vw, 1.25rem);
       line-height: 1.7;
       color: rgba(26, 20, 18, 0.85);
@@ -699,17 +767,21 @@
       margin: 0 auto var(--ss-spacing-lg);
     }
 
-    .ss-atf-callout {
-      background-color: rgba(194, 72, 88, 0.08);
-      border-left: 3px solid var(--ss-color-secondary);
-      padding: var(--ss-spacing-md) var(--ss-spacing-lg);
-      margin: var(--ss-spacing-lg) auto;
-      max-width: 700px;
+    /* Note (no box, italic, accent color) */
+    .ss-atf-note {
+      font-family: var(--ss-font-poppins);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-style: italic;
+      line-height: 1.7;
       text-align: center;
-      font-size: 1rem;
-      line-height: 1.6;
+      max-width: 700px;
+      margin: var(--ss-spacing-lg) auto;
       color: var(--ss-color-primary);
-      border-radius: var(--ss-radius-sm);
+    }
+
+    .ss-atf-note .ss-note-accent {
+      color: var(--ss-color-secondary);
+      font-weight: 600;
     }
 
     .ss-wistia-video-wrapper {
@@ -733,19 +805,64 @@
       border: none;
     }
 
-    /* Portals Icon Carousel */
+    /* CTA Button */
+    .ss-atf-cta-button {
+      display: inline-block;
+      background-color: #1C7C7D;
+      color: var(--ss-color-white);
+      padding: 1rem 2rem;
+      border-radius: var(--ss-radius-lg);
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--ss-transition);
+      box-shadow: var(--ss-shadow-card);
+      margin: var(--ss-spacing-xl) auto;
+    }
+
+    .ss-atf-cta-button:hover {
+      background-color: #165a5c;
+      transform: translateY(-2px);
+      box-shadow: var(--ss-shadow-md);
+    }
+
+    /* Viralno Na Label */
+    .ss-viralno-label {
+      font-family: var(--ss-font-poppins);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--ss-color-secondary);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--ss-spacing-md);
+    }
+
+    /* Portals Icon Carousel - Full Width */
+    .ss-portals-carousel-wrapper {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      background-color: var(--ss-color-white);
+      padding: var(--ss-spacing-xl) 0;
+      margin-top: var(--ss-spacing-2xl);
+      margin-bottom: var(--ss-spacing-2xl);
+    }
+
     .ss-portals-carousel {
       width: 100%;
       overflow: hidden;
-      padding: var(--ss-spacing-xl) 0;
-      background-color: var(--ss-color-white);
-      margin: var(--ss-spacing-2xl) 0;
     }
 
     .ss-portals-track {
       display: flex;
-      gap: var(--ss-spacing-xl);
-      animation: ss-scroll-portals 30s linear infinite;
+      gap: 3rem;
+      animation: ss-scroll-portals 35s linear infinite;
       will-change: transform;
     }
 
@@ -760,6 +877,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 0 1.5rem;
     }
 
     .ss-portals-item img {
@@ -781,7 +899,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-120px * 6 - var(--ss-spacing-xl) * 6));
+        transform: translateX(calc(-140px * 6 - 3rem * 6));
       }
     }
 
@@ -796,7 +914,7 @@
           transform: translateX(0);
         }
         100% {
-          transform: translateX(calc(-150px * 6 - var(--ss-spacing-xl) * 6));
+          transform: translateX(calc(-170px * 6 - 3rem * 6));
         }
       }
     }
@@ -804,18 +922,19 @@
 </head>
 <body>
   <div class="ss-fullbleed">
-    <!-- Announcement Bar -->
-    <div class="ss-announcement-bar">
-      EKSKLUZIVNI BESPLATNI TRENING
-    </div>
-
     <div class="ss-container">
     <!-- ATF Hero Section -->
     <section class="ss-atf-hero">
       <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+        <!-- Badge Box -->
+        <div class="ss-badge-box">
+          <span class="ss-led-dot"></span>
+          <span>EKSKLUZIVNI BESPLATNI TRENING</span>
+        </div>
+
         <!-- Hero Headline -->
         <h1 class="ss-atf-headline">
-          Počni <strong>OD DANAS</strong> da šalješ signal zbog kojeg kvalitetan muškarac prestane da „samo gleda" i priđe ti uživo, kao da je odluka već doneta: <strong>„NJU BIRAM."</strong>
+          Počni <span class="ss-emphasis-uppercase">OD DANAS</span> da šalješ signal <span class="ss-emphasis-underline">zbog kojeg kvalitetan muškarac</span> prestane da „samo gleda" <span class="ss-emphasis-accent">i priđe ti uživo, kao da je odluka već doneta:</span> <span class="ss-emphasis-final">„NJU BIRAM."</span>
         </h1>
 
         <!-- Subheadline -->
@@ -823,55 +942,65 @@
           U ovoj kratkoj reportaži pokazujem ti jedan ženski mikro-signal koji mu u sekundi daje dozvolu da priđe, bez toga da radiš bilo šta „napadno", bez aplikacija, bez slanja poruka prva i bez toga da moraš da ističeš sise i guzicu da bi te neko „primetio".
         </p>
 
-        <!-- Note / Callout -->
-        <div class="ss-atf-callout">
-          Ovo je za žene koje žele pažnju koja ima težinu: od muškarca koji ima inicijativu, karakter i plan.
-        </div>
+        <!-- Note -->
+        <p class="ss-atf-note">
+          Ovo je za žene koje žele pažnju koja ima težinu: <span class="ss-note-accent">od muškarca koji ima inicijativu, karakter i plan.</span>
+        </p>
 
         <!-- Wistia Video -->
         <div class="ss-wistia-video-wrapper">
           <div id="ss-wistia-video-embed" class="wistia_embed wistia_async_v59k639lk4" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
         </div>
 
-        <!-- Portals Icon Carousel -->
-        <div class="ss-portals-carousel">
-          <div class="ss-portals-track">
-            <div class="ss-portals-item">
-              <img data-asset="ikon-1" alt="Portal ikona 1">
-            </div>
-            <div class="ss-portals-item">
-              <img data-asset="ikon-2" alt="Portal ikona 2">
-            </div>
-            <div class="ss-portals-item">
-              <img data-asset="ikon-3" alt="Portal ikona 3">
-            </div>
-            <div class="ss-portals-item">
-              <img data-asset="ikon-4" alt="Portal ikona 4">
-            </div>
-            <div class="ss-portals-item">
-              <img data-asset="ikon-5" alt="Portal ikona 5">
-            </div>
-            <div class="ss-portals-item">
-              <img data-asset="ikon-6" alt="Portal ikona 6">
-            </div>
-            <!-- Duplicate for seamless loop -->
-            <div class="ss-portals-item">
-              <img data-asset="ikon-1" alt="Portal ikona 1">
-            </div>
-            <div class="ss-portals-item">
-              <img data-asset="ikon-2" alt="Portal ikona 2">
-            </div>
-            <div class="ss-portals-item">
-              <img data-asset="ikon-3" alt="Portal ikona 3">
-            </div>
-            <div class="ss-portals-item">
-              <img data-asset="ikon-4" alt="Portal ikona 4">
-            </div>
-            <div class="ss-portals-item">
-              <img data-asset="ikon-5" alt="Portal ikona 5">
-            </div>
-            <div class="ss-portals-item">
-              <img data-asset="ikon-6" alt="Portal ikona 6">
+        <!-- CTA Button -->
+        <button class="ss-atf-cta-button" data-cta="watch">
+          Želim pogledati trening i poslati prve signale
+        </button>
+
+        <!-- Viralno Na Label + Portals Carousel -->
+        <div class="ss-portals-carousel-wrapper">
+          <div style="max-width: 1000px; margin: 0 auto; padding: 0 var(--ss-spacing-md);">
+            <p class="ss-viralno-label">VIRALNO NA:</p>
+            <div class="ss-portals-carousel">
+              <div class="ss-portals-track">
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-1" alt="Portal ikona 1">
+                </div>
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-2" alt="Portal ikona 2">
+                </div>
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-3" alt="Portal ikona 3">
+                </div>
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-4" alt="Portal ikona 4">
+                </div>
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-5" alt="Portal ikona 5">
+                </div>
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-6" alt="Portal ikona 6">
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-1" alt="Portal ikona 1">
+                </div>
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-2" alt="Portal ikona 2">
+                </div>
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-3" alt="Portal ikona 3">
+                </div>
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-4" alt="Portal ikona 4">
+                </div>
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-5" alt="Portal ikona 5">
+                </div>
+                <div class="ss-portals-item">
+                  <img data-asset="ikon-6" alt="Portal ikona 6">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1333,12 +1462,12 @@
       "vsl-thumbnail": "/hero-2.png",
       
       // Portals Icons (for carousel)
-      "ikon-1": "img/portals/ikon-1.png",
-      "ikon-2": "img/portals/ikon-2.png",
-      "ikon-3": "img/portals/ikon-3.png",
-      "ikon-4": "img/portals/ikon-4.png",
-      "ikon-5": "img/portals/ikon-5.png",
-      "ikon-6": "img/portals/ikon-6.png"
+      "ikon-1": "/ikon-1.png",
+      "ikon-2": "/ikon-2.png",
+      "ikon-3": "/ikon-3.png",
+      "ikon-4": "/ikon-4.png",
+      "ikon-5": "/ikon-5.png",
+      "ikon-6": "/ikon-6.png"
     };
 
     // Generate testimonial asset keys programmatically
@@ -1632,6 +1761,10 @@
           document.body.appendChild(hint);
           setTimeout(() => hint.remove(), 3000);
         }
+      } else if (ctaType === 'watch') {
+        // Watch button - no action needed for now
+        console.log('Watch button clicked');
+        // Can add scroll to video or other action later
       }
     }
 
