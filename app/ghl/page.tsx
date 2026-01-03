@@ -382,16 +382,13 @@ export default function GHLPage() {
             <div className="w-full overflow-hidden py-8 bg-white my-8">
               <div className="flex gap-8 animate-scroll-portals">
                 {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map((num, idx) => (
-                  <div key={idx} className="flex-shrink-0 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] flex items-center justify-center">
+                  <div key={idx} className="flex-shrink-0 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] flex items-center justify-center group">
                     <Image
                       src={`/ikon-${num}.png`}
                       alt={`Portal ikona ${num}`}
                       width={150}
                       height={150}
-                      className="w-full h-full object-contain opacity-85 hover:opacity-100 transition"
-                      style={{ filter: 'grayscale(20%)' }}
-                      onMouseEnter={(e) => e.currentTarget.style.filter = 'grayscale(0%)'}
-                      onMouseLeave={(e) => e.currentTarget.style.filter = 'grayscale(20%)'}
+                      className="w-full h-full object-contain opacity-85 group-hover:opacity-100 transition-all portal-icon"
                     />
                   </div>
                 ))}

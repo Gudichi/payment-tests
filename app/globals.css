@@ -132,3 +132,13 @@ table img {
 .animate-scroll-portals:hover {
   animation-play-state: paused;
 }
+
+/* Portals Icon Hover Effect */
+.portal-icon {
+  filter: grayscale(20%);
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.group:hover .portal-icon {
+  filter: grayscale(0%);
+}
