@@ -349,31 +349,31 @@ export default function GHLPage() {
       />
       <main className="space-y-16 py-6 sm:space-y-24 sm:py-12">
         {/* ATF Hero Section */}
-        <section className="bg-ivory px-4 py-8 text-espresso sm:px-6 sm:py-12">
+        <section className="bg-ivory px-4 py-6 text-espresso sm:px-6 sm:py-8">
           <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center text-center">
             {/* Badge Box */}
-            <div className="inline-flex items-center gap-3 bg-espresso text-[#F5EFE6] px-8 py-4 rounded-2xl text-[clamp(1rem,2.5vw,1.25rem)] font-bold uppercase tracking-[0.15em] mb-6 shadow-card">
+            <div className="inline-flex items-center gap-3 bg-espresso text-[#F5EFE6] px-10 py-5 rounded-2xl text-[clamp(1.125rem,2.75vw,1.375rem)] font-bold uppercase tracking-[0.15em] mb-4 shadow-card">
               <span className="w-2.5 h-2.5 rounded-full bg-cherry shadow-[0_0_8px_rgba(194,72,88,0.8)] animate-led-blink flex-shrink-0" />
               <span>EKSKLUZIVNI BESPLATNI TRENING</span>
             </div>
 
             {/* Hero Headline */}
-            <h1 className="font-heading text-[clamp(1.75rem,5vw,3rem)] font-normal italic leading-[1.3] text-espresso mb-6 max-w-[900px]" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
-              Počni <span className="uppercase text-cherry font-extrabold not-italic">OD DANAS</span> da šalješ signal <span className="text-cherry font-bold italic">zbog kojeg kvalitetan muškarac</span> prestane da „samo gleda" <span className="text-cherry not-italic">i priđe ti uživo, kao da je odluka već doneta:</span> <span className="text-espresso italic">„NJU BIRAM."</span>
+            <h1 className="font-heading text-[clamp(1.75rem,5vw,3rem)] font-bold leading-[1.3] text-espresso mb-4 max-w-[900px]" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
+              Počni <span className="uppercase text-cherry italic">OD DANAS</span> da šalješ signal <span className="text-cherry italic">zbog kojeg kvalitetan muškarac</span> prestane da „samo gleda" <span className="text-cherry">i priđe ti uživo, kao da je odluka već doneta:</span> <span className="text-espresso italic">„NJU BIRAM."</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="font-heading text-[clamp(1rem,2.5vw,1.25rem)] leading-relaxed text-espresso/85 max-w-[800px] mb-6" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
-              <span className="not-italic font-normal">U ovoj kratkoj reportaži</span> <span className="italic font-bold">pokazujem ti jedan ženski mikro-signal</span> <span className="italic font-bold">koji mu u sekundi daje dozvolu da priđe</span> <span className="not-italic font-normal">, bez toga da radiš bilo šta „napadno", bez aplikacija, bez slanja poruka prva</span> <span className="italic font-bold">i bez toga da moraš da ističeš sise i guzicu da bi te neko „primetio".</span>
+            <p className="font-heading text-[clamp(1rem,2.5vw,1.25rem)] leading-relaxed text-espresso/85 max-w-[800px] mb-4" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
+              <span className="font-normal">U ovoj kratkoj reportaži</span> <span className="italic font-bold">pokazujem ti jedan ženski mikro-signal</span> <span className="italic">koji mu u sekundi daje dozvolu da priđe</span> <span className="font-normal">, bez toga da radiš bilo šta „napadno", bez aplikacija, bez slanja poruka prva</span> <span className="italic">i bez toga da moraš da ističeš sise i guzicu da bi te neko „primetio".</span>
             </p>
 
             {/* Note */}
-            <p className="font-heading text-[clamp(1rem,2.5vw,1.25rem)] leading-relaxed text-center max-w-[700px] mb-8 text-espresso" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
-              <span className="font-bold italic">Ovo je za žene koje žele pažnju koja ima težinu:</span> <span className="text-cherry font-bold not-italic">od muškarca koji ima inicijativu, karakter i plan.</span>
+            <p className="font-heading text-[clamp(1rem,2.5vw,1.25rem)] leading-relaxed text-center max-w-[700px] mb-5 text-espresso/90" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
+              <span className="font-bold italic">Ovo je za žene koje žele pažnju koja ima težinu:</span> <span className="text-cherry font-bold">od muškarca koji ima inicijativu, karakter i plan.</span>
             </p>
 
             {/* Wistia Video */}
-            <div className="relative w-full max-w-[900px] mb-8" style={{ paddingBottom: "56.25%" }}>
+            <div className="relative w-full max-w-[900px] mb-5" style={{ paddingBottom: "56.25%" }}>
               <div
                 className="wistia_embed wistia_async_v59k639lk4"
                 style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
@@ -381,16 +381,16 @@ export default function GHLPage() {
             </div>
 
             {/* CTA Button */}
-            <button className="inline-block bg-[#1C7C7D] text-white px-8 py-4 rounded-2xl text-base font-semibold uppercase tracking-[0.05em] shadow-card hover:bg-[#165a5c] hover:-translate-y-0.5 hover:shadow-md transition-all mb-8">
+            <button className="inline-block bg-espresso text-[#F5EFE6] px-10 py-5 rounded-2xl text-[clamp(1rem,2vw,1.125rem)] font-bold uppercase tracking-[0.05em] shadow-card hover:opacity-90 transition-all mb-5">
               ŽELIM POGLEDATI TRENING I POSLATI PRVE SIGNALE
             </button>
 
             {/* Uskoro Na Label + Full-Width Portals Carousel */}
-            <div className="w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] bg-ivory py-6 my-6">
+            <div className="w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] bg-ivory py-5 mt-4">
               <div className="max-w-[1000px] mx-auto px-4">
-                <p className="font-heading text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-cherry text-center uppercase tracking-[0.1em] mb-4" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
+                <h2 className="font-heading text-[clamp(1.5rem,3.5vw,2rem)] font-bold text-cherry text-center uppercase tracking-[0.1em] mb-4" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
                   USKORO NA:
-                </p>
+                </h2>
                 <div className="w-full overflow-hidden">
                   <div className="flex gap-16 animate-scroll-portals">
                     {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map((num, idx) => (
@@ -486,6 +486,74 @@ export default function GHLPage() {
                   <Image src={step.image} alt={step.alt} width={560} height={360} className="mx-auto w-full rounded-3xl sm:w-1/2" />
                   <p className="text-base leading-relaxed text-espresso/80">{step.description}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* Section A: Headline + Checklist + CTA */}
+        <Section bg="white">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
+            <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">
+              Što dobivaš u programu Signali Strasti
+            </h2>
+            <ul className="mx-auto max-w-3xl space-y-2.5 text-left text-lg text-espresso/85">
+              {[
+                "17 mikro-signala koji nesvjesno pozivaju njegovu pažnju",
+                "1-minutni dnevni ritual koji možeš raditi gdje god jesi",
+                "Objašnjenja zašto svaki signal djeluje",
+                "Mentor podrška ako želiš diskretnu provjeru",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <Check className="mt-1 h-5 w-5 text-cherry flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <button className="mt-2 bg-[#1A1412] text-[#F6F1EC] px-10 py-5 rounded-2xl text-[clamp(1rem,2vw,1.125rem)] font-bold uppercase tracking-[0.05em] shadow-card hover:opacity-90 transition-opacity">
+              ŽELIM PRISTUPITI SIGNALIMA STRASTI
+            </button>
+          </div>
+        </Section>
+
+        {/* Section B: Headline + Image */}
+        {/* TODO: Replace image path with actual filename from public folder */}
+        <Section bg="ivory">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
+            <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">
+              Kako funkcionira program
+            </h2>
+            <Image 
+              src="/FullProduct.png" 
+              alt="Program Signali Strasti" 
+              width={900} 
+              height={620} 
+              className="mx-auto w-full rounded-3xl sm:w-3/4" 
+            />
+          </div>
+        </Section>
+
+        {/* Section C: Step headline + Testimonials */}
+        <Section bg="white">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
+            <div className="space-y-2">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry/90">
+                <span className="font-heading italic">KORAK 2</span>
+              </p>
+              <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">
+                Aktiviraj signal i osjeti promjenu
+              </h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 w-full">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                <Image
+                  key={num}
+                  src={`/TS-B1-S${num}.png`}
+                  alt={`Testimonial ${num}`}
+                  width={620}
+                  height={420}
+                  className="mx-auto w-full rounded-3xl object-contain"
+                />
               ))}
             </div>
           </div>
