@@ -595,53 +595,280 @@
     body.ss-modal-open {
       overflow: hidden;
     }
+
+    /* Animations */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Responsive Grid for Testimonials Taf */
+    @media (min-width: 768px) {
+      .ss-taf-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Responsive Grid for Testimonials ts */
+    @media (min-width: 768px) {
+      .ss-ts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="ss-container">
-    <!-- Header Section -->
-    <header class="ss-section ss-header">
-      <div class="ss-category-tag">LJUBAVNI ODNOSI</div>
-      <h1 class="ss-headline">
-        <em>On ne zna da ti se sviđa.</em> Zato ne prilazi. <strong class="u">ALI evo kako ćeš mu reći da priđe bez izgovorene riječi.</strong>
-      </h1>
-      <div class="ss-byline">
-        13. studenog 2025. • <strong>SignaliStrasti tim</strong> | <em>Balkanska studija neverbalne privlačnosti</em>
-      </div>
-      <blockquote class="ss-lead-quote">
-        "Prilaze mi samo oni koje ne bih ni pogledala. A onaj koji mi se sviđa – ništa."
-      </blockquote>
-    </header>
+  <!-- Top Banner -->
+  <div style="background: #6A1F29; padding: 0.75rem; text-align: center; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: #F8F5F0;">
+    🇭🇷 700+ žena u Hrvatskoj već koriste Signale Strasti 🇭🇷
+  </div>
 
-    <!-- Hero / VSL Section -->
-    <section class="ss-section ss-hero">
-      <h2 class="ss-hero-title">
-        <strong>Danas, čak i kad ga pogledaš — on neće prići, osim ako ne zna da smije.</strong>
-      </h2>
-      <p class="ss-sub-lead" style="font-size: 18.5px; line-height: 1.9; margin-bottom: var(--ss-spacing-xl);">
-        <u>Evo što mu zapravo trebaš "reći" — bez da izgovoriš ijednu riječ.</u>
-      </p>
-      
-      <div class="ss-video-wrapper">
-        <div class="ss-video-container" id="ss-wistia-container"></div>
-        <div class="ss-video-gate" id="ss-video-gate">
-          <img data-asset="vsl-thumbnail" alt="Video thumbnail" class="ss-video-thumbnail" id="ss-video-thumbnail">
-          <button class="ss-play-button" id="ss-play-button" aria-label="Play video">
-            <svg viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </button>
-          <div class="ss-play-text">Klikni da otključaš video</div>
+  <div class="ss-container">
+    <!-- Hero Section -->
+    <section class="ss-section ss-section-bg-ivory" style="padding-top: 2.5rem; padding-bottom: 3.5rem;">
+      <div style="max-width: 896px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <h1 style="font-size: clamp(1.875rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.18; margin-bottom: 1.5rem; color: var(--ss-color-primary);">
+          Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca — Bez Filtera, Aplikacija ili Igrica — uz Jedan Signal o Kojem Nitko Ne Priča
+        </h1>
+        <p style="margin-top: 1.5rem; max-width: 768px; font-size: 1rem; line-height: 1.7; color: rgba(26, 20, 18, 0.8);">
+          Ne moraš mijenjati sebe. Samo ponovno aktiviraj ono što muškarci već nesvjesno traže. Ovo je za žene koje žele da ih napokon u masi primijete kvalitetni muškarci.
+        </p>
+        <div style="margin-top: 2rem; width: 100%; max-width: 50%;">
+          <img data-asset="hero1" alt="Žena koja privlači pažnju" style="width: 100%; border-radius: 1.5rem; display: block;">
+        </div>
+        <div style="margin-top: 1.5rem; width: 100%; max-width: 40%; display: flex; justify-content: center;">
+          <img data-asset="social-proof" alt="Social proof Signali Strasti" style="width: 100%; border-radius: 1rem; display: block;">
         </div>
       </div>
     </section>
 
-    <!-- Content Sections Placeholder -->
-    <section class="ss-section ss-section-bg-white" id="ss-content-sections">
-      <!-- Sections will be populated via JS based on content structure -->
+    <!-- Author Section -->
+    <section class="ss-section ss-section-bg-white">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; font-size: 1.125rem; line-height: 1.7; color: rgba(26, 20, 18, 0.9);">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; color: var(--ss-color-secondary);">
+          <div style="overflow: hidden; border-radius: 999px; border: 1px solid rgba(194, 72, 88, 0.3); background: white;">
+            <img data-asset="profilna" alt="Profilna Dunje Kramarić" style="width: 3rem; height: 3rem; object-fit: cover; display: block;">
+          </div>
+          <h2 style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; margin: 0;">Piše: Dunja Kramarić</h2>
+        </div>
+        <div style="max-width: 768px; display: flex; flex-direction: column; gap: 1rem;">
+          <p><em>Ćao,</em> Ako si se ikad dotjerala, izašla iz kuće, a onda se vratila s osjećajem da te nitko nije ni <u>pogledao...</u></p>
+          <p>Ili još gore — da su te pogledali, ali da to nisu bili muškarci koji ti baš preferiraš…<br>
+          Onaj s TikTok frizurom.<br>
+          Onaj koji priđe s "di si mala".<br>
+          Onaj koji ti reagira na story s 🔥 i nestane…</p>
+          <p style="font-family: var(--ss-font-heading); font-size: 1.5rem; font-weight: 700; color: var(--ss-color-primary);">Sigurno si barem jednom dobila ovakav komentar:</p>
+        </div>
+        <img data-asset="komentari" alt="Komentari polaznica" style="width: 60%; max-width: 720px; border-radius: 1.5rem; display: block; margin: 0 auto;">
+        <div style="max-width: 768px; display: flex; flex-direction: column; gap: 1rem;">
+          <p><strong>Znam</strong> da ti možeš privući pažnju i znam da možeš pronaći muškarca…</p>
+          <p>Ali ti ne tražiš bilo kakvog, ti tražiš muškarca koji zna što vidi — i zna što želi.<br>
+          <em>I znaš što je najljepše?</em><br>
+          U 90% slučajeva znaš prepoznati takvog kad ga vidiš…</p>
+          <p>Sad je vrijeme da on prepozna tebe. Ne riječima. Ne skriptom. Ne glumom. Već s tihim signalom zbog kojeg se okrene, zastane... i poželi prići.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Testimonials Blocks -->
+    <!-- Muškarci i dalje žele prići Section -->
+    <section class="ss-section ss-section-bg-ivory">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center;">
+        <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; color: var(--ss-color-secondary);">PAZI:</p>
+        <h2 style="font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 700; color: var(--ss-color-primary);">Muškarci i dalje žele prići, ali…</h2>
+        <img data-asset="muskarci-zele-prici" alt="Muškarci žele prići" style="width: 100%; max-width: 50%; border-radius: 1.5rem; display: block; margin: 0 auto;">
+        <div style="max-width: 768px; display: flex; flex-direction: column; gap: 1rem; font-size: 1.125rem; line-height: 1.7; color: rgba(26, 20, 18, 0.8);">
+          <p>Danas — ako on nije 99% siguran da ga nećeš odbiti, radije ne napravi ništa. Nisu nesigurni.</p>
+          <p><strong>Samo su naučeni da bez jasnog signala — ispadaju čudaci, napadni ili "nepozvani".</strong></p>
+          <p>A ako im suptilno pokažeš "u redu je, možeš" — njihov mozak to registrira kao zeleno svjetlo. Zato sam stvorila Signale Strasti — digitalni mikro-program koji ti svaki dan pokaže jednu malu stvar koju možeš napraviti... i doživjeti promjenu.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Steps Section -->
+    <section class="ss-section ss-section-bg-white">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 2rem; text-align: center;">
+        <h2 style="font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 700; color: var(--ss-color-primary);">
+          Evo kako ćeš privući kvalitetnog muškarca u samo 7 dana — kroz 4 koraka koji dolaze gotovo neprimjetno
+        </h2>
+        <div style="width: 100%; display: flex; flex-direction: column; gap: 1.5rem;">
+          <!-- Step 1 -->
+          <div style="display: flex; flex-direction: column; gap: 1rem; border-radius: 1.5rem; background: rgba(246, 241, 236, 0.7); padding: 1.5rem; text-align: center;">
+            <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(194, 72, 88, 0.9); font-style: italic;">Korak 01</p>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--ss-color-primary);">Otvori aplikaciju</h3>
+            <img data-asset="gif-1" alt="Pregled aplikacije Signali Strasti" style="width: 100%; max-width: 50%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+            <p style="font-size: 1rem; line-height: 1.7; color: rgba(26, 20, 18, 0.8);">Čim uđeš, sve te čeka spremno. Dobivaš kompletan popis Signala s jasnim uputama — kad, kako i zašto ih koristiti — tako da se nikada ne pitaš 'radim li ovo dobro?'</p>
+          </div>
+          <!-- Step 2 -->
+          <div style="display: flex; flex-direction: column; gap: 1rem; border-radius: 1.5rem; background: rgba(246, 241, 236, 0.7); padding: 1.5rem; text-align: center;">
+            <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(194, 72, 88, 0.9); font-style: italic;">Korak 02</p>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--ss-color-primary);">Aktiviraj signal (1 min)</h3>
+            <img data-asset="aktiviraj-signale" alt="Aktiviranje signala" style="width: 100%; max-width: 50%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+            <p style="font-size: 1rem; line-height: 1.7; color: rgba(26, 20, 18, 0.8);">Ne mijenjaš rutinu — samo izabereš jedan od preporučenih Signala za taj dan i koristiš ga u svom prirodnom okruženju. Sve traje manje od minute, ali pokreće puno više nego što misliš.</p>
+          </div>
+          <!-- Step 3 -->
+          <div style="display: flex; flex-direction: column; gap: 1rem; border-radius: 1.5rem; background: rgba(246, 241, 236, 0.7); padding: 1.5rem; text-align: center;">
+            <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(194, 72, 88, 0.9); font-style: italic;">Korak 03</p>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--ss-color-primary);">Osjeti kako te gledaju drugačije</h3>
+            <img data-asset="gledadrukcije" alt="Muškarac primjećuje ženu" style="width: 100%; max-width: 50%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+            <p style="font-size: 1rem; line-height: 1.7; color: rgba(26, 20, 18, 0.8);">Svaki signal je mikro gesta ili stav tvog tijela. Dovoljno suptilan da se osjeća prirodno, a dovoljno moćan da muškarci nesvjesno reagiraju. Ne moraš govoriti niti glumiti.</p>
+          </div>
+          <!-- Step 4 -->
+          <div style="display: flex; flex-direction: column; gap: 1rem; border-radius: 1.5rem; background: rgba(246, 241, 236, 0.7); padding: 1.5rem; text-align: center;">
+            <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(194, 72, 88, 0.9); font-style: italic;">Korak 04</p>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--ss-color-primary);">Podijeli što si primijetila</h3>
+            <img data-asset="podjeli-nauceno" alt="Podijeli iskustvo u aplikaciji" style="width: 100%; max-width: 50%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+            <p style="font-size: 1rem; line-height: 1.7; color: rgba(26, 20, 18, 0.8);">Pogledi. Osmijesi. Prilasci. Tvoj govor tijela preuzima posao. Ako želiš, javi mentorici u aplikaciji kako je prošlo — ili jednostavno zabilježi promjenu za sebe.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Knowledge Points Section -->
+    <section class="ss-section ss-section-bg-ivory">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center;">
+        <h2 style="font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 700; color: var(--ss-color-primary);">
+          Što ćeš znati o sebi… što većina žena nikada ne otkrije
+        </h2>
+        <img data-asset="hero-2" alt="Samopouzdana žena" style="width: 100%; max-width: 50%; border-radius: 1.5rem; display: block; margin: 0 auto;">
+        <ul style="text-align: left; font-size: 1.125rem; color: rgba(26, 20, 18, 0.85); display: flex; flex-direction: column; gap: 0.75rem; max-width: 768px; list-style: none; padding: 0;">
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+            <span style="color: var(--ss-color-secondary); margin-top: 0.25rem;">✓</span>
+            <span>Kako tvoj govor tijela (ne riječi!) poziva muškarce da ti priđu</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+            <span style="color: var(--ss-color-secondary); margin-top: 0.25rem;">✓</span>
+            <span>Koje su najčešće greške koje žene rade kad žele izgledati „otvoreno"</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+            <span style="color: var(--ss-color-secondary); margin-top: 0.25rem;">✓</span>
+            <span>Kako prepoznati idealan trenutak za slanje signala</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+            <span style="color: var(--ss-color-secondary); margin-top: 0.25rem;">✓</span>
+            <span>Što točno u tebi čita muški mozak kao „zeleno svjetlo"</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+            <span style="color: var(--ss-color-secondary); margin-top: 0.25rem;">✓</span>
+            <span>Kako ostati svoja i prisutna — bez igrica i glume</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="ss-section ss-section-bg-white">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; font-size: 1.125rem; line-height: 1.7; color: rgba(26, 20, 18, 0.85);">
+        <h2 style="font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 700; color: var(--ss-color-primary);">Tko stoji iza Signala Strasti?</h2>
+        <img data-asset="tim" alt="Dunja i tim" style="width: 100%; max-width: 50%; border-radius: 1.5rem; display: block; margin: 0 auto;">
+        <div style="max-width: 768px; display: flex; flex-direction: column; gap: 1rem;">
+          <p>Ja sam Dunja, godinama promatram kako muškarci uistinu reagiraju kad im se neka žena svidi... i što se zapravo događa prije nego priđu.</p>
+          <p>Specijalistica sam za neverbalnu komunikaciju i već 10 godina pomažem ženama da vrate ono što su mislile da su izgubile: svoju prisutnost, magnetizam i sigurnost u vlastito tijelo.</p>
+          <p>Autorica sam knjige „Što muškarci zapravo žele", i gostovala sam na brojnim televizijama gdje sam govorila o onome što se ne kaže naglas: što privlači, a što gasi mušku inicijativu.</p>
+          <p>"Signali Strasti" nisu proizvod. To je rezultat mog rada sa stvarnim ženama koje nisu htjele glumiti, ni igrati igrice, ni biti nečije "rješenje". One su samo htjele da ih se opet vidi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Taf Section -->
+    <section class="ss-section ss-section-bg-ivory">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; text-align: center;">
+        <h3 style="font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 700; color: var(--ss-color-primary);">Dojmovi polaznica s prošlog programa</h3>
+        <div class="ss-taf-grid" style="display: grid; gap: 1rem; grid-template-columns: 1fr;">
+          <img data-asset="taf-1" alt="Komentar polaznice" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+          <img data-asset="taf-2" alt="Komentar polaznice" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+          <img data-asset="taf-3" alt="Komentar polaznice" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+          <img data-asset="taf-4" alt="Komentar polaznice" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+          <img data-asset="taf-5" alt="Komentar polaznice" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+          <img data-asset="taf-6" alt="Komentar polaznice" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+          <img data-asset="taf-7" alt="Komentar polaznice" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+        </div>
+      </div>
+    </section>
+
+    <!-- Program Section with Bonuses and Offer -->
+    <section class="ss-section ss-section-bg-white" id="ss-program">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; text-align: center; color: var(--ss-color-primary);">
+        <h2 style="font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 700;">
+          Alat koji svakog dana tiho uključuje tvoju privlačnost — <em style="color: var(--ss-color-secondary);">i pokreće njegov prvi korak</em>
+        </h2>
+        <p style="font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.35em;">
+          PROGRAM <span style="font-style: italic; color: var(--ss-color-secondary);">Signali Strasti</span>
+        </p>
+        <img data-asset="full-product" alt="Program Signali Strasti" style="width: 100%; max-width: 50%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+        <ul style="max-width: 768px; margin: 0 auto; text-align: left; font-size: 1rem; color: rgba(26, 20, 18, 0.9); display: flex; flex-direction: column; gap: 0.75rem; list-style: none; padding: 0;">
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+            <span style="color: var(--ss-color-secondary); margin-top: 0.25rem;">✓</span>
+            <span>17 mikro-signala koji nesvjesno pozivaju njegovu pažnju (i daju mu dozvolu da ti priđe)</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+            <span style="color: var(--ss-color-secondary); margin-top: 0.25rem;">✓</span>
+            <span>1-minutni dnevni ritual koji možeš raditi gdje god jesi (diskretno, prirodno)</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+            <span style="color: var(--ss-color-secondary); margin-top: 0.25rem;">✓</span>
+            <span>Objašnjenja zašto svaki signal djeluje (da se ne pitaš: "Radim li ovo bezveze?")</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+            <span style="color: var(--ss-color-secondary); margin-top: 0.25rem;">✓</span>
+            <span>Mentor podrška ako želiš diskretnu provjeru ili samo podijeliti kako je prošlo</span>
+          </li>
+        </ul>
+        
+        <!-- Bonuses -->
+        <div style="text-align: left; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">
+          <h3 style="text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Bonusi uključeni odmah</h3>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Bonus 1 -->
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; border-radius: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.7); background: rgba(246, 241, 236, 0.7); padding: 1.5rem; box-shadow: var(--ss-shadow-card);">
+              <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; color: var(--ss-color-secondary); font-style: italic;">Bonus 1</p>
+              <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--ss-color-primary);">Prvi dojam koji ostaje s njim</h4>
+              <img data-asset="bonus-1" alt="Bonus 1" style="width: 75%; max-width: 40%; border-radius: 1rem; margin: 0 auto; display: block;">
+              <p>3 neverbalna detalja + 2 rečenice zbog kojih pomisli: "Ona je… drugačija." (Ovaj vodič se inače prodaje zasebno za 97€, ovdje ga dobivaš unutar paketa.)</p>
+            </div>
+            <!-- Bonus 2 -->
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; border-radius: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.7); background: rgba(246, 241, 236, 0.7); padding: 1.5rem; box-shadow: var(--ss-shadow-card);">
+              <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; color: var(--ss-color-secondary); font-style: italic;">Bonus 2</p>
+              <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--ss-color-primary);">Neka on napravi prvi korak</h4>
+              <img data-asset="bonus-2" alt="Bonus 2" style="width: 50%; max-width: 30%; border-radius: 1rem; margin: 0 auto; display: block;">
+              <p>Kako signalizirati otvorenost, a da on osjeti da sve dolazi od njega. (67€, uključeno bez dodatne naplate.)</p>
+            </div>
+            <!-- Bonus 3 -->
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; border-radius: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.7); background: rgba(246, 241, 236, 0.7); padding: 1.5rem; box-shadow: var(--ss-shadow-card);">
+              <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; color: var(--ss-color-secondary); font-style: italic;">Bonus 3</p>
+              <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--ss-color-primary);">Poruka koja ga vraća, čak i ako se povukao</h4>
+              <img data-asset="bonus-4" alt="Bonus 3" style="width: 75%; max-width: 40%; border-radius: 1rem; margin: 0 auto; display: block;">
+              <p>Kada znaš što reći (i kako), njegova pažnja se vraća spontano. (Vrijednost 77€, sada dio paketa.)</p>
+            </div>
+            <!-- Bonus 4 -->
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; border-radius: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.7); background: rgba(246, 241, 236, 0.7); padding: 1.5rem; box-shadow: var(--ss-shadow-card);">
+              <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; color: var(--ss-color-secondary); font-style: italic;">Bonus 4</p>
+              <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--ss-color-primary);">Prva kava koju pamti danima</h4>
+              <img data-asset="bonus-5" alt="Bonus 4" style="width: 75%; max-width: 40%; border-radius: 1rem; margin: 0 auto; display: block;">
+              <p>Bez glume. Bez skripti. Samo ti — u svom najsvježijem, najprivlačnijem izdanju. (87€, uključen.)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offer Section -->
+        <div style="text-align: center; margin-top: 2rem;" id="ss-offer-section">
+          <img data-asset="arrow-down" alt="Strelica prema ponudi" style="width: 3rem; height: 3rem; margin: 0 auto 1rem; display: block; animation: bounce 2s infinite;">
+          <h3 style="font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 700; color: var(--ss-color-primary);">Cijeli paket — dostupan odmah</h3>
+          <p style="font-size: 1.125rem; font-weight: 700; color: #a23d52; text-decoration: line-through; margin: 1rem 0;">Ukupna vrijednost svega što dobivaš: 532€</p>
+          <p style="font-size: clamp(3.75rem, 7vw, 4.375rem); font-weight: 800; color: var(--ss-color-secondary); margin: 1rem 0;">17€</p>
+          <div style="max-width: 640px; margin: 0 auto;">
+            <button class="ss-cta-button" data-cta="checkout" style="width: 100%; border-radius: 1.5rem; background: #1C7C7D; padding: 1.25rem 2rem; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ss-color-bg); box-shadow: var(--ss-shadow-card); border: none; cursor: pointer; transition: var(--ss-transition);">
+              Da, želim pristupiti SIGNALIMA STRASTI
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Blocks (Original) -->
     <section class="ss-section ss-section-bg-ivory" id="ss-testimonials-b1">
       <h2 class="ss-text-center">Dojmovi polaznica - Blok 1</h2>
       <div class="ss-testimonials-grid" id="ss-testimonials-grid-b1"></div>
@@ -662,15 +889,93 @@
       <div class="ss-testimonials-grid" id="ss-testimonials-grid-b4"></div>
     </section>
 
+    <!-- Za koga je ovo Section -->
+    <section class="ss-section ss-section-bg-white" id="ss-checkout-section">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; font-size: 1.125rem; line-height: 1.7; color: rgba(26, 20, 18, 0.8);">
+        <h2 style="font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 700; color: var(--ss-color-primary);">Ograničeno na 100 mjesta mjesečno</h2>
+        <img data-asset="tim-2" alt="Dunja s timom" style="width: 100%; max-width: 50%; border-radius: 1.5rem; display: block; margin: 0 auto;">
+        <div style="max-width: 768px; display: flex; flex-direction: column; gap: 1rem;">
+          <p>Zbog mentor podrške i osobnog pristupa, Dunja i tim primaju samo <strong>100 novih korisnica mjesečno</strong>. Nakon toga se prijave zatvaraju — kako bi se svakoj ženi moglo posvetiti s punom pažnjom.</p>
+          <p><em>Ako osjećaš da je ovo tvoj trenutak, ne čekaj.</em></p>
+        </div>
+        <div style="width: 100%; display: flex; flex-direction: column; gap: 1rem; font-size: 1.125rem; color: rgba(26, 20, 18, 0.85);">
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--ss-color-primary);">Za koga je ovo?</h3>
+          <ul style="text-align: left; display: flex; flex-direction: column; gap: 0.75rem; list-style: none; padding: 0;">
+            <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <span style="font-size: 1.25rem; color: var(--ss-color-secondary);">✔️</span>
+              <span>Žene koje se osjećaju <strong>nevidljivo</strong> u svakodnevnim situacijama — i žele ponovno osjetiti da netko <em>spontano primijeti njihovu prisutnost.</em></span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <span style="font-size: 1.25rem; color: var(--ss-color-secondary);">✔️</span>
+              <span>One koje su umorne od ghostinga, aplikacija i "pick me" kulture — i žele <u>stvarne razgovore</u> bez igrica i čekanja.</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <span style="font-size: 1.25rem; color: var(--ss-color-secondary);">✔️</span>
+              <span>One koje ne žele glumiti, nego vratiti svoju <strong>prirodnu privlačnost</strong> i toplinu — bez skripti.</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <span style="font-size: 1.25rem; color: var(--ss-color-secondary);">✔️</span>
+              <span>One koje žele kemiju u stvarnom životu, ne na ekranu — i žele da <em>on</em> napravi prvi korak čim osjeti signal.</span>
+            </li>
+          </ul>
+        </div>
+        <div style="text-align: center; margin-top: 1rem;">
+          <button class="ss-cta-button" data-cta="checkout" onclick="document.getElementById('ss-offer-section').scrollIntoView({behavior: 'smooth'})" style="border-radius: 1.5rem; background: #1C7C7D; padding: 1.25rem 2rem; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ss-color-bg); box-shadow: var(--ss-shadow-card); border: none; cursor: pointer; transition: var(--ss-transition);">
+            Da, želim pristupiti SIGNALIMA STRASTI
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials ts Section -->
+    <section class="ss-section ss-section-bg-ivory">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; text-align: center;">
+        <h2 style="font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 700; color: var(--ss-color-primary);">
+          Evo još neki od dojmova polaznica s prošlog programa…
+        </h2>
+        <div class="ss-ts-grid" style="display: grid; gap: 1rem; grid-template-columns: 1fr;">
+          <img data-asset="ts-1" alt="Komentar polaznice 1" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+          <img data-asset="ts-2" alt="Komentar polaznice 2" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+          <img data-asset="ts-3" alt="Komentar polaznice 3" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+          <img data-asset="ts-4" alt="Komentar polaznice 4" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+          <img data-asset="ts-5" alt="Komentar polaznice 5" style="width: 100%; max-width: 80%; border-radius: 1.5rem; margin: 0 auto; display: block;">
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <button class="ss-cta-button" data-cta="checkout" onclick="document.getElementById('ss-offer-section').scrollIntoView({behavior: 'smooth'})" style="border-radius: 1.5rem; background: #1C7C7D; padding: 1.25rem 2rem; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ss-color-bg); box-shadow: var(--ss-shadow-card); border: none; cursor: pointer; transition: var(--ss-transition);">
+            Da, želim pristupiti SIGNALIMA STRASTI
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- Final CTA Section -->
-    <section class="ss-section">
-      <div class="ss-cta-section">
-        <h2>Spremna da naučiš ove signale?</h2>
-        <p>Pogledaj video i otkrij kako da mu pokažeš interesovanje bez reči.</p>
-        <button class="ss-cta-button" data-cta="checkout">Pogledaj Video Sada</button>
+    <section class="ss-section ss-section-bg-white">
+      <div style="max-width: 1024px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; text-align: center;">
+        <p style="font-size: 1.125rem; color: rgba(26, 20, 18, 0.8);"><strong>Još nešto...</strong></p>
+        <p style="font-size: 1.125rem; color: rgba(26, 20, 18, 0.8);">Možda nisi izgubila sebe. Možda si <strong>samo izgubila pogled</strong>... koji je čekao pravi signal.</p>
+        <p style="font-size: 1.125rem; color: rgba(26, 20, 18, 0.8);"><u>Pošalji ga danas.</u></p>
+        <button class="ss-cta-button" data-cta="checkout" onclick="document.getElementById('ss-offer-section').scrollIntoView({behavior: 'smooth'})" style="border-radius: 1.5rem; background: var(--ss-color-secondary); padding: 1.25rem 2rem; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ss-color-bg); box-shadow: var(--ss-shadow-card); border: none; cursor: pointer; transition: var(--ss-transition);">
+          Da, želim pristupiti SIGNALIMA STRASTI
+        </button>
       </div>
     </section>
   </div>
+
+  <!-- Footer -->
+  <footer style="background: #1B1A1A; color: #F8F5F0; padding: 3rem 1.5rem;">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="display: flex; flex-direction: column; gap: 0.5rem; text-align: center;">
+        <p style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4em; color: #D7C4B7;">Signali Strasti</p>
+        <p style="font-size: 1.125rem; color: rgba(248, 245, 240, 0.8);">Bez aplikacija. Bez igrica. Samo prvi signal koji ga poziva da priđe.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; font-size: 0.875rem; color: rgba(248, 245, 240, 0.8);">
+        <a href="/privacy" style="color: inherit; transition: var(--ss-transition);">Privatnost</a>
+        <a href="/terms" style="color: inherit; transition: var(--ss-transition);">Uvjeti korištenja</a>
+        <a href="mailto:recenicestrasti@gmail.com" style="color: inherit; transition: var(--ss-transition);">recenicestrasti@gmail.com</a>
+      </div>
+      <p style="text-align: center; font-size: 0.75rem; color: rgba(248, 245, 240, 0.6);">© <script>document.write(new Date().getFullYear())</script> Signali Strasti. Sva prava pridržana.</p>
+    </div>
+  </footer>
 
   <!-- Lead Capture Modal -->
   <div class="ss-modal-overlay" id="ss-modal-overlay" role="dialog" aria-labelledby="ss-modal-title" aria-modal="true">
@@ -729,7 +1034,7 @@
     // ============================================
     const CONFIG = {
       environment: "test",
-      route: "/test",
+      route: "/ghl",
       webhookUrl: "",                 // if empty, simulate success
       wistiaVideoId: "WISTIA_ID_HERE", // I will fill later
       checkoutUrl: ""                 // I will fill later (GHL checkout)
@@ -739,46 +1044,48 @@
     // ASSETS MAP - Centralized Image Management
     // ============================================
     const ASSETS = {
-      // VSL / Hero
-      "vsl-thumbnail": "img/hero-2.png",
-      
-      // Main Page Sections
-      "s-section-2": "img/s-section-2.png",
-      "s-section-3": "img/s-section-3.png",
-      "s-section-4": "img/s-section-4.gif",
-      "s-section-5": "img/s-section-5.png",
-      "s-section-6": "img/s-section-6.png",
-      "s-section-7": "img/s-section-7.png",
-      "s-section-8-1": "img/s-section-8-1.png",
-      "s-section-8-2": "img/s-section-8-2.png",
+      // Hero Section
+      "hero1": "/Hero1.png",
+      "social-proof": "/SocialProof.png",
+      "profilna": "/PROFILNA.png",
+      "komentari": "/komentari.png",
+      "muskarci-zele-prici": "/muskarci-zele-prici.png",
+      "hero-2": "/hero-2.png",
+      "tim": "/Tim.png",
+      "tim-2": "/tim-2.png",
       
       // Steps
-      "korak1": "img/korak1.gif",
-      "korak2": "img/korak2.gif",
-      "korak3": "img/korak3.gif",
+      "gif-1": "/Gif-1.gif",
+      "aktiviraj-signale": "/aktiviraj-signale.png",
+      "gledadrukcije": "/gledadrukcije.webp",
+      "podjeli-nauceno": "/Podjeli-nauceno.png",
       
-      // Team / Guarantee
-      "tim": "img/tim.png",
-      "garancija": "img/garancija.png",
+      // Testimonials (Taf)
+      "taf-1": "/Taf-1.png",
+      "taf-2": "/Taf-2.png",
+      "taf-3": "/Taf-3.png",
+      "taf-4": "/Taf-4.png",
+      "taf-5": "/Taf-5.png",
+      "taf-6": "/Taf-6.png",
+      "taf-7": "/Taf-7.png",
       
-      // Portal Icons
-      "ikon-1": "img/portals/ikon-1.png",
-      "ikon-2": "img/portals/ikon-2.png",
-      "ikon-3": "img/portals/ikon-3.png",
-      "ikon-4": "img/portals/ikon-4.png",
-      "ikon-5": "img/portals/ikon-5.png",
-      "ikon-6": "img/portals/ikon-6.png",
-      "ikon-7": "img/portals/ikon-7.png",
+      // Product
+      "full-product": "/FullProduct.png",
+      "bonus-1": "/Bonus-1.png",
+      "bonus-2": "/Bonus-2.png",
+      "bonus-4": "/Bonus-4.png",
+      "bonus-5": "/Bonus-5.png",
+      "arrow-down": "/arrow-down.svg",
       
-      // Mockups
-      "mockup-1": "img/SIGNALI-MOCKUP/Mockup-1.png",
-      "mockup-2": "img/SIGNALI-MOCKUP/Mockup-2.png",
-      "mockup-3": "img/SIGNALI-MOCKUP/Mockup-3.png",
-      "mockup-4": "img/SIGNALI-MOCKUP/Mockup-4.png",
-      "mockup-5": "img/SIGNALI-MOCKUP/Mockup-5.png",
-      "mockup-6": "img/SIGNALI-MOCKUP/Mockup-6.png",
-      "mockup-7": "img/SIGNALI-MOCKUP/Mockup-7.png",
-      "full-mockup": "img/SIGNALI-MOCKUP/FullMockUp.png"
+      // Testimonials (ts)
+      "ts-1": "/ts-1.png",
+      "ts-2": "/ts-2.png",
+      "ts-3": "/ts-3.png",
+      "ts-4": "/ts-4.png",
+      "ts-5": "/ts-5.png",
+      
+      // VSL / Hero (for gated video)
+      "vsl-thumbnail": "/hero-2.png"
     };
 
     // Generate testimonial asset keys programmatically
@@ -1144,8 +1451,8 @@
     // ============================================
     function init() {
       // Check route
-      if (CONFIG.environment === 'test' && !window.location.pathname.includes('/test')) {
-        console.warn('This page is designed for /test route');
+      if (CONFIG.environment === 'test' && !window.location.pathname.includes('/ghl')) {
+        console.warn('This page is designed for /ghl route');
       }
 
       // Load assets
