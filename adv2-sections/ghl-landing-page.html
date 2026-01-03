@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     /* ============================================
@@ -47,6 +47,7 @@
       /* Typography */
       --ss-font-heading: 'Playfair Display', serif;
       --ss-font-body: 'Inter', system-ui, sans-serif;
+      --ss-font-poppins: 'Poppins', sans-serif;
       
       /* Border Radius */
       --ss-radius-sm: 0.5rem;
@@ -78,6 +79,10 @@
     
     html {
       scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
     }
     
     body {
@@ -87,6 +92,10 @@
       background-color: var(--ss-color-bg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
     }
     
     /* ============================================
@@ -169,6 +178,11 @@
     
     .ss-section-bg-ivory {
       background-color: var(--ss-color-bg);
+    }
+
+    /* Ensure sections extend full width within fullbleed */
+    .ss-section {
+      width: 100%;
     }
     
     .ss-text-center {
@@ -619,29 +633,247 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    /* ============================================
+       FULL-BLEED WRAPPER - Break out of GHL containers
+       ============================================ */
+    .ss-fullbleed {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: calc(-50vw);
+      margin-right: calc(-50vw);
+      background-color: var(--ss-color-bg);
+      min-height: 100vh;
+    }
+
+    /* Ensure modal stays on top of fullbleed */
+    .ss-modal-overlay {
+      position: fixed !important;
+      z-index: 10000 !important;
+    }
+
+    /* ============================================
+       ATF SECTION STYLES
+       ============================================ */
+    .ss-announcement-bar {
+      background-color: var(--ss-color-secondary);
+      color: var(--ss-color-white);
+      padding: 0.75rem 1rem;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ss-atf-hero {
+      padding: var(--ss-spacing-3xl) 0 var(--ss-spacing-2xl);
+      background-color: var(--ss-color-bg);
+    }
+
+    .ss-atf-headline {
+      font-family: var(--ss-font-poppins);
+      font-size: clamp(1.75rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--ss-color-primary);
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto var(--ss-spacing-lg);
+    }
+
+    .ss-atf-headline strong {
+      color: var(--ss-color-secondary);
+      font-weight: 800;
+    }
+
+    .ss-atf-subheadline {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      line-height: 1.7;
+      color: rgba(26, 20, 18, 0.85);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto var(--ss-spacing-lg);
+    }
+
+    .ss-atf-callout {
+      background-color: rgba(194, 72, 88, 0.08);
+      border-left: 3px solid var(--ss-color-secondary);
+      padding: var(--ss-spacing-md) var(--ss-spacing-lg);
+      margin: var(--ss-spacing-lg) auto;
+      max-width: 700px;
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ss-color-primary);
+      border-radius: var(--ss-radius-sm);
+    }
+
+    .ss-wistia-video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: var(--ss-spacing-2xl) auto;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--ss-radius-lg);
+      box-shadow: var(--ss-shadow-md);
+    }
+
+    .ss-wistia-video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Portals Icon Carousel */
+    .ss-portals-carousel {
+      width: 100%;
+      overflow: hidden;
+      padding: var(--ss-spacing-xl) 0;
+      background-color: var(--ss-color-white);
+      margin: var(--ss-spacing-2xl) 0;
+    }
+
+    .ss-portals-track {
+      display: flex;
+      gap: var(--ss-spacing-xl);
+      animation: ss-scroll-portals 30s linear infinite;
+      will-change: transform;
+    }
+
+    .ss-portals-track:hover {
+      animation-play-state: paused;
+    }
+
+    .ss-portals-item {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ss-portals-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: grayscale(20%);
+      opacity: 0.85;
+      transition: var(--ss-transition);
+    }
+
+    .ss-portals-item:hover img {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+
+    @keyframes ss-scroll-portals {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-120px * 6 - var(--ss-spacing-xl) * 6));
+      }
+    }
+
+    @media (min-width: 768px) {
+      .ss-portals-item {
+        width: 150px;
+        height: 150px;
+      }
+
+      @keyframes ss-scroll-portals {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(calc(-150px * 6 - var(--ss-spacing-xl) * 6));
+        }
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Top Banner -->
-  <div style="background: #6A1F29; padding: 0.75rem; text-align: center; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: #F8F5F0;">
-    🇭🇷 700+ žena u Hrvatskoj već koriste Signale Strasti 🇭🇷
-  </div>
+  <div class="ss-fullbleed">
+    <!-- Announcement Bar -->
+    <div class="ss-announcement-bar">
+      EKSKLUZIVNI BESPLATNI TRENING
+    </div>
 
-  <div class="ss-container">
-    <!-- Hero Section -->
-    <section class="ss-section ss-section-bg-ivory" style="padding-top: 2.5rem; padding-bottom: 3.5rem;">
-      <div style="max-width: 896px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
-        <h1 style="font-size: clamp(1.875rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.18; margin-bottom: 1.5rem; color: var(--ss-color-primary);">
-          Kako Žene u Hrvatskoj Privlače Pažnju Kvalitetnih Muškaraca — Bez Filtera, Aplikacija ili Igrica — uz Jedan Signal o Kojem Nitko Ne Priča
+    <div class="ss-container">
+    <!-- ATF Hero Section -->
+    <section class="ss-atf-hero">
+      <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+        <!-- Hero Headline -->
+        <h1 class="ss-atf-headline">
+          Počni <strong>OD DANAS</strong> da šalješ signal zbog kojeg kvalitetan muškarac prestane da „samo gleda" i priđe ti uživo, kao da je odluka već doneta: <strong>„NJU BIRAM."</strong>
         </h1>
-        <p style="margin-top: 1.5rem; max-width: 768px; font-size: 1rem; line-height: 1.7; color: rgba(26, 20, 18, 0.8);">
-          Ne moraš mijenjati sebe. Samo ponovno aktiviraj ono što muškarci već nesvjesno traže. Ovo je za žene koje žele da ih napokon u masi primijete kvalitetni muškarci.
+
+        <!-- Subheadline -->
+        <p class="ss-atf-subheadline">
+          U ovoj kratkoj reportaži pokazujem ti jedan ženski mikro-signal koji mu u sekundi daje dozvolu da priđe, bez toga da radiš bilo šta „napadno", bez aplikacija, bez slanja poruka prva i bez toga da moraš da ističeš sise i guzicu da bi te neko „primetio".
         </p>
-        <div style="margin-top: 2rem; width: 100%; max-width: 50%;">
-          <img data-asset="hero1" alt="Žena koja privlači pažnju" style="width: 100%; border-radius: 1.5rem; display: block;">
+
+        <!-- Note / Callout -->
+        <div class="ss-atf-callout">
+          Ovo je za žene koje žele pažnju koja ima težinu: od muškarca koji ima inicijativu, karakter i plan.
         </div>
-        <div style="margin-top: 1.5rem; width: 100%; max-width: 40%; display: flex; justify-content: center;">
-          <img data-asset="social-proof" alt="Social proof Signali Strasti" style="width: 100%; border-radius: 1rem; display: block;">
+
+        <!-- Wistia Video -->
+        <div class="ss-wistia-video-wrapper">
+          <div id="ss-wistia-video-embed" class="wistia_embed wistia_async_v59k639lk4" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
+        </div>
+
+        <!-- Portals Icon Carousel -->
+        <div class="ss-portals-carousel">
+          <div class="ss-portals-track">
+            <div class="ss-portals-item">
+              <img data-asset="ikon-1" alt="Portal ikona 1">
+            </div>
+            <div class="ss-portals-item">
+              <img data-asset="ikon-2" alt="Portal ikona 2">
+            </div>
+            <div class="ss-portals-item">
+              <img data-asset="ikon-3" alt="Portal ikona 3">
+            </div>
+            <div class="ss-portals-item">
+              <img data-asset="ikon-4" alt="Portal ikona 4">
+            </div>
+            <div class="ss-portals-item">
+              <img data-asset="ikon-5" alt="Portal ikona 5">
+            </div>
+            <div class="ss-portals-item">
+              <img data-asset="ikon-6" alt="Portal ikona 6">
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="ss-portals-item">
+              <img data-asset="ikon-1" alt="Portal ikona 1">
+            </div>
+            <div class="ss-portals-item">
+              <img data-asset="ikon-2" alt="Portal ikona 2">
+            </div>
+            <div class="ss-portals-item">
+              <img data-asset="ikon-3" alt="Portal ikona 3">
+            </div>
+            <div class="ss-portals-item">
+              <img data-asset="ikon-4" alt="Portal ikona 4">
+            </div>
+            <div class="ss-portals-item">
+              <img data-asset="ikon-5" alt="Portal ikona 5">
+            </div>
+            <div class="ss-portals-item">
+              <img data-asset="ikon-6" alt="Portal ikona 6">
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -959,25 +1191,26 @@
         </button>
       </div>
     </section>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: #1B1A1A; color: #F8F5F0; padding: 3rem 1.5rem;">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; text-align: center;">
+          <p style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4em; color: #D7C4B7;">Signali Strasti</p>
+          <p style="font-size: 1.125rem; color: rgba(248, 245, 240, 0.8);">Bez aplikacija. Bez igrica. Samo prvi signal koji ga poziva da priđe.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; font-size: 0.875rem; color: rgba(248, 245, 240, 0.8);">
+          <a href="/privacy" style="color: inherit; transition: var(--ss-transition);">Privatnost</a>
+          <a href="/terms" style="color: inherit; transition: var(--ss-transition);">Uvjeti korištenja</a>
+          <a href="mailto:recenicestrasti@gmail.com" style="color: inherit; transition: var(--ss-transition);">recenicestrasti@gmail.com</a>
+        </div>
+        <p style="text-align: center; font-size: 0.75rem; color: rgba(248, 245, 240, 0.6);">© <script>document.write(new Date().getFullYear())</script> Signali Strasti. Sva prava pridržana.</p>
+      </div>
+    </footer>
   </div>
 
-  <!-- Footer -->
-  <footer style="background: #1B1A1A; color: #F8F5F0; padding: 3rem 1.5rem;">
-    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
-      <div style="display: flex; flex-direction: column; gap: 0.5rem; text-align: center;">
-        <p style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4em; color: #D7C4B7;">Signali Strasti</p>
-        <p style="font-size: 1.125rem; color: rgba(248, 245, 240, 0.8);">Bez aplikacija. Bez igrica. Samo prvi signal koji ga poziva da priđe.</p>
-      </div>
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; font-size: 0.875rem; color: rgba(248, 245, 240, 0.8);">
-        <a href="/privacy" style="color: inherit; transition: var(--ss-transition);">Privatnost</a>
-        <a href="/terms" style="color: inherit; transition: var(--ss-transition);">Uvjeti korištenja</a>
-        <a href="mailto:recenicestrasti@gmail.com" style="color: inherit; transition: var(--ss-transition);">recenicestrasti@gmail.com</a>
-      </div>
-      <p style="text-align: center; font-size: 0.75rem; color: rgba(248, 245, 240, 0.6);">© <script>document.write(new Date().getFullYear())</script> Signali Strasti. Sva prava pridržana.</p>
-    </div>
-  </footer>
-
-  <!-- Lead Capture Modal -->
+  <!-- Lead Capture Modal (outside fullbleed wrapper for fixed positioning) -->
   <div class="ss-modal-overlay" id="ss-modal-overlay" role="dialog" aria-labelledby="ss-modal-title" aria-modal="true">
     <div class="ss-modal">
       <button class="ss-modal-close" id="ss-modal-close" aria-label="Close modal">
@@ -1026,6 +1259,7 @@
   </div>
 
   <!-- Wistia Embed Script -->
+  <script src="https://fast.wistia.com/embed/medias/v59k639lk4.jsonp" async></script>
   <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
 
   <script>
@@ -1043,6 +1277,17 @@
     // ============================================
     // ASSETS MAP - Centralized Image Management
     // ============================================
+    // 
+    // KAKO ZAMENITI LINKOVE ZA GHL:
+    // 1. Uploduj sve slike u GHL Media Library
+    // 2. Kopiraj CDN linkove iz GHL-a
+    // 3. Zameni vrednosti ispod sa GHL CDN linkovima
+    // 
+    // Primer GHL CDN linka:
+    // "hero1": "https://cdn.gohighlevel.com/account123/media/Hero1.png"
+    //
+    // ============================================
+    
     const ASSETS = {
       // Hero Section
       "hero1": "/Hero1.png",
@@ -1085,14 +1330,24 @@
       "ts-5": "/ts-5.png",
       
       // VSL / Hero (for gated video)
-      "vsl-thumbnail": "/hero-2.png"
+      "vsl-thumbnail": "/hero-2.png",
+      
+      // Portals Icons (for carousel)
+      "ikon-1": "img/portals/ikon-1.png",
+      "ikon-2": "img/portals/ikon-2.png",
+      "ikon-3": "img/portals/ikon-3.png",
+      "ikon-4": "img/portals/ikon-4.png",
+      "ikon-5": "img/portals/ikon-5.png",
+      "ikon-6": "img/portals/ikon-6.png"
     };
 
     // Generate testimonial asset keys programmatically
+    // OVO SE AUTOMATSKI GENERIŠE - samo zameni base path ispod ako koristiš GHL CDN
+    const TESTIMONIAL_BASE_PATH = "img/TESTEMES"; // Za GHL: "https://cdn.gohighlevel.com/account123/media/TESTEMES"
     for (let block = 1; block <= 4; block++) {
       for (let slide = 1; slide <= 8; slide++) {
         const key = `ts_b${block}_s${slide}`;
-        ASSETS[key] = `img/TESTEMES/TS-B${block}-S${slide}.png`;
+        ASSETS[key] = `${TESTIMONIAL_BASE_PATH}/TS-B${block}-S${slide}.png`;
       }
     }
 
