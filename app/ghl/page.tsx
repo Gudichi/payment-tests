@@ -411,6 +411,83 @@ export default function GHLPage() {
           </div>
         </section>
 
+        {/* Section 1: Checklist + CTA */}
+        <Section bg="white">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
+            <div>
+              <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">
+                Ovo će se promeniti nakon što pogledaš TRENING
+              </h2>
+              <p className="mt-2 text-lg text-espresso/80">(već pri sledećem izlasku iz kuće)</p>
+            </div>
+            <ul className="mx-auto max-w-3xl space-y-3 text-left text-lg text-espresso/85">
+              {[
+                'Kako da prestaneš da budeš „viđena" i postaneš IZABRANA',
+                "Kako da on napravi prvi korak, a ti ostaneš dama (bez scene)",
+                "Kako da signal funkcioniše u kafiću, na poslu, u teretani, na svadbi (uživo, ne online)",
+                'Zašto ti se godinama vrti isti film i kako da napokon imaš oružje u rukavu „za ceo život"',
+                'Najvažnije: kako da prestane ono tiho pitanje „Da li sam uopšte dovoljno poželjna?" jer ćeš napokon videti reakciju u realnom svetu',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <Check className="mt-1 h-5 w-5 text-cherry flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <button className="mt-4 bg-[#1A1412] text-[#F6F1EC] px-10 py-5 rounded-2xl text-[clamp(1rem,2vw,1.125rem)] font-bold uppercase tracking-[0.05em] shadow-card hover:opacity-90 transition-opacity">
+              ŽELIM POGLEDATI TRENING ODMAH
+            </button>
+          </div>
+        </Section>
+
+        {/* Section 2: Testimonials (NOT a step) */}
+        <Section bg="white">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cherry/90 italic">
+              Pogledaj ispod
+            </p>
+            <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">
+              Dojmovi polaznica koje su prošle kroz Signale:
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 w-full">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                <Image
+                  key={num}
+                  src={`/TS-B1-S${num}.png`}
+                  alt={`Testimonial ${num}`}
+                  width={620}
+                  height={420}
+                  className="mx-auto w-full rounded-3xl object-contain"
+                />
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* Section 3: Duplicate Author Section */}
+        <Section bg="white">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center text-lg leading-relaxed text-espresso/85">
+            <h2 className="font-heading text-3xl font-bold text-espresso sm:text-4xl">Tko stoji iza Signala Strasti?</h2>
+            <Image src="/Tim.png" alt="Dunja i tim" width={680} height={520} className="mx-auto w-full rounded-3xl sm:w-1/2" />
+            <p className="max-w-3xl">
+              Ja sam Dunja, godinama promatram kako muškarci uistinu reagiraju kad im se neka žena svidi... i što se zapravo
+              događa prije nego priđu.
+            </p>
+            <p className="max-w-3xl">
+              Specijalistica sam za neverbalnu komunikaciju i već 10 godina pomažem ženama da vrate ono što su mislile da su
+              izgubile: svoju prisutnost, magnetizam i sigurnost u vlastito tijelo.
+            </p>
+            <p className="max-w-3xl">
+              Autorica sam knjige „Što muškarci zapravo žele", i gostovala sam na brojnim televizijama gdje sam govorila o
+              onome što se ne kaže naglas: što privlači, a što gasi mušku inicijativu.
+            </p>
+            <p className="max-w-3xl">
+              "Signali Strasti" nisu proizvod. To je rezultat mog rada sa stvarnim ženama koje nisu htjele glumiti, ni igrati
+              igrice, ni biti nečije "rješenje". One su samo htjele da ih se opet vidi.
+            </p>
+          </div>
+        </Section>
+
         <Section bg="white">
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center text-lg leading-relaxed text-espresso/90">
             <div className="space-y-4 max-w-3xl">
