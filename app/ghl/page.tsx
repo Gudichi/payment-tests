@@ -347,28 +347,30 @@ export default function GHLPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([productSchema, faqSchema]) }}
       />
-      {/* Announcement Bar */}
-      <div className="bg-[#7b4121] py-3 text-center text-xs font-semibold uppercase tracking-[0.2em] text-white">
-        EKSKLUZIVNI BESPLATNI TRENING
-      </div>
       <main className="space-y-16 py-6 sm:space-y-24 sm:py-12">
         {/* ATF Hero Section */}
-        <section className="bg-ivory px-4 py-10 text-espresso sm:px-6 sm:py-14">
+        <section className="bg-ivory px-4 py-8 text-espresso sm:px-6 sm:py-12">
           <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center text-center">
+            {/* Badge Box */}
+            <div className="inline-flex items-center gap-3 bg-espresso text-[#F5EFE6] px-8 py-4 rounded-2xl text-[clamp(1rem,2.5vw,1.25rem)] font-bold uppercase tracking-[0.15em] mb-6 shadow-card">
+              <span className="w-2.5 h-2.5 rounded-full bg-cherry shadow-[0_0_8px_rgba(194,72,88,0.8)] animate-led-blink flex-shrink-0" />
+              <span>EKSKLUZIVNI BESPLATNI TRENING</span>
+            </div>
+
             {/* Hero Headline */}
-            <h1 className="font-heading text-[clamp(1.75rem,5vw,3rem)] font-extrabold leading-tight text-espresso mb-6" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
-              Počni <strong className="text-cherry">OD DANAS</strong> da šalješ signal zbog kojeg kvalitetan muškarac prestane da „samo gleda" i priđe ti uživo, kao da je odluka već doneta: <strong className="text-cherry">„NJU BIRAM."</strong>
+            <h1 className="font-heading text-[clamp(1.75rem,5vw,3rem)] font-normal italic leading-[1.3] text-espresso mb-6 max-w-[900px]" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
+              Počni <span className="uppercase text-cherry font-extrabold not-italic">OD DANAS</span> da šalješ signal <span className="text-cherry font-bold italic">zbog kojeg kvalitetan muškarac</span> prestane da „samo gleda" <span className="text-cherry not-italic">i priđe ti uživo, kao da je odluka već doneta:</span> <span className="text-espresso italic">„NJU BIRAM."</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-[clamp(1rem,2.5vw,1.25rem)] leading-relaxed text-espresso/85 max-w-[800px] mb-6">
-              U ovoj kratkoj reportaži pokazujem ti jedan ženski mikro-signal koji mu u sekundi daje dozvolu da priđe, bez toga da radiš bilo šta „napadno", bez aplikacija, bez slanja poruka prva i bez toga da moraš da ističeš sise i guzicu da bi te neko „primetio".
+            <p className="font-heading text-[clamp(1rem,2.5vw,1.25rem)] leading-relaxed text-espresso/85 max-w-[800px] mb-6" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
+              <span className="not-italic font-normal">U ovoj kratkoj reportaži</span> <span className="italic font-bold">pokazujem ti jedan ženski mikro-signal</span> <span className="italic font-bold">koji mu u sekundi daje dozvolu da priđe</span> <span className="not-italic font-normal">, bez toga da radiš bilo šta „napadno", bez aplikacija, bez slanja poruka prva</span> <span className="italic font-bold">i bez toga da moraš da ističeš sise i guzicu da bi te neko „primetio".</span>
             </p>
 
-            {/* Note / Callout */}
-            <div className="bg-cherry/8 border-l-4 border-cherry px-6 py-4 mb-8 max-w-[700px] rounded text-base leading-relaxed text-espresso">
-              Ovo je za žene koje žele pažnju koja ima težinu: od muškarca koji ima inicijativu, karakter i plan.
-            </div>
+            {/* Note */}
+            <p className="font-heading text-[clamp(1rem,2.5vw,1.25rem)] leading-relaxed text-center max-w-[700px] mb-8 text-espresso" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
+              <span className="font-bold italic">Ovo je za žene koje žele pažnju koja ima težinu:</span> <span className="text-cherry font-bold not-italic">od muškarca koji ima inicijativu, karakter i plan.</span>
+            </p>
 
             {/* Wistia Video */}
             <div className="relative w-full max-w-[900px] mb-8" style={{ paddingBottom: "56.25%" }}>
@@ -378,20 +380,32 @@ export default function GHLPage() {
               />
             </div>
 
-            {/* Portals Icon Carousel */}
-            <div className="w-full overflow-hidden py-8 bg-white my-8">
-              <div className="flex gap-8 animate-scroll-portals">
-                {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map((num, idx) => (
-                  <div key={idx} className="flex-shrink-0 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] flex items-center justify-center group">
-                    <Image
-                      src={`/ikon-${num}.png`}
-                      alt={`Portal ikona ${num}`}
-                      width={150}
-                      height={150}
-                      className="w-full h-full object-contain opacity-85 group-hover:opacity-100 transition-all portal-icon"
-                    />
+            {/* CTA Button */}
+            <button className="inline-block bg-[#1C7C7D] text-white px-8 py-4 rounded-2xl text-base font-semibold uppercase tracking-[0.05em] shadow-card hover:bg-[#165a5c] hover:-translate-y-0.5 hover:shadow-md transition-all mb-8">
+              ŽELIM POGLEDATI TRENING I POSLATI PRVE SIGNALE
+            </button>
+
+            {/* Uskoro Na Label + Full-Width Portals Carousel */}
+            <div className="w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] bg-ivory py-6 my-6">
+              <div className="max-w-[1000px] mx-auto px-4">
+                <p className="font-heading text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-cherry text-center uppercase tracking-[0.1em] mb-4" style={{ fontFamily: 'var(--font-heading), Poppins, sans-serif' }}>
+                  USKORO NA:
+                </p>
+                <div className="w-full overflow-hidden">
+                  <div className="flex gap-16 animate-scroll-portals">
+                    {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map((num, idx) => (
+                      <div key={idx} className="flex-shrink-0 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] flex items-center justify-center px-6">
+                        <Image
+                          src={`/ikon-${num}.png`}
+                          alt={`Portal ikona ${num}`}
+                          width={150}
+                          height={150}
+                          className="w-full h-full object-contain opacity-85 group-hover:opacity-100 transition-all portal-icon"
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>

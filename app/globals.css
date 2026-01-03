@@ -104,13 +104,43 @@ table img {
   background-color: transparent;
 }
 
+/* LED Dot Blink Animation */
+@keyframes led-blink {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+  }
+}
+
+.animate-led-blink {
+  animation: led-blink 1.5s ease-in-out infinite;
+}
+
+/* Badge Glow Animation */
+@keyframes badge-glow {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(194, 72, 88, 0.2);
+  }
+  50% {
+    box-shadow: 0 2px 12px rgba(194, 72, 88, 0.4);
+  }
+}
+
+.animate-badge-glow {
+  animation: badge-glow 1.5s ease-in-out infinite;
+}
+
 /* Portals Icon Carousel Animation */
 @keyframes scroll-portals {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-120px * 6 - 2rem * 6));
+    transform: translateX(calc(-140px * 6 - 4rem * 6));
   }
 }
 
@@ -120,13 +150,13 @@ table img {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-150px * 6 - 2rem * 6));
+      transform: translateX(calc(-170px * 6 - 4rem * 6));
     }
   }
 }
 
 .animate-scroll-portals {
-  animation: scroll-portals 30s linear infinite;
+  animation: scroll-portals 35s linear infinite;
 }
 
 .animate-scroll-portals:hover {
