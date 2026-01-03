@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { sendProductEmail, ProductType } from "@/lib/postmark";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null;
 
 function isValidEmailBasic(email: string) {
   if (!email || typeof email !== "string") return false;
@@ -88,8 +88,8 @@ export async function POST(req: Request) {
   const body = await req.text();
   const sig = req.headers.get("stripe-signature");
 
-  if (!sig || !process.env.STRIPE_WEBHOOK_SECRET) {
-    return NextResponse.json({ error: "Missing stripe signature" }, { status: 400 });
+  if (!sig || !process.env.STRIPE_WEBHOOK_SECRET || !stripe) {
+    return NextResponse.json({ error: "Missing stripe signature or configuration" }, { status: 400 });
   }
 
   let event: Stripe.Event;

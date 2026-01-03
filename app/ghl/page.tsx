@@ -63,7 +63,7 @@ const bonuses = [
     title: "Bonus 1 — Prvi dojam koji ostaje s njim",
     image: "/Bonus-1.png",
     description:
-      "3 neverbalna detalja + 2 rečenice zbog kojih pomisli: "Ona je… drugačija." (Ovaj vodič se inače prodaje zasebno za 97€, ovdje ga dobivaš unutar paketa.)",
+      "3 neverbalna detalja + 2 rečenice zbog kojih pomisli: \"Ona je… drugačija.\" (Ovaj vodič se inače prodaje zasebno za 97€, ovdje ga dobivaš unutar paketa.)",
   },
   {
     title: "Bonus 2 — Neka on napravi prvi korak",
@@ -124,7 +124,7 @@ const testimonialImages = ["/ts-1.png", "/ts-2.png", "/ts-3.png", "/ts-4.png", "
 const productDetails = [
   { label: "Trajanje", value: "cca 1h 20min čiste primjene u svakodnevnim situacijama" },
   { label: "Format", value: "Digitalni vodič + Signal kartice (PDF & interaktivno)" },
-  { label: "Autorica", value: "Dunja Kramarić (autorica knjige "Što muškarci zapravo žele")" },
+  { label: "Autorica", value: "Dunja Kramarić (autorica knjige \"Što muškarci zapravo žele\")" },
   { label: "Dizajniran za", value: "Žene koje žele više pažnje — bez forsiranja" },
   { label: "Emocionalni ton", value: "Inteligentno, senzualno, samopouzdano" },
   { label: "Jezik", value: "Hrvatski 🇭🇷" },
@@ -152,7 +152,7 @@ const amazonReviews = [
   {
     name: "Maja Šimunović",
     body:
-      "Najbolje u svemu je što ne moraš ništa glumit. Samo lagano promijeniš energiju i odjednom te ljudi primijete. Ja sam imala prvi "prilazak" nakon 48 sati.",
+      "Najbolje u svemu je što ne moraš ništa glumit. Samo lagano promijeniš energiju i odjednom te ljudi primijete. Ja sam imala prvi \"prilazak\" nakon 48 sati.",
   },
   {
     name: "Ivana Leko",
@@ -213,7 +213,7 @@ const faqItems = [
       "Ne. Signali su dizajnirani da funkcioniraju i kod najtiših žena. Diskretni su, prirodni i ne traže nikakvu glumu.",
   },
   {
-    question: "Hoće li izgledati kao da "flertam"?",
+    question: "Hoće li izgledati kao da \"flertam\"?",
     answer:
       "Ne, signali nisu koketiranje. Oni samo otvaraju prostor da muškarac procijeni da mu daješ zeleno svjetlo — na vrlo prirodan način.",
   },
@@ -233,7 +233,7 @@ const faqItems = [
       "Ne moraš. Signali rade i u trenirci i u haljini — jer se baziraju na govoru tijela, ne na izgledu.",
   },
   {
-    question: "Hoće li mi ovo pomoći ako sam dugo "van igre"?",
+    question: "Hoće li mi ovo pomoći ako sam dugo \"van igre\"?",
     answer:
       "Da — zapravo, takvim ženama najbrže radi. Signali vraćaju prirodnu ženstvenu energiju koja je uvijek tu, samo malo uspavana.",
   },
@@ -268,7 +268,7 @@ const faqItems = [
   {
     question: "Mogu li primijeniti signale i preko poruka?",
     answer:
-      "Da — zato uključuješ "Kako pisati da te poželi vidjeti", koji pomaže da se interes održi i ubrza prvi susret.",
+      "Da — zato uključuješ \"Kako pisati da te poželi vidjeti\", koji pomaže da se interes održi i ubrza prvi susret.",
   },
   {
     question: "Je li teško pogoditi pravi trenutak za signal?",
@@ -287,7 +287,7 @@ const faqItems = [
   },
   {
     question: "Mogu li pogriješiti s primjenom signala?",
-    answer: "Ne možeš. I ako ga napraviš "nespretno", muškarac će ga i dalje osjetiti kao toplu otvorenost.",
+    answer: "Ne možeš. I ako ga napraviš \"nespretno\", muškarac će ga i dalje osjetiti kao toplu otvorenost.",
   },
   {
     question: "Može li mi ovo pomoći ako sam razvedena / u zrelijoj dobi?",
