@@ -29,8 +29,8 @@ export function Section({
   align = "left",
 }: SectionProps) {
   return (
-    <section id={id} className={cn(bgClasses[bg], "px-6 py-16 sm:px-8 sm:py-24", className)}>
-      <div className={cn("mx-auto w-full max-w-[1120px]", contentClassName)}>
+    <section id={id} className={cn(bgClasses[bg], "px-4 py-16 sm:px-6 sm:py-24", className)}>
+      <div className={cn("mx-auto w-full max-w-[1100px]", contentClassName)}>
         {(eyebrow || title || subtitle) && (
           <div className={cn("mb-10", align === "center" ? "text-center" : "text-left")}>
             {eyebrow && (
