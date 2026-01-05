@@ -13,7 +13,7 @@ export default async function PortalPage() {
       {/* Hero Card */}
       <Card className="bg-white border-[#F5E5E0] shadow-sm overflow-hidden">
         <CardContent className="p-12 lg:p-16 text-center relative">
-          <h1 className="font-serif text-5xl lg:text-6xl text-[#8B4566] mb-6 leading-tight">
+          <h1 className="font-serif text-5xl lg:text-6xl text-[#972159] mb-6 leading-tight">
             Dobrodošla!
           </h1>
           <p className="font-body text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed mb-8">
@@ -43,7 +43,7 @@ export default async function PortalPage() {
             >
               <CardContent className="p-6 space-y-4">
                 <div className="space-y-1">
-                  <h3 className="font-display text-lg text-[#8B4566]">
+                  <h3 className="font-display text-lg text-[#972159]">
                     {module.title}
                   </h3>
                   <Badge

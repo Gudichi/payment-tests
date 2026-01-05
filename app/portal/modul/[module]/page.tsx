@@ -46,7 +46,7 @@ export default async function ModulePage({
       {/* Module Header */}
       <Card className="mb-24 bg-white border-[#F5E5E0] shadow-xl overflow-hidden">
         <CardContent className="p-12 lg:p-16 text-center relative">
-          <h1 className="font-serif italic text-4xl lg:text-6xl mb-8 text-[#8B4566]">
+          <h1 className="font-serif italic text-4xl lg:text-6xl mb-8 text-[#972159]">
             {module?.title}
           </h1>
           <p className="font-body text-xl lg:text-2xl text-[#2C2C2C] max-w-3xl mx-auto leading-relaxed mb-10">
@@ -65,10 +65,10 @@ export default async function ModulePage({
       {/* Lessons Section */}
       <div className="space-y-8">
         <div className="text-center">
-          <h2 className="font-display text-2xl lg:text-3xl text-[#8B4566] py-6">
+          <h2 className="font-display text-2xl lg:text-3xl text-[#972159] py-6">
             Lekcije u ovom modulu
           </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-[#FF6B9D] to-[#8B4566] rounded-full mx-auto"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-[#FF6B9D] to-[#972159] rounded-full mx-auto"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -84,7 +84,7 @@ export default async function ModulePage({
                 }
               >
                 <CardContent className="p-6 space-y-4 flex items-center h-full">
-                  <h3 className="text-lg text-[#8B4566]">
+                  <h3 className="text-lg text-[#972159]">
                     {i + 1}. {lesson.title}
                   </h3>
                 </CardContent>

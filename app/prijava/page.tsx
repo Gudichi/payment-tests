@@ -33,7 +33,7 @@ export default async function LoginPage() {
 
             {/* Right Side - Visual */}
             <div className="order-1 lg:order-2 text-center lg:text-left">
-              <h2 className="font-serif text-4xl lg:text-5xl text-[#8B4566] leading-relaxed mb-6">
+              <h2 className="font-serif text-4xl lg:text-5xl text-[#972159] leading-relaxed mb-6">
                 Dobrodošla u{" "}
                 <span className="text-[#FF6B9D]">Rečenice Strasti</span>
               </h2>
@@ -42,7 +42,7 @@ export default async function LoginPage() {
                 sofisticirane komunikacijske tehnike.
               </p>
               <div className="text-[#FF6B9D] text-4xl mb-6">💞</div>
-              <p className="font-serif text-2xl lg:text-3xl text-[#8B4566] italic max-w-lg mx-auto lg:mx-0">
+              <p className="font-serif text-2xl lg:text-3xl text-[#972159] italic max-w-lg mx-auto lg:mx-0">
                 &ldquo;Riječi su most između dva srca&rdquo;
               </p>
             </div>

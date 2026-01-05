@@ -59,7 +59,7 @@ export default async function LessonPage({
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <h1 className="font-serif italic font-medium text-4xl lg:text-5xl pb-2 text-[#8B4566] leading-snug">
+      <h1 className="font-serif italic font-medium text-4xl lg:text-5xl pb-2 text-[#972159] leading-snug">
         {l?.title}
       </h1>
       <Markdown remarkPlugins={[remarkGfm]}>{l?.content || ""}</Markdown>

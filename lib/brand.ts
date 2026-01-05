@@ -1,7 +1,7 @@
 export const brandColors = {
   espresso: "#1A1412",
   cherry: "#C24858",
-  wine: "#8B4566",
+  wine: "#972159",
   blush: "#E9C9C3",
   ivory: "#F6F1EC",
   taupe: "#C8B8A6",

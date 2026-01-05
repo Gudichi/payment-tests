@@ -39,7 +39,7 @@ export const LastLessonCard = ({ modules }: { modules: Module[] }) => {
               <span className="text-xl">📖</span>
             </div>
             <div className="space-y-1 sm:text-left">
-              <h3 className="font-display text-lg text-[#8B4566] mb-1">
+              <h3 className="font-display text-lg text-[#972159] mb-1">
                 Lekcija na kojoj si stala
               </h3>
               <p className="font-body text-[#2C2C2C] text-sm">

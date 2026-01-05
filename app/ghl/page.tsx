@@ -785,43 +785,43 @@ export default function GHLPage() {
               {/* Checklist */}
               <ul className="max-w-3xl mx-auto space-y-4 text-left">
                 <li className="flex items-start gap-3">
-                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#8B4566]" />
+                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#972159]" />
                   <span className="text-lg text-espresso/85 leading-relaxed">
                     Kako tvoj govor tela trenutno nesvesno šalje <span className="font-semibold text-espresso">"ZID"</span> i kako ga pretvoriti u jasan, ženstven <span className="font-semibold text-espresso">"OTVORENI PROLAZ"</span> bez da išta govoriš.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#8B4566]" />
+                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#972159]" />
                   <span className="text-lg text-espresso/85 leading-relaxed">
                     Koji su tačno mikro-signali koji muškom mozgu daju dozvolu: "Sigurno je. Smem prići." i kako ih složiti u redosled koji radi.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#8B4566]" />
+                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#972159]" />
                   <span className="text-lg text-espresso/85 leading-relaxed">
                     Kako prepoznati pravi trenutak (timing) i izbeći onaj osećaj da si "previše" ili da si poslala krivu poruku.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#8B4566]" />
+                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#972159]" />
                   <span className="text-lg text-espresso/85 leading-relaxed">
                     Kako se isti signal koristi drugačije u kafiću, na poslu, u teretani i u društvu, tako da uvek ostaneš prirodna i sigurna.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#8B4566]" />
+                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#972159]" />
                   <span className="text-lg text-espresso/85 leading-relaxed">
                     Kako razlikovati "zeleno", "crveno" i "nije taj tip" kroz mini-provere, da prestaneš pogađati i prestaneš overthinkati.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#8B4566]" />
+                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#972159]" />
                   <span className="text-lg text-espresso/85 leading-relaxed">
                     Kako se regulisati u trenutku (bez freeze-a i povlačenja), da signal stvarno izađe iz tebe mirno, a ne da ga telo ugasi u zadnjoj sekundi.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#8B4566]" />
+                  <Check className="h-5 w-5 flex-shrink-0 mt-1 text-[#972159]" />
                   <span className="text-lg text-espresso/85 leading-relaxed">
                     Kako koristiti Signale kao filter, da ne pališ muškarce koji traže igru i dramu, nego one koji već imaju inicijativu, ali čekaju dozvolu.
                   </span>
