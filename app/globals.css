@@ -172,3 +172,17 @@ table img {
 .group:hover .portal-icon {
   filter: grayscale(0%);
 }
+
+/* Subtle Bounce Animation for Double Chevron Down */
+@keyframes subtle-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+.animate-subtle-bounce {
+  animation: subtle-bounce 2s ease-in-out infinite;
+}

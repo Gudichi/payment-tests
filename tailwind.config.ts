@@ -60,6 +60,7 @@ const config = {
         },
         espresso: brandColors.espresso,
         cherry: brandColors.cherry,
+        wine: brandColors.wine,
         blush: brandColors.blush,
         ivory: brandColors.ivory,
         taupe: brandColors.taupe,

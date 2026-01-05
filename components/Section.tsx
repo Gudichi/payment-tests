@@ -29,17 +29,17 @@ export function Section({
   align = "left",
 }: SectionProps) {
   return (
-    <section id={id} className={cn(bgClasses[bg], "px-4 py-16 sm:px-6 sm:py-24", className)}>
-      <div className={cn("mx-auto w-full max-w-[1100px]", contentClassName)}>
+    <section id={id} className={cn(bgClasses[bg], "py-16 sm:py-24", className)}>
+      <div className={cn("mx-auto w-full max-w-[1100px] px-4 sm:px-6", contentClassName)}>
         {(eyebrow || title || subtitle) && (
           <div className={cn("mb-10", align === "center" ? "text-center" : "text-left")}>
             {eyebrow && (
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cherry">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-wine">
                 {eyebrow}
               </p>
             )}
             {title && (
-              <h2 className="mt-4 font-heading text-3xl font-bold leading-tight text-espresso sm:text-5xl">
+              <h2 className="mt-4 font-heading text-4xl font-bold leading-tight text-espresso sm:text-5xl">
                 {title}
               </h2>
             )}

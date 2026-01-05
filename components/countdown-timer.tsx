@@ -2,21 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-const formatTime = (time: number) => time.toString().padStart(2, "0");
+const formatTime = (time: number | undefined) => {
+  if (time === undefined || time === null) return "00";
+  return time.toString().padStart(2, "0");
+};
 
 export const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({
-    hours: 19,
-    minutes: 27,
+    days: 1,
+    hours: 5,
+    minutes: 0,
     seconds: 0,
   });
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
-        if (prev.hours === 0 && prev.minutes === 0 && prev.seconds === 0) {
+        if (prev.days === 0 && prev.hours === 0 && prev.minutes === 0 && prev.seconds === 0) {
           clearInterval(timer);
-          return prev; // Stop at 00:00:00
+          return prev; // Stop at 00:00:00:00
         }
 
         if (prev.seconds > 0) {
@@ -24,7 +28,9 @@ export const CountdownTimer = () => {
         } else if (prev.minutes > 0) {
           return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
         } else if (prev.hours > 0) {
-          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        } else if (prev.days > 0) {
+          return { days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
         }
 
         return prev;
@@ -36,11 +42,12 @@ export const CountdownTimer = () => {
 
   return (
     <div className="text-center">
-      <p className="font-sans text-gray-600 mb-4">⏰ OSTALO TI JE SAMO:</p>
-      <div className="inline-block border-2 border-green-300 text-gray-800 px-6 py-3 rounded-lg">
-        <div className="text-2xl font-bold font-mono">
-          {formatTime(timeLeft.hours)}:{formatTime(timeLeft.minutes)}:
-          {formatTime(timeLeft.seconds)}
+      <div className="inline-block border-2 border-wine/30 text-espresso px-6 py-3 rounded-lg bg-ivory/50">
+        <div className="text-2xl font-bold font-mono text-wine">
+          {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:{formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
+        </div>
+        <div className="text-xs text-espresso/70 mt-2 uppercase tracking-wide">
+          Dan : Sat : Min : Sek
         </div>
       </div>
     </div>
