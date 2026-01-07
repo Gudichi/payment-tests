@@ -1,0 +1,1659 @@
+<!-- ============================================
+     GHL2 LANDING PAGE - SINGLE BLOCK VERSION
+     Self-contained HTML + CSS + JS
+     ============================================ -->
+
+<style>
+/* ============================================
+   1) TOKENS (boje, font-size, spacing)
+   ============================================ */
+:root {
+  --color-espresso: #1A1412;
+  --color-cherry: #C24858;
+  --color-wine: #972159;
+  --color-blush: #E9C9C3;
+  --color-ivory: #F6F1EC;
+  --color-taupe: #C8B8A6;
+  
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 3rem;
+  
+  --shadow-sm: 0 10px 25px rgba(26, 20, 18, 0.08);
+  --shadow-md: 0 20px 40px rgba(26, 20, 18, 0.12);
+  --shadow-lg: 0 30px 60px rgba(26, 20, 18, 0.16);
+  --shadow-card: 0 12px 25px rgba(26, 20, 18, 0.12);
+}
+
+/* ============================================
+   2) COMPONENTS (card/box stilovi, testimonial grid, button stilovi)
+   ============================================ */
+
+#ghl2-page {
+  font-family: var(--font-body);
+  background: var(--color-ivory);
+  color: var(--color-espresso);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+#ghl2-page * {
+  box-sizing: border-box;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Section */
+.section {
+  padding: 4rem 0;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 6rem 0;
+  }
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--color-wine);
+  color: var(--color-ivory);
+  border: none;
+  border-radius: var(--radius-xl);
+  padding: 1.1rem 3rem;
+  font-weight: 700;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.btn-primary:hover {
+  background: #7A3B57;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(26, 20, 18, 0.1);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* Typography */
+h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6.4vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-espresso);
+  margin: 0 0 1rem 0;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-espresso);
+  margin: 0 0 1.5rem 0;
+}
+
+@media (min-width: 640px) {
+  h2 {
+    font-size: 3rem;
+  }
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-espresso);
+  margin: 0 0 1rem 0;
+}
+
+p {
+  margin: 0 0 1rem 0;
+  line-height: 1.7;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Checklist */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.625rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(26, 20, 18, 0.85);
+}
+
+.checklist-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-wine);
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+/* Cards/Boxes */
+.card {
+  border-radius: var(--radius-3xl);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(246, 241, 236, 0.7);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 640px) {
+  .card {
+    padding: 2rem;
+  }
+}
+
+/* Testimonial Grid */
+.testimonial-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   3) SECTIONS (ATF, testimonijali, offer, garancija, tko stoji iza, itd.)
+   ============================================ */
+
+/* Announcement Bar */
+.announcement-bar {
+  background: var(--color-wine);
+  color: var(--color-ivory);
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  overflow: hidden;
+  position: relative;
+}
+
+.announcement-text {
+  white-space: nowrap;
+  animation: scroll-announcement 20s linear infinite;
+}
+
+@keyframes scroll-announcement {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .hero {
+    padding: 2rem 0;
+  }
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-subheadline {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(26, 20, 18, 0.85);
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto 1rem;
+}
+
+/* Video Container */
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  aspect-ratio: 16 / 9;
+}
+
+.video-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Chevron Down */
+.chevron-down {
+  margin: 0.75rem 0;
+  color: var(--color-wine);
+  animation: subtle-bounce 2s ease-in-out infinite;
+}
+
+@keyframes subtle-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* Portal Carousel */
+.portal-carousel {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: var(--color-ivory);
+  padding: 0.25rem 0 0.5rem;
+  overflow: hidden;
+}
+
+.portal-track {
+  display: flex;
+  gap: 0.5rem;
+  animation: scroll-portals 30s linear infinite;
+}
+
+@media (min-width: 640px) {
+  .portal-track {
+    gap: 0.625rem;
+  }
+}
+
+@keyframes scroll-portals {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.portal-item {
+  flex-shrink: 0;
+  width: 108px;
+  height: 108px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .portal-item {
+    width: 137px;
+    height: 137px;
+  }
+}
+
+.portal-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+}
+
+.portal-item:hover img {
+  opacity: 1;
+}
+
+/* Social Proof Image */
+.social-proof {
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+
+@media (min-width: 640px) {
+  .social-proof {
+    width: 40%;
+  }
+}
+
+/* FAQ Accordion */
+.faq-item {
+  border-radius: var(--radius-3xl);
+  border: 1px solid rgba(233, 201, 195, 0.5);
+  background: white;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-card);
+}
+
+.faq-summary {
+  display: flex;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-espresso);
+}
+
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-summary::after {
+  content: '+';
+  color: var(--color-wine);
+  font-size: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.faq-item[open] .faq-summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(233, 201, 195, 0.4);
+  font-size: 1rem;
+  color: rgba(26, 20, 18, 0.8);
+  line-height: 1.7;
+}
+
+/* ============================================
+   4) VSL GATE LOGIC (logika za show/hide sekcija nakon X sekundi videa)
+   ============================================ */
+
+/* Phase-based visibility */
+[data-phase="pre"] {
+  display: block;
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+[data-phase="post"] {
+  display: none;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+/* When VSL is unlocked (POST state) */
+.vsl-unlocked [data-phase="pre"] {
+  display: none !important;
+  opacity: 0;
+}
+
+.vsl-unlocked [data-phase="post"] {
+  display: block !important;
+  opacity: 1;
+}
+
+/* CTA under video (only visible in POST) */
+#cta-under-video {
+  display: none;
+  opacity: 0;
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.vsl-unlocked #cta-under-video {
+  display: block;
+  opacity: 1;
+}
+
+/* Smooth transitions */
+.fade-transition {
+  transition: opacity 300ms ease-in-out;
+}
+
+/* Countdown Timer */
+.countdown-timer {
+  text-align: center;
+  display: inline-block;
+  border: 2px solid rgba(151, 33, 89, 0.3);
+  color: var(--color-espresso);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: rgba(246, 241, 236, 0.5);
+}
+
+.countdown-display {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--color-wine);
+}
+
+.countdown-label {
+  font-size: 0.75rem;
+  color: rgba(26, 20, 18, 0.7);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+</style>
+
+<!-- ============================================
+    HTML STRUCTURE
+    ============================================ -->
+
+<div id="ghl2-page">
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+  <div class="announcement-text">
+    💕EKSKLUZIVNI BESPLATNI TRENING💕 TRAJE 7 MINUTE 💕 EKSKLUZIVNI BESPLATNI TRENING💕💕 EKSKLUZIVNI BESPLATNI TRENING💕 TRAJE 7 MINUTE 💕 EKSKLUZIVNI BESPLATNI TRENING💕💕
+  </div>
+</div>
+
+<main>
+  <!-- ATF Hero Section -->
+  <section class="section" style="background: var(--color-ivory);">
+    <div class="container">
+      <div class="hero">
+        <h1>Nauči Kako Žene na Balkanu Privlače Pažnju Kvalitetnih Muškaraca</h1>
+        <p class="hero-subheadline">— Bez Filtera, Aplikacija ili Igrica — uz Jedan Signal o Kojem Nitko Ne Priča</p>
+        
+        <!-- Chevron Down -->
+        <div class="chevron-down">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        
+        <!-- Wistia Video -->
+        <div class="video-container">
+          <div class="video-wrapper">
+            <wistia-player media-id="v59k639lk4" aspect="1.7777777777777777"></wistia-player>
+          </div>
+        </div>
+        
+        <!-- CTA Button under video (POST phase only) -->
+        <div id="cta-under-video">
+          <button class="btn-primary" style="text-transform: none; text-align: center;">
+            Da. Želim poslati signal i doživeti prvi pravi prilazak – 97 €
+          </button>
+          <img src="/SocialProof.png" alt="Social proof" class="social-proof" style="margin-top: 1rem;">
+        </div>
+        
+        <!-- Checklist Section (PRE phase) -->
+        <div data-phase="pre" class="fade-transition">
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            Nakon ovog treninga, stvari će ti biti jasne:
+          </h3>
+          
+          <ul class="checklist" style="max-width: 48rem; margin: 0 auto 1.5rem; text-align: left;">
+            <li>
+              <svg class="checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Kako da prestaneš da budeš „viđena" i postaneš IZABRANA</span>
+            </li>
+            <li>
+              <svg class="checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Kako da on napravi prvi korak, a ti ostaneš dama (bez scene)</span>
+            </li>
+            <li>
+              <svg class="checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Kako da signal funkcioniše u kafiću, na poslu, u teretani, na svadbi (uživo, ne online)</span>
+            </li>
+          </ul>
+          
+          <button class="btn-primary" style="margin: 1rem 0;">
+            ŽELIM DA POGLEDAM TRENING I POŠALJEM PRVE SIGNALE
+          </button>
+          
+          <img src="/SocialProof.png" alt="Social proof" class="social-proof" style="margin-top: 1rem;">
+          
+          <p style="font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); margin-top: 0.5rem; margin-bottom: 1rem;">
+            100% BESPLATNO
+          </p>
+        </div>
+        
+        <!-- USKORO NA Section (PRE phase) -->
+        <div data-phase="pre" class="portal-carousel fade-transition">
+          <div class="container">
+            <h2 style="font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 600; color: var(--color-wine); text-align: center; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">
+              USKORO NA:
+            </h2>
+            <div style="width: 100%; overflow: hidden;">
+              <div class="portal-track">
+                
+                  <div class="portal-item">
+                    <img src="/ikon-1.png" alt="Portal ikona 1">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-2.png" alt="Portal ikona 2">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-3.png" alt="Portal ikona 3">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-4.png" alt="Portal ikona 4">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-5.png" alt="Portal ikona 5">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-6.png" alt="Portal ikona 6">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-1.png" alt="Portal ikona 1">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-2.png" alt="Portal ikona 2">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-3.png" alt="Portal ikona 3">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-4.png" alt="Portal ikona 4">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-5.png" alt="Portal ikona 5">
+                  </div>
+                
+                  <div class="portal-item">
+                    <img src="/ikon-6.png" alt="Portal ikona 6">
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Training Testimonials Section (PRE phase) -->
+  <section data-phase="pre" class="section fade-transition" style="background: var(--color-ivory);">
+    <div class="container">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
+        <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: var(--color-wine); font-style: italic;">
+          Pogledaj ispod
+        </p>
+        <h2>Dojmovi Polaznica Koje Su Pogledale Trening</h2>
+        <ul class="checklist" style="width: 100%; margin-top: 1.5rem; max-width: 48rem; margin-left: auto; margin-right: auto;">
+            <li style="font-size: 1.125rem;">
+              <svg class="checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-wine);">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Kako tvoj govor tela trenutno nesvesno šalje <span style="font-weight: 600; color: var(--color-espresso);">"ZID"</span> i kako ga pretvoriti u jasan, ženstven <span style="font-weight: 600; color: var(--color-espresso);">"OTVORENI PROLAZ"</span> bez da išta govoriš.</span>
+            </li>
+            <li style="font-size: 1.125rem;">
+              <svg class="checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-wine);">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Koji su tačno mikro-signali koji muškom mozgu daju dozvolu: "Sigurno je. Smem prići." i kako ih složiti u redosled koji radi.</span>
+            </li>
+            <li style="font-size: 1.125rem;">
+              <svg class="checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-wine);">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Kako prepoznati pravi trenutak (timing) i izbeći onaj osećaj da si "previše" ili da si poslala krivu poruku.</span>
+            </li>
+            <li style="font-size: 1.125rem;">
+              <svg class="checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-wine);">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Kako se isti signal koristi drugačije u kafiću, na poslu, u teretani i u društvu, tako da uvek ostaneš prirodna i sigurna.</span>
+            </li>
+            <li style="font-size: 1.125rem;">
+              <svg class="checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-wine);">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Kako se regulisati u trenutku (bez freeze-a i povlačenja), da signal stvarno izađe iz tebe mirno, a ne da ga telo ugasi u zadnjoj sekundi.</span>
+            </li>
+            <li style="font-size: 1.125rem;">
+              <svg class="checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-wine);">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <span>Kako koristiti Signale kao filter, da ne pališ muškarce koji traže igru i dramu, nego one koji već imaju inicijativu, ali čekaju dozvolu.</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- "Za 7 Dana Možeš Doći..." Section - 4 Koraka (POST phase) -->
+  <section data-phase="post" class="section fade-transition" style="background: white;">
+    <div class="container">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
+        <h2 style="font-weight: 700; max-width: 56rem; line-height: 1.2;">
+          Za 7 Dana Možeš Doći Do Onog Trenutka: "Evo Ga. Stvarno Je Prišao."
+        </h2>
+        <p class="hero-subheadline" style="margin-top: 1rem;">
+          Evo kako program funkcionira u 4 koraka:
+        </p>
+        <img src="/s-section8-1.png" alt="4 koraka programa" style="width: 100%; max-width: 900px; border-radius: var(--radius-3xl); margin-top: 2rem; margin-bottom: 2rem;">
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%; max-width: 48rem; margin-top: 1rem;">
+          
+            <div class="card" style="text-align: left;">
+              <div style="text-align: center;">
+                <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; color: var(--color-wine);">
+                  <span style="font-family: var(--font-heading); font-style: italic;">KORAK 1</span>
+                </p>
+                <h4 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-espresso); margin-top: 0.5rem;">Otvori aplikaciju</h4>
+              </div>
+              <div style="text-align: left;">
+                <img src="/Gif-1.gif" alt="Pregled aplikacije Signali Strasti" style="width: 100%; border-radius: var(--radius-2xl); margin-top: 1rem;">
+                <p style="font-size: 1rem; color: rgba(26, 20, 18, 0.85); line-height: 1.7; margin-top: 1rem;">
+                  Čim uđeš, sve te čeka spremno. Dobijaš kompletan spisak Signala sa jasnim uputstvima — kad, kako i zašto ih koristiti — tako da se nikada ne pitaš &#039;radim li ovo dobro?&#039;
+                </p>
+              </div>
+            </div>
+          
+            <div class="card" style="text-align: left;">
+              <div style="text-align: center;">
+                <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; color: var(--color-wine);">
+                  <span style="font-family: var(--font-heading); font-style: italic;">KORAK 2</span>
+                </p>
+                <h4 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-espresso); margin-top: 0.5rem;">Aktiviraj signal (1 min)</h4>
+              </div>
+              <div style="text-align: left;">
+                <img src="/aktiviraj-signale.png" alt="Aktiviranje signala" style="width: 100%; border-radius: var(--radius-2xl); margin-top: 1rem;">
+                <p style="font-size: 1rem; color: rgba(26, 20, 18, 0.85); line-height: 1.7; margin-top: 1rem;">
+                  Ne menjaš rutinu — samo izabereš jedan od preporučenih Signala za taj dan i koristiš ga u svom prirodnom okruženju. Sve traje manje od minute, ali pokreće puno više nego što misliš.
+                </p>
+              </div>
+            </div>
+          
+            <div class="card" style="text-align: left;">
+              <div style="text-align: center;">
+                <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; color: var(--color-wine);">
+                  <span style="font-family: var(--font-heading); font-style: italic;">KORAK 3</span>
+                </p>
+                <h4 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-espresso); margin-top: 0.5rem;">Oseti kako te gledaju drugačije</h4>
+              </div>
+              <div style="text-align: left;">
+                <img src="/gledadrukcije.webp" alt="Muškarac primećuje ženu" style="width: 100%; border-radius: var(--radius-2xl); margin-top: 1rem;">
+                <p style="font-size: 1rem; color: rgba(26, 20, 18, 0.85); line-height: 1.7; margin-top: 1rem;">
+                  Svaki signal je mikro gesta ili stav tvog tela. Dovoljno suptilan da se oseća prirodno, a dovoljno moćan da muškarci nesvesno reaguju. Ne moraš govoriti niti glumiti.
+                </p>
+              </div>
+            </div>
+          
+            <div class="card" style="text-align: left;">
+              <div style="text-align: center;">
+                <p style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; color: var(--color-wine);">
+                  <span style="font-family: var(--font-heading); font-style: italic;">KORAK 4</span>
+                </p>
+                <h4 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-espresso); margin-top: 0.5rem;">Podeli što si primetila</h4>
+              </div>
+              <div style="text-align: left;">
+                <img src="/Podjeli-nauceno.png" alt="Podeli iskustvo u aplikaciji" style="width: 100%; border-radius: var(--radius-2xl); margin-top: 1rem;">
+                <p style="font-size: 1rem; color: rgba(26, 20, 18, 0.85); line-height: 1.7; margin-top: 1rem;">
+                  Pogledi. Osmeh. Prilasci. Tvoj govor tela preuzima posao. Ako želiš, javi mentorici u aplikaciji kako je prošlo — ili jednostavno zabeleži promenu za sebe.
+                </p>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Offer / Value Stack Section (POST phase) -->
+  <section data-phase="post" id="offer-section" class="section fade-transition" style="background: white;">
+    <div class="container">
+      <div style="display: flex; flex-direction: column; gap: 2rem; text-align: center; color: var(--color-espresso);">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+          <h2 style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--color-wine); max-width: 56rem;">
+            Od Trenutka Kad Uđeš, Prestaješ Se Pitati 'Je Li Do Mene' I Počinješ Znati Tačno Šta Radiš.
+          </h2>
+          <p style="font-family: var(--font-heading); font-size: 1.125rem; color: rgba(26, 20, 18, 0.85); line-height: 1.7; max-width: 800px;">
+            Ovo nije savet ni inspiracija, nego sistem koji uklanja nagađanje i daje ti jasan smer u stvarnim situacijama.
+          </p>
+        </div>
+        
+        <!-- Core Program - 4 Glavna Modula -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 48rem; margin: 0 auto; width: 100%;">
+          
+                <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.8);">
+                  <span style="width: 6rem;">5 zvjezdica</span>
+                  <div style="position: relative; height: 0.75rem; flex: 1; border-radius: 9999px; background: #e6e9f3;">
+                    <div style="position: absolute; left: 0; top: 0; height: 100%; border-radius: 9999px; background: var(--color-wine); width: 78%;"></div>
+                  </div>
+                  <span style="width: 2.5rem; text-align: right;">78%</span>
+                </div>
+              
+                <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.8);">
+                  <span style="width: 6rem;">4 zvjezdice</span>
+                  <div style="position: relative; height: 0.75rem; flex: 1; border-radius: 9999px; background: #e6e9f3;">
+                    <div style="position: absolute; left: 0; top: 0; height: 100%; border-radius: 9999px; background: var(--color-wine); width: 14%;"></div>
+                  </div>
+                  <span style="width: 2.5rem; text-align: right;">14%</span>
+                </div>
+              
+                <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.8);">
+                  <span style="width: 6rem;">3 zvjezdice</span>
+                  <div style="position: relative; height: 0.75rem; flex: 1; border-radius: 9999px; background: #e6e9f3;">
+                    <div style="position: absolute; left: 0; top: 0; height: 100%; border-radius: 9999px; background: var(--color-wine); width: 5%;"></div>
+                  </div>
+                  <span style="width: 2.5rem; text-align: right;">5%</span>
+                </div>
+              
+                <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.8);">
+                  <span style="width: 6rem;">2 zvjezdice</span>
+                  <div style="position: relative; height: 0.75rem; flex: 1; border-radius: 9999px; background: #e6e9f3;">
+                    <div style="position: absolute; left: 0; top: 0; height: 100%; border-radius: 9999px; background: var(--color-wine); width: 2%;"></div>
+                  </div>
+                  <span style="width: 2.5rem; text-align: right;">2%</span>
+                </div>
+              
+                <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.8);">
+                  <span style="width: 6rem;">1 zvjezdica</span>
+                  <div style="position: relative; height: 0.75rem; flex: 1; border-radius: 9999px; background: #e6e9f3;">
+                    <div style="position: absolute; left: 0; top: 0; height: 100%; border-radius: 9999px; background: var(--color-wine); width: 1%;"></div>
+                  </div>
+                  <span style="width: 2.5rem; text-align: right;">1%</span>
+                </div>
+              
+            </div>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            
+              <article style="border-radius: var(--radius-2xl); border: 1px solid #dfe3f0; background: white; padding: 1.25rem;">
+                <p style="font-weight: 600; color: var(--color-espresso);">
+                  Maja Šimunović — <span style="color: #ff9c25;">★★★★★</span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">Najbolje u svemu je što ne moraš ništa da glumiš. Samo lagano promeniš energiju i odjednom te ljudi primećuju. Ja sam imala prvi &quot;prilazak&quot; nakon 48 sati.</p>
+                <button style="margin-top: 0.75rem; border-radius: 9999px; border: 1px solid #cbcfe0; padding: 0.25rem 1rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); background: transparent; cursor: pointer;">
+                  Korisno
+                </button>
+              </article>
+            
+              <article style="border-radius: var(--radius-2xl); border: 1px solid #dfe3f0; background: white; padding: 1.25rem;">
+                <p style="font-weight: 600; color: var(--color-espresso);">
+                  Ivana Leko — <span style="color: #ff9c25;">★★★★★</span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">Kupila sam čisto iz znatiželje, nisam očekivala ništa… i evo me sad pričam svim curama. Radim u butiku i dobijam više kontakta očima nego ikad pre.</p>
+                <button style="margin-top: 0.75rem; border-radius: 9999px; border: 1px solid #cbcfe0; padding: 0.25rem 1rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); background: transparent; cursor: pointer;">
+                  Korisno
+                </button>
+              </article>
+            
+              <article style="border-radius: var(--radius-2xl); border: 1px solid #dfe3f0; background: white; padding: 1.25rem;">
+                <p style="font-weight: 600; color: var(--color-espresso);">
+                  Laura Dropulić — <span style="color: #ff9c25;">★★★★★</span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">Ono što stalno ponavljam prijateljicama — ne radi ovo samo da te muškarci gledaju, nego da ti sebe drugačije osetiš. Meni je nakon nekoliko dana došla neka nova sigurnost.</p>
+                <button style="margin-top: 0.75rem; border-radius: 9999px; border: 1px solid #cbcfe0; padding: 0.25rem 1rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); background: transparent; cursor: pointer;">
+                  Korisno
+                </button>
+              </article>
+            
+              <article style="border-radius: var(--radius-2xl); border: 1px solid #dfe3f0; background: white; padding: 1.25rem;">
+                <p style="font-weight: 600; color: var(--color-espresso);">
+                  Ema Kušan — <span style="color: #ff9c25;">★★★★★</span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">Odličan vodič! Jednostavno, brzo, i stvarno vidiš rezultate. Meni je najviše pomoglo objašnjenje zašto signali rade. Nekako sve sjedne u glavu.</p>
+                <button style="margin-top: 0.75rem; border-radius: 9999px; border: 1px solid #cbcfe0; padding: 0.25rem 1rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); background: transparent; cursor: pointer;">
+                  Korisno
+                </button>
+              </article>
+            
+              <article style="border-radius: var(--radius-2xl); border: 1px solid #dfe3f0; background: white; padding: 1.25rem;">
+                <p style="font-weight: 600; color: var(--color-espresso);">
+                  Valentina Rožić — <span style="color: #ff9c25;">★★★★★</span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">Meni je ovo promenilo ritam izlazaka. Ne gledam više ko će prići — jer sad stvarno priđu. 😅 Posebno kad ubacim 8. signal, to je ludilo.</p>
+                <button style="margin-top: 0.75rem; border-radius: 9999px; border: 1px solid #cbcfe0; padding: 0.25rem 1rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); background: transparent; cursor: pointer;">
+                  Korisno
+                </button>
+              </article>
+            
+              <article style="border-radius: var(--radius-2xl); border: 1px solid #dfe3f0; background: white; padding: 1.25rem;">
+                <p style="font-weight: 600; color: var(--color-espresso);">
+                  Martina Birač — <span style="color: #ff9c25;">★★★★★</span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">Najbolji deo je lokacijska primena. Inače radim na recepciji i bilo mi je teško znati kad šta koristiti. Sad sve imam jasno i mogu lagano primeniti.</p>
+                <button style="margin-top: 0.75rem; border-radius: 9999px; border: 1px solid #cbcfe0; padding: 0.25rem 1rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); background: transparent; cursor: pointer;">
+                  Korisno
+                </button>
+              </article>
+            
+              <article style="border-radius: var(--radius-2xl); border: 1px solid #dfe3f0; background: white; padding: 1.25rem;">
+                <p style="font-weight: 600; color: var(--color-espresso);">
+                  Paula Gregurić — <span style="color: #ff9c25;">★★★★★</span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">Nisam mislila da će ovako brzo raditi. Prvu malu promenu sam videla drugi dan kad sam koristila signal u kancelariji. Muški su me počeli malo više gledati, onako toplo.</p>
+                <button style="margin-top: 0.75rem; border-radius: 9999px; border: 1px solid #cbcfe0; padding: 0.25rem 1rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); background: transparent; cursor: pointer;">
+                  Korisno
+                </button>
+              </article>
+            
+              <article style="border-radius: var(--radius-2xl); border: 1px solid #dfe3f0; background: white; padding: 1.25rem;">
+                <p style="font-weight: 600; color: var(--color-espresso);">
+                  Jelena Legac — <span style="color: #ff9c25;">★★★★★</span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">Oseća se razlika u energiji, stvarno. Nije ni čudo da rade kad je toliko suptilno da ne može biti neugodno. Meni jako prirodno dođe.</p>
+                <button style="margin-top: 0.75rem; border-radius: 9999px; border: 1px solid #cbcfe0; padding: 0.25rem 1rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); background: transparent; cursor: pointer;">
+                  Korisno
+                </button>
+              </article>
+            
+              <article style="border-radius: var(--radius-2xl); border: 1px solid #dfe3f0; background: white; padding: 1.25rem;">
+                <p style="font-weight: 600; color: var(--color-espresso);">
+                  Dora Vuković — <span style="color: #ff9c25;">★★★★★</span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">Ovo je najbolji digitalni proizvod koji sam kupila ove godine. Čisto jer mi je vratilo neku ženstvenost koju sam godinama potiskivala.</p>
+                <button style="margin-top: 0.75rem; border-radius: 9999px; border: 1px solid #cbcfe0; padding: 0.25rem 1rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); background: transparent; cursor: pointer;">
+                  Korisno
+                </button>
+              </article>
+            
+              <article style="border-radius: var(--radius-2xl); border: 1px solid #dfe3f0; background: white; padding: 1.25rem;">
+                <p style="font-weight: 600; color: var(--color-espresso);">
+                  Tihana Pavlić — <span style="color: #ff9c25;">★★★★★</span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 1rem; color: rgba(26, 20, 18, 0.85);">Odlična stvar! I sve izgleda elegantno, lako i nenametljivo. Ako tražiš nešto što stvarno možeš odmah primeniti — ovo je to.</p>
+                <button style="margin-top: 0.75rem; border-radius: 9999px; border: 1px solid #cbcfe0; padding: 0.25rem 1rem; font-size: 0.875rem; color: rgba(26, 20, 18, 0.7); background: transparent; cursor: pointer;">
+                  Korisno
+                </button>
+              </article>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section (POST phase) -->
+  <section data-phase="post" class="section fade-transition" style="background: var(--color-ivory);">
+    <div class="container">
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <h2 style="text-align: center;">Najčešća Pitanja</h2>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Za koliko brzo mogu očekivati prve rezultate?</summary>
+              <div class="faq-answer">Većina korisnica prijavi prvu promenu pogleda, osmeha ili pristupa unutar 48–72 sata. Neke čak i isti dan — sve zavisi koliko često koristiš signale.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Trebam li biti ekstrovert da mi ovo radi?</summary>
+              <div class="faq-answer">Ne. Signali su dizajnirani da funkcionišu i kod najtiših žena. Diskretni su, prirodni i ne traže nikakvu glumu.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Hoće li izgledati kao da &quot;flertam&quot;?</summary>
+              <div class="faq-answer">Ne, signali nisu koketiranje. Oni samo otvaraju prostor da muškarac proceni da mu daješ zeleno svetlo — na vrlo prirodan način.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Šta ako mi se niko ne javi ni nakon par dana?</summary>
+              <div class="faq-answer">To je normalno — i zavisi od toga gde se krećeš. Najčešće žene vide promenu čim primene signal u pravom trenutku i pravoj situaciji. Daj si 3–7 dana primene i videćeš razliku.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Je li program namenjen ženama koje već imaju partnera?</summary>
+              <div class="faq-answer">Da — mnoge ga koriste da vrate toplinu i pažnju u odnos. Signali nisu napadni i ne narušavaju vezu, nego bude ženstvenost i mušku inicijativu.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Moram li se posebno sređivati da signali deluju?</summary>
+              <div class="faq-answer">Ne moraš. Signali rade i u trenirci i u haljini — jer se baziraju na govoru tela, ne na izgledu.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Hoće li mi ovo pomoći ako sam dugo &quot;van igre&quot;?</summary>
+              <div class="faq-answer">Da — zapravo, takvim ženama najbrže radi. Signali vraćaju prirodnu ženstvenu energiju koja je uvek tu, samo malo uspavana.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Je li prikladno koristiti Signale Strasti na poslu?</summary>
+              <div class="faq-answer">Da, ali u meri. Za kancelariju su predviđeni posebno prilagođeni signali koji su profesionalni i vrlo suptilni.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Koliko dnevno treba da sve savladam?</summary>
+              <div class="faq-answer">1 minuta. Program je namenjen da se uklopi u tvoj realan dan, bez ikakvog opterećenja.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Šta ako sam jako nervozna oko muških prilazaka?</summary>
+              <div class="faq-answer">Zato signali i postoje — oni rade deo posla za tebe. Ne moraš govoriti, inicirati niti preduzimati ništa neugodno. Samo otvori vrata.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Jesu li signali sigurni i nenametljivi?</summary>
+              <div class="faq-answer">Apsolutno. Sve je zasnovano na prirodnom neverbalnom jeziku koji muškarci instinktivno čitaju, a ne na trikovima.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Hoće li mi ovo pomoći da privučem kvalitetnije muškarce?</summary>
+              <div class="faq-answer">Da. Muškarci koji imaju samopouzdanje i jasnu nameru najbrže reaguju na ovakve signale.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Šta ako živim u manjem gradu?</summary>
+              <div class="faq-answer">Nema veze. Signali su napravljeni tako da deluju gde god postoje ljudi — kafić, prodavnica, park, posao.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Mogu li primeniti signale i preko poruka?</summary>
+              <div class="faq-answer">Da — zato uključuješ &quot;Kako pisati da te poželi videti&quot;, koji pomaže da se interes održi i ubrza prvi susret.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Je li teško pogoditi pravi trenutak za signal?</summary>
+              <div class="faq-answer">Ne, aplikacija te vodi. Dobijaš jasne primere i situacije — već nakon 2–3 dana to ti ide potpuno prirodno.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Je li ovo manipulacija?</summary>
+              <div class="faq-answer">Ne. Signali su samo način da razjasniš ono što već osećaš, umesto da deluješ zatvoreno ili nezainteresovano.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Šta ako sam introvert i ne volim previše pažnje?</summary>
+              <div class="faq-answer">Savršeno — introvertirane žene obično imaju najlepšu, najsubtilniju energiju. Signali pojačavaju ono što već imaš, ne guraju te u spotlight.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Mogu li pogrešiti s primenom signala?</summary>
+              <div class="faq-answer">Ne možeš. I ako ga napraviš &quot;nespretno&quot;, muškarac će ga i dalje osetiti kao toplu otvorenost.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Može li mi ovo pomoći ako sam razvedena / u zrelijoj dobi?</summary>
+              <div class="faq-answer">Da — mnoge žene 35+ i 40+ prijavljuju izuzetno brze rezultate jer im prirodna elegancija već radi u korist.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Hoće li se muškarci ponašati drugačije čim počnem koristiti signale?</summary>
+              <div class="faq-answer">Da, vrlo verovatno. Najčešće se odmah menja kontakt očima, osmeh, način na koji prilaze i koliko su sigurni u sebe.</div>
+            </details>
+          
+            <details class="faq-item">
+              <summary class="faq-summary">Šta ako nisam dugo osetila hemiju?</summary>
+              <div class="faq-answer">Signali Strasti vraćaju tvoj prirodan magnetizam, pa hemija postaje posledica — ne nešto što moraš loviti.</div>
+            </details>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Final CTA Section (POST phase) -->
+  <section data-phase="post" class="section fade-transition" style="background: white;">
+    <div class="container">
+      <div style="max-width: 56rem; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; text-align: center;">
+        <p style="font-size: 1.125rem; color: rgba(26, 20, 18, 0.8);">
+          <strong>Još nešto...</strong>
+        </p>
+        <p style="font-size: 1.125rem; color: rgba(26, 20, 18, 0.8);">
+          Možda nisi izgubila sebe. Možda si <strong>samo izgubila pogled</strong>... koji je čekao pravi signal.
+        </p>
+        <p style="font-size: 1.125rem; color: rgba(26, 20, 18, 0.8);">
+          <u>Pošalji ga danas.</u>
+        </p>
+        <div style="pointer-events: none;">
+          <button class="btn-primary">
+            Da, želim pristupiti SIGNALIMA STRASTI
+          </button>
+        </div>
+        <img src="/SocialProof.png" alt="Social proof" class="social-proof" style="margin-top: 1rem; width: 80%;">
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="background: #1B1A1A; color: #F8F5F0;">
+  <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; padding: 3rem 1rem;">
+    <div style="display: flex; flex-direction: column; gap: 0.5rem; text-align: center;">
+      <p style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4em; color: #D7C4B7;">Signali Strasti</p>
+      <p style="font-size: 1.125rem; color: rgba(248, 245, 240, 0.8);">Bez aplikacija. Bez igrica. Samo prvi signal koji ga poziva da priđe.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; font-size: 0.875rem; color: rgba(248, 245, 240, 0.8);">
+      <a href="/privacy" style="color: inherit; text-decoration: none; transition: color 0.3s;">Privatnost</a>
+      <a href="/terms" style="color: inherit; text-decoration: none; transition: color 0.3s;">Uvjeti korištenja</a>
+      <a href="mailto:recenicestrasti@gmail.com" style="color: inherit; text-decoration: none; transition: color 0.3s;">recenicestrasti@gmail.com</a>
+    </div>
+    <p style="text-align: center; font-size: 0.75rem; color: rgba(248, 245, 240, 0.6);">© 2026 Signali Strasti. Sva prava pridržana.</p>
+  </div>
+</footer>
+</div>
+
+<!-- Wistia Player Scripts -->
+<script src="https://fast.wistia.com/player.js" async></script>
+<script src="https://fast.wistia.com/embed/v59k639lk4.js" async type="module"></script>
+<style>wistia-player[media-id='v59k639lk4']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/v59k639lk4/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+
+<script>
+/* ============================================
+   4) VSL GATE LOGIC (logika za show/hide sekcija nakon X sekundi videa)
+   ============================================ */
+
+(function() {
+  'use strict';
+  
+  // ============================================
+  // CONFIGURATION
+  // ============================================
+  const GATE_DELAY_MS = 10000; // 10 sekundi
+  const STORAGE_KEY = 'vsl_unlocked';
+  const WISTIA_VIDEO_ID = 'v59k639lk4';
+  
+  // ============================================
+  // ASSET MAP
+  // ============================================
+  const IMAGE_MAP = {
+    'TS-B4-S4.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548397a3161fbc4006e.png',
+    'TS-B2-S5.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b5111038bc2e3b.png',
+    'TS-B2-S3.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695905487483032c29c561c7.png',
+    'TS-B4-S6.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548edb8a2469a62de2b.png',
+    'TS-B4-S1.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b511d115bc2e3c.png',
+    'TS-B1-S3.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b5117d9fbc2e34.png',
+    'TS-B2-S6.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548397a31ef9ec40069.png',
+    'TS-B1-S2.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548edb8a23ba762de25.png',
+    'TS-B2-S2.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b511bd6fbc2e37.png',
+    'TS-B1-S4.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695905483ccdd68fac8ee2e8.png',
+    'TS-B2-S7.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548748303e6a2c561c6.png',
+    'TS-B1-S1.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b5115186bc2e39.png',
+    'TS-B1-S8.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548edb8a216b062de23.png',
+    'TS-B3-S4.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b511ea00bc2e3a.png',
+    'TS-B2-S8.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548edb8a2182e62de24.png',
+    'TS-B3-S7.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548748303711ec561c9.png',
+    'TS-B2-S4.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548748303a64dc561c5.png',
+    'TS-B3-S1.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b5111305bc2e35.png',
+    'TS-B4-S2.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b51135e7bc2e3e.png',
+    'TS-B1-S5.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b511431dbc2e38.png',
+    'TS-B3-S6.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548748303410cc561cb.png',
+    'TS-B1-S7.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695905483ccdd614078ee2e9.png',
+    'TS-B3-S2.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695905483ccdd6c0ce8ee2ea.png',
+    'TS-B3-S3.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548748303220ac561c8.png',
+    'TS-B1-S6.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b5114823bc2e3f.png',
+    'TS-B4-S3.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b51131e3bc2e3d.png',
+    'TS-B4-S5.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548edb8a2370162de2a.png',
+    'TS-B2-S1.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959054805b51164ffbc2e36.png',
+    'TS-B3-S8.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548748303e700c561ca.png',
+    'TS-B3-S5.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548edb8a2197b62de22.png',
+    'TS-B4-S7.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590548397a315b46c4006f.png',
+    'Korak3.gif': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590516397a313aacc3f8d8.gif',
+    'Korak2.gif': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590516397a3104c8c3f8e0.gif',
+    'Korak1.gif': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959051674830344cfc55e65.gif',
+    'S-section-7.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590517397a313acdc3f8ed.png',
+    'S-section-3.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590516397a3166b7c3f8d9.png',
+    'S-section-5.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695905163ccdd66bc08edf05.png',
+    'S-section-2.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959051705b511beacbc279f.png',
+    'S-section-6.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590516edb8a2f86a62d616.png',
+    'Tim.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590516397a3129f6c3f8d7.png',
+    'S-section-4.gif': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/6959051605b511a845bc2790.gif',
+    'S-section8-2.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695905177483031450c55e6d.png',
+    'Garancija.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/69590516edb8a2527e62d617.png',
+    'S-section8-1.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695905167483032aa4c55e66.png',
+    'Ikon-6.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde5f7e42c214c4124ebc.png',
+    'ikon-5.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde60de2c141a9d2fb4e1.png',
+    'Ikon-3.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde5f6c1415622951b8da.png',
+    'Ikon-1.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde5f7e42c2b7fe124ebd.png',
+    'Ikon-7.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde5f6c1415728551b8db.png',
+    'Ikon-2.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde5f22afaa21b2bc2264.png',
+    'Ikon-4.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde5fde2c14e60d2fb4d9.png',
+    'SocialProof.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde5bde2c1461b22fb489.png',
+    'Tim2.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde53b75f6f18f333be94.png',
+    'FullMockUp.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde5322afaa42e0bc2131.png',
+    'Mockup-5.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde53b75f6f177733be98.png',
+    'Mockup-1.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde53de2c1443f02fb384.png',
+    'Mockup-3.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde53b75f6fe78a33be99.png',
+    'Mockup-6.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde53de2c1465fa2fb383.png',
+    'Mockup-7.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde536c1415756051b77f.png',
+    'Mockup-4.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde537e42c27c18124d6d.png',
+    'Mockup-2.png': 'https://storage.googleapis.com/msgsndr/wI21c9fuvlrTNDrXvfxU/media/695cde537e42c2fad1124d6c.png',
+    // TODO: Add GHL storage URLs for these images:
+    'Gif-1.gif': '', // MISSING - needs GHL storage URL
+    'gledadrukcije.webp': '', // MISSING - needs GHL storage URL
+    'aktiviraj-signale.png': '', // MISSING - needs GHL storage URL
+    'Podjeli-nauceno.png': '', // MISSING - needs GHL storage URL
+    'ikon-2.png': '', // MISSING - needs GHL storage URL
+    'Ikon-2.png': '' // Also try uppercase version
+  };
+  
+  // ============================================
+  // RESOLVE
+  // ============================================
+  function normalizeName(name) {
+    if (!name) return '';
+    let normalized = String(name).trim();
+    // Remove quotes
+    normalized = normalized.replace(/^["']|["']$/g, '');
+    // Remove leading "./" or "/"
+    normalized = normalized.replace(/^\.\//, '').replace(/^\//, '');
+    return normalized;
+  }
+  
+  function resolveAsset(value) {
+    if (!value) return value;
+    const str = String(value);
+    // If already a full URL, don't touch it
+    if (str.startsWith('http://') || str.startsWith('https://')) {
+      return value;
+    }
+    // Extract filename from path (handle cases like "/image.png" or "./image.png" or "folder/image.png")
+    const normalized = normalizeName(str);
+    // Try exact match first (normalized value)
+    if (IMAGE_MAP[normalized] && IMAGE_MAP[normalized] !== '') {
+      return IMAGE_MAP[normalized];
+    }
+    // Try to extract just the filename if it's a path
+    const filename = normalized.split('/').pop();
+    if (filename) {
+      // Try exact match with filename
+      if (IMAGE_MAP[filename] && IMAGE_MAP[filename] !== '') {
+        return IMAGE_MAP[filename];
+      }
+      // Try case-insensitive match (for ikon vs Ikon, s-section vs S-section)
+      const lowerFilename = filename.toLowerCase();
+      for (const key in IMAGE_MAP) {
+        if (key.toLowerCase() === lowerFilename && IMAGE_MAP[key] && IMAGE_MAP[key] !== '') {
+          return IMAGE_MAP[key];
+        }
+      }
+    }
+    // Fallback: return original value (will cause 404, but at least script won't break)
+    console.warn('[Asset Mapping] No mapping found for:', value);
+    return value;
+  }
+  
+  // ============================================
+  // APPLY MAPPING
+  // ============================================
+  function applyAssetMapping() {
+    // A) Process all <img> tags
+    const images = document.querySelectorAll('img');
+    console.log('[Asset Mapping] Found', images.length, 'images to process');
+    let mappedCount = 0;
+    let unmappedCount = 0;
+    images.forEach(function(img) {
+      // Use getAttribute('src') to get the original value from HTML, not the resolved URL
+      const originalSrc = img.getAttribute('src');
+      if (originalSrc) {
+        const resolved = resolveAsset(originalSrc);
+        if (resolved !== originalSrc && resolved !== '') {
+          console.log('[Asset Mapping] ✓', originalSrc, '->', resolved);
+          img.src = resolved;
+          mappedCount++;
+        } else {
+          console.warn('[Asset Mapping] ✗ No mapping for:', originalSrc);
+          unmappedCount++;
+        }
+      }
+      if (img.getAttribute('data-src')) {
+        const dataSrc = img.getAttribute('data-src');
+        const resolved = resolveAsset(dataSrc);
+        if (resolved !== dataSrc) {
+          img.setAttribute('data-src', resolved);
+        }
+      }
+      const originalSrcset = img.getAttribute('srcset');
+      if (originalSrcset) {
+        // Parse srcset (format: "url1 1x, url2 2x" or "url1 100w, url2 200w")
+        const srcsetParts = originalSrcset.split(',').map(function(part) {
+          const trimmed = part.trim();
+          const spaceIdx = trimmed.indexOf(' ');
+          if (spaceIdx > 0) {
+            const url = trimmed.substring(0, spaceIdx);
+            const descriptor = trimmed.substring(spaceIdx);
+            const resolved = resolveAsset(url);
+            return resolved + descriptor;
+          }
+          return resolveAsset(trimmed);
+        });
+        img.srcset = srcsetParts.join(', ');
+      }
+    });
+    console.log('[Asset Mapping] Summary: ' + mappedCount + ' mapped, ' + unmappedCount + ' unmapped');
+    
+    // B) Process elements with inline background-image styles
+    const allElements = document.querySelectorAll('*');
+    allElements.forEach(function(el) {
+      const style = el.getAttribute('style');
+      if (style && style.includes('background-image')) {
+        // Match url(...) patterns
+        const urlPattern = /url\(['"]?([^'")]+)['"]?\)/g;
+        let newStyle = style;
+        let match;
+        const matches = [];
+        // Collect all matches first
+        while ((match = urlPattern.exec(style)) !== null) {
+          matches.push({
+            full: match[0],
+            url: match[1],
+            index: match.index
+          });
+        }
+        // Replace from end to start to preserve indices
+        for (let i = matches.length - 1; i >= 0; i--) {
+          const m = matches[i];
+          const resolved = resolveAsset(m.url);
+          if (resolved !== m.url) {
+            const quote = m.full.includes('"') ? '"' : m.full.includes("'") ? "'" : '';
+            const replacement = 'url(' + quote + resolved + quote + ')';
+            newStyle = newStyle.substring(0, m.index) + replacement + newStyle.substring(m.index + m.full.length);
+          }
+        }
+        if (newStyle !== style) {
+          el.setAttribute('style', newStyle);
+        }
+      }
+      
+      // C) Process data-bg, data-background, data-bg-image attributes
+      ['data-bg', 'data-background', 'data-bg-image'].forEach(function(attr) {
+        const value = el.getAttribute(attr);
+        if (value) {
+          const resolved = resolveAsset(value);
+          if (resolved !== value) {
+            el.setAttribute(attr, resolved);
+          }
+        }
+      });
+    });
+    
+    // Also watch for dynamically added images
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        mutation.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1) { // Element node
+            if (node.tagName === 'IMG') {
+              const originalSrc = node.getAttribute('src');
+              if (originalSrc) {
+                const resolved = resolveAsset(originalSrc);
+                if (resolved !== originalSrc) {
+                  node.src = resolved;
+                }
+              }
+            }
+            // Also check for images within added nodes
+            const images = node.querySelectorAll && node.querySelectorAll('img');
+            if (images) {
+              images.forEach(function(img) {
+                const originalSrc = img.getAttribute('src');
+                if (originalSrc) {
+                  const resolved = resolveAsset(originalSrc);
+                  if (resolved !== originalSrc) {
+                    img.src = resolved;
+                  }
+                }
+              });
+            }
+          }
+        });
+      });
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+  
+  // ============================================
+  // STATE MANAGEMENT
+  // ============================================
+  let isUnlocked = false;
+  let playStartTime = null;
+  let totalPlayedTime = 0;
+  let isPlaying = false;
+  let lastKnownTime = 0;
+  
+  // Check sessionStorage on load
+  function checkStorage() {
+    try {
+      const stored = sessionStorage.getItem(STORAGE_KEY);
+      if (stored === 'true') {
+        unlockVSL();
+        return true;
+      }
+    } catch (e) {
+      console.warn('SessionStorage not available:', e);
+    }
+    return false;
+  }
+  
+  // Save to sessionStorage
+  function saveToStorage() {
+    try {
+      sessionStorage.setItem(STORAGE_KEY, 'true');
+    } catch (e) {
+      console.warn('Could not save to sessionStorage:', e);
+    }
+  }
+  
+  // ============================================
+  // UI UPDATES
+  // ============================================
+  function unlockVSL() {
+    if (isUnlocked) {
+      console.log('[VSL Gate] Already unlocked, skipping');
+      return;
+    }
+    
+    isUnlocked = true;
+    const page = document.getElementById('ghl2-page');
+    if (page) {
+      page.classList.add('vsl-unlocked');
+      
+      // Count elements being hidden/shown
+      const preElements = document.querySelectorAll('[data-phase="pre"]');
+      const postElements = document.querySelectorAll('[data-phase="post"]');
+      const ctaElement = document.getElementById('cta-under-video');
+      
+      console.log('[VSL Gate] ✅ VSL unlocked');
+      console.log('[VSL Gate] Hidden PRE elements:', preElements.length);
+      console.log('[VSL Gate] Shown POST elements:', postElements.length);
+      console.log('[VSL Gate] CTA under video:', ctaElement ? 'visible' : 'not found');
+    }
+    saveToStorage();
+  }
+  
+  // ============================================
+  // VIDEO TRACKING
+  // ============================================
+  function initVideoTracking() {
+    console.log('[VSL Gate] Initializing video tracking...');
+    
+    // Check if already unlocked from storage
+    if (checkStorage()) {
+      console.log('[VSL Gate] Already unlocked from sessionStorage');
+      return;
+    }
+    
+    // Wait for Wistia player to be available
+    function waitForWistiaPlayer() {
+      const playerElement = document.querySelector('wistia-player[media-id="' + WISTIA_VIDEO_ID + '"]');
+      if (!playerElement) {
+        console.log('[VSL Gate] Waiting for Wistia player element...');
+        setTimeout(waitForWistiaPlayer, 500);
+        return;
+      }
+      
+      // Check if player API is available
+      if (typeof window.Wistia === 'undefined' || !window.Wistia.api) {
+        console.log('[VSL Gate] Waiting for Wistia API...');
+        setTimeout(waitForWistiaPlayer, 500);
+        return;
+      }
+      
+      console.log('[VSL Gate] Wistia loaded - player element found');
+      
+      // Get video instance
+      const video = window.Wistia.api(playerElement);
+      if (!video) {
+        console.warn('[VSL Gate] Could not get video instance, using fallback');
+        initFallbackTracking();
+        return;
+      }
+      
+      console.log('[VSL Gate] Video instance ready, current time:', video.time());
+      
+      // Check if video is already past 10 seconds
+      const currentTime = video.time();
+      if (currentTime >= 10) {
+        console.log('[VSL Gate] ✅ Video already past 10s, unlocking immediately');
+        unlockVSL();
+        return;
+      }
+      
+      // Track play event
+      video.bind('play', function() {
+        if (!isPlaying) {
+          isPlaying = true;
+          playStartTime = Date.now();
+          lastKnownTime = video.time();
+          console.log('[VSL Gate] ▶️ Video play detected, starting timer');
+        }
+      });
+      
+      // Track pause event
+      video.bind('pause', function() {
+        if (isPlaying && playStartTime) {
+          const sessionTime = (Date.now() - playStartTime) / 1000;
+          totalPlayedTime += sessionTime;
+          playStartTime = null;
+          console.log('[VSL Gate] ⏸️ Video paused, watched seconds:', totalPlayedTime.toFixed(1));
+        }
+        isPlaying = false;
+      });
+      
+      // Track timeupdate - accumulate watched time
+      video.bind('timeupdate', function() {
+        if (!isUnlocked && isPlaying) {
+          const currentTime = video.time();
+          
+          // Only count forward progress
+          if (currentTime >= lastKnownTime) {
+            const timeDiff = currentTime - lastKnownTime;
+            if (timeDiff > 0 && timeDiff <= 1) {
+              // Normal playback - accumulate time
+              totalPlayedTime += timeDiff;
+              lastKnownTime = currentTime;
+              
+              // Log progress every 2 seconds
+              if (Math.floor(totalPlayedTime) % 2 === 0 && Math.floor(totalPlayedTime) !== Math.floor(totalPlayedTime - timeDiff)) {
+                console.log('[VSL Gate] Watched seconds:', totalPlayedTime.toFixed(1));
+              }
+              
+              // Check if we've reached threshold
+              if (totalPlayedTime >= 10) {
+                console.log('[VSL Gate] ✅ Reached 10 seconds of playback, unlocking VSL');
+                unlockVSL();
+              }
+            }
+          } else {
+            // User seeked backward - reset tracking
+            console.log('[VSL Gate] Video seeked backward, resetting tracking');
+            lastKnownTime = currentTime;
+            totalPlayedTime = 0;
+          }
+        }
+      });
+    }
+    
+    // Start waiting for player
+    waitForWistiaPlayer();
+    
+    // Fallback: If Wistia doesn't load after 5 seconds
+    setTimeout(function() {
+      if (!isUnlocked) {
+        console.warn('[VSL Gate] Wistia API not available after 5s, initializing fallback');
+        initFallbackTracking();
+      }
+    }, 5000);
+  }
+  
+  // Fallback tracking for when Wistia API is not available
+  function initFallbackTracking() {
+    const playerElement = document.querySelector('wistia-player[media-id="' + WISTIA_VIDEO_ID + '"]');
+    if (!playerElement) {
+      console.warn('[VSL Gate] Fallback: Player element not found');
+      return;
+    }
+    
+    console.log('[VSL Gate] Fallback: Using click-based detection');
+    
+    // Listen for click on player (indicates user wants to play)
+    playerElement.addEventListener('click', function() {
+      if (!isUnlocked && !isPlaying) {
+        console.log('[VSL Gate] Fallback: Video clicked, starting 10s timer');
+        isPlaying = true;
+        playStartTime = Date.now();
+        
+        setTimeout(function() {
+          if (isPlaying && !isUnlocked) {
+            console.log('[VSL Gate] ✅ Fallback timer reached 10s, unlocking VSL');
+            unlockVSL();
+          }
+        }, GATE_DELAY_MS);
+      }
+    });
+  }
+  
+  // ============================================
+  // COUNTDOWN TIMER
+  // ============================================
+  function initCountdownTimer() {
+    const timerEl = document.getElementById('countdown-timer');
+    if (!timerEl) return;
+    
+    const displayEl = timerEl.querySelector('.countdown-display');
+    if (!displayEl) return;
+    
+    let timeLeft = {
+      days: 1,
+      hours: 5,
+      minutes: 0,
+      seconds: 0
+    };
+    
+    function formatTime(time) {
+      if (time === undefined || time === null) return '00';
+      return time.toString().padStart(2, '0');
+    }
+    
+    function updateDisplay() {
+      if (displayEl) {
+        displayEl.textContent = formatTime(timeLeft.days) + ':' + formatTime(timeLeft.hours) + ':' + formatTime(timeLeft.minutes) + ':' + formatTime(timeLeft.seconds);
+      }
+    }
+    
+    const timer = setInterval(function() {
+      if (timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0) {
+        clearInterval(timer);
+        return;
+      }
+      
+      if (timeLeft.seconds > 0) {
+        timeLeft.seconds--;
+      } else if (timeLeft.minutes > 0) {
+        timeLeft.minutes--;
+        timeLeft.seconds = 59;
+      } else if (timeLeft.hours > 0) {
+        timeLeft.hours--;
+        timeLeft.minutes = 59;
+        timeLeft.seconds = 59;
+      } else if (timeLeft.days > 0) {
+        timeLeft.days--;
+        timeLeft.hours = 23;
+        timeLeft.minutes = 59;
+        timeLeft.seconds = 59;
+      }
+      
+      updateDisplay();
+    }, 1000);
+    
+    updateDisplay();
+  }
+  
+  // ============================================
+  // INITIALIZATION
+  // ============================================
+  function init() {
+    // Wait for DOM
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+      return;
+    }
+    
+    // Apply asset mapping first
+    applyAssetMapping();
+    
+    // Initialize video tracking
+    initVideoTracking();
+    
+    // Initialize countdown timer
+    initCountdownTimer();
+  }
+  
+  // Start
+  init();
+  
+  // Also apply mapping after all resources are loaded (in case images load asynchronously)
+  window.addEventListener('load', function() {
+    applyAssetMapping();
+  });
+})();
+</script>
+`;
